@@ -17,3 +17,26 @@
 .container {
   width: var(--container-xl);
 }
+
+
+/* Section title styling */
+.section-title {
+    color: var(--light-theme);
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 5rem;
+    position: relative;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    bottom: -.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10rem;
+    height: 0.5rem;
+    background: linear-gradient(to right, var(--paramecia), var(--mythical), var(--logia));
+    border-radius: 2rem;
+
+}

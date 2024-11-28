@@ -13,15 +13,6 @@
     z-index: 2; /* Ensures content stays above background effects */
 }
 
-/* Main section title styling */
-.section-title {
-    color: var(--light-theme);
-    font-size: 3.5rem;
-    text-align: center;
-    margin-bottom: 80px;
-    position: relative;
-    transform: translateY(30px); /* Initial animation position */
-}
 
 /* Grid layout for feature cards */
 .features-grid {
