@@ -1,3 +1,5 @@
+
+
 @import './Home/home.css';
 
 :root {
@@ -18,10 +20,10 @@
     --background-light: #1a1a4f;
 
     /* Shadows */
-    --shadow-light: rgba(0, 0, 0, 0.1);
-    --shadow-dark:  rgba(0, 0, 0, 0.2);
-    --shadow-shine: rgba(255, 255, 255, 0.1);
-    
+    --shadow-light: rgba(0, 0, 0, 0.1); /* Light shadow for general elements */
+    --shadow-dark:  rgba(0, 0, 0, 0.2); /* Dark shadow for important elements */
+    --shadow-shine: rgba(255, 255, 255, 0.1); /* Shine effect for buttons and highlights */
+
 
     /* Supporting colors */
     --light-theme: #FFF8DC;  /* Light text/accents */
