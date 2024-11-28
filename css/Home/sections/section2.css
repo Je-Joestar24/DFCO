@@ -143,13 +143,3 @@
 .feature-card:hover .icon-circle {
     animation: pulseGlow 1s infinite; /* Faster animation on hover */
 }
-
-/* Glow animation keyframes */
-@keyframes pulseGlow {
-    0%, 100% {
-        box-shadow: 0 0 20px var(--paramecia);
-    }
-    50% {
-        box-shadow: 0 0 40px var(--mythical);
-    }
-}
