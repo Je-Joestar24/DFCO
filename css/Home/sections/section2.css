@@ -2,7 +2,7 @@
 .features-section {
     /* Gradient background from lighter to darker theme colors */
     background: linear-gradient(135deg, var(--background-light) 0%, var(--background-dark) 100%);
-    padding: 120px 0;
+    padding: 8em 0;
     position: relative;
     overflow: hidden;
 }

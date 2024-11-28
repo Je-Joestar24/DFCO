@@ -154,28 +154,8 @@
   animation: particlesPulse 15s infinite alternate;
 }
 
-@keyframes backgroundFlow {
-  0% {
-    transform: scale(1) rotate(0deg);
-  }
-  100% {
-    transform: scale(1.1) rotate(5deg);
-  }
-}
 
 /* Hover animations */
 .step-card:hover .step-number {
   animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(147, 51, 234, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 20px rgba(147, 51, 234, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(147, 51, 234, 0);
-  }
 }
