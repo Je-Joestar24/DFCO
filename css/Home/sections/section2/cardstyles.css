@@ -1,0 +1,56 @@
+/* Individual feature card styling */
+.feature-card {
+  /* Glassmorphism effect */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  /* Smooth animation on hover */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateY(30px);
+  cursor: pointer;
+}
+
+/* Icon container spacing */
+.feature-icon {
+  margin-bottom: 30px;
+}
+
+/* Circular icon background styling */
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Gradient background using theme colors */
+  background: linear-gradient(135deg, var(--paramecia), var(--mythical));
+  position: relative;
+  animation: pulseGlow 3s infinite;
+}
+
+/* SVG icon styling */
+.fruit-icon {
+  width: 40px;
+  height: 40px;
+  fill: var(--light-theme);
+}
+
+/* Feature card title styling */
+.feature-title {
+  color: var(--light-theme);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+/* Feature card description text */
+.feature-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}

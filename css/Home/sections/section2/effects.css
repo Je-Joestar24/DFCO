@@ -1,0 +1,57 @@
+/* Hover effect for feature cards */
+.feature-card:hover {
+  transform: translateY(-5px); /* Card lifts up on hover */
+}
+
+/* Staggered animation delays for icons */
+.icon-circle:first-of-type {
+  animation-delay: 0.2s;
+}
+
+.icon-circle:nth-of-type(2) {
+  animation-delay: 0.4s;
+}
+
+.icon-circle:nth-of-type(3) {
+  animation-delay: 0.6s;
+}
+
+/* Glow effect behind icon circles */
+.icon-circle::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--paramecia), var(--mythical));
+  z-index: -1;
+  filter: blur(8px);
+}
+
+/* Decorative background gradient effect */
+.features-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Dual radial gradients for dynamic background */
+  background: radial-gradient(
+      circle at 20% 20%,
+      var(--paramecia) 0%,
+      transparent 50%
+    ),
+    radial-gradient(circle at 80% 80%, var(--mythical) 0%, transparent 50%);
+  opacity: 0.1;
+  filter: blur(100px);
+}
+
+/* Hover effects for card elements */
+.feature-card:hover .feature-title {
+  color: var(--gold);
+  transition: color 0.3s ease;
+}
+
+.feature-card:hover .icon-circle {
+  animation: pulseGlow 1s infinite; /* Faster animation on hover */
+}
