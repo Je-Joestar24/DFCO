@@ -1,0 +1,33 @@
+:root {
+    --primary: #000;
+    --secondary: #fff;
+    /* Base theme colors */
+    --red: #D32F2F;          
+    --gold: #FFD700;         
+    
+    /* Devil Fruit Types */
+    --paramecia: #FF69B4;    /* Pink for Paramecia type fruits */
+    --zoan: #8BC34A;         /* Green for Zoan type fruits */
+    --logia: #2196F3;        /* Blue for Logia type fruits */
+    --mythical: #9C27B0;     /* Purple for Mythical variants */
+
+    /* Supporting colors */
+    --light-theme: #FFF8DC;  /* Light text/accents */
+    --warning: #FF9800;      /* For devil fruit warnings/cautions */
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
