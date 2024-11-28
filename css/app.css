@@ -1,5 +1,3 @@
-
-
 @import './Home/home.css';
 
 :root {
@@ -24,18 +22,14 @@
     --shadow-dark:  rgba(0, 0, 0, 0.2); /* Dark shadow for important elements */
     --shadow-shine: rgba(255, 255, 255, 0.1); /* Shine effect for buttons and highlights */
 
-
     /* Supporting colors */
     --light-theme: #FFF8DC;  /* Light text/accents */
     --warning: #FF9800;      /* For devil fruit warnings/cautions */
-
-
 
     /* Container widths */
     --container-xl: 1400px;
     --container-lg: 1200px;
 
-    
 }
 
 /* basic reset */
@@ -57,4 +51,9 @@ a {
 
 ul, li {
     list-style: none;
+}
+
+button {
+    border: none;
+    cursor: pointer;
 }

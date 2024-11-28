@@ -43,9 +43,9 @@
 .highlight {
     position: relative;
     display: block;
-    background: linear-gradient(120deg, var(--red) 0%, #7c4dff 100%);
+    background: linear-gradient(120deg, var(--red) 0%, var(--mythical) 100%);
     background-clip: text;
-    -webkit-background-clip: text;
+    -webkit-background-clip: text; /*  */
     color: transparent;
     font-size: 7rem;
     animation: shimmer 2s infinite;
@@ -181,7 +181,7 @@
 }
 
 /* Background particles effect */
-.particles {
+#section-1 .particles {
     position: absolute;
     inset: 0;
     background: 
