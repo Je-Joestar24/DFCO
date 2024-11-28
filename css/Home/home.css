@@ -61,6 +61,7 @@
     position: relative;
 }
 
+/* Section title underline */
 .section-title::before {
     content: '';
     position: absolute;
@@ -73,3 +74,16 @@
     border-radius: 2rem;
 
 }
+
+/* Section title underline */
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--paramecia), var(--mythical));
+    border-radius: 2px;
+  }

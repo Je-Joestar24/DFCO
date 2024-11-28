@@ -1,0 +1,42 @@
+
+/* Text content container */
+.hero-text-content {
+    max-width: 800px;
+}
+
+/* Main hero title styling */
+.hero-title {
+    font-size: 5.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: white;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+}
+
+/* Highlighted text with gradient effect */
+.highlight {
+    position: relative;
+    display: block;
+    background: linear-gradient(120deg, var(--red) 0%, var(--mythical) 100%);
+    background-clip: text;
+    -webkit-background-clip: text; /*  */
+    color: transparent;
+    font-size: 7rem;
+    animation: shimmer 2s infinite;
+    text-shadow: 0 0 30px rgba(124, 77, 255, 0.3);
+}
+
+/* Title suffix styling */
+.title-suffix {
+    font-size: 4rem;
+    opacity: 0.9;
+}
+
+/* Subtitle styling */
+.hero-subtitle {
+    font-size: 1.8rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 3.5rem;
+    line-height: 1.4;
+}
