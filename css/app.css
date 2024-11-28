@@ -17,6 +17,12 @@
     --background-dark: #0a0a2e;
     --background-light: #1a1a4f;
 
+    /* Shadows */
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark:  rgba(0, 0, 0, 0.2);
+    --shadow-shine: rgba(255, 255, 255, 0.1);
+    
+
     /* Supporting colors */
     --light-theme: #FFF8DC;  /* Light text/accents */
     --warning: #FF9800;      /* For devil fruit warnings/cautions */
