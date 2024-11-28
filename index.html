@@ -7,12 +7,42 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-    <div id="app">
-        <main id="main">
-            <section class="section">
-                <div class="container"></div>
+    <div id="app" role="application" aria-label="Devil Fruit Collection Organization Application">
+        <main id="home" role="main" aria-label="Home Page">
+            <section id="section-1" class="section hero-section" role="banner" aria-label="Hero Section">
+                <div class="container">
+                    <div class="hero-content" role="region" aria-label="Hero Content">
+                        <div class="hero-text-content">
+                            <h1 class="hero-title" role="heading" aria-level="1">
+                                Discover the Power of <span class="highlight" aria-label="Devil Fruits">Devil Fruits</span>
+                                <span class="title-suffix" aria-label="with DFCO">with DFCO</span>
+                            </h1>
+                            <p class="hero-subtitle" role="text">
+                                Unleash extraordinary abilities with our exclusive collection.
+                            </p>
+                            <div class="hero-buttons" role="group" aria-label="Call to Action Buttons">
+                                <button class="btn btn-primary" role="button" aria-label="Explore Devil Fruits">
+                                    Explore Fruits
+                                    <span class="btn-shine" aria-hidden="true"></span>
+                                </button>
+                                <button class="btn btn-secondary" role="button" aria-label="Learn More about Devil Fruits">
+                                    Learn More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual" role="presentation" aria-label="Decorative Devil Fruits Visual">
+                        <div class="floating-fruits" aria-hidden="true">
+                            <div class="fruit fruit-1"></div>
+                            <div class="fruit fruit-2"></div>
+                            <div class="fruit fruit-3"></div>
+                        </div>
+                    </div>
+                    <div class="particles" aria-hidden="true"></div>
+                </div>
             </section>
         </main>
     </div>

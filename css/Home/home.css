@@ -1,0 +1,15 @@
+@import './sections/section1.css';
+
+/* Section styles - Full width container with centered content */
+.section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container styles - Fixed width using XL container variable */
+.container {
+  width: var(--container-xl);
+}
