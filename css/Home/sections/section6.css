@@ -1,0 +1,216 @@
+/* CTA Section - Main container */
+.cta-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.cta-section .container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 4rem;
+}
+
+/* Content styling */
+.cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 4.5rem;
+    color: var(--light-theme);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    animation: titlePulse 3s infinite;
+}
+
+.cta-description {
+    font-size: 1.5rem;
+    color: var(--light-theme);
+    opacity: 0.9;
+    margin-bottom: 3rem;
+}
+
+/* Button container */
+.cta-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+/* Button styling */
+.cta-btn {
+    position: relative;
+    padding: 1.2rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Primary button */
+.cta-btn.primary {
+    background: linear-gradient(45deg, var(--paramecia), var(--mythical));
+    color: var(--light-theme);
+    border: none;
+}
+
+.cta-btn.primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(147, 51, 234, 0.3);
+}
+
+/* Secondary button */
+.cta-btn.secondary {
+    background: transparent;
+    color: var(--light-theme);
+    border: 2px solid var(--light-theme);
+}
+
+.cta-btn.secondary:hover {
+    background: var(--light-theme);
+    color: var(--background-dark);
+    transform: translateY(-5px);
+}
+
+/* Particle effects for primary button */
+.btn-particles .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--light-theme);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.cta-btn.primary:hover .particle:nth-child(1) {
+    animation: particleFloat 1.2s infinite;
+    left: 20%;
+}
+
+.cta-btn.primary:hover .particle:nth-child(2) {
+    animation: particleFloat 1.4s infinite 0.2s;
+    left: 50%;
+}
+
+.cta-btn.primary:hover .particle:nth-child(3) {
+    animation: particleFloat 1.6s infinite 0.4s;
+    left: 80%;
+}
+
+/* Background effects */
+.cta-background {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.energy-ring {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: ringRotate 20s linear infinite;
+}
+
+.energy-core {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle at center,
+        var(--paramecia) 0%,
+        var(--mythical) 50%,
+        transparent 70%
+    );
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.3;
+    animation: corePulse 4s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes titlePulse {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+    }
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50px) scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes ringRotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes corePulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.5;
+    }
+}
+
+/* Button glow effect */
+.btn-glow {
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, var(--paramecia), var(--mythical));
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.cta-btn.secondary:hover .btn-glow {
+    opacity: 0.5;
+    animation: glowPulse 1.5s infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+}

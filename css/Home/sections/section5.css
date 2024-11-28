@@ -46,6 +46,7 @@
     opacity: 0.5;
     z-index: -1;
     animation: spinAndPulse 8s infinite linear;
+    pointer-events: none;
 }
 
 /* Responsive masonry grid layout for testimonial cards */
