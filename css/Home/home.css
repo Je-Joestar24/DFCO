@@ -1,8 +1,41 @@
 @import './sections/section1.css';
 @import './sections/section2.css';
 @import './sections/section3.css';
+@import './sections/section4.css';
 /* General animations */
 @import './sections/animations.css';
+/* Home background gradient with pulsing effect */
+#home {
+  background: linear-gradient(
+    135deg,
+    var(--background-dark) 0%,
+    var(--background-light) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+#home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 25% 25%,
+      var(--mythical) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      var(--background-dark) 0%,
+      transparent 40%
+    );
+  opacity: 0.05;
+  filter: blur(60px);
+  animation: particlesPulse 15s infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
 
 /* Section styles - Full width container with centered content */
 .section {

@@ -1,8 +1,6 @@
 /* Best Sellers Section - Main container for displaying featured devil fruits */
 .best-sellers-section {
-    /* Gradient background from dark to light theme colors */
-    background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
-    padding: 8rem 0;
+    padding: 8em 0;
     position: relative;
     overflow: hidden; /* Prevents background animations from creating scrollbars */
 }
@@ -173,18 +171,6 @@
     font-size: 1.2rem;
 }
 
-/* Background decorative effects */
-.best-sellers-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    /* Dual radial gradients for dynamic background */
-    background: 
-        radial-gradient(circle at 30% 30%, var(--paramecia) 0%, transparent 60%),
-        radial-gradient(circle at 70% 70%, var(--mythical) 0%, transparent 60%);
-    opacity: 0.1;
-    animation: backgroundShift 15s infinite alternate;
-}
 
 /* Background shift animation */
 @keyframes backgroundShift {
