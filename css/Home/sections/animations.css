@@ -86,3 +86,27 @@
     box-shadow: 0 0 0 0 rgba(147, 51, 234, 0);
   }
 }
+
+/* Spin and pulse animation */
+@keyframes spinAndPulse {
+  0% {
+      transform: translate(-50%, -50%) rotate(0deg) scale(0.8);
+  }
+  50% {
+      transform: translate(-50%, -50%) rotate(180deg) scale(1.2);
+  }
+  100% {
+      transform: translate(-50%, -50%) rotate(360deg) scale(0.8);
+  }
+}
+
+
+/* Border rotate animation */
+@keyframes borderRotate {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}

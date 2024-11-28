@@ -1,0 +1,94 @@
+
+/* Hover animation for cards */
+.testimonial-card:hover {
+    transform: translateY(-10px);
+}
+
+
+/* Animated gradient border for avatar */
+.user-avatar::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, var(--paramecia), var(--mythical));
+    border-radius: inherit;
+    z-index: 1;
+    animation: borderRotate 4s linear infinite;
+}
+
+
+/* Decorative quote mark */
+.testimonial-text::before {
+    content: '"';
+    font-size: 4rem;
+    color: var(--paramecia);
+    opacity: 0.2;
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+}
+
+/* Background decorative elements container */
+.floating-elements {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+/* Base styles for floating background circles */
+.element {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.1;
+}
+
+/* First floating element - top left */
+.element-1 {
+    width: 300px;
+    height: 300px;
+    background: var(--paramecia);
+    top: 10%;
+    left: 5%;
+    animation: float 20s infinite alternate;
+}
+
+/* Second floating element - bottom right */
+.element-2 {
+    width: 200px;
+    height: 200px;
+    background: var(--mythical);
+    bottom: 20%;
+    right: 10%;
+    animation: float 15s infinite alternate-reverse;
+}
+
+/* Third floating element - center */
+.element-3 {
+    width: 250px;
+    height: 250px;
+    background: var(--logia);
+    top: 50%;
+    left: 50%;
+    animation: float 18s infinite alternate;
+}
+
+/* Shine effect overlay for card hover */
+.testimonial-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(45deg, 
+        transparent 50%, 
+        rgba(255, 255, 255, 0.1) 60%, 
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Show shine effect on hover */
+.testimonial-card:hover::after {
+    opacity: 1;
+}
