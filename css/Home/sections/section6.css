@@ -33,7 +33,7 @@
 /* Main title styling with pulsing glow animation
  * Large, impactful text with subtle shadow effect
  */
-.section-title {
+#section-6 .section-title {
     font-size: 4.5rem;
     color: var(--light-theme);
     margin-bottom: 1.5rem;
@@ -185,91 +185,4 @@
     filter: blur(40px);
     opacity: 0.3;
     animation: corePulse 4s ease-in-out infinite;
-}
-
-/* Animation Keyframes
- * Define all custom animations used in the section
- */
-@keyframes titlePulse {
-    0%, 100% {
-        text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    }
-    50% {
-        text-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
-    }
-}
-
-/* Particle floating animation
- * Particles rise and fade out
- */
-@keyframes particleFloat2 {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-50px) scale(0);
-        opacity: 0;
-    }
-}
-
-/* Ring rotation animation
- * Continuous 360-degree rotation
- */
-@keyframes ringRotate {
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
-}
-
-/* Core pulsing animation
- * Alternates size and opacity
- */
-@keyframes corePulse {
-    0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.3;
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.2);
-        opacity: 0.5;
-    }
-}
-
-/* Button glow effect element
- * Adds gradient outline on hover
- */
-.btn-glow {
-    position: absolute;
-    inset: -2px;
-    background: linear-gradient(45deg, var(--paramecia), var(--mythical));
-    border-radius: inherit;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-/* Secondary button glow animation
- * Shows and animates glow effect on hover
- */
-.cta-btn.secondary:hover .btn-glow {
-    opacity: 0.5;
-    animation: glowPulse 1.5s infinite;
-}
-
-/* Glow pulsing animation
- * Subtle scale and opacity changes
- */
-@keyframes glowPulse {
-    0%, 100% {
-        opacity: 0.5;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.7;
-        transform: scale(1.05);
-    }
 }
