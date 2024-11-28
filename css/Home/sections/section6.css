@@ -1,4 +1,6 @@
-/* CTA Section - Main container */
+/* CTA Section - Main container 
+ * Creates a full-height section with centered content and overflow control
+ */
 .cta-section {
     position: relative;
     min-height: 100vh;
@@ -8,6 +10,9 @@
     overflow: hidden;
 }
 
+/* Container wrapper with z-index control for layering
+ * Ensures content appears above background effects
+ */
 .cta-section .container {
     position: relative;
     z-index: 2;
@@ -15,7 +20,9 @@
     padding: 4rem;
 }
 
-/* Content styling */
+/* Content wrapper with max-width constraint
+ * Centers and constrains content width for readability
+ */
 .cta-content {
     position: relative;
     z-index: 2;
@@ -23,6 +30,9 @@
     margin: 0 auto;
 }
 
+/* Main title styling with pulsing glow animation
+ * Large, impactful text with subtle shadow effect
+ */
 .section-title {
     font-size: 4.5rem;
     color: var(--light-theme);
@@ -31,6 +41,9 @@
     animation: titlePulse 3s infinite;
 }
 
+/* Description text styling
+ * Larger body text with slight transparency
+ */
 .cta-description {
     font-size: 1.5rem;
     color: var(--light-theme);
@@ -38,7 +51,9 @@
     margin-bottom: 3rem;
 }
 
-/* Button container */
+/* Button container with flex layout
+ * Centers buttons with consistent spacing
+ */
 .cta-buttons {
     display: flex;
     gap: 2rem;
@@ -46,7 +61,9 @@
     margin-top: 3rem;
 }
 
-/* Button styling */
+/* Base button styling shared between variants
+ * Consistent padding, text styling and smooth transitions
+ */
 .cta-btn {
     position: relative;
     padding: 1.2rem 3rem;
@@ -59,32 +76,44 @@
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Primary button */
+/* Primary CTA button with gradient background
+ * Bold, attention-grabbing style with hover effects
+ */
 .cta-btn.primary {
     background: linear-gradient(45deg, var(--paramecia), var(--mythical));
     color: var(--light-theme);
     border: none;
 }
 
+/* Primary button hover animation
+ * Lifts button and adds shadow for depth
+ */
 .cta-btn.primary:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 40px rgba(147, 51, 234, 0.3);
 }
 
-/* Secondary button */
+/* Secondary button with transparent background
+ * More subtle alternative with border outline
+ */
 .cta-btn.secondary {
     background: transparent;
     color: var(--light-theme);
     border: 2px solid var(--light-theme);
 }
 
+/* Secondary button hover effects
+ * Inverts colors and lifts button
+ */
 .cta-btn.secondary:hover {
     background: var(--light-theme);
     color: var(--background-dark);
     transform: translateY(-5px);
 }
 
-/* Particle effects for primary button */
+/* Particle effect elements for primary button
+ * Small animated dots that float up on hover
+ */
 .btn-particles .particle {
     position: absolute;
     width: 4px;
@@ -95,28 +124,36 @@
     opacity: 0;
 }
 
+/* Individual particle animations with staggered timing
+ * Creates cascading effect of multiple particles
+ */
 .cta-btn.primary:hover .particle:nth-child(1) {
-    animation: particleFloat 1.2s infinite;
+    animation: particleFloat2 1.2s infinite;
     left: 20%;
 }
 
 .cta-btn.primary:hover .particle:nth-child(2) {
-    animation: particleFloat 1.4s infinite 0.2s;
+    animation: particleFloat2 1.4s infinite 0.2s;
     left: 50%;
 }
 
 .cta-btn.primary:hover .particle:nth-child(3) {
-    animation: particleFloat 1.6s infinite 0.4s;
+    animation: particleFloat2 1.6s infinite 0.4s;
     left: 80%;
 }
 
-/* Background effects */
+/* Background effects container
+ * Holds decorative elements behind content
+ */
 .cta-background {
     position: absolute;
     inset: 0;
     pointer-events: none;
 }
 
+/* Rotating ring effect
+ * Large circular border that rotates continuously
+ */
 .energy-ring {
     position: absolute;
     top: 50%;
@@ -129,6 +166,9 @@
     animation: ringRotate 20s linear infinite;
 }
 
+/* Central energy core effect
+ * Glowing gradient sphere with pulsing animation
+ */
 .energy-core {
     position: absolute;
     top: 50%;
@@ -147,7 +187,9 @@
     animation: corePulse 4s ease-in-out infinite;
 }
 
-/* Animations */
+/* Animation Keyframes
+ * Define all custom animations used in the section
+ */
 @keyframes titlePulse {
     0%, 100% {
         text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
@@ -157,7 +199,10 @@
     }
 }
 
-@keyframes particleFloat {
+/* Particle floating animation
+ * Particles rise and fade out
+ */
+@keyframes particleFloat2 {
     0% {
         transform: translateY(0) scale(1);
         opacity: 1;
@@ -168,6 +213,9 @@
     }
 }
 
+/* Ring rotation animation
+ * Continuous 360-degree rotation
+ */
 @keyframes ringRotate {
     0% {
         transform: translate(-50%, -50%) rotate(0deg);
@@ -177,6 +225,9 @@
     }
 }
 
+/* Core pulsing animation
+ * Alternates size and opacity
+ */
 @keyframes corePulse {
     0%, 100% {
         transform: translate(-50%, -50%) scale(1);
@@ -188,7 +239,9 @@
     }
 }
 
-/* Button glow effect */
+/* Button glow effect element
+ * Adds gradient outline on hover
+ */
 .btn-glow {
     position: absolute;
     inset: -2px;
@@ -199,11 +252,17 @@
     transition: opacity 0.3s;
 }
 
+/* Secondary button glow animation
+ * Shows and animates glow effect on hover
+ */
 .cta-btn.secondary:hover .btn-glow {
     opacity: 0.5;
     animation: glowPulse 1.5s infinite;
 }
 
+/* Glow pulsing animation
+ * Subtle scale and opacity changes
+ */
 @keyframes glowPulse {
     0%, 100% {
         opacity: 0.5;
