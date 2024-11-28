@@ -1,0 +1,70 @@
+/* Individual step card styling */
+.step-card {
+  flex: 1;
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
+
+/* Step number styling */
+.step-number {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--paramecia), var(--mythical));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light-theme);
+  font-size: 1.8rem;
+  font-weight: 700;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Step icon styling */
+.step-icon {
+  width: 80px;
+  height: 80px;
+  margin: 20px auto;
+  background: linear-gradient(135deg, var(--paramecia), var(--mythical));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.step-icon svg {
+  width: 40px;
+  height: 40px;
+  fill: var(--light-theme);
+}
+
+/* Step title styling */
+.step-title {
+  color: var(--light-theme);
+  font-size: 1.8rem;
+  margin: 20px 0;
+  font-weight: 700;
+}
+
+/* Step description styling */
+.step-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.step-card:last-child .step-connector {
+  display: none;
+}
