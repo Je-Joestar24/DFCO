@@ -1,0 +1,51 @@
+/* Individual devil fruit card styling */
+.fruit-card {
+  position: relative;
+  /* Glassmorphism effect with semi-transparent background */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Container for fruit image and glow effects */
+.fruit-image-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1; /* Maintains square shape */
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+/* Devil fruit image styling */
+.fruit-image {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+/* Glow effect overlay for fruit images */
+.fruit-glow {
+  position: absolute;
+  inset: 0;
+  /* Radial gradient for mystical glow effect */
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--paramecia) 0%,
+    var(--mythical) 50%,
+    transparent 70%
+  );
+  opacity: 0;
+  mix-blend-mode: overlay;
+  transition: opacity 0.3s ease;
+}

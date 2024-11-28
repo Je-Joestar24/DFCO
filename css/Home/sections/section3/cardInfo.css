@@ -1,0 +1,46 @@
+
+/* Container for fruit details */
+.fruit-info {
+    color: var(--light-theme);
+    text-align: center;
+    width: 100%;
+  }
+  
+  /* Fruit name styling */
+  .fruit-name {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  
+  /* Price display styling */
+  .fruit-price {
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  
+  /* Add to Cart button styling */
+  .add-to-cart {
+    width: 100%;
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    /* Gradient background for button */
+    background: linear-gradient(45deg, var(--paramecia), var(--mythical));
+    color: var(--light-theme);
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Shopping cart icon styling */
+  .cart-icon {
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+  }
+  
