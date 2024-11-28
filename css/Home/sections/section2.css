@@ -37,6 +37,7 @@
     text-align: center;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform: translateY(30px);
+    cursor: pointer;
 }
 
 
@@ -58,7 +59,21 @@
     justify-content: center;
     background: linear-gradient(135deg, var(--paramecia), var(--mythical));
     position: relative;
+    animation: pulseGlow 3s infinite;
 }
+
+.icon-circle:first-of-type {
+    animation-delay: 0.2s;
+}
+
+.icon-circle:nth-of-type(2) {
+    animation-delay: 0.4s;
+}
+
+.icon-circle:nth-of-type(3) {
+    animation-delay: 0.6s;
+}
+
 
 .icon-circle::after {
     content: '';
@@ -109,4 +124,18 @@
 .feature-card:hover .feature-title {
     color: var(--gold);
     transition: color 0.3s ease;
+}
+
+.feature-card:hover .icon-circle {
+    animation: pulseGlow 1s infinite;
+}
+
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px var(--paramecia);
+    }
+    50% {
+        box-shadow: 0 0 40px var(--mythical);
+    }
 }
