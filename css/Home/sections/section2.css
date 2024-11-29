@@ -1,26 +1,37 @@
 @import './section2/cardstyles.css';
 @import './section2/effects.css';
-/* Main features section styling */
-.features-section {
-    /* Gradient background from lighter to darker theme colors */
+
+/* Block: Features */
+.features {
     background: linear-gradient(135deg, var(--background-light) 0%, var(--background-dark) 100%);
     padding: 8em 0;
     position: relative;
     overflow: hidden;
 }
 
-/* Container positioning for content */
-.features-section .container {
+/* Element: Container */
+.features__container {
     position: relative;
-    z-index: 2; /* Ensures content stays above background effects */
-}
-
-
-/* Grid layout for feature cards */
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
-    gap: 40px;
+    z-index: 2;
     max-width: var(--container-lg);
     margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Element: Grid layout */
+.features__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    position: relative;
+    padding: 40px 0;
+}
+
+/* Element: Title */
+.features__title {
+    font-size: 3.5rem;
+    color: var(--light-theme);
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
 }
