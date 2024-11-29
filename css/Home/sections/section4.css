@@ -1,27 +1,36 @@
 @import './section4/cardstyles.css';
 @import './section4/effects.css';
 
-/* Main section styling */
-.how-it-works-section {
-
-  padding: 8em 0;
-  position: relative;
+/* Block: Process */
+.process {
+    position: relative;
+    padding: 8em 0;
 }
 
-.how-it-works-section .container {
-  position: relative;
-  z-index: 2;
-  max-width: var(--container-lg);
-  margin: 0 auto;
-  padding: 0 20px;
+/* Element: Container */
+.process__container {
+    position: relative;
+    z-index: 2;
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Steps container layout */
-.steps-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-  position: relative;
-  padding: 40px 0;
+/* Element: Title */
+.process__title {
+    font-size: 3.5rem;
+    color: var(--light-theme);
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+/* Element: Steps container */
+.process__steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    position: relative;
+    padding: 40px 0;
 }

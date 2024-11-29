@@ -1,43 +1,33 @@
-.step-card:hover {
-  transform: translateY(-10px);
+/* Card hover effects */
+.process__card:hover {
+    transform: translateY(-10px);
 }
 
-.step-card:hover .step-icon {
-  transform: scale(1.1) rotate(5deg);
+.process__card:hover .process__icon {
+    transform: scale(1.1) rotate(5deg);
 }
 
 /* Background decoration */
-.how-it-works-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-      circle at 25% 25%,
-      var(--mythical) 0%,
-      transparent 40%
+.process::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at 25% 25%,
+        var(--mythical) 0%,
+        transparent 40%
     ),
     radial-gradient(
-      circle at 25% 25%,
-      var(--background-dark) 0%,
-      transparent 40%
+        circle at 25% 25%,
+        var(--background-dark) 0%,
+        transparent 40%
     );
-  opacity: 0.05;
-  filter: blur(60px);
-  animation: particlesPulse 15s infinite alternate;
+    opacity: 0.05;
+    filter: blur(60px);
+    animation: particlesPulse 15s infinite alternate;
 }
 
 /* Hover animations */
-.step-card:hover .step-number {
-  animation: pulse 2s infinite;
-}
-
-/* Connector line between steps */
-.step-connector {
-  position: absolute;
-  top: 50%;
-  right: -20px;
-  width: 40px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--paramecia), var(--mythical));
-  transform: translateY(-50%);
+.process__card:hover .process__number {
+    animation: pulse 2s infinite;
 }
