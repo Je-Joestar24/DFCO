@@ -49,7 +49,7 @@
 }
 
 /* Container styles - Fixed width using XL container variable */
-.container {
+.container, .hero__container {
   width: var(--container-xl);
 }
 

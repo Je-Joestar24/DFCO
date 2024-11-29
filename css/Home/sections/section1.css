@@ -2,17 +2,15 @@
 @import './section1/herobuttons.css';
 @import './section1/herovisuals.css';
 
-/* Hero section - Main landing area */
-.hero-section {
+/* Block: Hero */
+.hero {
     position: relative;
     height: 100vh;
     background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
     overflow: hidden;
 }
 
-/* Main container with grid layout */
-.container {
-    max-width: 1920px;
+.hero__container {
     margin: 0 auto;
     height: 100%;
     display: grid;
@@ -20,16 +18,14 @@
     padding: 0 120px;
 }
 
-/* Hero content wrapper */
-.hero-content {
+.hero__content {
     position: relative;
     z-index: 10;
     display: flex;
     align-items: center;
 }
 
-/* Background particles effect */
-#section-1 .particles {
+.hero__particles {
     position: absolute;
     inset: 0;
     background: 

@@ -1,11 +1,11 @@
 /* Button container */
-.hero-buttons {
+.hero__buttons {
   display: flex;
   gap: 2rem;
 }
 
 /* Base button styles */
-.btn {
+.hero__button {
   padding: 1.2rem 3.5rem;
   border-radius: 100px;
   font-size: 1.2rem;
@@ -17,20 +17,20 @@
 }
 
 /* Primary button with gradient background */
-.btn-primary {
+.hero__button--primary {
   background: linear-gradient(45deg, #9333ea, #7c4dff);
   color: white;
   box-shadow: 0 10px 30px rgba(147, 51, 234, 0.3);
 }
 
 /* Primary button hover effect */
-.btn-primary:hover {
+.hero__button--primary:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(147, 51, 234, 0.4);
 }
 
 /* Shine effect for primary button */
-.btn-shine {
+.hero__button-shine {
   position: absolute;
   top: -50%;
   left: -50%;
@@ -47,7 +47,7 @@
 }
 
 /* Secondary button with transparent background */
-.btn-secondary {
+.hero__button--secondary {
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.3);
   color: white;
@@ -55,7 +55,7 @@
 }
 
 /* Secondary button hover effect */
-.btn-secondary:hover {
+.hero__button--secondary:hover {
   border-color: white;
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-5px);

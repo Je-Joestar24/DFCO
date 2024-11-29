@@ -1,21 +1,17 @@
-
-/* Visual section container */
-.hero-visual {
+.hero__visual {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Floating fruits container */
-.floating-fruits {
+.hero__fruits {
     position: relative;
     width: 100%;
     height: 100%;
 }
 
-/* Individual fruit styling */
-.fruit {
+.hero__fruit {
     position: absolute;
     width: 200px;
     height: 200px;
@@ -29,8 +25,7 @@
     box-shadow: 0 0 50px rgba(124, 77, 255, 0.4);
 }
 
-/* Positioning and animation for paramecia devil fruit */
-.fruit-1 {
+.hero__fruit--paramecia {
     background: radial-gradient(circle at 30% 30%,
         #ffa5a5,
         #ff8787,
@@ -42,8 +37,7 @@
     animation: float 6s infinite ease-in-out;
 }
 
-/* Positioning and animation for mythical devil fruit */
-.fruit-2 {
+.hero__fruit--mythical {
     background: radial-gradient(circle at 30% 30%,
         #c084fc,
         #a855f7,
@@ -55,8 +49,7 @@
     animation: float 8s infinite ease-in-out reverse;
 }
 
-/* Positioning and animation for logia devil fruit */
-.fruit-3 {
+.hero__fruit--logia {
     background: radial-gradient(circle at 30% 30%,
         #7ab2eb,
         #5c9ee5,
