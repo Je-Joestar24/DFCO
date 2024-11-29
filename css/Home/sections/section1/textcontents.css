@@ -1,7 +1,15 @@
+/* Element: Text Container
+ * Constrains content width
+ * Maintains readability with max-width
+ */
 .hero__text {
     max-width: 800px;
 }
 
+/* Element: Main Title
+ * Large, bold heading with tight spacing
+ * White text with subtle letter spacing
+ */
 .hero__title {
     font-size: 5.5rem;
     font-weight: 800;
@@ -11,6 +19,11 @@
     letter-spacing: -0.02em;
 }
 
+/* Element: Title Highlight
+ * Gradient text effect with animation
+ * Larger size for emphasis
+ * Soft glow with text shadow
+ */
 .hero__title-highlight {
     position: relative;
     display: block;
@@ -23,11 +36,19 @@
     text-shadow: 0 0 30px rgba(124, 77, 255, 0.3);
 }
 
+/* Element: Title Suffix
+ * Smaller size with reduced opacity
+ * Creates visual hierarchy
+ */
 .hero__title-suffix {
     font-size: 4rem;
     opacity: 0.9;
 }
 
+/* Element: Subtitle
+ * Supporting text with increased line height
+ * Semi-transparent white for contrast
+ */
 .hero__subtitle {
     font-size: 1.8rem;
     color: rgba(255, 255, 255, 0.9);

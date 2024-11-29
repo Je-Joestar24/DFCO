@@ -1,10 +1,17 @@
-/* Button container */
+/* Block: Hero Buttons
+ * Flex container for call-to-action buttons
+ * Horizontal layout with consistent spacing
+ */
 .hero__buttons {
   display: flex;
   gap: 2rem;
 }
 
-/* Base button styles */
+/* Element: Base Button
+ * Common styles shared by all hero buttons
+ * Rounded pill shape with smooth transitions
+ * Overflow hidden for shine effect
+ */
 .hero__button {
   padding: 1.2rem 3.5rem;
   border-radius: 100px;
@@ -16,20 +23,31 @@
   overflow: hidden;
 }
 
-/* Primary button with gradient background */
+/* Modifier: Primary Button
+ * Gradient background with purple theme
+ * Elevated appearance with soft shadow
+ * Used for main call-to-action
+ */
 .hero__button--primary {
   background: linear-gradient(45deg, #9333ea, #7c4dff);
   color: white;
   box-shadow: 0 10px 30px rgba(147, 51, 234, 0.3);
 }
 
-/* Primary button hover effect */
+/* State: Primary Button Hover
+ * Lifts button and increases shadow
+ * Enhanced depth effect on interaction
+ */
 .hero__button--primary:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(147, 51, 234, 0.4);
 }
 
-/* Shine effect for primary button */
+/* Element: Shine Effect
+ * Animated diagonal gradient overlay
+ * Creates moving highlight across button
+ * Adds visual interest to primary button
+ */
 .hero__button-shine {
   position: absolute;
   top: -50%;
@@ -46,7 +64,11 @@
   animation: shine 3s infinite;
 }
 
-/* Secondary button with transparent background */
+/* Modifier: Secondary Button
+ * Ghost button with transparent background
+ * Subtle border and blur effect
+ * Complementary to primary button
+ */
 .hero__button--secondary {
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -54,7 +76,10 @@
   backdrop-filter: blur(5px);
 }
 
-/* Secondary button hover effect */
+/* State: Secondary Button Hover
+ * Increases border opacity and adds background
+ * Matches primary button elevation
+ */
 .hero__button--secondary:hover {
   border-color: white;
   background: rgba(255, 255, 255, 0.1);

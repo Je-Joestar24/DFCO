@@ -1,3 +1,7 @@
+/* Block: Hero Visual
+ * Container for floating fruit elements
+ * Centered flex layout for visual content
+ */
 .hero__visual {
     position: relative;
     display: flex;
@@ -5,12 +9,20 @@
     justify-content: center;
 }
 
+/* Element: Fruits Container
+ * Full-size relative container
+ * Holds absolutely positioned fruits
+ */
 .hero__fruits {
     position: relative;
     width: 100%;
     height: 100%;
 }
 
+/* Element: Base Fruit
+ * Common styles for all fruit elements
+ * Circular shape with gradient and glow
+ */
 .hero__fruit {
     position: absolute;
     width: 200px;
@@ -25,6 +37,10 @@
     box-shadow: 0 0 50px rgba(124, 77, 255, 0.4);
 }
 
+/* Modifier: Paramecia Fruit
+ * Red gradient variant
+ * Positioned top-left with float animation
+ */
 .hero__fruit--paramecia {
     background: radial-gradient(circle at 30% 30%,
         #ffa5a5,
@@ -37,6 +53,10 @@
     animation: float 6s infinite ease-in-out;
 }
 
+/* Modifier: Mythical Zoan Fruit
+ * Purple gradient variant
+ * Centered with reverse float animation
+ */
 .hero__fruit--mythical {
     background: radial-gradient(circle at 30% 30%,
         #c084fc,
@@ -49,6 +69,10 @@
     animation: float 8s infinite ease-in-out reverse;
 }
 
+/* Modifier: Logia Fruit
+ * Blue gradient variant
+ * Positioned top-right with float animation
+ */
 .hero__fruit--logia {
     background: radial-gradient(circle at 30% 30%,
         #7ab2eb,
