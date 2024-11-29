@@ -1,34 +1,60 @@
+/* Import stylesheets for process section components
+ * Modular architecture following BEM methodology
+ * Separates concerns into card styles, animations, and decorative elements
+ * Improves maintainability and organization
+ */
 @import './section4/cardstyles.css';
 @import './section4/effects.css';
+@import './section4/decorations.css';
 
-/* Block: Process */
+/* Block: Process section wrapper
+ * Creates positioning context for absolute elements
+ * Contains background decorations and content
+ * Maintains full viewport width layout
+ */
 .process {
     position: relative;
-    padding: 8em 0;
 }
 
-/* Element: Container */
+/* Element: Main content container 
+ * Centers content with max-width constraint
+ * Elevates above decorative background (z-index: 2)
+ * Provides consistent horizontal spacing with padding
+ * Uses flexbox for content organization
+ */
 .process__container {
     position: relative;
     z-index: 2;
     max-width: var(--container-lg);
     margin: 0 auto;
     padding: 0 20px;
+    display: flex;
 }
 
-/* Element: Title */
+/* Element: Section heading
+ * Large 3.5rem title with light theme color
+ * Centered alignment with top spacing
+ * Positioning context for decorative pseudo-elements
+ * Maintains visual hierarchy with size and spacing
+ */
 .process__title {
     font-size: 3.5rem;
     color: var(--light-theme);
     text-align: center;
-    margin-bottom: 4rem;
+    margin-top: 4rem;
     position: relative;
 }
 
-/* Element: Steps container */
+/* Element: Process steps wrapper
+ * Vertical flex layout with consistent 40px gaps
+ * Left-aligned items for natural reading flow
+ * Provides spacing context for step cards
+ * Uses relative positioning for connector elements
+ */
 .process__steps {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     align-items: flex-start;
     gap: 40px;
     position: relative;

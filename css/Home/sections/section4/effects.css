@@ -1,33 +1,24 @@
-/* Card hover effects */
+/* Card hover effects
+ * Elevates card with upward transform
+ * Adds subtle movement on interaction
+ */
 .process__card:hover {
     transform: translateY(-10px);
 }
 
+/* Icon hover animation
+ * Scales up with slight rotation
+ * Creates playful emphasis effect
+ */
 .process__card:hover .process__icon {
     transform: scale(1.1) rotate(5deg);
 }
 
-/* Background decoration */
-.process::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        circle at 25% 25%,
-        var(--mythical) 0%,
-        transparent 40%
-    ),
-    radial-gradient(
-        circle at 25% 25%,
-        var(--background-dark) 0%,
-        transparent 40%
-    );
-    opacity: 0.05;
-    filter: blur(60px);
-    animation: particlesPulse 15s infinite alternate;
-}
 
-/* Hover animations */
+/* Number hover animation
+ * Continuous pulsing effect
+ * Draws attention to step sequence
+ */
 .process__card:hover .process__number {
     animation: pulse 2s infinite;
 }

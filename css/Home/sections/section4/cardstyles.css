@@ -1,4 +1,8 @@
-/* Block: Step card */
+/* Process Card Component
+ * Displays individual process steps with glass morphism effect
+ * Features hover interactions and visual hierarchy
+ * Uses flexbox for content organization
+ */
 .process__card {
     flex: 1;
     position: relative;
@@ -12,11 +16,15 @@
     cursor: pointer;
 }
 
-/* Element: Step number */
+/* Step Number Badge
+ * Circular badge with gradient background
+ * Positioned absolutely on left side of card
+ * Provides visual sequence indication
+ */
 .process__number {
     position: absolute;
-    top: -30px;
-    left: 50%;
+    top: 20%;
+    left: 0%;
     transform: translateX(-50%);
     width: 60px;
     height: 60px;
@@ -31,7 +39,11 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Element: Icon container */
+/* Feature Icon Container
+ * Circular container with gradient background
+ * Centers icon with flexbox
+ * Animates on card hover
+ */
 .process__icon {
     width: 80px;
     height: 80px;
@@ -44,14 +56,21 @@
     transition: transform 0.3s ease;
 }
 
-/* Element: SVG icon */
+/* Feature Icon
+ * SVG icon with consistent sizing
+ * Light theme coloring for contrast
+ */
 .process__icon svg {
     width: 40px;
     height: 40px;
     fill: var(--light-theme);
 }
 
-/* Element: Card title */
+/* Card Title
+ * Primary heading for process step
+ * Bold weight for emphasis
+ * Consistent spacing with margins
+ */
 .process__card-title {
     color: var(--light-theme);
     font-size: 1.8rem;
@@ -59,24 +78,13 @@
     font-weight: 700;
 }
 
-/* Element: Card description */
+/* Card Description
+ * Supporting text with reduced opacity
+ * Optimized line height for readability
+ * Slightly larger than base font size
+ */
 .process__card-description {
     color: rgba(255, 255, 255, 0.8);
     font-size: 1.1rem;
     line-height: 1.6;
-}
-
-/* Element: Connector */
-.process__connector {
-    position: absolute;
-    top: 50%;
-    right: -20px;
-    width: 40px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--paramecia), var(--mythical));
-    transform: translateY(-50%);
-}
-
-.process__card:last-child .process__connector {
-    display: none;
 }
