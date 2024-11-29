@@ -1,6 +1,6 @@
 @import './Home/home.css';
 @import './footer.css';
-
+@import './navigations.css';
 :root {
     --primary: #000;
     --secondary: #fff;
