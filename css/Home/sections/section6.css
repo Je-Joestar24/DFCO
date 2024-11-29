@@ -1,188 +1,87 @@
-/* CTA Section - Main container 
- * Creates a full-height section with centered content and overflow control
+@import "./section6/texts.css";
+@import "./section6/buttons.css";
+@import "./section6/effects.css";
+
+/* Block: CTA 
+ * Full-height section with centered content
+ * Contains background effects and call-to-action elements
  */
-.cta-section {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+.cta {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-/* Container wrapper with z-index control for layering
- * Ensures content appears above background effects
+/* Element: Container
+ * Wraps content and provides spacing
+ * Higher z-index to appear above background
  */
-.cta-section .container {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 4rem;
+.cta__container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 4rem;
 }
 
-/* Content wrapper with max-width constraint
- * Centers and constrains content width for readability
+/* Element: Content wrapper
+ * Constrains content width for readability
+ * Centered horizontally with auto margins
  */
-.cta-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    margin: 0 auto;
+.cta__content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* Main title styling with pulsing glow animation
- * Large, impactful text with subtle shadow effect
+/* Element: Background effects
+ * Full-width container for decorative elements
+ * No pointer events to allow clicking through
  */
-#section-6 .section-title {
-    font-size: 4.5rem;
-    color: var(--light-theme);
-    margin-bottom: 1.5rem;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    animation: titlePulse 3s infinite;
+.cta__background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
-/* Description text styling
- * Larger body text with slight transparency
+/* Element: Rotating ring
+ * Large circular border that rotates
+ * Semi-transparent for subtle effect
  */
-.cta-description {
-    font-size: 1.5rem;
-    color: var(--light-theme);
-    opacity: 0.9;
-    margin-bottom: 3rem;
+.cta__ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: ringRotate 20s linear infinite;
 }
 
-/* Button container with flex layout
- * Centers buttons with consistent spacing
+/* Element: Glowing core
+ * Radial gradient creates glowing orb effect
+ * Pulses and blurs for dynamic background
  */
-.cta-buttons {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    margin-top: 3rem;
-}
-
-/* Base button styling shared between variants
- * Consistent padding, text styling and smooth transitions
- */
-.cta-btn {
-    position: relative;
-    padding: 1.2rem 3rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    border-radius: 100px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Primary CTA button with gradient background
- * Bold, attention-grabbing style with hover effects
- */
-.cta-btn.primary {
-    background: linear-gradient(45deg, var(--paramecia), var(--mythical));
-    color: var(--light-theme);
-    border: none;
-}
-
-/* Primary button hover animation
- * Lifts button and adds shadow for depth
- */
-.cta-btn.primary:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(147, 51, 234, 0.3);
-}
-
-/* Secondary button with transparent background
- * More subtle alternative with border outline
- */
-.cta-btn.secondary {
-    background: transparent;
-    color: var(--light-theme);
-    border: 2px solid var(--light-theme);
-}
-
-/* Secondary button hover effects
- * Inverts colors and lifts button
- */
-.cta-btn.secondary:hover {
-    background: var(--light-theme);
-    color: var(--background-dark);
-    transform: translateY(-5px);
-}
-
-/* Particle effect elements for primary button
- * Small animated dots that float up on hover
- */
-.btn-particles .particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: var(--light-theme);
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 0;
-}
-
-/* Individual particle animations with staggered timing
- * Creates cascading effect of multiple particles
- */
-.cta-btn.primary:hover .particle:nth-child(1) {
-    animation: particleFloat2 1.2s infinite;
-    left: 20%;
-}
-
-.cta-btn.primary:hover .particle:nth-child(2) {
-    animation: particleFloat2 1.4s infinite 0.2s;
-    left: 50%;
-}
-
-.cta-btn.primary:hover .particle:nth-child(3) {
-    animation: particleFloat2 1.6s infinite 0.4s;
-    left: 80%;
-}
-
-/* Background effects container
- * Holds decorative elements behind content
- */
-.cta-background {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-}
-
-/* Rotating ring effect
- * Large circular border that rotates continuously
- */
-.energy-ring {
-    position: absolute;
-    top: 50%;
-    left: 70%;
-    transform: translate(-50%, -50%);
-    width: 800px;
-    height: 800px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    animation: ringRotate 20s linear infinite;
-}
-
-/* Central energy core effect
- * Glowing gradient sphere with pulsing animation
- */
-.energy-core {
-    position: absolute;
-    top: 50%;
-    left: 70%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle at center,
-        var(--paramecia) 0%,
-        var(--mythical) 50%,
-        transparent 70%
-    );
-    border-radius: 50%;
-    filter: blur(40px);
-    opacity: 0.3;
-    animation: corePulse 4s ease-in-out infinite;
+.cta__core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle at center,
+    var(--paramecia) 0%,
+    var(--mythical) 50%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.3;
+  animation: corePulse 10s ease-in-out infinite;
 }

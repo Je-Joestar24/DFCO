@@ -1,25 +1,24 @@
-
-/* Main title styling with pulsing glow animation
- * Large, impactful text with subtle shadow effect
+/* Element: Title 
+ * Large heading with pulsing glow effect
+ * Uses custom animation for visual emphasis
+ * Maintains readability with light theme color
  */
- #section-6 .section-title {
-    font-size: 4.5rem;
-    color: var(--light-theme);
-    margin-bottom: 1.5rem;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    animation: titlePulse 3s infinite;
+.cta__title {
+  font-size: 4.5rem;
+  color: var(--light-theme);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  animation: titlePulse 3s infinite;
 }
 
-/* Description text styling
- * Larger body text with slight transparency
+/* Element: Description
+ * Supporting text below title
+ * Slightly transparent for visual hierarchy
+ * Comfortable spacing from title and buttons
  */
-.cta-description {
-    font-size: 1.5rem;
-    color: var(--light-theme);
-    opacity: 0.9;
-    margin-bottom: 3rem;
+.cta__description {
+  font-size: 1.5rem;
+  color: var(--light-theme);
+  opacity: 0.9;
+  margin-bottom: 3rem;
 }
-
-/* Button container with flex layout
- * Centers buttons with consistent spacing
- */
