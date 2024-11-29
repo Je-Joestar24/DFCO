@@ -1,34 +1,31 @@
-
-/* Hover effects for fruit cards */
-.fruit-card:hover {
-    transform: translateY(-0.5rem); /* Slight lift effect */
+/* Card hover effects */
+.bestsellers__card:hover {
+    transform: translateY(-0.5rem);
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
-/* Hover animation for fruit images */
-.fruit-card:hover .fruit-image {
+/* Image hover animation */
+.bestsellers__card:hover .bestsellers__image {
     transform: scale(1.1);
     border-radius: 50%;
     animation: pulseGlow 5s infinite;
 }
 
-/* Hover animation for glow effect */
-.fruit-card:hover .fruit-glow {
+/* Glow effect hover animation */
+.bestsellers__card:hover .bestsellers__glow {
     opacity: 0.6;
     animation: pulseGlow 2s infinite;
 }
 
-
-/* Shine effect for button hover */
-.add-to-cart::before {
+/* Button shine effect */
+.bestsellers__button::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    /* Gradient for shine animation */
     background: linear-gradient(
         90deg,
         transparent,
@@ -38,13 +35,12 @@
     transition: 0.5s;
 }
 
-/* Animate shine effect on hover */
-.add-to-cart:hover::before {
+/* Button hover animations */
+.bestsellers__button:hover::before {
     left: 100%;
 }
 
-/* Button hover effects */
-.add-to-cart:hover {
+.bestsellers__button:hover {
     transform: translateY(-0.25rem);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }

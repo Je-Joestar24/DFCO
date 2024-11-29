@@ -1,32 +1,30 @@
-
-/* Container for fruit details */
-.fruit-info {
+/* Element: Card info container */
+.bestsellers__info {
     color: var(--light-theme);
     text-align: center;
     width: 100%;
-  }
-  
-  /* Fruit name styling */
-  .fruit-name {
+}
+
+/* Element: Product name */
+.bestsellers__name {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
     font-weight: 700;
-  }
-  
-  /* Price display styling */
-  .fruit-price {
+}
+
+/* Element: Price */
+.bestsellers__price {
     font-size: 1.4rem;
     color: var(--gold);
     margin-bottom: 1.5rem;
     font-weight: 600;
-  }
-  
-  /* Add to Cart button styling */
-  .add-to-cart {
+}
+
+/* Element: Button */
+.bestsellers__button {
     width: 100%;
     padding: 1rem 2rem;
     border-radius: 0.75rem;
-    /* Gradient background for button */
     background: linear-gradient(45deg, var(--paramecia), var(--mythical));
     color: var(--light-theme);
     font-size: 1.1rem;
@@ -36,11 +34,11 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-  }
-  
-  /* Shopping cart icon styling */
-  .cart-icon {
+}
+
+/* Element: Cart icon */
+.bestsellers__cart-icon {
     margin-left: 0.5rem;
     font-size: 1.2rem;
-  }
+}
   
