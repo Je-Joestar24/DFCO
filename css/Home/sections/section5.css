@@ -1,13 +1,26 @@
+/* Import component styles and effects
+ * Modular architecture for testimonials section
+ * Separates card styles and hover animations
+ */
 @import './section5/cardstyles.css';
 @import './section5/effects.css';
 
-/* Block: Testimonials */
+/* Block: Testimonials section wrapper
+ * Creates positioning context for absolute elements
+ * Maintains consistent vertical spacing with padding
+ * Contains background decorations and content
+ */
 .testimonials {
     position: relative;
     padding: 8em 0;
 }
 
-/* Element: Container */
+/* Element: Main content container
+ * Centers content with max-width constraint
+ * Elevates above decorative background (z-index: 2)
+ * Uses flexbox for vertical content organization
+ * Provides consistent horizontal spacing with padding
+ */
 .testimonials__container {
     position: relative;
     z-index: 2;
@@ -20,7 +33,12 @@
     justify-content: center;
 }
 
-/* Element: Title */
+/* Element: Section heading
+ * Large 3.5rem title with light theme color
+ * Centered alignment with bottom spacing
+ * Positioned above background elements (z-index: 2)
+ * Maintains visual hierarchy with size and spacing
+ */
 .testimonials__title {
     font-size: 3.5rem;
     color: var(--light-theme);
@@ -30,7 +48,12 @@
     z-index: 2;
 }
 
-/* Element: Grid */
+/* Element: Testimonials grid layout
+ * 5-column responsive grid with auto-sizing rows
+ * Consistent 2rem gaps between grid items
+ * Positioned above background (z-index: 2)
+ * Uses minmax for flexible row heights
+ */
 .testimonials__grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);

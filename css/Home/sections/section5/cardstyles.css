@@ -1,4 +1,9 @@
-/* Block: Testimonial card */
+/* Block: Testimonial card
+ * Glass morphism effect with blur and transparency
+ * Spans 2 columns in default state
+ * Smooth transform transition on hover
+ * Interactive cursor feedback
+ */
 .testimonials__card {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
@@ -10,13 +15,20 @@
     cursor: pointer;
 }
 
-/* Modifier: Large card */
+/* Modifier: Large testimonial card variant
+ * Spans 3 columns and 2 rows
+ * Creates visual hierarchy with increased size
+ */
 .testimonials__card--large {
     grid-column: span 3;
     grid-row: span 2;
 }
 
-/* Element: User info container */
+/* Element: User information container
+ * Horizontal flex layout with gap spacing
+ * Aligns avatar and text content
+ * Maintains consistent bottom margin
+ */
 .testimonials__user-info {
     display: flex;
     align-items: center;
@@ -24,7 +36,11 @@
     margin-bottom: 1.5rem;
 }
 
-/* Element: Avatar container */
+/* Element: Avatar wrapper
+ * Circular container for user image
+ * Fixed dimensions with overflow control
+ * Creates stacking context for image layering
+ */
 .testimonials__avatar {
     width: 60px;
     height: 60px;
@@ -33,7 +49,11 @@
     overflow: hidden;
 }
 
-/* Element: Avatar image */
+/* Element: User avatar image
+ * Responsive image sizing with object-fit
+ * Circular shape with border styling
+ * Elevated above background with z-index
+ */
 .testimonials__avatar-img {
     width: 100%;
     height: 100%;
@@ -44,12 +64,19 @@
     border: 3px solid var(--background-dark);
 }
 
-/* Element: User details container */
+/* Element: User text content container
+ * Flexible width with flex-grow
+ * Contains name and title elements
+ */
 .testimonials__user-details {
     flex: 1;
 }
 
-/* Element: User name */
+/* Element: User name heading
+ * Light theme color for contrast
+ * Semi-bold weight for emphasis
+ * Consistent spacing with margins
+ */
 .testimonials__user-name {
     color: var(--light-theme);
     font-size: 1.2rem;
@@ -57,14 +84,22 @@
     margin-bottom: 0.25rem;
 }
 
-/* Element: User title */
+/* Element: User role/title
+ * Gold accent color for visual interest
+ * Slightly reduced size and opacity
+ * Creates visual hierarchy with name
+ */
 .testimonials__user-title {
     color: var(--gold);
     font-size: 0.9rem;
     opacity: 0.9;
 }
 
-/* Element: Testimonial text */
+/* Element: Testimonial content
+ * Light theme text with reduced opacity
+ * Optimized line height for readability
+ * Positioned relative for potential decorations
+ */
 .testimonials__text {
     color: var(--light-theme);
     font-size: 1.1rem;

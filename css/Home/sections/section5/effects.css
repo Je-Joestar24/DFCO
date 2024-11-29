@@ -1,9 +1,16 @@
-/* Card hover effects */
+/* Card hover effects
+ * Elevates card with upward transform
+ * Creates depth perception on interaction
+ */
 .testimonials__card:hover {
     transform: translateY(-10px);
 }
 
-/* Avatar border animation */
+/* Avatar border animation
+ * Rotating gradient border effect
+ * Uses absolute positioning with inset
+ * Creates layered effect with z-index
+ */
 .testimonials__avatar::before {
     content: '';
     position: absolute;
@@ -14,7 +21,11 @@
     animation: borderRotate 4s linear infinite;
 }
 
-/* Quote decoration */
+/* Quote decoration
+ * Large quotation mark with reduced opacity
+ * Positioned absolutely relative to text
+ * Uses accent color for visual interest
+ */
 .testimonials__text::before {
     content: '"';
     font-size: 4rem;
@@ -25,14 +36,22 @@
     left: -1rem;
 }
 
-/* Background elements */
+/* Background elements
+ * Container for floating decorative elements
+ * Spans full section with absolute positioning
+ * Prevents interaction with content elements
+ */
 .testimonials__floating-elements {
     position: absolute;
     inset: 0;
     pointer-events: none;
 }
 
-/* Element base styles */
+/* Element base styles
+ * Common styles for floating elements
+ * Uses blur filter for atmospheric effect
+ * Semi-transparent for subtle presence
+ */
 .testimonials__element {
     position: absolute;
     border-radius: 50%;
@@ -40,7 +59,11 @@
     opacity: 0.1;
 }
 
-/* Element variations */
+/* Element variations
+ * Three distinct floating elements
+ * Varied sizes, positions, and colors
+ * Unique animation timing for organic feel
+ */
 .testimonials__element--1 {
     width: 300px;
     height: 300px;
@@ -68,7 +91,11 @@
     animation: float 18s infinite alternate;
 }
 
-/* Card shine effect */
+/* Card shine effect
+ * Diagonal gradient overlay on hover
+ * Transitions opacity for smooth appearance
+ * Creates glossy interaction feedback
+ */
 .testimonials__card::after {
     content: '';
     position: absolute;
