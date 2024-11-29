@@ -1,6 +1,6 @@
 import { Router } from './util/router.js';
 
-const router = new Router();
+const router = new Router('#app__display');
 // Add event listeners for navigation
 window.addEventListener('popstate', router.route);
 

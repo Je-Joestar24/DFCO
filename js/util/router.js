@@ -8,7 +8,7 @@ import Home from '../views/home.js';
 export class Router {
 
 
-    constructor() {
+    constructor(displayID) {
         // Define available routes and their corresponding views
         
         this.routes =[
@@ -16,6 +16,7 @@ export class Router {
             { path: '/products', view: () => console.log('Viewing Products') },
             { path: '/about', view: () => console.log('Viewing About') },
         ];
+        this.displayArea = document.querySelector(displayID);
     }
 
     /**
@@ -62,6 +63,6 @@ export class Router {
 
         // Initialize view instance and render its HTML content
         const view = new match.route.view();
-        document.querySelector('#app__display').innerHTML = await view.getHtml();
+        this.displayArea.innerHTML = await view.getHtml();
     };
 }
