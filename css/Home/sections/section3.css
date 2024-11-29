@@ -1,15 +1,27 @@
+/* Import related stylesheets
+ * Modular organization of styles
+ * Separates card styles, effects and info
+ */
 @import './section3/cardstyles.css';
 @import './section3/effects.css';
 @import './section3/cardInfo.css';
 
-/* Block: Bestsellers */
+/* Block: Bestsellers section
+ * Full-width section with vertical padding
+ * Relative positioning for background effects
+ * Hidden overflow prevents layout issues
+ */
 .bestsellers {
     padding: 8em 0;
     position: relative;
     overflow: hidden;
 }
 
-/* Element: Container */
+/* Element: Content container
+ * Centered flex column layout
+ * Elevated z-index above background
+ * Wide horizontal padding for readability
+ */
 .bestsellers__container {
     position: relative;
     z-index: 2;
@@ -19,7 +31,11 @@
     align-items: center;
 }
 
-/* Element: Title */
+/* Element: Section title
+ * Large, light-colored heading
+ * Centered with bottom margin
+ * Relative positioning for decorative elements
+ */
 .bestsellers__title {
     font-size: 3.5rem;
     color: var(--light-theme);
@@ -28,7 +44,12 @@
     position: relative;
 }
 
-/* Element: Grid */
+/* Element: Card grid layout
+ * Responsive auto-fit grid
+ * Minimum card width of 20rem
+ * Centered with maximum width
+ * Even spacing between cards
+ */
 .bestsellers__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));

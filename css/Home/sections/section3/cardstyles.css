@@ -1,4 +1,8 @@
-/* Block: Product card */
+/* Block: Product card 
+ * Glass morphism effect with blur backdrop
+ * Flex column layout for content alignment
+ * Smooth transitions on hover interactions
+ */
 .bestsellers__card {
     position: relative;
     background: rgba(255, 255, 255, 0.05);
@@ -12,7 +16,11 @@
     cursor: pointer;
 }
 
-/* Element: Image container */
+/* Element: Image container
+ * Square aspect ratio container
+ * Centered flex layout for image
+ * Hidden overflow for glow containment
+ */
 .bestsellers__image-wrapper {
     position: relative;
     width: 100%;
@@ -25,7 +33,11 @@
     margin-bottom: 1.5rem;
 }
 
-/* Element: Product image */
+/* Element: Product image
+ * Contained sizing at 70% of wrapper
+ * Smooth transform transition for hover
+ * Maintains aspect ratio with object-fit
+ */
 .bestsellers__image {
     width: 70%;
     height: 70%;
@@ -33,7 +45,12 @@
     transition: transform 0.5s ease;
 }
 
-/* Element: Glow effect */
+/* Element: Glow effect
+ * Radial gradient using theme colors
+ * Initially invisible with opacity 0
+ * Overlay blend mode for visual effect
+ * Smooth opacity transition on hover
+ */
 .bestsellers__glow {
     position: absolute;
     inset: 0;

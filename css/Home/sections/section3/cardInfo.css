@@ -1,18 +1,27 @@
-/* Element: Card info container */
+/* Card info container
+ * Centers product details vertically
+ * Full width with light text color
+ */
 .bestsellers__info {
     color: var(--light-theme);
     text-align: center;
     width: 100%;
 }
 
-/* Element: Product name */
+/* Product name heading
+ * Large bold font for emphasis
+ * Small bottom margin for spacing
+ */
 .bestsellers__name {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
     font-weight: 700;
 }
 
-/* Element: Price */
+/* Product price display
+ * Gold accent color for visual hierarchy
+ * Medium size with bottom spacing
+ */
 .bestsellers__price {
     font-size: 1.4rem;
     color: var(--gold);
@@ -20,7 +29,11 @@
     font-weight: 600;
 }
 
-/* Element: Button */
+/* Add to cart button
+ * Gradient background with rounded corners
+ * Smooth hover transition effect
+ * Hidden overflow for shine animation
+ */
 .bestsellers__button {
     width: 100%;
     padding: 1rem 2rem;
@@ -36,9 +49,11 @@
     overflow: hidden;
 }
 
-/* Element: Cart icon */
+/* Shopping cart icon
+ * Small left margin for spacing
+ * Slightly larger than button text
+ */
 .bestsellers__cart-icon {
     margin-left: 0.5rem;
     font-size: 1.2rem;
 }
-  

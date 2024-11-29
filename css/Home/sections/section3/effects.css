@@ -1,24 +1,37 @@
-/* Card hover effects */
+/* Card hover effects
+ * Subtle elevation and transparency change
+ * Adds depth with box shadow on hover
+ */
 .bestsellers__card:hover {
     transform: translateY(-0.5rem);
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
-/* Image hover animation */
+/* Image hover animation
+ * Scales up and adds circular shape
+ * Continuous pulsing glow effect
+ */
 .bestsellers__card:hover .bestsellers__image {
     transform: scale(1.1);
     border-radius: 50%;
     animation: pulseGlow 5s infinite;
 }
 
-/* Glow effect hover animation */
+/* Glow effect hover animation
+ * Increases opacity for visibility
+ * Rapid pulsing animation cycle
+ */
 .bestsellers__card:hover .bestsellers__glow {
     opacity: 0.6;
     animation: pulseGlow 2s infinite;
 }
 
-/* Button shine effect */
+/* Button shine effect
+ * Sliding gradient overlay
+ * Creates metallic shine animation
+ * Uses absolute positioning
+ */
 .bestsellers__button::before {
     content: '';
     position: absolute;
@@ -35,7 +48,10 @@
     transition: 0.5s;
 }
 
-/* Button hover animations */
+/* Button hover animations
+ * Sliding shine effect completion
+ * Subtle elevation with shadow
+ */
 .bestsellers__button:hover::before {
     left: 100%;
 }
