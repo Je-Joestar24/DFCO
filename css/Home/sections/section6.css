@@ -1,10 +1,17 @@
+/* Imports
+ * Modular CSS architecture
+ * Separates concerns into component files
+ * Improves maintainability and organization
+ */
 @import "./section6/texts.css";
 @import "./section6/buttons.css";
 @import "./section6/effects.css";
 
-/* Block: CTA 
- * Full-height section with centered content
- * Contains background effects and call-to-action elements
+/* Block: CTA Section
+ * Full viewport height section
+ * Centers content vertically and horizontally
+ * Contains layered background effects
+ * Manages overflow for animations
  */
 .cta {
   position: relative;
@@ -15,9 +22,10 @@
   overflow: hidden;
 }
 
-/* Element: Container
- * Wraps content and provides spacing
- * Higher z-index to appear above background
+/* Element: Content Container
+ * Provides consistent padding and spacing
+ * Elevates above background with z-index
+ * Centers text content horizontally
  */
 .cta__container {
   position: relative;
@@ -26,9 +34,10 @@
   padding: 4rem;
 }
 
-/* Element: Content wrapper
+/* Element: Content Wrapper
  * Constrains content width for readability
- * Centered horizontally with auto margins
+ * Centers block with auto margins
+ * Maintains z-index stacking context
  */
 .cta__content {
   position: relative;
@@ -37,9 +46,10 @@
   margin: 0 auto;
 }
 
-/* Element: Background effects
- * Full-width container for decorative elements
- * No pointer events to allow clicking through
+/* Element: Background Container
+ * Full viewport coverage with inset: 0
+ * Disables pointer events for click-through
+ * Contains decorative background elements
  */
 .cta__background {
   position: absolute;
@@ -47,9 +57,11 @@
   pointer-events: none;
 }
 
-/* Element: Rotating ring
- * Large circular border that rotates
- * Semi-transparent for subtle effect
+/* Element: Decorative Ring
+ * Large circular rotating border
+ * Centered with transform translate
+ * Semi-transparent for subtle presence
+ * Continuous rotation animation
  */
 .cta__ring {
   position: absolute;
@@ -63,9 +75,12 @@
   animation: ringRotate 20s linear infinite;
 }
 
-/* Element: Glowing core
- * Radial gradient creates glowing orb effect
- * Pulses and blurs for dynamic background
+/* Element: Glowing Core
+ * Radial gradient creates ethereal glow
+ * Centered with transform translate
+ * Uses CSS variables for theme colors
+ * Blur filter and opacity for atmosphere
+ * Smooth pulsing animation
  */
 .cta__core {
   position: absolute;
