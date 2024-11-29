@@ -1,0 +1,83 @@
+/* Primary CTA button hover effects
+ * Adds elevation and shadow for depth
+ * Transform moves button up slightly
+ */
+.cta__button--primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(147, 51, 234, 0.3);
+}
+
+/* Particle animations for primary button
+ * Three particles with staggered animations
+ * Creates floating effect on hover
+ */
+.cta__button--primary:hover .cta__particle:nth-child(1) {
+  animation: particleFloat 1.2s infinite;
+  left: 20%;
+}
+
+.cta__button--primary:hover .cta__particle:nth-child(2) {
+  animation: particleFloat 1.4s infinite 0.2s;
+  right: 50%;
+}
+
+.cta__button--primary:hover .cta__particle:nth-child(3) {
+  animation: particleFloat 1.6s infinite 0.4s;
+  left: 80%;
+}
+
+/* Secondary CTA button hover effects
+ * Inverts colors and adds elevation
+ * Changes background and text colors
+ */
+.cta__button--secondary:hover {
+  background: var(--light-theme);
+  color: var(--background-dark);
+  transform: translateY(-5px);
+}
+
+/* Glowing border effect for secondary button
+ * Uses gradient background with opacity transition
+ * Positioned behind button content
+ */
+.cta__button--secondary .cta__glow {
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, var(--paramecia), var(--mythical));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Glow animation on hover
+ * Fades in and pulses continuously
+ */
+.cta__button--secondary:hover .cta__glow {
+  opacity: 0.5;
+  animation: glowPulse 3s infinite;
+}
+
+/* Particle container positioning
+ * Covers button area for particle effects
+ */
+.cta__particles {
+  position: absolute;
+  pointer-events: none;
+  outline: auto;
+  width: 60%;
+}
+
+/* Individual particle styling
+ * Small circular dots that animate
+ * Initially invisible until hover
+ */
+.cta__particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--light-theme);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}

@@ -1,0 +1,51 @@
+/* Container for CTA buttons
+ * Uses flexbox for horizontal layout
+ * Centers buttons with even spacing
+ * Adds margin from content above
+ */
+.cta__buttons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+/* Base button styles
+ * Relative positioning for effects
+ * Large padding and rounded corners
+ * Custom transition timing for smooth animations
+ * Uppercase text with letter spacing for emphasis
+ */
+.cta__button {
+  position: relative;
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Primary CTA button
+ * Gradient background using theme colors
+ * Light text for contrast
+ * No border for clean look
+ */
+.cta__button--primary {
+  background: linear-gradient(45deg, var(--paramecia), var(--mythical));
+  color: var(--light-theme);
+  border: none;
+}
+
+/* Secondary CTA button
+ * Transparent background
+ * Light border and text
+ * Creates ghost button effect
+ */
+.cta__button--secondary {
+  background: transparent;
+  color: var(--light-theme);
+  border: 2px solid var(--light-theme);
+}
