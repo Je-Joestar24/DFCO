@@ -1,7 +1,12 @@
+/* Import required styles for feature section components */
 @import './section2/cardstyles.css';
 @import './section2/effects.css';
 
-/* Block: Features */
+/* Features Section
+ * Main container for features display
+ * Uses gradient background with overflow handling
+ * Adds vertical padding for content spacing
+ */
 .features {
     background: linear-gradient(135deg, var(--background-light) 0%, var(--background-dark) 100%);
     padding: 8em 0;
@@ -9,16 +14,26 @@
     overflow: hidden;
 }
 
-/* Element: Container */
+/* Features Container
+ * Centers and constrains content width
+ * Uses grid layout with 2:1 column ratio
+ * Maintains content above background effects
+ */
 .features__container {
     position: relative;
     z-index: 2;
     max-width: var(--container-lg);
     margin: 0 auto;
     padding: 0 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 }
 
-/* Element: Grid layout */
+/* Features Grid Layout
+ * Organizes feature cards in 3-column grid
+ * Adds consistent spacing between items
+ * Includes padding for visual breathing room
+ */
 .features__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -27,11 +42,35 @@
     padding: 40px 0;
 }
 
-/* Element: Title */
+/* Section Title
+ * Large, centered heading with light color
+ * Includes bottom margin for spacing
+ * Positioned relative for decorative effects
+ */
 .features__title {
     font-size: 3.5rem;
     color: var(--light-theme);
     text-align: center;
     margin-bottom: 4rem;
     position: relative;
+}
+
+/* Title Decorative Effect
+ * Adds gradient glow behind title
+ * Uses blur and opacity for subtle appearance
+ * Creates random shape with border-radius
+ */
+.features__title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: linear-gradient(135deg, var(--paramecia), var(--mythical), var(--logia));
+    filter: blur(80px);
+    opacity: 0.3;
+    z-index: -1;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
 }

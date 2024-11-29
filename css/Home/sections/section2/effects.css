@@ -1,9 +1,15 @@
-/* Card hover effects */
+/* Card hover effects
+ * Subtle upward movement on hover
+ * Creates floating appearance
+ */
 .features__card:hover {
     transform: translateY(-5px);
 }
 
-/* Icon animation delays */
+/* Icon animation delays 
+ * Staggered delays for visual interest
+ * Creates wave-like effect across cards
+ */
 .features__card:nth-child(1) .features__icon-circle {
     animation-delay: 0.2s;
 }
@@ -16,7 +22,10 @@
     animation-delay: 0.6s;
 }
 
-/* Icon glow effect */
+/* Icon glow effect
+ * Adds depth with gradient blur
+ * Creates halo behind icon
+ */
 .features__icon-circle::after {
     content: "";
     position: absolute;
@@ -27,7 +36,11 @@
     filter: blur(8px);
 }
 
-/* Section background effect */
+/* Section background effect
+ * Dual radial gradients for depth
+ * Subtle color spots with blur
+ * Creates atmospheric background
+ */
 .features::before {
     content: "";
     position: absolute;
@@ -39,7 +52,11 @@
     filter: blur(100px);
 }
 
-/* Card hover animations */
+/* Card hover animations
+ * Title color transition to gold
+ * Continuous icon pulse effect
+ * Enhances interactivity feedback
+ */
 .features__card:hover .features__card-title {
     color: var(--gold);
     transition: color 0.3s ease;

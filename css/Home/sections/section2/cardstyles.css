@@ -1,4 +1,8 @@
-/* Block: Feature card */
+/* Feature card component
+ * Semi-transparent glass morphism effect with blur
+ * Smooth transition on hover with custom timing
+ * Initial transform creates reveal animation
+ */
 .features__card {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
@@ -11,12 +15,18 @@
     cursor: pointer;
 }
 
-/* Element: Icon container */
+/* Icon wrapper container
+ * Adds vertical spacing between icon and content
+ */
 .features__icon-wrapper {
     margin-bottom: 30px;
 }
 
-/* Element: Icon circle */
+/* Circular icon background
+ * Gradient background using theme colors
+ * Centered content with flexbox
+ * Continuous glow animation effect
+ */
 .features__icon-circle {
     width: 80px;
     height: 80px;
@@ -30,14 +40,21 @@
     animation: pulseGlow 3s infinite;
 }
 
-/* Element: SVG icon */
+/* SVG icon styling
+ * Fixed dimensions for consistency
+ * Light theme color fill
+ */
 .features__icon {
     width: 40px;
     height: 40px;
     fill: var(--light-theme);
 }
 
-/* Element: Card title */
+/* Card title typography
+ * Light theme color for contrast
+ * Large font size with bottom margin
+ * Relative positioning for potential decorative elements
+ */
 .features__card-title {
     color: var(--light-theme);
     font-size: 1.8rem;
@@ -45,7 +62,10 @@
     position: relative;
 }
 
-/* Element: Card description */
+/* Card description text
+ * Slightly transparent white for visual hierarchy
+ * Comfortable line height for readability
+ */
 .features__card-description {
     color: rgba(255, 255, 255, 0.8);
     font-size: 1.1rem;
