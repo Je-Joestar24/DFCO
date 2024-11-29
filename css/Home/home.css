@@ -40,7 +40,7 @@
 
 
 /* Section styles - Full width container with centered content */
-.section, .hero, .features, .bestsellers, .process {
+.section, .hero, .features, .bestsellers, .process, .testimonials {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -49,7 +49,7 @@
 }
 
 /* Container styles - Fixed width using XL container variable */
-.container, .hero__container, .features__container, .bestsellers__container, .process__container {
+.container, .hero__container, .features__container, .bestsellers__container, .process__container, .testimonials__container {
   width: var(--container-xl);
   
   margin: 0 auto;

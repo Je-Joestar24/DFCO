@@ -1,12 +1,10 @@
-
-/* Hover animation for cards */
-.testimonial-card:hover {
+/* Card hover effects */
+.testimonials__card:hover {
     transform: translateY(-10px);
 }
 
-
-/* Animated gradient border for avatar */
-.user-avatar::before {
+/* Avatar border animation */
+.testimonials__avatar::before {
     content: '';
     position: absolute;
     inset: -2px;
@@ -16,9 +14,8 @@
     animation: borderRotate 4s linear infinite;
 }
 
-
-/* Decorative quote mark */
-.testimonial-text::before {
+/* Quote decoration */
+.testimonials__text::before {
     content: '"';
     font-size: 4rem;
     color: var(--paramecia);
@@ -28,23 +25,23 @@
     left: -1rem;
 }
 
-/* Background decorative elements container */
-.floating-elements {
+/* Background elements */
+.testimonials__floating-elements {
     position: absolute;
     inset: 0;
     pointer-events: none;
 }
 
-/* Base styles for floating background circles */
-.element {
+/* Element base styles */
+.testimonials__element {
     position: absolute;
     border-radius: 50%;
     filter: blur(40px);
     opacity: 0.1;
 }
 
-/* First floating element - top left */
-.element-1 {
+/* Element variations */
+.testimonials__element--1 {
     width: 300px;
     height: 300px;
     background: var(--paramecia);
@@ -53,8 +50,7 @@
     animation: float 20s infinite alternate;
 }
 
-/* Second floating element - bottom right */
-.element-2 {
+.testimonials__element--2 {
     width: 200px;
     height: 200px;
     background: var(--mythical);
@@ -63,8 +59,7 @@
     animation: float 15s infinite alternate-reverse;
 }
 
-/* Third floating element - center */
-.element-3 {
+.testimonials__element--3 {
     width: 250px;
     height: 250px;
     background: var(--logia);
@@ -73,8 +68,8 @@
     animation: float 18s infinite alternate;
 }
 
-/* Shine effect overlay for card hover */
-.testimonial-card::after {
+/* Card shine effect */
+.testimonials__card::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -88,7 +83,6 @@
     transition: opacity 0.3s;
 }
 
-/* Show shine effect on hover */
-.testimonial-card:hover::after {
+.testimonials__card:hover::after {
     opacity: 1;
 }

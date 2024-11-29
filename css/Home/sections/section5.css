@@ -1,15 +1,16 @@
 @import './section5/cardstyles.css';
 @import './section5/effects.css';
 
-/* Testimonials section - Customer reviews and feedback display */
-.testimonials-section {
+/* Block: Testimonials */
+.testimonials {
     position: relative;
     padding: 8em 0;
 }
 
-/* Main container with centered flex layout */
-.testimonials-section .container {
+/* Element: Container */
+.testimonials__container {
     position: relative;
+    z-index: 2;
     max-width: var(--container-xl);
     margin: 0 auto;
     padding: 0 2rem;
@@ -19,8 +20,8 @@
     justify-content: center;
 }
 
-/* Section title with glowing background effect */
-.testimonials-section .section-title {
+/* Element: Title */
+.testimonials__title {
     font-size: 3.5rem;
     color: var(--light-theme);
     text-align: center;
@@ -29,28 +30,8 @@
     z-index: 2;
 }
 
-/* Animated radial gradient background for title */
-.testimonials-section .section-title::before {
-    content: '';
-    position: absolute;
-    width: 12em;
-    height: 18em;
-    background: radial-gradient(circle at center,
-        var(--mythical) 0%,
-        transparent 70%
-    );
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    filter: blur(30px);
-    opacity: 0.5;
-    z-index: -1;
-    animation: spinAndPulse 8s infinite linear;
-    pointer-events: none;
-}
-
-/* Responsive masonry grid layout for testimonial cards */
-.testimonials-grid {
+/* Element: Grid */
+.testimonials__grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-auto-rows: minmax(100px, auto);
