@@ -55,24 +55,28 @@
 
 /* Element: Background atmosphere
  * Dual radial gradients for depth effect
- * Subtle blur and low opacity for ambient feel
- * Slow pulsing animation creates visual interest
+ * Positioned on right side with adjusted spacing
+ * Reduced opacity and blur for subtle ambient effect
  */
 .process::before {
     content: "";
     position: absolute;
-    inset: 0;
+    height: 70%;
+    width: 60%;
+    bottom: 10%;
+    right: 5%;
     background: radial-gradient(
-        circle at 25% 25%,
-        var(--mythical) 0%,
-        transparent 40%
+        circle at center,
+        var(--paramecia) 0%,
+        transparent 60%
     ),
     radial-gradient(
-        circle at 25% 25%,
-        var(--background-dark) 0%,
-        transparent 40%
+        circle at center,
+        var(--mythical) 0%,
+        transparent 30%
     );
-    opacity: 0.05;
     filter: blur(60px);
+    opacity: 0.5;
+    z-index: 1;
     animation: particlesPulse 15s infinite alternate;
 }

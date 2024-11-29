@@ -1,0 +1,113 @@
+@import './Footer/navs.css';
+
+/* Block: Footer
+ * Dark gradient background with glass effect
+ * Full-width section with vertical padding
+ * Contains navigation, social links, and copyright
+ */
+
+.footer {
+    position: relative;
+    background: linear-gradient(
+        to bottom,
+        var(--background-dark) 0%,
+        rgba(10, 10, 46, 0.95) 100%
+    );
+    padding: 6rem 0 3rem;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+/* Element: Container
+ * Centers content with max-width
+ * Uses grid for responsive layout
+ */
+.footer__container {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4rem;
+    position: relative;
+    z-index: 2;
+    color: var(--light-theme);
+}
+
+/* Element: Logo section
+ * Contains brand logo and description
+ */
+ .footer__brand {
+  grid-column: span 2;
+}
+
+/* Element: Logo link
+ * Large bold text with gradient underline
+ * Animated hover effect reveals underline
+ */
+.footer__logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--light-theme);
+  margin-bottom: 1rem;
+  display: inline-block;
+  position: relative;
+}
+
+.footer__logo::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--paramecia), var(--mythical));
+  transition: width 0.3s ease;
+}
+
+.footer__logo:hover::after {
+  width: 100%;
+}
+
+/* Element: Copyright notice
+ * Centered text with top border
+ * Full-width section below main content
+ */
+.footer__copyright {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
+}
+
+/* Element: Background decorations
+ * Floating gradient orbs
+ * Creates depth and visual interest
+ */
+.footer__decoration {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.footer__decoration--1 {
+    background: var(--paramecia);
+    width: 300px;
+    height: 300px;
+    top: -150px;
+    left: 10%;
+    animation: float 20s infinite alternate;
+}
+
+.footer__decoration--2 {
+    background: var(--mythical);
+    width: 250px;
+    height: 250px;
+    bottom: -100px;
+    right: 15%;
+    animation: float 15s infinite alternate-reverse;
+}
