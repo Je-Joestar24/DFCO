@@ -7,7 +7,7 @@
 /* General animations */
 @import './sections/animations.css';
 /* Home background gradient with pulsing effect */
-#home {
+#app__display {
   background: linear-gradient(
     135deg,
     var(--background-dark) 0%,
@@ -17,7 +17,7 @@
   overflow: hidden;
 }
 
-#home::before {
+#app__display::before {
   content: "";
   position: absolute;
   inset: 0;
