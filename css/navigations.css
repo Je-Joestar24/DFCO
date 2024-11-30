@@ -95,7 +95,6 @@
 }
 
 .nav__link:hover::before,
-.nav__link.active::before,
 .nav__link-active::before {
     width: 100%;
 }

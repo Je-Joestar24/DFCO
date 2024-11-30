@@ -4,6 +4,8 @@
  * Manages navigation between different views without full page reloads.
  */
 import Home from '../views/home.js';
+import Product from '../views/product.js';
+import About from '../views/about.js';
 
 export class Router {
 
@@ -12,9 +14,9 @@ export class Router {
         // Define available routes and their corresponding views
         
         this.routes =[
-            { path: '/', view: Home },
-            { path: '/products', view: () => console.log('Viewing Products') },
-            { path: '/about', view: () => console.log('Viewing About') },
+            { path: '#', view: Home },
+            { path: '#products', view: Product },
+            { path: '#about', view: About },
         ];
         this.displayArea = document.querySelector(displayID);
     }
@@ -47,7 +49,7 @@ export class Router {
         const potentialMatches = this.routes.map(route => {
             return {
                 route: route,
-                isMatch: location.pathname === route.path,
+                isMatch: location.hash === route.path,
             }
         });
 
@@ -55,6 +57,7 @@ export class Router {
         let match = potentialMatches.find(potentialMatch => potentialMatch.isMatch);
 
         if (!match) {
+            location.hash = '#';
             match = {
                 route: this.routes[0], // Default to home route
                 isMatch: true,
