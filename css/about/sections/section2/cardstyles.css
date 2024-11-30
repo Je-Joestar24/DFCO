@@ -1,0 +1,72 @@
+/* Element: Value item card
+ * Flex item with max width constraint
+ * Glass morphism effect with blur and transparency
+ * Smooth hover transition for interactive feedback
+ */
+.about-mission__value {
+  flex: 1;
+  max-width: 300px;
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+  color: var(--light-theme);
+  cursor: pointer;
+}
+
+/* Element: Value icon container
+ * Circular gradient background with centered content
+ * Continuous pulse glow animation
+ * Smooth transform transition on hover
+ */
+.about-mission__value-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--paramecia), var(--mythical));
+  opacity: 0.9;
+  transition: transform 0.3s ease;
+  animation: pulseGlow 3s infinite;
+}
+
+/* Element: Value icon SVG graphic
+ * Fixed dimensions with light theme fill
+ * Circular shape with smooth scale transition
+ * Responsive to parent hover state
+ */
+.about-mission__value-icon-svg {
+  width: 44px;
+  height: 44px;
+  fill: var(--light-theme);
+  transition: transform 0.3s ease;
+  border-radius: 50%;
+}
+
+/* Element: Value card title
+ * Large bold text for visual hierarchy
+ * Light theme color with bottom margin spacing
+ */
+.about-mission__value-title {
+  font-size: 1.4rem;
+  color: var(--light-theme);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* Element: Value card description
+ * Smaller text with reduced opacity
+ * Increased line height for readability
+ * Subtle transparency for visual depth
+ */
+.about-mission__value-description {
+  font-size: 1rem;
+  color: var(--light-theme);
+  opacity: 0.8;
+  line-height: 1.6;
+}

@@ -1,0 +1,38 @@
+/* Element: Value card hover effects
+ * Subtle lift animation with glowing shadow
+ * Smooth transitions for transform and shadow
+ */
+.about-mission__value:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2),
+    0 0 40px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Element: Value icon hover animation
+ * Pulsing glow effect with vertical lift
+ * Synchronized with card hover state
+ */
+.about-mission__value:hover .about-mission__value-icon {
+  animation: pulseGlow 1s infinite;
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+/* Element: Value icon SVG hover scaling
+ * Subtle grow effect on icon
+ * Smooth scale transition
+ */
+.about-mission__value:hover .about-mission__value-icon-svg {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* Element: Value title hover color change
+ * Gold color transition on hover
+ * Smooth visual feedback
+ */
+.about-mission__value:hover .about-mission__value-title {
+  color: var(--gold);
+  transition: color 0.3s ease;
+}

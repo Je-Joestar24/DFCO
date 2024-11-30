@@ -1,0 +1,37 @@
+/* Import component styles and effects */
+@import "./section2/cardstyles.css";
+@import "./section2/effects.css";
+@import "./section2/decorations.css";
+@import "./section2/texts.css";
+
+/* Block: Mission Statement Section 
+ * Full-width section with vertical padding
+ * Establishes main container for mission content
+ */
+.about-mission {
+  position: relative;
+  padding: 120px 0;
+}
+
+/* Element: Container 
+ * Centers content with max-width constraint
+ * Adds horizontal padding for spacing
+ */
+.about-mission__container {
+  position: relative;
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+/* Element: Mission values 
+ * Flex container for value cards
+ * Centered layout with consistent spacing
+ */
+.about-mission__values {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 4rem;
+}

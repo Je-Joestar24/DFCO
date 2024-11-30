@@ -1,0 +1,16 @@
+/* Element: Title decoration 
+ * Gradient underline effect
+ * Centered below title with transform
+ */
+.about-mission__title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--paramecia), var(--mythical));
+  border-radius: 2px;
+}
+

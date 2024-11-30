@@ -1,0 +1,56 @@
+/* Element: Section title 
+ * Large heading with bottom gradient decoration
+ * Inline-block for decoration positioning
+ */
+.about-mission__title {
+  font-size: 2.5rem;
+  color: var(--light-theme);
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+}
+
+/* Element: Mission content 
+* Width-constrained container for main text
+* Relative positioning for potential overlays
+*/
+.about-mission__content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Element: Mission statement 
+* Large, prominent text with reduced opacity
+* Increased line height for readability
+*/
+.about-mission__statement {
+  font-size: 1.8rem;
+  color: var(--light-theme);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Element: Mission description 
+* Secondary text with subtle transparency
+* Comfortable line height for longer content
+*/
+.about-mission__description {
+  font-size: 1.2rem;
+  color: var(--light-theme);
+  line-height: 1.8;
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+/* Element: Highlight text 
+* Emphasized text with gold color
+* Bold weight for visual hierarchy
+*/
+.about-mission__highlight {
+  position: relative;
+  color: var(--gold);
+  font-weight: 600;
+}
