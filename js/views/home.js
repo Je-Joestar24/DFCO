@@ -105,7 +105,7 @@ export default class extends AbstractView {
      */
     constructor() {
         super();
-        this.setTitle('Home');
+        this.setTitle('DFCO | Home');
     }
 
     /**
