@@ -14,9 +14,9 @@ export class Router {
         // Define available routes and their corresponding views
         
         this.routes =[
-            { path: '#', view: Home },
-            { path: '#products', view: Product },
-            { path: '#about', view: About },
+            { path: '#/', view: Home },
+            { path: '#/products', view: Product },
+            { path: '#/about', view: About },
         ];
         this.displayArea = document.querySelector(displayID);
     }
@@ -57,7 +57,7 @@ export class Router {
         let match = potentialMatches.find(potentialMatch => potentialMatch.isMatch);
 
         if (!match) {
-            location.hash = '#';
+            location.hash = '#/';
             match = {
                 route: this.routes[0], // Default to home route
                 isMatch: true,

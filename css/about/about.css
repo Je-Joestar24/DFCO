@@ -1,0 +1,20 @@
+@import './sections/section1.css';
+
+
+/* Block: About Introduction Section
+ * Main container for the about page hero section
+ * Uses full viewport height with overflow handling
+ */
+ .about-intro {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+ }
+
+.about-intro__container {
+    position: relative;
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    padding: 120px 2rem;
+}

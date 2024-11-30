@@ -1,0 +1,92 @@
+/* Import required component styles */
+@import './section1/decoration.css';
+
+/* Block: About Introduction Section
+ * Main container for the about page hero section
+ * Uses full viewport height with overflow handling
+ */
+ .about-intro {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Element: Container
+ * Main grid container for about intro section
+ * Uses two-column layout with equal width columns
+ * Positioned above background with z-index
+ * Centers content vertically with flexbox alignment
+ */
+.about-intro__container {
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Element: Content Container
+ * Wrapper for text content
+ * Uses relative positioning for stacking context
+ */
+.about-intro__content {
+    position: relative;
+}
+
+/* Element: Main Heading
+ * Large hero title with decorative underline
+ * Uses custom gradient accent line
+ */
+.about-intro__title {
+    font-size: 3.5rem;
+    color: var(--light-theme);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+/* Element: Title Decoration
+ * Gradient underline for main heading
+ * Creates visual separation and emphasis
+ */
+.about-intro__title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--paramecia), var(--mythical));
+    border-radius: 2px;
+}
+
+/* Element: Body Text
+ * Main content paragraphs
+ * Uses slightly transparent light theme for readability
+ */
+.about-intro__description {
+    color: var(--light-theme);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* Element: Emphasized Text
+ * Special highlighted text within descriptions
+ * Uses gold accent color for emphasis
+ */
+.about-intro__highlight {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* Element: Visual Container
+ * Wrapper for decorative elements and animations
+ * Centers content both vertically and horizontally
+ */
+.about-intro__visual {
+    position: relative;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

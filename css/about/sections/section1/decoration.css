@@ -1,0 +1,73 @@
+/* Block: Floating Fruits Container
+ * Contains and positions the decorative fruit elements in the about section
+ * Uses absolute positioning for layered visual effect
+ */
+.about-intro__fruits {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* Element: Individual Fruit Base Styles
+ * Common styles shared by all floating fruit elements
+ * Creates glowing orb effect with box shadow
+ */
+.about-intro__fruit {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(124, 77, 255, 0.4);
+}
+
+/* Element: Main Fruit
+ * Large central fruit with complex gradient
+ * Combines all devil fruit type colors
+ * Floats with 6s animation cycle
+ */
+.about-intro__fruit--main {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle at 30% 30%,
+        var(--paramecia) 0%,
+        var(--zoan) 50%,
+        var(--logia) 75%,
+        var(--mythical) 100%
+    );
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: float 6s infinite ease-in-out;
+}
+
+/* Element: Accent Fruits Base Styles
+ * Shared styles for smaller accent fruits
+ * Simpler two-color gradient
+ */
+.about-intro__fruit--accent1,
+.about-intro__fruit--accent2 {
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle at 30% 30%,
+        var(--mythical) 0%,
+        var(--paramecia) 100%
+    );
+}
+
+/* Element: First Accent Fruit
+ * Positioned in top right
+ * Reverse float animation for visual variety
+ */
+.about-intro__fruit--accent1 {
+    top: 20%;
+    right: 10%;
+    animation: float 8s infinite ease-in-out reverse;
+}
+
+/* Element: Second Accent Fruit
+ * Positioned in bottom left
+ * Standard float animation with unique timing
+ */
+.about-intro__fruit--accent2 {
+    bottom: 15%;
+    left: 15%;
+    animation: float 7s infinite ease-in-out;
+}
