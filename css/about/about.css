@@ -1,18 +1,32 @@
 @import './sections/section1.css';
 @import './sections/section2.css';
+@import './sections/section3.css';
 
-/* Block: About Introduction Section
- * Main container for the about page hero section
- * Uses full viewport height with overflow handling
+/* Import shared animations */
+@import './sections/animations.css';
+/* Block: Section Containers
+ * Common styles for all main sections in the about page
+ * Provides consistent layout and spacing across sections
  */
- .about-intro, .about-mission {
+.about-intro, 
+.about-mission, 
+.about-choosing, 
+.about-values {
     position: relative;
     width: 100%;
     display: flex;
     align-items: center;
- }
+}
 
-.about-intro__container, .about-mission__container {
+/* Element: Inner Containers  
+ * Content wrappers for each section
+ * Centers content with max-width and consistent padding
+ * Uses relative positioning for stacking context
+ */
+.about-intro__container,
+.about-mission__container, 
+.about-choosing__container,
+.about-values__container {
     position: relative;
     max-width: var(--container-lg);
     margin: 0 auto;

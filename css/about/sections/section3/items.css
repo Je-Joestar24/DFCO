@@ -1,0 +1,85 @@
+/* Block: Feature Item
+ * Individual feature container with left padding for bullet point
+ * Includes slide-in animation with opacity transition
+ */
+.about-choosing__item {
+    position: relative;
+    padding-left: 3rem;
+    transform: translateX(30px);
+    opacity: 0;
+    animation: slideIn 0.6s ease forwards;
+}
+
+/* Element: Animation Delays
+ * Staggered delays for each item to create cascading effect
+ * Delays increase by 0.2s for each subsequent item
+ */
+.about-choosing__item:nth-child(2) { animation-delay: 0.2s; }
+.about-choosing__item:nth-child(3) { animation-delay: 0.4s; }
+.about-choosing__item:nth-child(4) { animation-delay: 0.6s; }
+.about-choosing__item:nth-child(5) { animation-delay: 0.8s; }
+.about-choosing__item:nth-child(6) { animation-delay: 1s; }
+
+/* Element: Bullet Point
+ * Decorative circle with gradient background
+ * Contains pulsing inner circle animation
+ */
+.about-choosing__bullet {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--paramecia), var(--mythical));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Element: Bullet Inner Circle
+ * Pulsing white dot inside bullet point
+ * Uses pseudo-element for animation
+ */
+.about-choosing__bullet::before {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--light-theme);
+    border-radius: 50%;
+    animation: pulseBullet 2s infinite;
+}
+
+/* Element: Feature Title
+ * Large heading for each feature
+ * Light colored with bottom margin for spacing
+ */
+.about-choosing__item-title {
+    font-size: 1.8rem;
+    color: var(--light-theme);
+    margin-bottom: 1rem;
+}
+
+/* Element: Feature Description
+ * Descriptive text with slightly reduced opacity
+ * Increased line height for readability
+ */
+.about-choosing__item-text {
+    color: var(--light-theme);
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* Modifier: Hover States
+ * Interactive effects when hovering over items
+ * Includes bullet point scale and title color change
+ */
+.about-choosing__item:hover .about-choosing__bullet {
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+
+.about-choosing__item:hover .about-choosing__item-title {
+    color: var(--gold);
+    transition: color 0.3s ease;
+}
