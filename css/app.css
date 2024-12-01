@@ -2,6 +2,8 @@
 @import './about/about.css';
 @import './footer.css';
 @import './navigations.css';
+@import './products/products.css';
+
 :root {
     --primary: #000;
     --secondary: #fff;

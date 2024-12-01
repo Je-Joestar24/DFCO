@@ -1,0 +1,22 @@
+@import "./products/cards.css";
+@import "./products/filters.css";
+
+/* Block: Products Section */
+.app__products {
+    padding: 120px 2rem 4rem;
+    background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
+    min-height: 100vh;
+}
+
+/* Element: Container */
+.app__products-container {
+    max-width: var(--container-xl);
+    margin: 0 auto;
+}
+
+/* Element: Product Grid */
+.products__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
