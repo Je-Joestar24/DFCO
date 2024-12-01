@@ -1,19 +1,11 @@
-/* Block: Navigation Links Container
- * Flexbox layout for navigation items
- * Consistent spacing with center alignment
- * BEM naming convention for components
- */
+/* Block: Navigation Links */
 .nav__links {
     display: flex;
     gap: 3rem;
     align-items: center;
 }
 
-/* Element: Navigation List
- * Horizontal list layout with flexbox
- * Even spacing between navigation items
- * Removes default list styling
- */
+/* Element: Navigation List */
 .nav__list {
     display: flex;
     gap: 3rem;
@@ -21,25 +13,22 @@
     list-style: none;
 }
 
-/* Element: Navigation Link
- * Light theme text color for contrast
- * Relative positioning for hover effects
- * Smooth transitions for interactions
- */
+/* Element: Navigation Item */
+.nav__item {
+    position: relative;
+}
+
+/* Element: Navigation Link */
 .nav__link {
     color: var(--light-theme);
     font-size: 1rem;
     font-weight: 500;
     position: relative;
     text-decoration: none;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease;
 }
 
-/* Modifier: Link Hover & Active States
- * Animated gradient underline effect
- * Centered underline with transform
- * Smooth width transition on hover
- */
+/* Link hover effect */
 .nav__link::before {
     content: '';
     position: absolute;
@@ -49,7 +38,7 @@
     height: 2px;
     background: linear-gradient(90deg, var(--paramecia), var(--mythical));
     transform: translateX(-50%);
-    transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease;
 }
 
 .nav__link:hover::before,

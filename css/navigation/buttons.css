@@ -1,69 +1,55 @@
-/* Element: Navigation Buttons Container
- * Flexbox layout for login/signup buttons
- * Consistent spacing between buttons
- */
-.nav__buttons {
+/* Element: Icons Container */
+.nav__icons {
     display: flex;
-    gap: 1em;
+    gap: 1.5rem;
+    align-items: center;
 }
 
-/* Base Navigation Button Styles
- * Rounded pill shape with padding
- * Light text color and smooth transitions
- * Subtle elevation with purple-tinted shadow
- */
-.nav__button {
-  padding: 0.8rem 1.5rem;
-  border-radius: 100px;
-  color: var(--light-theme);
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
+/* Element: Icon Wrapper */
+.nav__icon-wrapper {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-/* Login Button Variant
- * Gradient background using theme colors
- * Creates vibrant primary action button
- */
-.nav__button-login {
-  background: linear-gradient(45deg, var(--paramecia), var(--mythical));
+.nav__icon-wrapper:hover {
+    transform: translateY(-2px);
 }
 
-/* Signup Button Variant  
- * Ghost button style with light outline
- * Transparent background for contrast
- */
-.nav__button-signup {
-  background: transparent;
-  color: var(--light-theme);
-  outline: 2px solid var(--light-theme);
+/* Element: Icon */
+.nav__icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--light-theme);
+    transition: fill 0.3s ease;
 }
 
-/* Button Hover Effects
- * Subtle upward float animation
- * Enhanced shadow for depth
- */
-.nav__button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(147, 51, 234, 0.4);
+/* Element: Profile Icon */
+.nav__profile {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--paramecia), var(--mythical));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
-/* Signup Button Hover State
- * Inverts colors on hover
- * Larger upward float effect
- */
-.nav__button-signup:hover {
-  background: var(--light-theme);
-  color: var(--background-dark);
-  transform: translateY(-5px);
-}
-
-/* Navigation Scrolled State
- * Increased background opacity
- * Added shadow for depth when scrolling
- */
-.nav--scrolled {
-  background: rgba(10, 10, 46, 0.95);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+/* Element: Cart Badge */
+.nav__cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--paramecia);
+    color: var(--light-theme);
+    font-size: 0.75rem;
+    font-weight: 600;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 2s infinite;
 }

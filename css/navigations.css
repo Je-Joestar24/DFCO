@@ -51,7 +51,7 @@
     width: 0;
     height: 2px;
     background: linear-gradient(90deg, var(--paramecia), var(--mythical));
-    transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease;
 }
 
 .nav__logo:hover::after {
