@@ -1,0 +1,58 @@
+/* Block: Navigation Links Container
+ * Flexbox layout for navigation items
+ * Consistent spacing with center alignment
+ * BEM naming convention for components
+ */
+.nav__links {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+/* Element: Navigation List
+ * Horizontal list layout with flexbox
+ * Even spacing between navigation items
+ * Removes default list styling
+ */
+.nav__list {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    list-style: none;
+}
+
+/* Element: Navigation Link
+ * Light theme text color for contrast
+ * Relative positioning for hover effects
+ * Smooth transitions for interactions
+ */
+.nav__link {
+    color: var(--light-theme);
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Modifier: Link Hover & Active States
+ * Animated gradient underline effect
+ * Centered underline with transform
+ * Smooth width transition on hover
+ */
+.nav__link::before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--paramecia), var(--mythical));
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+
+.nav__link:hover::before,
+.nav__link-active::before {
+    width: 100%;
+}

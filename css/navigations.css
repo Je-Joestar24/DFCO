@@ -1,3 +1,6 @@
+@import 'navigation/buttons.css';
+@import 'navigation/items.css';
+
 /* Block: Navigation
  * Fixed position header with glass effect
  * Stays at top of viewport with high z-index
@@ -53,79 +56,6 @@
 
 .nav__logo:hover::after {
     width: 100%;
-}
-
-/* Element: Navigation Links
- * Horizontal list with consistent spacing
- * Hover effects and active state styling
- */
-.nav__links {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-}
-
-.nav__list {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-    list-style: none;
-}
-
-.nav__link {
-    color: var(--light-theme);
-    font-size: 1rem;
-    font-weight: 500;
-    position: relative;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
-}
-
-/* Link hover and active states */
-.nav__link::before {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--paramecia), var(--mythical));
-    transform: translateX(-50%);
-    transition: width 0.3s ease-in-out;
-}
-
-.nav__link:hover::before,
-.nav__link-active::before {
-    width: 100%;
-}
-
-/* Element: Action Button
- * Gradient background with hover effect
- * Stands out from regular navigation links
- */
-.nav__button {
-    padding: 0.8rem 1.5rem;
-    border-radius: 100px;
-    background: linear-gradient(45deg, var(--paramecia), var(--mythical));
-    color: var(--light-theme);
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
-}
-
-.nav__button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(147, 51, 234, 0.4);
-}
-
-/* Modifier: Scrolled state
- * Changes appearance when page is scrolled
- * Adds shadow and adjusts background opacity
- */
-.nav--scrolled {
-    background: rgba(10, 10, 46, 0.95);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Animation for nav appearance
