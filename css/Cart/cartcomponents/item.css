@@ -1,18 +1,32 @@
-
-/* Element: Cart Item */
+/* Cart Item Component
+ * Grid layout with 4 columns for checkbox, image, details and controls
+ * Includes hover effects and transitions for interactive elements
+ */
 .cart__item {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto auto 1fr auto;
     gap: 2rem;
     padding: 1.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
 }
 
+/* Remove border from last item for clean look */
 .cart__item:last-child {
     border-bottom: none;
 }
 
-/* Element: Item Image */
+
+/* Selected Item Highlight
+ * Subtle background change for selected items
+ */
+.cart__item--selected {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Product Image Container
+ * Fixed size container with rounded corners
+ */
 .cart__item-image {
     width: 100px;
     height: 100px;
@@ -20,31 +34,57 @@
     overflow: hidden;
 }
 
+/* Product Image
+ * Responsive image with hover zoom effect
+ */
 .cart__item-image img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    transition: transform 0.3s ease;
 }
 
-/* Element: Item Details */
+/* Image hover zoom animation */
+.cart__item:hover .cart__item-image img {
+    transform: scale(1.1);
+}
+
+/* Product Details Section
+ * Vertical flex layout for product information
+ */
 .cart__item-details {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+/* Product Name Styling
+ * Large text with hover color change
+ */
 .cart__item-name {
     font-size: 1.2rem;
     color: var(--light-theme);
     margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
 }
 
+/* Name hover effect */
+.cart__item:hover .cart__item-name {
+    color: var(--gold);
+}
+
+/* Product Type Label
+ * Smaller text with accent color
+ */
 .cart__item-type {
     font-size: 0.9rem;
     color: var(--gold);
     margin-bottom: 1rem;
 }
 
+/* Price Display
+ * Consistent styling with other text elements
+ */
 .cart__item-price {
     font-size: 0.9rem;
     color: var(--secondary);

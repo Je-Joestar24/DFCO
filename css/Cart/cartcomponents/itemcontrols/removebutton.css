@@ -1,0 +1,21 @@
+
+/* Remove Item Button
+ * Minimal design with hover effects
+ */
+ .cart__item-remove {
+    color: var(--light-theme);
+    opacity: 0.5;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+/* Remove button hover animation */
+.cart__item-remove:hover {
+    opacity: 1;
+    color: var(--paramecia);
+    transform: scale(1.1);
+}

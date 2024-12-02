@@ -1,0 +1,83 @@
+
+/* Checkbox Container
+ * Centers checkbox vertically within grid cell
+ */
+ .cart__item-select {
+    display: flex;
+    align-items: center;
+}
+
+/* Custom Checkbox Base
+ * Relative positioning for custom mark overlay
+ */
+.cart__checkbox {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+/* Hide Native Checkbox Input
+ * Maintains accessibility while allowing custom styling
+ */
+.cart__checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Custom Checkbox Visual Design
+ * Glassmorphic effect with border and transition
+ */
+.cart__checkbox-mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--shadow-shine);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+/* Interactive Hover State
+ * Changes border color on hover for visual feedback
+ */
+.cart__checkbox:hover .cart__checkbox-mark {
+    border-color: var(--paramecia);
+}
+
+/* Checked State Styling
+ * Gradient background effect when checked
+ */
+.cart__checkbox input:checked ~ .cart__checkbox-mark {
+    background: linear-gradient(45deg, var(--paramecia), var(--mythical));
+    border-color: transparent;
+}
+
+/* Checkmark Icon
+ * SVG checkmark icon for better visual appearance
+ * Animated appearance on check
+ */
+.cart__checkbox-mark::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Show checkmark when checked */
+.cart__checkbox input:checked ~ .cart__checkbox-mark::after {
+    opacity: 1;
+}

@@ -1,6 +1,7 @@
-
-
-/* Element: Cart Summary */
+/* Cart Summary Component
+ * Glassmorphic container with blur effect for order summary
+ * Contains order details and checkout button
+ */
 .cart__summary {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
@@ -9,12 +10,19 @@
     height: fit-content;
 }
 
+/* Summary Title
+ * Large text for section heading
+ */
 .cart__summary-title {
     font-size: 1.5rem;
     color: var(--light-theme);
     margin-bottom: 2rem;
 }
 
+/* Summary Row Layout
+ * Flexible row for price breakdowns
+ * Spaces items on opposite ends
+ */
 .cart__summary-row {
     display: flex;
     justify-content: space-between;
@@ -22,6 +30,10 @@
     color: var(--light-theme);
 }
 
+/* Total Amount Row
+ * Emphasized styling with border separator
+ * Larger text for total price
+ */
 .cart__summary-total {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 1rem;
@@ -30,6 +42,10 @@
     font-size: 1.2rem;
 }
 
+/* Checkout Button
+ * Gradient background with hover animation
+ * Full-width button with consistent styling
+ */
 .cart__checkout-btn {
     width: 100%;
     padding: 1rem;
@@ -43,6 +59,9 @@
     transition: all 0.3s ease;
 }
 
+/* Checkout Button Hover Effect
+ * Subtle lift animation with glow effect
+ */
 .cart__checkout-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(147, 51, 234, 0.3);

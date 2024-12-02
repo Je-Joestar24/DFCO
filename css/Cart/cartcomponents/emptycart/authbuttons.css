@@ -1,0 +1,49 @@
+
+/* Authentication Button Container
+ * Flexbox layout for button group
+ * Centers buttons with consistent spacing
+ */
+ .cart__auth-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Base Authentication Button Styles
+ * Shared styles for login/signup buttons
+ * Includes hover animation properties
+ */
+.cart__auth-btn {
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Login Button Variant
+ * Gradient background using theme colors
+ * High contrast for primary action
+ */
+.cart__auth-btn--login {
+    background: linear-gradient(45deg, var(--paramecia), var(--mythical));
+    color: var(--light-theme);
+}
+
+/* Signup Button Variant
+ * Outlined style for secondary action
+ * Transparent background with border
+ */
+.cart__auth-btn--signup {
+    background: transparent;
+    border: 2px solid var(--light-theme);
+    color: var(--light-theme);
+}
+
+/* Button Hover Effects
+ * Subtle elevation and shadow on hover
+ * Provides visual feedback for interaction
+ */
+.cart__auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
