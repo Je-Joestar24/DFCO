@@ -1,76 +1,110 @@
-@import './Home/home.css';
-@import './about/about.css';
-@import './footer.css';
-@import './navigations.css';
-@import './products/products.css';
+@import "./Home/home.css";
+@import "./about/about.css";
+@import "./footer.css";
+@import "./navigations.css";
+@import "./products/products.css";
 
 :root {
-    --primary: #000;
-    --secondary: #fff;
-    /* Base theme colors */
-    --red: #D32F2F;          
-    --gold: #FFD700;         
-    
-    /* Devil Fruit Types */
-    --paramecia: #FF69B4;    /* Pink for Paramecia type fruits */
-    --zoan: #8BC34A;         /* Green for Zoan type fruits */
-    --logia: #2196F3;        /* Blue for Logia type fruits */
-    --mythical: #9C27B0;     /* Purple for Mythical variants */
+  --primary: #000;
+  --secondary: #fff;
+  /* Base theme colors */
+  --red: #d32f2f;
+  --gold: #ffd700;
 
-    /* Background colors */
-    --background-dark: #0a0a2e;
-    --background-light: #1a1a4f;
+  /* Devil Fruit Types */
+  --paramecia: #ff69b4; /* Pink for Paramecia type fruits */
+  --zoan: #8bc34a; /* Green for Zoan type fruits */
+  --logia: #2196f3; /* Blue for Logia type fruits */
+  --mythical: #9c27b0; /* Purple for Mythical variants */
 
-    /* Shadows */
-    --shadow-light: rgba(0, 0, 0, 0.1); /* Light shadow for general elements */
-    --shadow-dark:  rgba(0, 0, 0, 0.2); /* Dark shadow for important elements */
-    --shadow-shine: rgba(255, 255, 255, 0.1); /* Shine effect for buttons and highlights */
+  /* Background colors */
+  --background-dark: #0a0a2e;
+  --background-light: #1a1a4f;
 
-    /* Supporting colors */
-    --light-theme: #FFF8DC;  /* Light text/accents */
-    --warning: #FF9800;      /* For devil fruit warnings/cautions */
+  /* Shadows */
+  --shadow-light: rgba(0, 0, 0, 0.1); /* Light shadow for general elements */
+  --shadow-dark: rgba(0, 0, 0, 0.2); /* Dark shadow for important elements */
+  --shadow-shine: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Shine effect for buttons and highlights */
 
-    /* Container widths */
-    --container-xl: 1400px;
-    --container-lg: 1200px;
+  /* Supporting colors */
+  --light-theme: #fff8dc; /* Light text/accents */
+  --warning: #ff9800; /* For devil fruit warnings/cautions */
 
+  /* Container widths */
+  --container-xl: 1400px;
+  --container-lg: 1200px;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
-
 
 /* Hide scrollbar for IE, Edge and Firefox */
 * {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
-
 
 /* basic reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--light-theme);
+  font-family: "Poppins", sans-serif;
+  background-color: var(--light-theme);
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
-ul, li {
-    list-style: none;
+ul,
+li {
+  list-style: none;
 }
 
 button {
-    border: none;
-    cursor: pointer;
+  border: none;
+  cursor: pointer;
+}
+
+#app__display {
+  background: linear-gradient(
+    135deg,
+    var(--background-dark) 0%,
+    var(--background-light) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+#app__display::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 25% 25%,
+      var(--mythical) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      var(--background-dark) 0%,
+      transparent 40%
+    );
+  opacity: 0.005;
+  filter: blur(60px);
+  animation: particlesPulse 15s infinite alternate;
+  pointer-events: none;
+  z-index: -1;
 }

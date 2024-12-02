@@ -1,0 +1,32 @@
+
+.products__pick-name {
+    font-size: 0.9rem;
+    color: var(--light-theme);
+    text-align: center;
+}
+
+.products__featured-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.products__featured-stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.products__stat {
+    text-align: center;
+}
+
+.products__stat-number {
+    font-size: 1.8rem;
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.products__stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}

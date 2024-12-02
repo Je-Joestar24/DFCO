@@ -1,0 +1,26 @@
+
+/* Modifier: Card hover state
+ * Lifts card slightly on hover for depth effect
+ */
+ .products__card:hover {
+    transform: translateY(-10px);
+}
+
+/* State: Image visibility on hover
+ * Fades out primary image and reveals secondary
+ */
+.products__card:hover .products__image-primary, .products__image-secondary {
+    opacity: 0;
+}
+
+.products__card:hover .products__image-secondary{
+    opacity: 1;
+}
+
+/* Modifier: Button hover state
+ * Adds lift effect and glowing shadow
+ */
+.products__add-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--shadow-shine);
+}

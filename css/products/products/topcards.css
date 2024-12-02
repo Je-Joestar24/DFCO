@@ -1,0 +1,72 @@
+
+/* Element: Top Picks Slider */
+.products__top-picks {
+    margin-bottom: 3rem;
+    padding: 1rem 0;
+    overflow-x: auto;
+    /* scrollbar-width: none; Firefox */
+}
+/* 
+.products__top-picks::-webkit-scrollbar {
+    display: none;
+} */
+
+/* Element: Top Picks List */
+.products__picks-list {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.5rem;
+}
+
+/* Element: Pick Item */
+.products__pick-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+/* Element: Pick Circle */
+.products__pick-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(45deg, var(--paramecia), var(--mythical)) border-box;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+
+.products__pick-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Element: Featured Product */
+.products__featured {
+    margin-bottom: 4rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.products__featured-image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+.products__featured-content {
+    color: var(--light-theme);
+}

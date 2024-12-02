@@ -1,0 +1,7 @@
+
+/* Modifier: Product hover state
+* small grow effect
+*/
+.products__pick-item:hover  .products__pick-circle{
+    transform: scale(1.1);
+}

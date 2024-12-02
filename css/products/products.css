@@ -1,11 +1,12 @@
-@import "./products/cards.css";
+@import "./products/productcards.css";
 @import "./products/filters.css";
+@import './products/cardseffects.css';
+@import './products/topcards.css';
+@import './products/texts.css';
 
 /* Block: Products Section */
 .app__products {
     padding: 120px 2rem 4rem;
-    background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
-    min-height: 100vh;
 }
 
 /* Element: Container */

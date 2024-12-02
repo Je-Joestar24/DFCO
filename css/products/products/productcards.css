@@ -1,25 +1,31 @@
-
-/* Element: Product Card */
+/* Block: Product Card
+ * Container for individual product display
+ * Features hover animations and glass effect background
+ * Contains image gallery, product info, and action button
+ */
 .products__card {
     background: var(--shadow-shine);
     border-radius: 15px;
     overflow: hidden;
     transition: transform 0.3s ease;
     position: relative;
-    cursor: pointer;
 }
 
-.products__card:hover {
-    transform: translateY(-10px);
-}
 
-/* Element: Product Image */
+/* Element: Image Container
+ * Square aspect ratio wrapper for product images
+ * Contains primary product image and character image
+ */
 .products__image-wrapper {
     position: relative;
     padding-top: 100%;
     overflow: hidden;
 }
 
+/* Element: Product Images
+ * Absolutely positioned within wrapper
+ * Smooth opacity transition between primary/secondary
+ */
 .products__image {
     position: absolute;
     top: 0;
@@ -30,23 +36,25 @@
     transition: opacity 0.9s ease;
 }
 
+/* Modifier: Secondary character image
+ * Uses cover fit to fill container
+ */
 .products__image-secondary{
     object-fit: cover;
 }
 
-.products__card:hover .products__image-primary, .products__image-secondary {
-    opacity: 0;
-}
 
-.products__card:hover .products__image-secondary{
-    opacity: 1;
-}
-
-/* Element: Product Info */
+/* Element: Product Information
+ * Contains name, price and action button
+ * Consistent padding for content spacing
+ */
 .products__info {
     padding: 1.5rem;
 }
 
+/* Element: Product Name
+ * Light colored heading with medium weight
+ */
 .products__name {
     font-size: 1.2rem;
     color: var(--light-theme);
@@ -54,6 +62,9 @@
     font-weight: 600;
 }
 
+/* Element: Product Price
+ * Gold colored text with bold weight
+ */
 .products__price {
     font-size: 1.4rem;
     color: var(--gold);
@@ -61,7 +72,10 @@
     margin-bottom: 1rem;
 }
 
-/* Element: Add to Cart Button */
+/* Element: Add to Cart Button
+ * Gradient background with hover animation
+ * Features shadow effect and vertical lift
+ */
 .products__add-btn {
     width: 100%;
     padding: 0.8rem;
@@ -76,12 +90,10 @@
     overflow: hidden;
 }
 
-.products__add-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(147, 51, 234, 0.3);
-}
-
-/* Element: Category Tag */
+/* Element: Category Tag
+ * Floating label with glass morphism effect
+ * Indicates devil fruit category
+ */
 .products__tag {
     position: absolute;
     top: 1rem;
