@@ -4,6 +4,8 @@
 @import "./navigations.css";
 @import "./products/products.css";
 @import "./Cart/cart.css";
+@import "./modals.css";
+
 :root {
   --primary: #000;
   --secondary: #fff;
