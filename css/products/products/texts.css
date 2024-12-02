@@ -1,4 +1,72 @@
+/* Block: Section Headers */
+.products__section-header {
+    position: relative;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 
+/* Element: Section Title */
+.products__section-title {
+    font-size: 2rem;
+    color: var(--light-theme);
+    font-weight: 700;
+    position: relative;
+    padding-left: 1rem;
+}
+
+/* Element: Title Decoration */
+.products__section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 70%;
+    background: linear-gradient(to bottom, var(--paramecia), var(--mythical));
+    border-radius: 2px;
+}
+
+/* Element: Section Subtitle */
+.products__section-subtitle {
+    font-size: 1rem;
+    color: var(--light-theme);
+    opacity: 0.7;
+    margin-left: auto;
+}
+
+/* Element: Section Divider */
+.products__section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    margin: 2rem 0;
+}
+
+/* Animation for section header appearance */
+@keyframes titleSlideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.products__section-header {
+    animation: titleSlideIn 0.6s ease-out forwards;
+}
+
+/* Existing styles */
 .products__pick-name {
     font-size: 0.9rem;
     color: var(--light-theme);

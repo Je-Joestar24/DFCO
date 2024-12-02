@@ -34,20 +34,20 @@
                 >
               </li>
               <li class="nav__item">
-                <a href="#/products" class="nav__link" data-link>Shop</a>
+                <a href="#/products" class="nav__link" data-link>Products</a>
               </li>
               <li class="nav__item">
                 <a href="#/about" class="nav__link" data-link>About</a>
               </li>
               <li class="nav__item nav__icons">
-                <div class="nav__icon-wrapper" aria-label="Shopping Cart">
+                <a data-link href="#/cart" class="nav__icon-wrapper" aria-label="Shopping Cart">
                   <svg class="nav__icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path
                       d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
                     />
                   </svg>
                   <span class="nav__cart-badge">3</span>
-                </div>
+                </a>
                 <div
                   class="nav__icon-wrapper nav__profile"
                   aria-label="User Profile"
@@ -66,80 +66,6 @@
       <main id="app__display" aria-label="All contents of the page display area">
         <!-- All sections are loaded here -->
 
-        <section class="app__products" aria-label="All products display area">
-            <div class="app__products-container">
-                <!-- Top Picks Section -->
-                <!-- Filter Bar -->
-                <div class="products__filter-bar">
-                    <div class="products__search">
-                        <svg class="products__search-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                        </svg>
-                        <input type="text" class="products__search-input" placeholder="Search Devil Fruits...">
-                    </div>
-                    <div class="products__category">
-                        <button class="products__category-btn products__category-btn--active">All</button>
-                        <button class="products__category-btn">Paramecia</button>
-                        <button class="products__category-btn">Logia</button>
-                        <button class="products__category-btn">Zoan</button>
-                    </div>
-                </div>
-                
-                <div class="products__top-picks">
-                    <div class="products__picks-list">
-                        <div class="products__pick-item">
-                            <div class="products__pick-circle">
-                                <img src="./images/devil-fruits/gura-gura.png" alt="Gura Gura no Mi" class="products__pick-image">
-                            </div>
-                            <span class="products__pick-name">Gura Gura</span>
-                        </div>
-                        <!-- Add more pick items as needed -->
-                    </div>
-                </div>
-
-                <!-- Featured Product -->
-                <div class="products__featured">
-                    <img src="./images/devil-fruits/gura-gura.png" alt="Gura Gura no Mi" class="products__featured-image">
-                    <div class="products__featured-content">
-                        <h2 class="products__featured-title">Gura Gura no Mi</h2>
-                        <div class="products__featured-stats">
-                            <div class="products__stat">
-                                <div class="products__stat-number">1,234</div>
-                                <div class="products__stat-label">Sold</div>
-                            </div>
-                            <div class="products__stat">
-                                <div class="products__stat-number">89%</div>
-                                <div class="products__stat-label">Success Rate</div>
-                            </div>
-                            <div class="products__stat">
-                                <div class="products__stat-number">5</div>
-                                <div class="products__stat-label">In Stock</div>
-                            </div>
-                        </div>
-                        <button class="products__add-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-
-                <!-- Product Grid -->
-                <div class="products__grid">
-                    <!-- Product Card -->
-                    <article class="products__card">
-                        <div class="products__image-wrapper">
-                            <img src="./images/devil-fruits/gura-gura.png" alt="Gura Gura no Mi" class="products__image products__image-primary">
-                            <img src="./images/characters/whitebeard.jpg" alt="Gura Gura no Mi" class="products__image products__image-secondary">
-                            <span class="products__tag">Paramecia</span>
-                        </div>
-                        <div class="products__info">
-                            <h3 class="products__name">Gura Gura no Mi</h3>
-                            <p class="products__price">₿ 5,000,000</p>
-                            <button class="products__add-btn">Add to Cart</button>
-                        </div>
-                    </article>
-                    <!-- Repeat for other products -->
-                </div>
-            </div>
-        </section>
       </main>
       <footer id="footer" class="footer" role="contentinfo" aria-label="Footer">
         <div class="footer__container">
@@ -227,6 +153,6 @@
         ></div>
       </footer>
     </div>
-    <!-- <script type="module" src="js/app.js"></script> -->
+    <script type="module" src="js/app.js"></script>
   </body>
 </html>
