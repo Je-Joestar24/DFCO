@@ -152,6 +152,62 @@
         ></div>
       </footer>
     </div>
+
+    <div id="login__modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="auth-modal auth-modal--active ">
+        
+        <div class="auth-modal__loader" role="status" aria-label="Loading">
+          <div class="auth-modal__ball auth-modal__ball--1"></div>
+          <div class="auth-modal__ball auth-modal__ball--2"></div>
+          <div class="auth-modal__ball auth-modal__ball--3"></div>
+        </div>
+        
+        <div class="auth-modal__content"> <button class="auth-modal__close" aria-label="Close modal">×</button>
+          <div class="auth-modal__header">
+            <h2 id="modal-title" class="auth-modal__title">Sign Up</h2>
+            <p class="auth-modal__subtitle">Join the DFCO community</p>
+          </div>
+          
+          <form class="auth-modal__form" aria-label="Sign up form">
+            <div class="auth-modal__field">
+              <input 
+                type="text" 
+                class="auth-modal__input" 
+                placeholder="Username or Mobile Number" 
+                required
+                aria-label="Username or Mobile Number"
+                aria-required="true"
+              >
+            </div>
+            
+            <div class="auth-modal__field">
+              <div class="auth-modal__password">
+                <input 
+                  type="password" 
+                  class="auth-modal__input" 
+                  placeholder="Password" 
+                  required
+                  aria-label="Password"
+                  aria-required="true"
+                >
+                <button 
+                  type="button" 
+                  class="auth-modal__show-password" 
+                  aria-label="Show password"
+                >Show</button>
+              </div>
+            </div>
+            
+            <button type="submit" class="auth-modal__submit">Sign Up</button>
+          </form>
+          
+          <div class="auth-modal__login-link">
+            Already have an account?
+            <a href="#" class="auth-modal__link" aria-label="Switch to login">Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="js/app.js"></script>
   </body>
 </html>

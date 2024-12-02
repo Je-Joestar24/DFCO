@@ -1,0 +1,244 @@
+@import "./auths/login.css";
+
+/* Modal Backdrop
+ * Full screen overlay with blur effect
+ */
+.auth-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 46, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Default visible state for design phase */
+.auth-modal--active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Close Button */
+.auth-modal__close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--light-theme);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 3;
+}
+
+.auth-modal__close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+/* Loading Animation Container */
+.auth-modal__loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    display: none;
+}
+
+/* Loading Balls Animation */
+.auth-modal__ball {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 10px;
+    animation: ballRotate 1.5s infinite ease-in-out;
+}
+
+.auth-modal__ball--1 {
+    background: var(--paramecia);
+    animation-delay: 0s;
+}
+
+.auth-modal__ball--2 {
+    background: var(--mythical);
+    animation-delay: 0.2s;
+}
+
+.auth-modal__ball--3 {
+    background: var(--logia);
+    animation-delay: 0.4s;
+}
+
+/* Modal Content Container */
+.auth-modal__content {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.auth-modal--active .auth-modal__content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Modal Header */
+.auth-modal__header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-modal__title {
+    font-size: 2rem;
+    color: var(--light-theme);
+    margin-bottom: 1rem;
+}
+
+.auth-modal__subtitle {
+    color: var(--light-theme);
+    opacity: 0.8;
+}
+
+/* Form Elements */
+.auth-modal__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.auth-modal__field {
+    position: relative;
+}
+
+.auth-modal__input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    color: var(--light-theme);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.auth-modal__input:focus {
+    outline: none;
+    border-color: var(--paramecia);
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.2);
+}
+
+/* Updated Password Field Styles */
+.auth-modal__password {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.auth-modal__show-password {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--light-theme);
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.auth-modal__show-password:hover {
+    opacity: 1;
+    color: var(--gold);
+}
+
+/* Password input padding adjustment */
+.auth-modal__password .auth-modal__input {
+    padding-right: 4.5rem; /* Make room for show password button */
+}
+
+/* Submit Button */
+.auth-modal__submit {
+    padding: 1rem;
+    background: linear-gradient(45deg, var(--paramecia), var(--mythical));
+    border: none;
+    border-radius: 15px;
+    color: var(--light-theme);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.auth-modal__submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(147, 51, 234, 0.3);
+}
+
+/* Login Link */
+.auth-modal__login-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--light-theme);
+    opacity: 0.8;
+}
+
+.auth-modal__login-link a {
+    color: var(--gold);
+    text-decoration: none;
+    margin-left: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.auth-modal__login-link a:hover {
+    color: var(--paramecia);
+}
+
+/* Animations */
+@keyframes ballRotate {
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+    33% {
+        transform: scale(1.2) translateY(-20px);
+        opacity: 0.8;
+    }
+    66% {
+        transform: scale(0.8) translateY(20px);
+        opacity: 0.6;
+    }
+}
+
+@keyframes modalAppear {
+    0% {
+        transform: translateY(30px) scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
