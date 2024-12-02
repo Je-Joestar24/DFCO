@@ -1,0 +1,37 @@
+
+/* Element: Item Controls */
+.cart__item-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cart__quantity {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cart__quantity-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--light-theme);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cart__quantity-btn:hover {
+    background: var(--paramecia);
+}
+
+.cart__quantity-number {
+    font-size: 1.1rem;
+    color: var(--light-theme);
+    min-width: 30px;
+    text-align: center;
+}

@@ -3,7 +3,7 @@
 @import "./footer.css";
 @import "./navigations.css";
 @import "./products/products.css";
-
+@import "./Cart/cart.css";
 :root {
   --primary: #000;
   --secondary: #fff;

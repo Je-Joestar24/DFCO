@@ -6,17 +6,19 @@
 import Home from '../views/home.js';
 import Product from '../views/product.js';
 import About from '../views/about.js';
+import Cart from '../views/cart.js';
 
 export class Router {
 
 
     constructor(displayID) {
         // Define available routes and their corresponding views
-        
-        this.routes =[
+
+        this.routes = [
             { path: '#/', view: Home },
             { path: '#/products', view: Product },
             { path: '#/about', view: About },
+            { path: '#/cart', view: Cart }
         ];
         this.displayArea = document.querySelector(displayID);
     }

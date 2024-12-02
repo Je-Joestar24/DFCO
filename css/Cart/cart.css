@@ -1,0 +1,50 @@
+@import "./cartcomponents/item.css";
+@import "./cartcomponents/itemcontrol.css";
+@import "./cartcomponents/cartsummary.css";
+@import "./cartcomponents/emptycart.css";
+
+/* Block: Cart Section */
+.app__cart {
+    padding: 120px 2rem 4rem;
+    min-height: 100vh;
+}
+
+/* Element: Container */
+.app__cart-container {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+}
+
+/* Element: Cart Header */
+.cart__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.cart__title {
+    font-size: 2rem;
+    color: var(--light-theme);
+    font-weight: 700;
+}
+
+.cart__count {
+    color: var(--gold);
+    font-size: 1.2rem;
+}
+
+/* Element: Cart Content */
+.cart__content {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 2rem;
+}
+
+/* Element: Cart Items List */
+.cart__items {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+}
