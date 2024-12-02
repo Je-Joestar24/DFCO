@@ -36,7 +36,7 @@
     transition: opacity 0.9s ease;
 }
 
-/* Modifier: Secondary character image
+/* Modifier: character image
  * Uses cover fit to fill container
  */
 .products__image-secondary{

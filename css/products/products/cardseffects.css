@@ -7,7 +7,7 @@
 }
 
 /* State: Image visibility on hover
- * Fades out primary image and reveals secondary
+ * Fades out devil fruit image and reveals user
  */
 .products__card:hover .products__image-primary, .products__image-secondary {
     opacity: 0;

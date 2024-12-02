@@ -1,22 +1,30 @@
-@import "./products/productcards.css";
-@import "./products/filters.css";
-@import './products/cardseffects.css';
-@import './products/topcardseffects.css';
-@import './products/topcards.css';
-@import './products/texts.css';
+/* Import product-related stylesheets */
+@import "./products/productcards.css";      /* Styles for individual product cards */
+@import "./products/filters.css";           /* Product filtering and sorting styles */
+@import './products/cardseffects.css';      /* Animations and effects for product cards */
+@import './products/topcardseffects.css';   /* Effects for featured product cards */
+@import './products/topcards.css';          /* Styles for featured product cards */
+@import './products/texts.css';             /* Typography styles for product section */
+@import 'animations.css';                   /* Animations for products section */
 
-/* Block: Products Section */
+/* Block: Products Section 
+   Main container for the products page with top padding for fixed header
+   and bottom padding for spacing */
 .app__products {
     padding: 120px 2rem 4rem;
 }
 
-/* Element: Container */
+/* Element: Container 
+   Centers content and sets max width for larger screens
+   while maintaining consistent margins */
 .app__products-container {
     max-width: var(--container-xl);
     margin: 0 auto;
 }
 
-/* Element: Product Grid */
+/* Element: Product Grid 
+   Responsive grid layout that automatically adjusts columns
+   based on container width while maintaining minimum card width */
 .products__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

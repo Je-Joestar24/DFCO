@@ -1,5 +1,8 @@
 
-/* Element: Filter Bar */
+/* Block: Filter Bar
+ * Sticky positioned bar containing search and category filters
+ * Uses backdrop blur and subtle transparency for depth
+ */
 .products__filter-bar {
     position: sticky;
     top: 80px;
@@ -15,12 +18,19 @@
     align-items: center;
 }
 
-/* Element: Search Input */
+/* Element: Search Input Container
+ * Flexible container for search input and icon
+ * Takes up remaining space in filter bar
+ */
 .products__search {
     flex: 1;
     position: relative;
 }
 
+/* Element: Search Input Field
+ * Custom styled search input with left padding for icon
+ * Transitions for smooth focus state changes
+ */
 .products__search-input {
     width: 100%;
     padding: 1rem 1.5rem;
@@ -33,12 +43,19 @@
     transition: all 0.3s ease;
 }
 
+/* State: Search Input Focus
+ * Highlights input with brand color and subtle glow
+ */
 .products__search-input:focus {
     outline: none;
     border-color: var(--paramecia);
     box-shadow: 0 0 15px rgba(147, 51, 234, 0.2);
 }
 
+/* Element: Search Icon
+ * Positioned absolutely within search container
+ * Semi-transparent for visual hierarchy
+ */
 .products__search-icon {
     position: absolute;
     left: 1rem;
@@ -50,12 +67,18 @@
     opacity: 0.5;
 }
 
-/* Element: Category Filter */
+/* Element: Category Filter Container
+ * Horizontal layout for category filter buttons
+ */
 .products__category {
     display: flex;
     gap: 1rem;
 }
 
+/* Element: Category Filter Button
+ * Pill-shaped buttons with hover and active states
+ * Uses subtle transparency and gradient effects
+ */
 .products__category-btn {
     padding: 0.8rem 1.5rem;
     background: rgba(255, 255, 255, 0.05);
@@ -67,6 +90,9 @@
     transition: all 0.3s ease;
 }
 
+/* State: Category Button Hover & Active
+ * Applies gradient background and removes border
+ */
 .products__category-btn:hover,
 .products__category-btn--active {
     background: linear-gradient(45deg, var(--paramecia), var(--mythical));

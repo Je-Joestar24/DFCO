@@ -1,24 +1,27 @@
-
-/* Element: Top Picks Slider */
+/* Block: Top Picks Section
+ * Horizontal scrollable section displaying featured devil fruit picks
+ * Uses custom scrollbar styling and overflow handling
+ */
 .products__top-picks {
     margin-bottom: 3rem;
     padding: 1rem 0;
     overflow-x: auto;
-    /* scrollbar-width: none; Firefox */
 }
-/* 
-.products__top-picks::-webkit-scrollbar {
-    display: none;
-} */
 
-/* Element: Top Picks List */
+/* Element: Top Picks List
+ * Horizontally scrolling flex container for pick items
+ * Consistent spacing between items with padding for scrollbar
+ */
 .products__picks-list {
     display: flex;
     gap: 1.5rem;
     padding: 0.5rem;
 }
 
-/* Element: Pick Item */
+/* Element: Pick Item
+ * Individual pick container with centered content
+ * Includes image circle and label with interactive cursor
+ */
 .products__pick-item {
     display: flex;
     flex-direction: column;
@@ -27,7 +30,11 @@
     cursor: pointer;
 }
 
-/* Element: Pick Circle */
+/* Element: Pick Circle
+ * Circular container with gradient border effect
+ * Uses padding-box/border-box trick for gradient border
+ * Smooth transform animation on interaction
+ */
 .products__pick-circle {
     width: 80px;
     height: 80px;
@@ -39,15 +46,21 @@
     transition: transform 0.3s ease;
 }
 
-
+/* Element: Pick Image
+ * Fills circle container while maintaining aspect ratio
+ * Uses cover fit to ensure full circle coverage
+ */
 .products__pick-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-
-/* Element: Featured Product */
+/* Block: Featured devil fruit Section
+ * Prominent display area for highlighted devil fruit
+ * Uses glass morphism effect with grid layout
+ * Maintains responsive column ratio
+ */
 .products__featured {
     margin-bottom: 4rem;
     padding: 2rem;
@@ -60,6 +73,10 @@
     align-items: center;
 }
 
+/* Element: Featured devil fruit images
+ * Square aspect ratio container for devil fruit images
+ * Maintains image proportions while filling space
+ */
 .products__featured-image {
     width: 100%;
     aspect-ratio: 1;
@@ -67,6 +84,10 @@
     border-radius: 15px;
 }
 
+/* Element: Featured Product Content
+ * Container for product information
+ * Uses theme color for text content
+ */
 .products__featured-content {
     color: var(--light-theme);
 }
