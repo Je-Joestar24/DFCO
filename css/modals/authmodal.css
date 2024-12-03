@@ -1,8 +1,8 @@
 @import "./auths/login.css";
+@import "./auths/signup.css";
+@import "./auths/loading.css";
 
-/* Modal Backdrop
- * Full screen overlay with blur effect
- */
+/* Block: Auth Modal */
 .auth-modal {
     position: fixed;
     inset: 0;
@@ -17,13 +17,12 @@
     transition: all 0.3s ease;
 }
 
-/* Default visible state for design phase */
 .auth-modal--active {
     opacity: 1;
     visibility: visible;
 }
 
-/* Close Button */
+/* Element: Close Button */
 .auth-modal__close {
     position: absolute;
     top: 1.5rem;
@@ -48,84 +47,7 @@
     transform: rotate(90deg);
 }
 
-/* Loading Animation Container */
-.auth-modal__loader {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    display: none;
-}
-
-/* Loading Balls Animation */
-.auth-modal__ball {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    margin: 0 10px;
-    animation: ballRotate 1.5s infinite ease-in-out;
-}
-
-.auth-modal__ball--1 {
-    background: var(--paramecia);
-    animation-delay: 0s;
-}
-
-.auth-modal__ball--2 {
-    background: var(--mythical);
-    animation-delay: 0.2s;
-}
-
-.auth-modal__ball--3 {
-    background: var(--logia);
-    animation-delay: 0.4s;
-}
-
-/* Modal Content Container */
-.auth-modal__content {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    border-radius: 30px;
-    padding: 3rem;
-    width: 100%;
-    max-width: 400px;
-    position: relative;
-    transform: translateY(30px);
-    opacity: 0;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.auth-modal--active .auth-modal__content {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-/* Modal Header */
-.auth-modal__header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.auth-modal__title {
-    font-size: 2rem;
-    color: var(--light-theme);
-    margin-bottom: 1rem;
-}
-
-.auth-modal__subtitle {
-    color: var(--light-theme);
-    opacity: 0.8;
-}
-
-/* Form Elements */
-.auth-modal__form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
+/* Element: Form Field */
 .auth-modal__field {
     position: relative;
 }
@@ -147,11 +69,13 @@
     box-shadow: 0 0 20px rgba(147, 51, 234, 0.2);
 }
 
-/* Updated Password Field Styles */
+/* Element: Password Field */
 .auth-modal__password {
     position: relative;
-    display: flex;
-    align-items: center;
+}
+
+.auth-modal__password .auth-modal__input {
+    padding-right: 4.5rem;
 }
 
 .auth-modal__show-password {
@@ -174,13 +98,8 @@
     color: var(--gold);
 }
 
-/* Password input padding adjustment */
-.auth-modal__password .auth-modal__input {
-    padding-right: 4.5rem; /* Make room for show password button */
-}
-
-/* Submit Button */
-.auth-modal__submit {
+/* Element: Submit Button */
+.auth-modal__signup-submit {
     padding: 1rem;
     background: linear-gradient(45deg, var(--paramecia), var(--mythical));
     border: none;
@@ -192,18 +111,11 @@
     margin-top: 1rem;
 }
 
-.auth-modal__submit:hover {
+.auth-modal__signup-submit:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(147, 51, 234, 0.3);
 }
 
-/* Login Link */
-.auth-modal__login-link {
-    text-align: center;
-    margin-top: 1.5rem;
-    color: var(--light-theme);
-    opacity: 0.8;
-}
 
 .auth-modal__login-link a {
     color: var(--gold);

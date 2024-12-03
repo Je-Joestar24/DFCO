@@ -1,0 +1,35 @@
+
+/* Loading Animation Container */
+.auth-modal__loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    display: none;
+}
+
+/* Loading Balls Animation */
+.auth-modal__ball {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 10px;
+    animation: ballRotate 1.5s infinite ease-in-out;
+}
+
+.auth-modal__ball--1 {
+    background: var(--paramecia);
+    animation-delay: 0s;
+}
+
+.auth-modal__ball--2 {
+    background: var(--mythical);
+    animation-delay: 0.2s;
+}
+
+.auth-modal__ball--3 {
+    background: var(--logia);
+    animation-delay: 0.4s;
+}
