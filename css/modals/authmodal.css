@@ -15,6 +15,8 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .auth-modal--active {
@@ -102,6 +104,13 @@
     position: absolute;
     height: 100vh;
     width: 100vw;
+}
+
+
+.auth-modal .auth-modal__content--active {
+    transform: translateY(0);
+    opacity: 1;
+    display: block;
 }
 
 /* Animations */

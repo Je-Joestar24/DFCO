@@ -1,18 +1,28 @@
-export default class {
-    constructor(config = { modal, toggledata, activeclass, beforeclose: null, beforeopen: null }) {
-        const { modal, toggledata, activeclass, beforeclose, beforeopen } = config;
+/**
+ * AbstractModal class to manage modal behavior.
+ * This class handles the basic opening and closing of a modal,
+ * as well as basic binding event listeners for user interactions.
+ */
+export default class AbstractModal {
+    /**
+     * Creates an instance of AbstractModal.
+     * @param {Object} config - Configuration object for the modal.
+     * @param {string} config.modal - The ID of the modal element.
+     * @param {string} config.toggledata - The attribute used to toggle the modal.
+     * @param {string} config.activeclass - The class that indicates the modal is active.
+     */
+    constructor(config = { modal, toggledata, activeclass }) {
+        const { modal, toggledata, activeclass } = config;
         this.toggleAttr = toggledata;
         this.activeclass = activeclass;
         this.modal = document.getElementById(modal);
-        this.beforeClose = beforeclose;
-        this.beforeOpen = beforeopen;
-        this.bindButtons();
     }
 
-    modalContent() {
-
-    }
-
+    /**
+     * Binds click and keydown events to handle modal toggling.
+     * Clicks on elements with the toggle attribute will open/close the modal.
+     * The Escape key will close the modal if it is open.
+     */
     bindButtons() {
         document.body.addEventListener('click', (e) => {
             if (e.target.matches(`[${this.toggleAttr}]`)) {
@@ -26,19 +36,34 @@ export default class {
                 this.close();
             }
         });
-        
     }
 
+    /**
+     * Toggles the modal's visibility.
+     * If the modal is currently active, it will be closed.
+     * Otherwise, it will be opened.
+     */
     toggle() {
-        if(this.modal.classList.contains(this.activeclass)) this.close();
-        else this.open();
+        if (this.modal.classList.contains(this.activeclass)) {
+            this.close();
+        } else {
+            this.open();
+        }
     }
 
+    /**
+     * Closes the modal and removes the no-scroll class from the body.
+     */
     close() {
         this.modal.classList.remove(this.activeclass);
+        document.body.classList.remove("no-scroll");
     }
 
+    /**
+     * Opens the modal and adds the no-scroll class to the body.
+     */
     open() {
         this.modal.classList.add(this.activeclass);
+        document.body.classList.add("no-scroll");
     }
 }

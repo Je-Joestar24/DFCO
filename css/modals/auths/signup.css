@@ -10,12 +10,8 @@
     position: relative;
     transform: translateY(30px);
     opacity: 0;
+    display: none;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.auth-modal--active .auth-modal__signup {
-    transform: translateY(0);
-    opacity: 1;
 }
 
 /* Element: Signup Header */

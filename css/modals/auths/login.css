@@ -1,0 +1,76 @@
+/* Element: Login Container */
+.auth-modal__login {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    transform: translateY(30px);
+    opacity: 0;
+    display: none;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* Element: Login Header */
+.auth-modal__login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-modal__login-title {
+    font-size: 2rem;
+    color: var(--light-theme);
+    margin-bottom: 1rem;
+}
+
+.auth-modal__login-subtitle {
+    color: var(--light-theme);
+    opacity: 0.8;
+}
+
+/* Element: Login Form */
+.auth-modal__login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Element: Submit Button */
+.auth-modal__login-submit {
+    padding: 1rem;
+    background: linear-gradient(45deg, var(--paramecia), var(--mythical));
+    border: none;
+    border-radius: 15px;
+    color: var(--light-theme);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.auth-modal__login-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(147, 51, 234, 0.3);
+}
+
+/* Element: Signup Link */
+.auth-modal__signup-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--light-theme);
+    opacity: 0.8;
+}
+
+.auth-modal__signup-link a {
+    color: var(--gold);
+    text-decoration: none;
+    margin-left: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.auth-modal__signup-link a:hover {
+    color: var(--paramecia);
+}
