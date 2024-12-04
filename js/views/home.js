@@ -108,6 +108,9 @@ export default class extends AbstractView {
         this.setTitle('DFCO | Home');
     }
 
+    async getData(){
+    }
+
     /**
      * Main HTML renderer
      * Assembles all section components into final page HTML
@@ -168,20 +171,22 @@ export default class extends AbstractView {
                   role="group"
                   aria-label="Call to Action Buttons"
                 >
-                  <button
+                  <a
                     class="hero__button hero__button--primary"
                     role="button"
                     aria-label="Explore Devil Fruits"
+                    href="#/products"
                   >
                     Explore Fruits
                     <span class="hero__button-shine" aria-hidden="true"></span>
-                  </button>
+                  </a>
                   <button
                     class="hero__button hero__button--secondary"
                     role="button"
-                    aria-label="Learn More about Devil Fruits"
+                    aria-label="Join Us button to signup or login"
+                    data-auth-toggle
                   >
-                    Learn More
+                    Join us
                   </button>
                 </div>
               </div>
@@ -407,27 +412,28 @@ export default class extends AbstractView {
               </p>
               <div class="cta__buttons">
                 <a
-                  href="#products"
+                  href="#/products"
                   class="cta__button cta__button--primary"
                   role="button"
-                  aria-label="Start Shopping for Devil Fruits"
+                  aria-label="Explore Fruits for Devil Fruits"
+                  data-link
                 >
-                  Start Shopping
+                  Explore Fruits
                   <div class="cta__particles" aria-hidden="true">
                     <span class="cta__particle"></span>
                     <span class="cta__particle"></span>
                     <span class="cta__particle"></span>
                   </div>
                 </a>
-                <a
-                  href="#login"
+                <button
                   class="cta__button cta__button--secondary"
                   role="button"
                   aria-label="Join DFCO Community"
+                  data-auth-toggle
                 >
                   Join Us
                   <div class="cta__glow" aria-hidden="true"></div>
-                </a>
+                </button>
               </div>
             </div>
             <div class="cta__background" aria-hidden="true">

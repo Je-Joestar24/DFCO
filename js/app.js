@@ -1,4 +1,5 @@
 import { Router } from './util/router.js';
+import AbstractModal from './views/componenets/AbstractModal.js';
 
 const router = new Router('#app__display');
 
@@ -15,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    const test = new AbstractModal({modal: "auth-modal", toggledata: 'data-auth-toggle', activeclass: "auth-modal--active", beforeclose: function () {setTimeout(()=> {alert()}, 900)}});
+    
     // Initial route
     router.route();
 });
