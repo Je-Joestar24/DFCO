@@ -185,6 +185,7 @@ export default class extends AbstractView {
                     role="button"
                     aria-label="Join Us button to signup or login"
                     data-auth-toggle
+                    data-change-auth-active="signup"
                   >
                     Join us
                   </button>
@@ -430,6 +431,7 @@ export default class extends AbstractView {
                   role="button"
                   aria-label="Join DFCO Community"
                   data-auth-toggle
+                  data-change-auth-active="signup"
                 >
                   Join Us
                   <div class="cta__glow" aria-hidden="true"></div>

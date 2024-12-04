@@ -9,6 +9,7 @@ export default class extends AbstractModal {
     async init(){
         this.modal.innerHTML = await this.getContent()
         await this.bindButtons();
+        await this.bindChangeActive();
     }
 
     async getContent(){
@@ -91,7 +92,7 @@ export default class extends AbstractModal {
 
             <div class="auth-modal__login-link">
                 Already have an account?
-                <a href="#" class="auth-modal__link" aria-label="Switch to login">Login</a>
+                <a data-change-auth-active="login" href="#" class="auth-modal__link" aria-label="Switch to login">Login</a>
             </div>
         </div>
         `;
@@ -101,7 +102,7 @@ export default class extends AbstractModal {
         return `
         <div
         id="login-contents"
-        class="auth-modal__login auth-modal__content--active"
+        class="auth-modal__login"
         aria-label="Login conents">
             <button
             class="auth-modal__close"
@@ -158,7 +159,7 @@ export default class extends AbstractModal {
 
             <div class="auth-modal__signup-link">
             Don't have an account?
-            <a href="#" class="auth-modal__link" aria-label="Switch to signup">
+            <a href="#" data-change-auth-active="signup" class="auth-modal__link" aria-label="Switch to signup">
                 Sign Up
             </a>
             </div>
@@ -166,9 +167,25 @@ export default class extends AbstractModal {
         `;
     }
 
-    changeActive(){
+    bindChangeActive(){
+        document.body.addEventListener('click', (e) => {
+            if (e.target.matches(`[data-change-auth-active]`)) {
+                e.preventDefault();
+                const authActiveValue = e.target.getAttribute('data-change-auth-active');
+                this.changeActive(authActiveValue);
+            }
+        });
 
     }
+
+    changeActive(active) {
+        // Remove the active class from both login and signup contents
+        document.getElementById('login-contents').classList.remove('auth-modal__content--active');
+        document.getElementById('signup-contents').classList.remove('auth-modal__content--active');
+    
+        // Add the active class to the selected content
+        document.getElementById(`${active}-contents`).classList.add('auth-modal__content--active');
+    }    
 
     open() {
         this.modal.classList.add(this.activeclass);
