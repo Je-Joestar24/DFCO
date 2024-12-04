@@ -108,10 +108,17 @@
 
 
 .auth-modal .auth-modal__content--active {
-    transform: translateY(0);
     opacity: 1;
     display: block;
 }
+
+.auth-modal.auth-modal--active .auth-modal__content--active{
+    transform: translateY(0);
+}
+
+.no-scroll {
+    overflow: hidden;
+  }
 
 /* Animations */
 @keyframes ballRotate {

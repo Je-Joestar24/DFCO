@@ -75,9 +75,6 @@ li {
   list-style: none;
 }
 
-.no-scroll {
-  overflow: hidden !important;
-}
 
 button {
   border: none;

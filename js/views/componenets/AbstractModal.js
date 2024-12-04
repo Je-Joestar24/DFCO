@@ -56,7 +56,6 @@ export default class AbstractModal {
      */
     close() {
         this.modal.classList.remove(this.activeclass);
-        document.body.classList.remove("no-scroll");
     }
 
     /**
@@ -64,6 +63,5 @@ export default class AbstractModal {
      */
     open() {
         this.modal.classList.add(this.activeclass);
-        document.body.classList.add("no-scroll");
     }
 }
