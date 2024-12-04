@@ -43,8 +43,8 @@ export default class extends AbstractView {
             price: '₿ 5,500,000',
         },
         {
-            image: 'images/devil-fruits/pica-pica.png',
-            name: 'Pica Pica no Mi',
+            image: 'images/devil-fruits/pika-pika.png',
+            name: 'Pika Pika no Mi',
             price: '₿ 4,800,000',
         }
     ];

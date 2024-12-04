@@ -1,7 +1,7 @@
 /* Import product-related stylesheets */
 @import "./products/productcards.css";      /* Styles for individual product cards */
 @import "./products/filters.css";           /* Product filtering and sorting styles */
-@import './products/cardseffects.css';      /* Animations and effects for product cards */
+@import './products/productcardseffects.css';      /* Animations and effects for product cards */
 @import './products/topcardseffects.css';   /* Effects for featured product cards */
 @import './products/topcards.css';          /* Styles for featured product cards */
 @import './products/texts.css';             /* Typography styles for product section */

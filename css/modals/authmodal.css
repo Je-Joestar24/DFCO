@@ -110,6 +110,7 @@
 .auth-modal .auth-modal__content--active {
     opacity: 1;
     display: block;
+    animation: pulse 1s ease-in-out;
 }
 
 .auth-modal.auth-modal--active .auth-modal__content--active{

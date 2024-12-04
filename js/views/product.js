@@ -1,12 +1,112 @@
 import AbstractView from './AbstractView.js';
 
 export default class extends AbstractView {
+    topPicks = [
+        {
+            name: 'Gura Gura no Mi',
+            image: './images/devil-fruits/gura-gura.png'
+        }
+    ];
+
+    fruits = [
+        {
+            "id": 1,
+            "name": "Gur Gura no Mi",
+            "image1": "./images/devil-fruits/gura-gura.png",
+            "image2": "./images/characters/whitebeard.jpg",
+            "price": "₿ 5,000,000",
+            "sold": "1,234",
+            "type": "Paramecia"
+        },
+        {
+            "id": 2,
+            "name": "Mera Mera no Mi",
+            "image1": "./images/devil-fruits/mera-mera.png",
+            "image2": "./images/characters/ace.jpg",
+            "price": "₿ 5,500,000",
+            "sold": "834",
+            "type": "Logia"
+        },
+        {
+            "id": 4,
+            "name": "Hie Hie no Mi",
+            "image1": "./images/devil-fruits/hie-hie.png",
+            "image2": "./images/characters/ao-kiji.jpg",
+            "price": "₿ 4,500,000",
+            "sold": "720",
+            "type": "Logia"
+        },
+        {
+            "id": 5,
+            "name": "Tori Tori no Mi, Model: Phoenix",
+            "image1": "./images/devil-fruits/tori-tori.png",
+            "image2": "./images/characters/marco.jpg",
+            "price": "₿ 4,900,000",
+            "sold": "732",
+            "type": "Mythical Zoan"
+        },
+        {
+            "id": 6,
+            "name": "Ope Ope no Mi",
+            "image1": "./images/devil-fruits/ope-ope.png",
+            "image2": "./images/characters/law.jpg",
+            "price": "₿ 4,800,000",
+            "sold": "734",
+            "type": "Paramecia"
+        },
+        {
+            "id": 7,
+            "name": "Magu Magu no Mi",
+            "image1": "./images/devil-fruits/magu-magu.png",
+            "image2": "./images/characters/akainu.jpg",
+            "price": "₿ 4,700,000",
+            "sold": "734",
+            "type": "Logia"
+        },
+        {
+            "id": 8,
+            "name": "Yami Yami no Mi",
+            "image1": "./images/devil-fruits/yami-yami.png",
+            "image2": "./images/characters/blackbeard.jpg",
+            "price": "₿ 5,200,000",
+            "sold": "800",
+            "type": "Logia"
+        },
+        {
+            "id": 9,
+            "name": "Goro Goro no Mi",
+            "image1": "./images/devil-fruits/goro-goro.png",
+            "image2": "./images/characters/eneru.jpg",
+            "price": "₿ 4,600,000",
+            "sold": "740",
+            "type": "Logia"
+        },
+        {
+            "id": 10,
+            "name": "Zushi Zushi no Mi",
+            "image1": "./images/devil-fruits/zushi-zushi.png",
+            "image2": "./images/characters/fujitora.jpg",
+            "price": "₿ 4,800,000",
+            "sold": "734",
+            "type": "Paramecia"
+        },
+        {
+            "id": 11,
+            "name": "Pika Pika no Mi",
+            "image1": "./images/devil-fruits/pika-pika.png",
+            "image2": "./images/characters/kizaru.jpg",
+            "price": "₿ 5,100,000",
+            "sold": "833",
+            "type": "Logia"
+        }
+    ]
+
     constructor() {
         super();
         this.setTitle('DFCO | Products');
     }
 
-    async getHtml(){
+    async getHtml() {
         return `
         <section class="app__products" aria-label="All products display area">
             <div class="app__products-container">
@@ -35,7 +135,7 @@ export default class extends AbstractView {
         `;
     }
 
-    async getFilter(){
+    async getFilter() {
         return `
         <div class="products__filter-bar">
             <div class="products__search">
@@ -54,7 +154,7 @@ export default class extends AbstractView {
         `;
     }
 
-    async getTopProducts(){
+    async getTopProducts() {
         return `
         <div class="products__top-picks">
             <div class="products__picks-list">
@@ -70,7 +170,7 @@ export default class extends AbstractView {
         `;
     }
 
-    async getFeaturedProduct(){
+    async getFeaturedProduct() {
         return `
         <!-- Featured Product -->
         <div class="products__featured">
@@ -83,10 +183,6 @@ export default class extends AbstractView {
                         <div class="products__stat-label">Sold</div>
                     </div>
                     <div class="products__stat">
-                        <div class="products__stat-number">89%</div>
-                        <div class="products__stat-label">Mastery Rate</div>
-                    </div>
-                    <div class="products__stat">
                         <div class="products__stat-number">5</div>
                         <div class="products__stat-label">In Stock</div>
                     </div>
@@ -97,22 +193,23 @@ export default class extends AbstractView {
         `;
     }
 
-    async getAllProducts(){
+    async getAllProducts() {
         return `
         <div class="products__grid">
             <!-- Product Card -->
+            ${this.fruits.map( fruit =>`
             <article class="products__card">
                 <div class="products__image-wrapper">
-                    <img src="./images/devil-fruits/gura-gura.png" alt="Gura Gura no Mi" class="products__image products__image-primary">
-                    <img src="./images/characters/whitebeard.jpg" alt="Gura Gura no Mi" class="products__image products__image-secondary">
-                    <span class="products__tag">Paramecia</span>
+                    <img src="${fruit.image1}" class="products__image products__image-primary">
+                    <img src="${fruit.image2}" alt="${fruit.name}" class="products__image products__image-secondary">
+                    <span class="products__tag">${fruit.type}</span>
                 </div>
                 <div class="products__info">
-                    <h3 class="products__name">Gura Gura no Mi</h3>
-                    <p class="products__price">₿ 5,000,000</p>
+                    <h3 class="products__name">${fruit.name}</h3>
+                    <p class="products__price">${fruit.price}</p>
                     <button class="products__add-btn">Add to Cart</button>
                 </div>
-            </article>
+            </article>`).join('')}
             <!-- Repeat for other products -->
         </div>
         `;
