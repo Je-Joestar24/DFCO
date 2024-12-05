@@ -68,7 +68,7 @@ export default class ProductView extends AbstractView {
         </section>
         `;
     }
-
+    
     async getSort(){
         return `
         <div class="products__sorting">
@@ -84,6 +84,20 @@ export default class ProductView extends AbstractView {
                     <option value="">Sort by Stock</option>
                     <option value="stock-high">Highest Stock</option>
                     <option value="stock-low">Lowest Stock</option>
+                </select>
+            </div>
+            <div class="products__sort-wrapper">
+                <select class="products__sort-select" aria-label="Sort by name">
+                    <option value="">Sort by Name</option>
+                    <option value="name-asc">A to Z</option>
+                    <option value="name-desc">Z to A</option>
+                </select>
+            </div>
+            <div class="products__sort-wrapper">
+                <select class="products__sort-select" aria-label="Sort by price">
+                    <option value="">Sort by Price</option>
+                    <option value="price-low">Lowest Price</option>
+                    <option value="price-high">Highest Price</option>
                 </select>
             </div>
         </div>
