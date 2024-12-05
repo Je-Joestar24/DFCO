@@ -1,0 +1,25 @@
+{
+  "id": 4,
+  "name": "Hie Hie no Mi",
+  "alias": "Ice-Ice Fruit",
+  "currentUser": "Kuzan (Aokiji)",
+  "description": "The Hie Hie no Mi is a Logia-type Devil Fruit that allows the user to create, control, and transform into ice at will.",
+  "abilities": [
+    "Ice Manipulation",
+    "Cold Body Transformation",
+    "Temperature Reduction",
+    "Ice-Based Attacks"
+  ],
+  "weaknesses": [
+    "Standard Devil Fruit weaknesses (cannot swim)",
+    "Vulnerable to heat and fire"
+  ],
+  "awakening": "Unknown",
+  "history": "This fruit is currently used by former Marine Admiral Kuzan, also known as Aokiji.",
+  "type": "Logia",
+  "specifications": {
+    "power": "A",
+    "range": "Long",
+    "durability": "A+"
+  }
+} 

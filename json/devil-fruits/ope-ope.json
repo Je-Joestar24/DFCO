@@ -1,0 +1,25 @@
+{
+  "id": 6,
+  "name": "Ope Ope no Mi",
+  "alias": "Op-Op Fruit",
+  "currentUser": "Trafalgar D. Water Law",
+  "description": "The Ope Ope no Mi is a Paramecia-type Devil Fruit that allows the user to create a spherical space or 'room' where they can manipulate the orientation, movements, and physical configuration of objects and people.",
+  "abilities": [
+    "Room Creation",
+    "Spatial Manipulation",
+    "Surgical Precision",
+    "Immortality Surgery (at the cost of the user's life)"
+  ],
+  "weaknesses": [
+    "Standard Devil Fruit weaknesses (cannot swim)",
+    "Requires stamina to maintain 'room'"
+  ],
+  "awakening": "Unknown",
+  "history": "This fruit is currently used by Trafalgar D. Water Law, a member of the Worst Generation.",
+  "type": "Paramecia",
+  "specifications": {
+    "power": "S",
+    "range": "Variable",
+    "durability": "A"
+  }
+} 

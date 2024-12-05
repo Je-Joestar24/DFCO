@@ -1,0 +1,25 @@
+{
+  "id": 8,
+  "name": "Yami Yami no Mi",
+  "alias": "Dark-Dark Fruit",
+  "currentUser": "Marshall D. Teach (Blackbeard)",
+  "description": "The Yami Yami no Mi is a Logia-type Devil Fruit that allows the user to create and control darkness, as well as the unique ability to nullify the powers of other Devil Fruit users.",
+  "abilities": [
+    "Darkness Manipulation",
+    "Gravity Control",
+    "Power Nullification",
+    "Black Hole Creation"
+  ],
+  "weaknesses": [
+    "Standard Devil Fruit weaknesses (cannot swim)",
+    "Cannot become intangible like other Logia users"
+  ],
+  "awakening": "Unknown",
+  "history": "This fruit is currently used by Marshall D. Teach, also known as Blackbeard.",
+  "type": "Logia",
+  "specifications": {
+    "power": "S+",
+    "range": "Medium",
+    "durability": "A"
+  }
+} 

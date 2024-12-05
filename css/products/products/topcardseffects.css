@@ -5,3 +5,17 @@
 .products__pick-item:hover  .products__pick-circle{
     transform: scale(1.1);
 }
+.products__picked-item--active {
+    transform: scale(1.2);
+    margin: auto 1em;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.products__picked-item--active .products__pick-circle {
+    animation: pulse 1.5s infinite ease-in-out;
+    outline: var(--mythical) 0.2em solid;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: background-color 0.3s ease;
+}

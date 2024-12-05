@@ -1,0 +1,25 @@
+{
+  "id": 7,
+  "name": "Magu Magu no Mi",
+  "alias": "Magma-Magma Fruit",
+  "currentUser": "Sakazuki (Akainu)",
+  "description": "The Magu Magu no Mi is a Logia-type Devil Fruit that allows the user to create, control, and transform into magma at will.",
+  "abilities": [
+    "Magma Manipulation",
+    "Lava Body Transformation",
+    "Extreme Heat Generation",
+    "Magma-Based Attacks"
+  ],
+  "weaknesses": [
+    "Standard Devil Fruit weaknesses (cannot swim)",
+    "Vulnerable to water and sea-prism stone"
+  ],
+  "awakening": "Unknown",
+  "history": "This fruit is currently used by Fleet Admiral Sakazuki, also known as Akainu.",
+  "type": "Logia",
+  "specifications": {
+    "power": "S+",
+    "range": "Long",
+    "durability": "S"
+  }
+} 

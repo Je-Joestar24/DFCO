@@ -1,0 +1,25 @@
+{
+  "id": 2,
+  "name": "Mera Mera no Mi",
+  "alias": "Flame-Flame Fruit",
+  "currentUser": "None (Previously Portgas D. Ace/Sabo)",
+  "description": "The Mera Mera no Mi is a Logia-type Devil Fruit that grants the user the ability to create, control, and transform into fire at will.",
+  "abilities": [
+    "Fire Manipulation",
+    "Flame Body Transformation",
+    "Heat Generation",
+    "Fire-Based Attacks"
+  ],
+  "weaknesses": [
+    "Standard Devil Fruit weaknesses (cannot swim)",
+    "Vulnerable to water and sea-prism stone"
+  ],
+  "awakening": "Unknown",
+  "history": "This fruit was first used by Portgas D. Ace and later consumed by Sabo after Ace's death.",
+  "type": "Logia",
+  "specifications": {
+    "power": "A+",
+    "range": "Medium",
+    "durability": "A"
+  }
+} 

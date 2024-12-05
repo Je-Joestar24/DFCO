@@ -1,0 +1,26 @@
+{
+  "id": 1,
+  "name": "Gura Gura no Mi",
+  "alias": "Tremor-Tremor Fruit",
+  "currentUser": "None (Previously Edward Newgate/Marshall D. Teach)",
+  "description": "The Gura Gura no Mi is one of the most powerful Paramecia-type Devil Fruits, allowing the user to create powerful shockwaves and vibrations, earning it the reputation as the fruit that can 'destroy the world'.",
+  "abilities": [
+    "Earthquake Generation",
+    "Shockwave Creation",
+    "Air Vibration Manipulation",
+    "Tsunami Generation"
+  ],
+  "weaknesses": [
+    "Standard Devil Fruit weaknesses (cannot swim)",
+    "Requires significant physical strength to use effectively",
+    "Limited range in close combat"
+  ],
+  "awakening": "Unknown",
+  "history": "This fruit was first used by Edward Newgate (Whitebeard), who was considered the strongest man in the world. After his death, it was stolen by Marshall D. Teach (Blackbeard).",
+  "type": "Paramecia",
+  "specifications": {
+    "power": "S+",
+    "range": "Long",
+    "durability": "S+"
+  }
+} 

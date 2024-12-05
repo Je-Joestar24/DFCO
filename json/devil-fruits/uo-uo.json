@@ -1,0 +1,25 @@
+{
+  "id": 12,
+  "name": "Uo Uo no Mi",
+  "alias": "Fish-Fish Fruit, Model: Azure Dragon",
+  "currentUser": "Kaido",
+  "description": "The Uo Uo no Mi, Model: Azure Dragon is a Mythical Zoan-type Devil Fruit that allows the user to transform into an Azure Dragon, granting immense power and the ability to fly.",
+  "abilities": [
+    "Dragon Transformation",
+    "Flight",
+    "Elemental Breath Attacks",
+    "Enhanced Strength"
+  ],
+  "weaknesses": [
+    "Standard Devil Fruit weaknesses (cannot swim)",
+    "Large size can be a disadvantage in confined spaces"
+  ],
+  "awakening": "Unknown",
+  "history": "This fruit is currently used by Kaido, one of the Four Emperors.",
+  "type": "Mythical Zoan",
+  "specifications": {
+    "power": "S+",
+    "range": "Long",
+    "durability": "S+"
+  }
+} 

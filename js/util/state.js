@@ -61,6 +61,23 @@ const actions = {
         if (savedUser) state.user = JSON.parse(savedUser);
         if (savedCart) state.cart = JSON.parse(savedCart);
     },
+    fetchDevilFruitDetails: async (fruitId) => {
+        try {
+            const fruit = state.products.find(item => item.id === fruitId);
+            if (!fruit) {
+                throw new Error('Fruit not found');
+            }
+            const response = await fetch(`../../json/devil-fruits/${fruit.json}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch devil fruit details');
+            }
+            const fruitDetails = await response.json();
+            return fruitDetails;
+        } catch (error) {
+            console.error('Error fetching devil fruit details:', error);
+            return null;
+        }
+    }
 };
 
 // Initialize State on Load

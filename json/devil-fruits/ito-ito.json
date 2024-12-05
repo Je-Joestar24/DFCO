@@ -1,0 +1,25 @@
+{
+  "id": 10,
+  "name": "Ito Ito no Mi",
+  "alias": "String-String Fruit",
+  "currentUser": "Donquixote Doflamingo",
+  "description": "The Ito Ito no Mi is a Paramecia-type Devil Fruit that allows the user to create and manipulate strings, which can be used for a variety of purposes including controlling others like puppets.",
+  "abilities": [
+    "String Creation",
+    "Puppet Control",
+    "Sky Walk",
+    "Birdcage Technique"
+  ],
+  "weaknesses": [
+    "Standard Devil Fruit weaknesses (cannot swim)",
+    "Strings can be cut by strong enough forces"
+  ],
+  "awakening": "Allows the user to turn the environment into strings",
+  "history": "This fruit is currently used by Donquixote Doflamingo, a former Warlord of the Sea.",
+  "type": "Paramecia",
+  "specifications": {
+    "power": "A+",
+    "range": "Long",
+    "durability": "A"
+  }
+} 

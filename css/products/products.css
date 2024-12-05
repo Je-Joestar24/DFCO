@@ -4,6 +4,7 @@
 @import './products/productcardseffects.css';      /* Animations and effects for product cards */
 @import './products/topcardseffects.css';   /* Effects for featured product cards */
 @import './products/topcards.css';          /* Styles for featured product cards */
+@import './products/featurecards.css';
 @import './products/texts.css';             /* Typography styles for product section */
 @import 'animations.css';                   /* Animations for products section */
 

@@ -122,7 +122,7 @@ export default class ProductView extends AbstractView {
         <div id="top-products" class="products__top-picks" aria-label="Top picked products">
             <div class="products__picks-list">
                 ${this.topPicks.map(fruit => `
-                <div class="products__pick-item" data-fruit-id="${fruit.id}" aria-label="${fruit.name} top pick">
+                <div class="products__pick-item ${fruit.id == 1 ? 'products__picked-item--active': ''}" data-fruit-id="${fruit.id}" aria-label="${fruit.name} top pick">
                     <div class="products__pick-circle">
                         <img src="${fruit.image1}" alt="${fruit.name} top pick image" class="products__pick-image">
                     </div>

@@ -62,16 +62,21 @@ export default class ProductHelper extends ProductView {
             container.innerHTML = await this.getTopProducts();
 
             // Add event listeners to each pick item
-            container.querySelectorAll('.products__pick-item').forEach(item => {
+            const click_handlers = container.querySelectorAll('.products__pick-item');
+            click_handlers.forEach(item => {
                 item.addEventListener('click', (event) => {
+
                     const fruitId = parseInt(item.getAttribute('data-fruit-id'), 10);
-                    this.handlePickClick(fruitId);
+                    this.handlePickClick(fruitId, item, click_handlers); // Pass the item to handlePickClick
                 });
             });
         }
     }
 
-    handlePickClick(fruitId) {
+    handlePickClick(fruitId, clickedItem, click_handlers) {
+        click_handlers.forEach(item => {
+            item.classList.remove('products__picked-item--active');
+        });
         // Find the selected fruit from topPicks
         const selectedFruit = this.topPicks.find(fruit => fruit.id === fruitId);
         if (selectedFruit) {
@@ -79,9 +84,12 @@ export default class ProductHelper extends ProductView {
             if (this.feature && this.feature.id === selectedFruit.id) {
                 // If clicked twice, clear the featured product
                 this.setFeaturedProduct(null);
+                clickedItem.classList.remove('products__picked-item--active'); // Remove active class
             } else {
                 // Set the feature data and update the featured product display
                 this.setFeaturedProduct(selectedFruit);
+                // Add active class to the clicked item
+                clickedItem.classList.add('products__picked-item--active');
             }
         }
     }
@@ -93,7 +101,7 @@ export default class ProductHelper extends ProductView {
             if (this.feature) {
                 featureContainer.style.display = 'grid';
                 featureContainer.innerHTML = await this.getFeaturedProduct();
-            } else{
+            } else {
                 featureContainer.style.display = 'none';
             }
         }

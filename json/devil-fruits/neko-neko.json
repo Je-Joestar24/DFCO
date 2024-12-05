@@ -1,0 +1,25 @@
+{
+  "id": 14,
+  "name": "Neko Neko no Mi",
+  "alias": "Cat-Cat Fruit, Model: Leopard",
+  "currentUser": "Rob Lucci",
+  "description": "The Neko Neko no Mi, Model: Leopard is a Zoan-type Devil Fruit that allows the user to transform into a leopard, granting them enhanced physical abilities.",
+  "abilities": [
+    "Leopard Transformation",
+    "Enhanced Strength",
+    "Enhanced Speed",
+    "Stealth"
+  ],
+  "weaknesses": [
+    "Standard Devil Fruit weaknesses (cannot swim)",
+    "Limited range in human form"
+  ],
+  "awakening": "Unknown",
+  "history": "This fruit is currently used by Rob Lucci, a member of CP0.",
+  "type": "Zoan",
+  "specifications": {
+    "power": "A",
+    "range": "Short",
+    "durability": "A"
+  }
+} 

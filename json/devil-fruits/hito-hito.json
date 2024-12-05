@@ -1,0 +1,25 @@
+{
+  "id": 13,
+  "name": "Hito Hito no Mi",
+  "alias": "Human-Human Fruit, Model: Nika",
+  "currentUser": "Monkey D. Luffy",
+  "description": "The Hito Hito no Mi, Model: Nika is a Mythical Zoan-type Devil Fruit that allows the user to transform into the legendary 'Sun God' Nika, granting them immense power and freedom.",
+  "abilities": [
+    "Nika Transformation",
+    "Enhanced Strength",
+    "Rubber Body",
+    "Freedom of Movement"
+  ],
+  "weaknesses": [
+    "Standard Devil Fruit weaknesses (cannot swim)",
+    "Requires stamina to maintain transformation"
+  ],
+  "awakening": "Unknown",
+  "history": "This fruit is currently used by Monkey D. Luffy, the captain of the Straw Hat Pirates.",
+  "type": "Mythical Zoan",
+  "specifications": {
+    "power": "S+",
+    "range": "Variable",
+    "durability": "S"
+  }
+} 

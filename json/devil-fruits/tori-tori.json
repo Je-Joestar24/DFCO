@@ -1,0 +1,25 @@
+{
+  "id": 5,
+  "name": "Tori Tori no Mi",
+  "alias": "Bird-Bird Fruit, Model: Phoenix",
+  "currentUser": "Marco",
+  "description": "The Tori Tori no Mi, Model: Phoenix is a Mythical Zoan-type Devil Fruit that allows the user to transform into a phoenix, granting them the ability to regenerate from injuries.",
+  "abilities": [
+    "Phoenix Transformation",
+    "Regeneration",
+    "Flight",
+    "Blue Flames"
+  ],
+  "weaknesses": [
+    "Standard Devil Fruit weaknesses (cannot swim)",
+    "Regeneration consumes stamina"
+  ],
+  "awakening": "Unknown",
+  "history": "This fruit is currently used by Marco, the former first division commander of the Whitebeard Pirates.",
+  "type": "Mythical Zoan",
+  "specifications": {
+    "power": "S",
+    "range": "Short",
+    "durability": "S+"
+  }
+} 

@@ -1,0 +1,25 @@
+{
+  "id": 11,
+  "name": "Pika Pika no Mi",
+  "alias": "Glint-Glint Fruit",
+  "currentUser": "Borsalino (Kizaru)",
+  "description": "The Pika Pika no Mi is a Logia-type Devil Fruit that allows the user to create, control, and transform into light at will, granting them the ability to move at the speed of light.",
+  "abilities": [
+    "Light Manipulation",
+    "Light Speed Movement",
+    "Laser Attacks",
+    "Reflection"
+  ],
+  "weaknesses": [
+    "Standard Devil Fruit weaknesses (cannot swim)",
+    "Requires reflective surfaces for optimal movement"
+  ],
+  "awakening": "Unknown",
+  "history": "This fruit is currently used by Marine Admiral Borsalino, also known as Kizaru.",
+  "type": "Logia",
+  "specifications": {
+    "power": "S",
+    "range": "Long",
+    "durability": "A"
+  }
+} 
