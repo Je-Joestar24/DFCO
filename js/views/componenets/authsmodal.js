@@ -167,6 +167,7 @@ export default class extends AbstractModal {
         `;
     }
 
+
     bindChangeActive(){
         document.body.addEventListener('click', (e) => {
             if (e.target.matches(`[data-change-auth-active]`)) {
@@ -175,9 +176,13 @@ export default class extends AbstractModal {
                 this.changeActive(authActiveValue);
             }
         });
-
     }
 
+    /**
+     * change active - use to change the active contents(signup/login)
+     * @param {string} active 
+     * 
+     */
     changeActive(active) {
         // Remove the active class from both login and signup contents
         document.getElementById('login-contents').classList.remove('auth-modal__content--active');
@@ -187,6 +192,11 @@ export default class extends AbstractModal {
         document.getElementById(`${active}-contents`).classList.add('auth-modal__content--active');
     }    
 
+    /**
+     * open and close overrideing the parent
+     * @override
+     * 
+     */
     open() {
         this.modal.classList.add(this.activeclass);
         document.body.classList.add("no-scroll");

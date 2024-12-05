@@ -1,112 +1,27 @@
 import AbstractView from './AbstractView.js';
 
 export default class extends AbstractView {
-    topPicks = [
-        {
-            name: 'Gura Gura no Mi',
-            image: './images/devil-fruits/gura-gura.png'
-        }
-    ];
-
-    fruits = [
-        {
-            "id": 1,
-            "name": "Gur Gura no Mi",
-            "image1": "./images/devil-fruits/gura-gura.png",
-            "image2": "./images/characters/whitebeard.jpg",
-            "price": "₿ 5,000,000",
-            "sold": "1,234",
-            "type": "Paramecia"
-        },
-        {
-            "id": 2,
-            "name": "Mera Mera no Mi",
-            "image1": "./images/devil-fruits/mera-mera.png",
-            "image2": "./images/characters/ace.jpg",
-            "price": "₿ 5,500,000",
-            "sold": "834",
-            "type": "Logia"
-        },
-        {
-            "id": 4,
-            "name": "Hie Hie no Mi",
-            "image1": "./images/devil-fruits/hie-hie.png",
-            "image2": "./images/characters/ao-kiji.jpg",
-            "price": "₿ 4,500,000",
-            "sold": "720",
-            "type": "Logia"
-        },
-        {
-            "id": 5,
-            "name": "Tori Tori no Mi, Model: Phoenix",
-            "image1": "./images/devil-fruits/tori-tori.png",
-            "image2": "./images/characters/marco.jpg",
-            "price": "₿ 4,900,000",
-            "sold": "732",
-            "type": "Mythical Zoan"
-        },
-        {
-            "id": 6,
-            "name": "Ope Ope no Mi",
-            "image1": "./images/devil-fruits/ope-ope.png",
-            "image2": "./images/characters/law.jpg",
-            "price": "₿ 4,800,000",
-            "sold": "734",
-            "type": "Paramecia"
-        },
-        {
-            "id": 7,
-            "name": "Magu Magu no Mi",
-            "image1": "./images/devil-fruits/magu-magu.png",
-            "image2": "./images/characters/akainu.jpg",
-            "price": "₿ 4,700,000",
-            "sold": "734",
-            "type": "Logia"
-        },
-        {
-            "id": 8,
-            "name": "Yami Yami no Mi",
-            "image1": "./images/devil-fruits/yami-yami.png",
-            "image2": "./images/characters/blackbeard.jpg",
-            "price": "₿ 5,200,000",
-            "sold": "800",
-            "type": "Logia"
-        },
-        {
-            "id": 9,
-            "name": "Goro Goro no Mi",
-            "image1": "./images/devil-fruits/goro-goro.png",
-            "image2": "./images/characters/eneru.jpg",
-            "price": "₿ 4,600,000",
-            "sold": "740",
-            "type": "Logia"
-        },
-        {
-            "id": 10,
-            "name": "Zushi Zushi no Mi",
-            "image1": "./images/devil-fruits/zushi-zushi.png",
-            "image2": "./images/characters/fujitora.jpg",
-            "price": "₿ 4,800,000",
-            "sold": "734",
-            "type": "Paramecia"
-        },
-        {
-            "id": 11,
-            "name": "Pika Pika no Mi",
-            "image1": "./images/devil-fruits/pika-pika.png",
-            "image2": "./images/characters/kizaru.jpg",
-            "price": "₿ 5,100,000",
-            "sold": "833",
-            "type": "Logia"
-        }
-    ]
+    topPicks = [];
+    fruits = [];
+    feature = {};
 
     constructor() {
         super();
-        this.setTitle('DFCO | Products');
+    }
+
+    async init(){
+        try{
+            const response= await fetch('../../json/devilfruits.json');
+            this.fruits = await response.json();
+            this.topPicks = await this.getTopSoldFruits();
+            this.feature = this.topPicks[0];
+        }catch(e){
+            console.error('Failed to initialize:', e); 
+        }
     }
 
     async getHtml() {
+        await this.init();
         return `
         <section class="app__products" aria-label="All products display area">
             <div class="app__products-container">
@@ -124,9 +39,10 @@ export default class extends AbstractView {
 
                 <div class="products__section-divider"></div>
                 <!-- Featured Product -->
-                ${await this.getFeaturedProduct()}
-
-                <div class="products__section-divider"></div>
+                <div class="products__featured">
+                    ${await this.getFeaturedProduct()}
+                </div>
+                <div id="feature" class="products__section-divider"></div>
                 <!-- Product Grid -->
                 ${await this.getAllProducts()}
                 <div class="products__section-divider"></div>
@@ -158,12 +74,13 @@ export default class extends AbstractView {
         return `
         <div class="products__top-picks">
             <div class="products__picks-list">
+                ${this.topPicks.map( fruit => `
                 <div class="products__pick-item">
                     <div class="products__pick-circle">
-                        <img src="./images/devil-fruits/gura-gura.png" alt="Gura Gura no Mi" class="products__pick-image">
+                        <img src="${fruit.image1}" alt="${fruit.name}" class="products__pick-image">
                     </div>
-                    <span class="products__pick-name">Gura Gura</span>
-                </div>
+                    <span class="products__pick-name">${(fruit.name).split(' no ')[0]}</span>
+                </div>`).join("")}
                 <!-- Add more pick items as needed -->
             </div>
         </div>
@@ -173,23 +90,21 @@ export default class extends AbstractView {
     async getFeaturedProduct() {
         return `
         <!-- Featured Product -->
-        <div class="products__featured">
-            <img src="./images/devil-fruits/gura-gura.png" alt="Gura Gura no Mi" class="products__featured-image">
+            <img src="./images/devil-fruits/gura-gura.png" alt="${this.feature.name}" class="products__featured-image">
             <div class="products__featured-content">
-                <h2 class="products__featured-title">Gura Gura no Mi</h2>
+                <h2 class="products__featured-title">${this.feature.name}</h2>
                 <div class="products__featured-stats">
                     <div class="products__stat">
-                        <div class="products__stat-number">1,234</div>
+                        <div class="products__stat-number">${this.feature.sold}</div>
                         <div class="products__stat-label">Sold</div>
                     </div>
                     <div class="products__stat">
-                        <div class="products__stat-number">5</div>
+                        <div class="products__stat-number">${this.feature.stock}</div>
                         <div class="products__stat-label">In Stock</div>
                     </div>
                 </div>
                 <button class="products__add-btn">Add to Cart</button>
             </div>
-        </div>
         `;
     }
 
@@ -197,7 +112,7 @@ export default class extends AbstractView {
         return `
         <div class="products__grid">
             <!-- Product Card -->
-            ${this.fruits.map( fruit =>`
+            ${this.fruits.map(fruit => `
             <article class="products__card">
                 <div class="products__image-wrapper">
                     <img src="${fruit.image1}" class="products__image products__image-primary">
@@ -213,5 +128,14 @@ export default class extends AbstractView {
             <!-- Repeat for other products -->
         </div>
         `;
+    }
+
+    /**
+     * 
+     */
+    getTopSoldFruits() {
+        const sortedFruits = this.fruits.sort((a, b) => parseInt(b.sold.replace(',', '')) - parseInt(a.sold.replace(',', '')));
+        // Select the top 5 fruits
+        return sortedFruits.slice(0, 5);
     }
 }

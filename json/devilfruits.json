@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "name": "Gura Gura no Mi",
+        "image1": "./images/devil-fruits/gura-gura.png",
+        "image2": "./images/characters/whitebeard.jpg",
+        "price": "₿ 5,000,000",
+        "sold": "1,234",
+        "type": "Paramecia",
+        "stock": 42
+    },
+    {
+        "id": 2,
+        "name": "Mera Mera no Mi",
+        "image1": "./images/devil-fruits/mera-mera.png",
+        "image2": "./images/characters/ace.jpg",
+        "price": "₿ 5,500,000",
+        "sold": "834",
+        "type": "Logia",
+        "stock": 77
+    },
+    {
+        "id": 4,
+        "name": "Hie Hie no Mi",
+        "image1": "./images/devil-fruits/hie-hie.png",
+        "image2": "./images/characters/aokiji.jpg",
+        "price": "₿ 4,500,000",
+        "sold": "720",
+        "type": "Logia",
+        "stock": 65
+    },
+    {
+        "id": 5,
+        "name": "Tori Tori no Mi",
+        "image1": "./images/devil-fruits/tori-tori.png",
+        "image2": "./images/characters/marco.jpg",
+        "price": "₿ 4,900,000",
+        "sold": "732",
+        "type": "Mythical Zoan",
+        "stock": 34
+    },
+    {
+        "id": 6,
+        "name": "Ope Ope no Mi",
+        "image1": "./images/devil-fruits/ope-ope.png",
+        "image2": "./images/characters/law.jpg",
+        "price": "₿ 4,800,000",
+        "sold": "734",
+        "type": "Paramecia",
+        "stock": 89
+    },
+    {
+        "id": 7,
+        "name": "Magu Magu no Mi",
+        "image1": "./images/devil-fruits/magu-magu.png",
+        "image2": "./images/characters/akainu.jpg",
+        "price": "₿ 4,700,000",
+        "sold": "734",
+        "type": "Logia",
+        "stock": 51
+    },
+    {
+        "id": 8,
+        "name": "Yami Yami no Mi",
+        "image1": "./images/devil-fruits/yami-yami.png",
+        "image2": "./images/characters/blackbeard.jpg",
+        "price": "₿ 5,200,000",
+        "sold": "800",
+        "type": "Logia",
+        "stock": 29
+    },
+    {
+        "id": 9,
+        "name": "Goro Goro no Mi",
+        "image1": "./images/devil-fruits/goro-goro.png",
+        "image2": "./images/characters/eneru.jpg",
+        "price": "₿ 4,600,000",
+        "sold": "740",
+        "type": "Logia",
+        "stock": 47
+    },
+    {
+        "id": 10,
+        "name": "Zushi Zushi no Mi",
+        "image1": "./images/devil-fruits/zushi-zushi.png",
+        "image2": "./images/characters/fujitora.jpg",
+        "price": "₿ 4,800,000",
+        "sold": "734",
+        "type": "Paramecia",
+        "stock": 61
+    },
+    {
+        "id": 11,
+        "name": "Pika Pika no Mi",
+        "image1": "./images/devil-fruits/pika-pika.png",
+        "image2": "./images/characters/kizaru.jpg",
+        "price": "₿ 5,100,000",
+        "sold": "833",
+        "type": "Logia",
+        "stock": 78
+    }
+]

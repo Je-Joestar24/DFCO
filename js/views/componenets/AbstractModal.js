@@ -1,5 +1,5 @@
 /**
- * AbstractModal class to manage modal behavior.
+ * AbstractModal class to manage modal basic behavior.
  * This class handles the basic opening and closing of a modal,
  * as well as basic binding event listeners for user interactions.
  */
@@ -52,14 +52,14 @@ export default class AbstractModal {
     }
 
     /**
-     * Closes the modal and removes the no-scroll class from the body.
+     * Closes the modal.
      */
     close() {
         this.modal.classList.remove(this.activeclass);
     }
 
     /**
-     * Opens the modal and adds the no-scroll class to the body.
+     * Opens the modal.
      */
     open() {
         this.modal.classList.add(this.activeclass);
