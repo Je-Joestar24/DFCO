@@ -35,7 +35,7 @@
         "image1": "./images/devil-fruits/tori-tori.png",
         "image2": "./images/characters/marco.jpg",
         "price": "₿ 4,900,000",
-        "sold": "732",
+        "sold": "740",
         "type": "Mythical Zoan",
         "stock": 34
     },
@@ -70,20 +70,10 @@
         "stock": 29
     },
     {
-        "id": 9,
-        "name": "Goro Goro no Mi",
-        "image1": "./images/devil-fruits/goro-goro.png",
-        "image2": "./images/characters/eneru.jpg",
-        "price": "₿ 4,600,000",
-        "sold": "740",
-        "type": "Logia",
-        "stock": 47
-    },
-    {
         "id": 10,
-        "name": "Zushi Zushi no Mi",
-        "image1": "./images/devil-fruits/zushi-zushi.png",
-        "image2": "./images/characters/fujitora.jpg",
+        "name": "Ito Ito no Mi",
+        "image1": "./images/devil-fruits/ito-ito.png",
+        "image2": "./images/characters/doflamingo.jpg",
         "price": "₿ 4,800,000",
         "sold": "734",
         "type": "Paramecia",
@@ -98,5 +88,35 @@
         "sold": "833",
         "type": "Logia",
         "stock": 78
+    },
+    {
+        "id": 12,
+        "name": "Uo Uo no Mi",
+        "image1": "./images/devil-fruits/uo-uo.png",
+        "image2": "./images/characters/kaido.jpg",
+        "price": "₿ 6,000,000",
+        "sold": "500",
+        "type": "Mythical Zoan",
+        "stock": 20
+    },
+    {
+        "id": 13,
+        "name": "Hito Hito no Mi",
+        "image1": "./images/devil-fruits/hito-hito.png",
+        "image2": "./images/characters/luffy.jpg",
+        "price": "₿ 5,700,000",
+        "sold": "800",
+        "type": "Mythical Zoan",
+        "stock": 15
+    },
+    {
+        "id": 14,
+        "name": "Neko Neko no Mi",
+        "image1": "./images/devil-fruits/neko-neko.png",
+        "image2": "./images/characters/lucci.jpg",
+        "price": "₿ 4,500,000",
+        "sold": "350",
+        "type": "Zoan",
+        "stock": 30
     }
 ]

@@ -69,6 +69,7 @@ export class Router {
         // Initialize view instance and render its HTML content
         const view = new match.route.view();
         this.displayArea.innerHTML = await view.getHtml();
+        if(view.bindAll) await view.bindAll();
 
     };
 }
