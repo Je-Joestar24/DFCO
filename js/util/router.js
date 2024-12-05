@@ -4,7 +4,7 @@
  * Manages navigation between different views without full page reloads.
  */
 import Home from '../views/home.js';
-import Product from '../views/product.js';
+import Product from '../helper/products.js';
 import About from '../views/about.js';
 import Cart from '../views/cart.js';
 
