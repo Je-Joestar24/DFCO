@@ -7,7 +7,8 @@
         "price": "₿ 5,000,000",
         "sold": "1,234",
         "type": "Paramecia",
-        "stock": 42
+        "stock": 42,
+        "json": "gura-gura.json"
     },
     {
         "id": 2,
@@ -17,7 +18,8 @@
         "price": "₿ 5,500,000",
         "sold": "834",
         "type": "Logia",
-        "stock": 77
+        "stock": 77,
+        "json": "mera-mera.json"
     },
     {
         "id": 4,
@@ -27,7 +29,8 @@
         "price": "₿ 4,500,000",
         "sold": "720",
         "type": "Logia",
-        "stock": 65
+        "stock": 65,
+        "json": "hie-hie.json"
     },
     {
         "id": 5,
@@ -37,7 +40,8 @@
         "price": "₿ 4,900,000",
         "sold": "740",
         "type": "Mythical Zoan",
-        "stock": 34
+        "stock": 34,
+        "json": "tori-tori.json"
     },
     {
         "id": 6,
@@ -47,7 +51,8 @@
         "price": "₿ 4,800,000",
         "sold": "734",
         "type": "Paramecia",
-        "stock": 89
+        "stock": 89,
+        "json": "ope-ope.json"
     },
     {
         "id": 7,
@@ -57,7 +62,8 @@
         "price": "₿ 4,700,000",
         "sold": "734",
         "type": "Logia",
-        "stock": 51
+        "stock": 51,
+        "json": "magu-magu.json"
     },
     {
         "id": 8,
@@ -67,7 +73,8 @@
         "price": "₿ 5,200,000",
         "sold": "800",
         "type": "Logia",
-        "stock": 29
+        "stock": 29,
+        "json": "yami-yami.json"
     },
     {
         "id": 10,
@@ -77,7 +84,8 @@
         "price": "₿ 4,800,000",
         "sold": "734",
         "type": "Paramecia",
-        "stock": 61
+        "stock": 61,
+        "json": "ito-ito.json"
     },
     {
         "id": 11,
@@ -87,7 +95,8 @@
         "price": "₿ 5,100,000",
         "sold": "833",
         "type": "Logia",
-        "stock": 78
+        "stock": 78,
+        "json": "pika-pika.json"
     },
     {
         "id": 12,
@@ -97,7 +106,8 @@
         "price": "₿ 6,000,000",
         "sold": "500",
         "type": "Mythical Zoan",
-        "stock": 20
+        "stock": 20,
+        "json": "uo-uo.json"
     },
     {
         "id": 13,
@@ -107,7 +117,8 @@
         "price": "₿ 5,700,000",
         "sold": "800",
         "type": "Mythical Zoan",
-        "stock": 15
+        "stock": 15,
+        "json": "hito-hito.json"
     },
     {
         "id": 14,
@@ -117,6 +128,7 @@
         "price": "₿ 4,500,000",
         "sold": "350",
         "type": "Zoan",
-        "stock": 30
+        "stock": 30,
+        "json": "neko-neko.json"
     }
 ]

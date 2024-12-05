@@ -1,22 +1,28 @@
 import AbstractView from './AbstractView.js';
+import { state, actions } from '../util/state.js';
 
+/**
+ * ProductView class handles the display and management of products.
+ * It fetches product data, filters, and sorts them for display.
+ */
 export default class ProductView extends AbstractView {
-    topPicks = [];
-    fruits = [];
-    filteredFruits = [];
-    feature = {};
-    currentFilter = 'All';
-    currentSort = 'sold';
+    topPicks = []; // Array to hold top picked fruits
+    filteredFruits = []; // Array to hold filtered fruits based on user input
+    feature = {}; // Object to hold the featured product
+    currentFilter = 'All'; // Current filter applied to the products
+    currentSort = 'sold'; // Current sorting method
 
     constructor() {
         super();
     }
 
+    /**
+     * Initializes the product view by fetching the fruit data.
+     */
     async init() {
         try {
-            const response = await fetch('../../json/devilfruits.json');
-            this.fruits = await response.json();
-            this.filteredFruits = [...this.fruits];
+             await actions.fetchProducts();
+            this.filteredFruits = [...state.products];
             this.topPicks = this.getTopSoldFruits();
             this.feature = this.topPicks[0];
         } catch (e) {
@@ -24,6 +30,10 @@ export default class ProductView extends AbstractView {
         }
     }
 
+    /**
+     * Generates the HTML for the product view.
+     * @returns {string} HTML string for the product view.
+     */
     async getHtml() {
         await this.init();
         return `
@@ -42,12 +52,12 @@ export default class ProductView extends AbstractView {
                 ${await this.getTopProducts()}
 
                 <!-- Featured Product -->
-                <div id="feature" class="products__featured">
+                <div id="feature" class="products__featured" aria-label="Featured Product">
                     ${await this.getFeaturedProduct()}
                 </div>
                 <!-- Product Grid -->
                 
-                <div id="products" class="products__grid">
+                <div id="products" class="products__grid" aria-label="All products grid">
                     ${await this.getAllProducts()}
                 </div>
                 <div class="products__section-divider"></div>
@@ -56,16 +66,20 @@ export default class ProductView extends AbstractView {
         `;
     }
 
+    /**
+     * Generates the filter section HTML.
+     * @returns {string} HTML string for the filter section.
+     */
     async getFilter() {
         return `
-        <div class="products__filter-bar">
+        <div class="products__filter-bar" aria-label="Product filter options">
             <div class="products__search">
                 <svg class="products__search-icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
                 </svg>
-                <input type="text" class="products__search-input" placeholder="Search Devil Fruits..." oninput="this.value && this.dispatchEvent(new Event('search'))">
+                <input type="text" class="products__search-input" placeholder="Search Devil Fruits..." oninput="this.value && this.dispatchEvent(new Event('search'))" aria-label="Search input for Devil Fruits">
             </div>
-            <div class="products__category">
+            <div class="products__category" role="group" aria-label="Product categories">
                 <button class="products__category-btn products__category-btn--active" data-type="All">All</button>
                 <button class="products__category-btn" data-type="Paramecia">Paramecia</button>
                 <button class="products__category-btn" data-type="Logia">Logia</button>
@@ -75,34 +89,42 @@ export default class ProductView extends AbstractView {
         `;
     }
 
+    /**
+     * Generates the HTML for all products.
+     * @returns {string} HTML string for all products.
+     */
     async getAllProducts() {
         return `
             <!-- Product Card -->
             ${this.filteredFruits.map(fruit => `
-            <article class="products__card">
+            <article class="products__card" aria-label="${fruit.name} product card">
                 <div class="products__image-wrapper">
-                    <img src="${fruit.image1}" class="products__image products__image-primary">
-                    <img src="${fruit.image2}" alt="${fruit.name}" class="products__image products__image-secondary">
+                    <img src="${fruit.image1}" class="products__image products__image-primary" alt="${fruit.name} primary image">
+                    <img src="${fruit.image2}" alt="${fruit.name} secondary image" class="products__image products__image-secondary">
                     <span class="products__tag">${fruit.type}</span>
                 </div>
                 <div class="products__info">
                     <h3 class="products__name">${fruit.name}</h3>
                     <p class="products__price">${fruit.price}</p>
-                    <button class="products__add-btn">Add to Cart</button>
+                    <button class="products__add-btn" aria-label="Add ${fruit.name} to cart">Add to Cart</button>
                 </div>
             </article>`).join('')}
             <!-- Repeat for other products -->
         `;
     }
 
+    /**
+     * Generates the HTML for top products.
+     * @returns {string} HTML string for top products.
+     */
     async getTopProducts() {
         return `
-        <div id="top-products" class="products__top-picks">
+        <div id="top-products" class="products__top-picks" aria-label="Top picked products">
             <div class="products__picks-list">
                 ${this.topPicks.map(fruit => `
-                <div class="products__pick-item" data-fruit-id="${fruit.id}">
+                <div class="products__pick-item" data-fruit-id="${fruit.id}" aria-label="${fruit.name} top pick">
                     <div class="products__pick-circle">
-                        <img src="${fruit.image1}" alt="${fruit.name}" class="products__pick-image">
+                        <img src="${fruit.image1}" alt="${fruit.name} top pick image" class="products__pick-image">
                     </div>
                     <span class="products__pick-name">${(fruit.name).split(' no ')[0]}</span>
                 </div>`).join("")}
@@ -112,13 +134,17 @@ export default class ProductView extends AbstractView {
         `;
     }
 
+    /**
+     * Generates the HTML for the featured product.
+     * @returns {string} HTML string for the featured product.
+     */
     async getFeaturedProduct() {
         if (!this.feature) {
             return ''; // Return empty if no feature is set
         }
         return `
             <!-- Featured Product -->
-            <img src="${this.feature.image1}" alt="${this.feature.name}" class="products__featured-image">
+            <img src="${this.feature.image1}" alt="${this.feature.name} featured image" class="products__featured-image">
             <div class="products__featured-content">
                 <h2 class="products__featured-title">${this.feature.name}</h2>
                 <div class="products__featured-stats">
@@ -131,11 +157,15 @@ export default class ProductView extends AbstractView {
                         <div class="products__stat-label">In Stock</div>
                     </div>
                 </div>
-                <button class="products__add-btn">Add to Cart</button>
+                <button class="products__add-btn" aria-label="Add ${this.feature.name} to cart">Add to Cart</button>
             </div>
         `;
     }
     
+    /**
+     * Retrieves the top sold fruits based on the sold count.
+     * @returns {Array} Array of top sold fruits.
+     */
     getTopSoldFruits() {
         const sortedFruits = this.filteredFruits.sort((a, b) => parseInt(b.sold.replace(',', '')) - parseInt(a.sold.replace(',', '')));
         // Select the top 5 fruits

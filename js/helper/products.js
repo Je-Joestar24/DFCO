@@ -1,4 +1,5 @@
 import ProductView from "../views/product.js";
+import { state, mutations, getters, actions } from '../util/state.js';
 
 export default class ProductHelper extends ProductView {
     constructor() {
@@ -27,7 +28,7 @@ export default class ProductHelper extends ProductView {
     }
 
     filterFruits(searchTerm = '') {
-        this.filteredFruits = this.fruits.filter(fruit => {
+        this.filteredFruits = state.products.filter(fruit => {
             const matchesType = this.currentFilter === 'All' ||
                 (fruit.type === this.currentFilter ||
                     (this.currentFilter === 'Zoan' && (fruit.type === 'Zoan' || fruit.type === 'Mythical Zoan')));
