@@ -1,0 +1,75 @@
+/* Block: Sorting Container
+   This block styles the sorting container for product sorting options.
+   It uses flexbox to align sorting elements and provides spacing between them. */
+.products__sorting {
+    display: flex;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+/* Element: Sort Select Container
+   This element styles the container for the sort select dropdown,
+   ensuring it has a minimum width for better usability. */
+.products__sort-wrapper {
+    position: relative;
+    min-width: 150px;
+}
+
+/* Element: Sort Select
+   This element styles the sort select dropdown, providing padding,
+   background color, border, and rounded corners for a modern look. */
+.products__sort-select {
+    width: 100%;
+    padding: 0.8rem 2.5rem 0.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    color: var(--light-theme);
+    font-size: 0.9rem;
+    cursor: pointer;
+    appearance: none;
+    transition: all 0.3s ease;
+}
+
+/* Select hover and focus states
+   This style enhances the select dropdown on hover and focus,
+   changing the background and border color for better visibility. */
+.products__sort-select:hover,
+.products__sort-select:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--paramecia);
+    outline: none;
+}
+
+/* Element: Custom Arrow
+   This element adds a custom arrow indicator to the sort select dropdown,
+   positioned absolutely within the sort wrapper. */
+.products__sort-wrapper::after {
+    content: '▼';
+    position: absolute;
+    right: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--light-theme);
+    font-size: 0.8rem;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+/* Arrow rotation on select focus
+   This style rotates the custom arrow when the select dropdown is focused,
+   providing a visual cue to the user. */
+.products__sort-wrapper:focus-within::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Dropdown Menu Styling
+   This style customizes the dropdown menu options, setting background,
+   text color, font size, and padding for a consistent look. */
+#app .products__sort-select option {
+    background: var(--background-dark);
+    color: var(--light-theme);
+    font-size: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}

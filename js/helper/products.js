@@ -4,11 +4,13 @@ import { state, mutations, getters, actions } from '../util/state.js';
 export default class ProductHelper extends ProductView {
     constructor() {
         super();
+        this.currentSort = ''; // Track current sort state
     }
 
     async bindAll() {
         await this.renderTopProducts('top-products');
         this.bindFilterEvents();
+        this.bindSortEvents(); // Add sort binding
     }
 
     bindFilterEvents() {
@@ -25,6 +27,31 @@ export default class ProductHelper extends ProductView {
         searchInput.addEventListener('input', () => {
             this.filterFruits(searchInput.value);
         });
+
+        // Add sort handlers
+        const sortSelects = document.querySelectorAll('.products__sort-select');
+        sortSelects.forEach(select => {
+            select.addEventListener('change', () => {
+                this.sortFruits(select.value);
+            });
+        });
+    }
+
+    bindSortEvents() {
+        const sortSelects = document.querySelectorAll('.products__sort-select');
+        sortSelects.forEach(select => {
+            select.addEventListener('change', (e) => {
+                // Reset other select if it has a value
+                sortSelects.forEach(otherSelect => {
+                    if (otherSelect !== e.target && otherSelect.value) {
+                        otherSelect.value = '';
+                    }
+                });
+                
+                this.currentSort = e.target.value;
+                this.sortProducts();
+            });
+        });
     }
 
     filterFruits(searchTerm = '') {
@@ -35,9 +62,25 @@ export default class ProductHelper extends ProductView {
             const matchesSearch = fruit.name.toLowerCase().includes(searchTerm.toLowerCase());
             return matchesType && matchesSearch;
         });
-        this.topPicks = this.getTopSoldFruits();
-        this.setFeaturedProduct(null); // Reset the featured product after filtering
-        this.render();
+
+        // Clear active classes from top picks
+        this.clearActiveTopPicks();
+
+        // Maintain current sort after filtering
+        if (this.currentSort) {
+            this.sortProducts();
+        } else {
+            this.topPicks = this.getTopSoldFruits();
+            this.setFeaturedProduct(null);
+            this.render();
+        }
+    }
+
+    clearActiveTopPicks() {
+        const click_handlers = document.querySelectorAll('.products__pick-item');
+        click_handlers.forEach(item => {
+            item.classList.remove('products__picked-item--active');
+        });
     }
 
     async render() {
@@ -46,6 +89,7 @@ export default class ProductHelper extends ProductView {
             container.innerHTML = await this.getAllProducts();
         }
         await this.renderTopProducts('top-products');
+        this.clearActiveTopPicks();
     }
 
     updateActiveCategory(activeButton) {
@@ -59,13 +103,12 @@ export default class ProductHelper extends ProductView {
     async renderTopProducts(containerId) {
         const container = document.getElementById(containerId);
         if (container) {
-            container.innerHTML = await this.getTopProducts();
+            container.innerHTML = await this.getTopProducts(true);
 
             // Add event listeners to each pick item
             const click_handlers = container.querySelectorAll('.products__pick-item');
             click_handlers.forEach(item => {
                 item.addEventListener('click', (event) => {
-
                     const fruitId = parseInt(item.getAttribute('data-fruit-id'), 10);
                     this.handlePickClick(fruitId, item, click_handlers); // Pass the item to handlePickClick
                 });
@@ -105,6 +148,53 @@ export default class ProductHelper extends ProductView {
                 featureContainer.style.display = 'none';
             }
         }
+    }
+
+    sortFruits(sortValue) {
+        if (!sortValue) return;
+
+        this.filteredFruits.sort((a, b) => {
+            switch(sortValue) {
+                case 'sold-high':
+                    return parseInt(b.sold.replace(',', '')) - parseInt(a.sold.replace(',', ''));
+                case 'sold-low':
+                    return parseInt(a.sold.replace(',', '')) - parseInt(b.sold.replace(',', ''));
+                case 'stock-high':
+                    return b.stock - a.stock;
+                case 'stock-low':
+                    return a.stock - b.stock;
+                default:
+                    return 0;
+            }
+        });
+
+        // Clear active classes from top picks
+
+        this.render();
+    }
+
+    sortProducts() {
+        if (!this.currentSort) return;
+
+        this.filteredFruits.sort((a, b) => {
+            switch(this.currentSort) {
+                case 'sold-high':
+                    return parseInt(b.sold.replace(',', '')) - parseInt(a.sold.replace(',', ''));
+                case 'sold-low':
+                    return parseInt(a.sold.replace(',', '')) - parseInt(b.sold.replace(',', ''));
+                case 'stock-high':
+                    return parseInt(b.stock) - parseInt(a.stock);
+                case 'stock-low':
+                    return parseInt(a.stock) - parseInt(b.stock);
+                default:
+                    return 0;
+            }
+        });
+
+        // Clear active classes from top picks
+
+        // Update display
+        this.render();
     }
 
 }

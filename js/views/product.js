@@ -21,7 +21,7 @@ export default class ProductView extends AbstractView {
      */
     async init() {
         try {
-             await actions.fetchProducts();
+            await actions.fetchProducts();
             this.filteredFruits = [...state.products];
             this.topPicks = this.getTopSoldFruits();
             this.feature = this.topPicks[0];
@@ -56,7 +56,10 @@ export default class ProductView extends AbstractView {
                     ${await this.getFeaturedProduct()}
                 </div>
                 <!-- Product Grid -->
+                    
+                ${await this.getSort()}
                 
+                <div class="products__section-divider"></div>
                 <div id="products" class="products__grid" aria-label="All products grid">
                     ${await this.getAllProducts()}
                 </div>
@@ -66,6 +69,26 @@ export default class ProductView extends AbstractView {
         `;
     }
 
+    async getSort(){
+        return `
+        <div class="products__sorting">
+            <div class="products__sort-wrapper">
+                <select class="products__sort-select" aria-label="Sort by sales">
+                    <option value="">Sort by Sales</option>
+                    <option value="sold-high">Most Sold</option>
+                    <option value="sold-low">Least Sold</option>
+                </select>
+            </div>
+            <div class="products__sort-wrapper">
+                <select class="products__sort-select" aria-label="Sort by stock">
+                    <option value="">Sort by Stock</option>
+                    <option value="stock-high">Highest Stock</option>
+                    <option value="stock-low">Lowest Stock</option>
+                </select>
+            </div>
+        </div>
+        `;
+    }
     /**
      * Generates the filter section HTML.
      * @returns {string} HTML string for the filter section.
@@ -88,49 +111,25 @@ export default class ProductView extends AbstractView {
         </div>
         `;
     }
-
-    /**
-     * Generates the HTML for all products.
-     * @returns {string} HTML string for all products.
-     */
-    async getAllProducts() {
-        return `
-            <!-- Product Card -->
-            ${this.filteredFruits.map(fruit => `
-            <article class="products__card" aria-label="${fruit.name} product card">
-                <div class="products__image-wrapper">
-                    <img src="${fruit.image1}" class="products__image products__image-primary" alt="${fruit.name} primary image">
-                    <img src="${fruit.image2}" alt="${fruit.name} secondary image" class="products__image products__image-secondary">
-                    <span class="products__tag">${fruit.type}</span>
-                </div>
-                <div class="products__info">
-                    <h3 class="products__name">${fruit.name}</h3>
-                    <p class="products__price">${fruit.price}</p>
-                    <button class="products__add-btn" aria-label="Add ${fruit.name} to cart">Add to Cart</button>
-                </div>
-            </article>`).join('')}
-            <!-- Repeat for other products -->
-        `;
-    }
-
     /**
      * Generates the HTML for top products.
+     * @param {boolean} ind - Indicates if it will just call the function without parameter to not set the active class.
      * @returns {string} HTML string for top products.
      */
-    async getTopProducts() {
+    async getTopProducts(ind = true) {
         return `
-        <div id="top-products" class="products__top-picks" aria-label="Top picked products">
+        <section id="top-products" class="products__top-picks" role="region" aria-label="Top picked products">
             <div class="products__picks-list">
                 ${this.topPicks.map(fruit => `
-                <div class="products__pick-item ${fruit.id == 1 ? 'products__picked-item--active': ''}" data-fruit-id="${fruit.id}" aria-label="${fruit.name} top pick">
+                <article class="products__pick-item ${(fruit.id === 1 && ind) ? 'products__picked-item--active' : ''}" data-fruit-id="${fruit.id}" aria-label="${fruit.name} top pick">
                     <div class="products__pick-circle">
-                        <img src="${fruit.image1}" alt="${fruit.name} top pick image" class="products__pick-image">
+                        <img src="${fruit.image1}" alt="${fruit.name} top pick image" class="products__pick-image" loading="lazy">
                     </div>
-                    <span class="products__pick-name">${(fruit.name).split(' no ')[0]}</span>
-                </div>`).join("")}
+                    <h3 class="products__pick-name">${(fruit.name).split(' no ')[0]}</h3>
+                </article>`).join("")}
                 <!-- Add more pick items as needed -->
             </div>
-        </div>
+        </section>
         `;
     }
 
@@ -161,7 +160,31 @@ export default class ProductView extends AbstractView {
             </div>
         `;
     }
-    
+
+    /**
+     * Generates the HTML for all products.
+     * @returns {string} HTML string for all products.
+     */
+    async getAllProducts() {
+        return `
+            <!-- Product Card -->
+            ${this.filteredFruits.map(fruit => `
+            <article class="products__card" aria-label="${fruit.name} product card">
+                <div class="products__image-wrapper">
+                    <img src="${fruit.image1}" class="products__image products__image-primary" alt="${fruit.name} primary image">
+                    <img src="${fruit.image2}" alt="${fruit.name} secondary image" class="products__image products__image-secondary">
+                    <span class="products__tag">${fruit.type}</span>
+                </div>
+                <div class="products__info">
+                    <h3 class="products__name">${fruit.name}</h3>
+                    <p class="products__price">${fruit.price}</p>
+                    <button class="products__add-btn" aria-label="Add ${fruit.name} to cart">Add to Cart</button>
+                </div>
+            </article>`).join('')}
+            <!-- Repeat for other products -->
+        `;
+    }
+
     /**
      * Retrieves the top sold fruits based on the sold count.
      * @returns {Array} Array of top sold fruits.

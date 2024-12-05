@@ -2,11 +2,12 @@
 @import "./products/productcards.css";      /* Styles for individual product cards */
 @import "./products/filters.css";           /* Product filtering and sorting styles */
 @import './products/productcardseffects.css';      /* Animations and effects for product cards */
-@import './products/topcardseffects.css';   /* Effects for featured product cards */
-@import './products/topcards.css';          /* Styles for featured product cards */
-@import './products/featurecards.css';
+@import './products/topcardseffects.css';   /* Effects for top product cards */
+@import './products/topcards.css';          /* Styles for top product cards */
+@import './products/featurecards.css';      /* Styles for featured product card */
 @import './products/texts.css';             /* Typography styles for product section */
 @import 'animations.css';                   /* Animations for products section */
+@import './products/sorting.css';
 
 /* Block: Products Section 
    Main container for the products page with top padding for fixed header
