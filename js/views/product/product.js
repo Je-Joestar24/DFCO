@@ -1,5 +1,5 @@
-import AbstractView from './AbstractView.js';
-import { state, actions } from '../util/state.js';
+import AbstractView from './../AbstractView.js';
+import { state, actions } from '../../util/state.js';
 
 /**
  * ProductView class handles the display and management of products.

@@ -1,4 +1,4 @@
-import ProductView from "../views/product.js";
+import ProductView from "./product/product.js";
 import { state, mutations, getters, actions } from '../util/state.js';
 
 /**
