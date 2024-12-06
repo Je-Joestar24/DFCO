@@ -1,9 +1,9 @@
-@import "./Home/home.css";
+@import "./home/home.css";
 @import "./about/about.css";
 @import "./footer.css";
 @import "./navigations.css";
 @import "./products/products.css";
-@import "./Cart/cart.css";
+@import "./cart/cart.css";
 @import "./modals.css";
 @import "./message/mesages.css";
 
