@@ -3,6 +3,7 @@
  * Extends AbstractTemplate for common functionality
  */
 import AbstractTemplate from "./AbstractTemplate.js";
+import { state } from "../util/state.js";
 
 export default class extends AbstractTemplate{
     constructor(){
@@ -53,7 +54,7 @@ export default class extends AbstractTemplate{
                       d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
                     />
                   </svg>
-                  ${await this.getProfile()}
+                  ${await this.getProfileDropDown()}
                 </div>
               </li>
             </ul>
@@ -67,19 +68,23 @@ export default class extends AbstractTemplate{
      * Shows different options based on authentication state
      * @returns {Promise<string>} Profile dropdown HTML
      */
-    async getProfile(){
+    async getProfileDropDown(){
         return `
             <div class="nav__dropdown" aria-label="User Menu">
+                ${state.user.isLoggedIn ? `
                 <!-- Logged in state -->
                 <div class="nav__dropdown-content nav__dropdown-logged-in">
                     <a href="#/profile" class="nav__dropdown-item" data-link>Profile</a>
                     <a href="#/logout" class="nav__dropdown-item">Logout</a>
                 </div>
+                `:
+                `
                 <!-- Not logged in state -->
                 <div class="nav__dropdown-content nav__dropdown-logged-out">
                     <button class="nav__dropdown-item" data-auth-toggle data-change-auth-active="login">Login</button>
                     <button  class="nav__dropdown-item nav__dropdown-signup" data-auth-toggle data-change-auth-active="signup">Sign Up</button>
                 </div>
+                `}
             </div>
         `;
     }
