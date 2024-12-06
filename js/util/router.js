@@ -7,6 +7,7 @@ import Home from '../views/home.js';
 import Product from '../helper/products.js';
 import About from '../views/about.js';
 import Cart from '../views/cart.js';
+import { actions } from './state.js';
 
 export class Router {
 
@@ -15,10 +16,10 @@ export class Router {
         // Define available routes and their corresponding views
 
         this.routes = [
-            { path: '#/', view: Home },
-            { path: '#/products', view: Product },
-            { path: '#/about', view: About },
-            { path: '#/cart', view: Cart }
+            { path: '#/', view: Home, id: 'home-nav', message: 'HOME PAGE' },
+            { path: '#/products', view: Product, id: 'products-nav', message: 'PRODUCTS PAGE'  },
+            { path: '#/about', view: About, id: 'about-nav', message: 'ABOUT PAGE'  },
+            { path: '#/cart', view: Cart, id: 'wa', message: 'MY CART' }
         ];
         this.displayArea = document.querySelector(displayID);
     }
@@ -52,6 +53,7 @@ export class Router {
             return {
                 route: route,
                 isMatch: location.hash === route.path,
+                id: route.id ? route.id : ''
             }
         });
 
@@ -68,8 +70,9 @@ export class Router {
 
         // Initialize view instance and render its HTML content
         const view = new match.route.view();
+        actions.setActiveNavigation(match.id, 'nav__link-active');
+        actions.displayMessage(match.route.message);
         this.displayArea.innerHTML = await view.getHtml();
         if(view.bindAll) await view.bindAll();
-
     };
 }

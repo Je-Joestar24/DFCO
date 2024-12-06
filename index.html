@@ -29,15 +29,21 @@
           <div class="nav__links">
             <ul class="nav__list">
               <li class="nav__item">
-                <a href="#/" class="nav__link nav__link-active" data-link
-                  >Home</a
+                <a id="home-nav" href="#/" class="nav__link" data-link>Home</a>
+              </li>
+              <li class="nav__item">
+                <a
+                  id="products-nav"
+                  href="#/products"
+                  class="nav__link"
+                  data-link
+                  >Products</a
                 >
               </li>
               <li class="nav__item">
-                <a href="#/products" class="nav__link" data-link>Products</a>
-              </li>
-              <li class="nav__item">
-                <a href="#/about" class="nav__link" data-link>About</a>
+                <a id="about-nav" href="#/about" class="nav__link" data-link
+                  >About</a
+                >
               </li>
               <li class="nav__item nav__icons">
                 <a
@@ -73,6 +79,9 @@
         aria-label="All contents of the page display area"
       >
         <!-- All sections are loaded here -->
+         <!-- <section id="account-page" class="app__display-account">
+            <div class="account__contents"></div>
+         </section> -->
       </main>
       <footer id="footer" class="footer" role="contentinfo" aria-label="Footer">
         <div class="footer__container">
@@ -160,13 +169,14 @@
         ></div>
       </footer>
     </div>
-
     <div
       id="auth-modal"
       class="auth-modal auth-modal--loading"
       aria-label="Auth Modal Display area"
-    >
-    </div>
+    ></div>
+    
+    <div class="app__message" role="alert" aria-label="Application Message Display Area"></div>
+
     <script type="module" src="js/app.js"></script>
   </body>
 </html>
