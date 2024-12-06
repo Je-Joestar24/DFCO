@@ -1,6 +1,6 @@
 import { Router } from './util/router.js';
-import { actions } from './util/state.js';
 import AuthModal from './views/componenets/authsmodal.js';
+import Main from './templates/main.js';
 
 const router = new Router('#app__display');
 
@@ -9,7 +9,8 @@ window.addEventListener('popstate', () => router.route());
 window.addEventListener('load', () => router.route());
 
 // Add event listener for data-link clicks
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded',async () => {
+    new Main();
     document.body.addEventListener('click', (e) => {
         if (e.target.matches('[data-link]')) {
             e.preventDefault();
