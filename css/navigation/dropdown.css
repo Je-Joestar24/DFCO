@@ -1,0 +1,109 @@
+/* Block: Dropdown Menu
+ * Positioned absolutely below profile icon
+ * Slides down with fade animation on hover
+ * Contains login/signup or user account options
+ */
+.nav__dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background-color: var(--background-light);
+    border-radius: 8px;
+    min-width: 150px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px var(--background-dark);
+    z-index: 100;
+}
+
+/* State: Dropdown Hover
+ * Shows dropdown menu when profile is hovered
+ * Smooth fade in and slide up animation
+ */
+.nav__profile:hover .nav__dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Element: Content Containers
+ * Wrapper for dropdown menu items
+ * Consistent padding around content
+ */
+.nav__dropdown-content {
+    padding: 0.5rem;
+}
+
+/* Element: Logged In State
+ * Vertical stack of profile and logout options
+ * Consistent spacing between items
+ */
+.nav__dropdown-logged-in {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Element: Logged Out State
+ * Horizontal layout for login/signup buttons
+ * Centered alignment with consistent spacing
+ */
+.nav__dropdown-logged-out {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Element: Menu Items
+ * Interactive buttons/links within dropdown
+ * Consistent styling with hover effects
+ * Prevents text wrapping for clean layout
+ */
+.nav__dropdown-item {
+    background-color: transparent;
+    color: var(--secondary);
+    font-size: 1em;
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    display: block;
+}
+
+/* State: Menu Item Hover
+ * Gradient background animation
+ * Slight rightward shift for feedback
+ */
+.nav__dropdown-item:hover {
+    background: linear-gradient(135deg, var(--paramecia), var(--mythical));
+    transform: translateX(4px);
+}
+
+/* Modifier: Signup Button Hover
+ * Outlined style instead of gradient
+ * Maintains consistent hover animation
+ */
+.nav__dropdown-signup:hover {
+    background: transparent;
+    outline: 1px var(--light-theme) solid; 
+    transform: translateX(4px);
+}
+
+/* Animation: Dropdown Reveal
+ * Smooth fade and slide transition
+ * Used when dropdown becomes visible
+ */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

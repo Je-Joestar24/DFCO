@@ -1,11 +1,18 @@
-/* Element: Icons Container */
+/* Element: Icons Container 
+ * Flex container for navigation icons
+ * Consistent spacing and vertical alignment
+ */
 .nav__icons {
     display: flex;
     gap: 1.5rem;
     align-items: center;
 }
 
-/* Element: Icon Wrapper */
+/* Element: Icon Wrapper
+ * Container for individual icons
+ * Handles positioning and hover effects
+ * Smooth transition for interactive feedback
+ */
 .nav__icon-wrapper {
     position: relative;
     cursor: pointer;
@@ -16,7 +23,11 @@
     transform: translateY(-2px);
 }
 
-/* Element: Icon */
+/* Element: Icon
+ * SVG icon styling
+ * Consistent sizing and coloring
+ * Smooth color transition on state changes
+ */
 .nav__icon {
     width: 24px;
     height: 24px;
@@ -24,7 +35,11 @@
     transition: fill 0.3s ease;
 }
 
-/* Element: Profile Icon */
+/* Element: Profile Icon
+ * Circular profile button
+ * Gradient background for visual interest
+ * Centered content with relative positioning
+ */
 .nav__profile {
     width: 35px;
     height: 35px;
@@ -36,7 +51,12 @@
     position: relative;
 }
 
-/* Element: Cart Badge */
+/* Element: Cart Badge
+ * Notification counter for cart items
+ * Positioned absolutely over cart icon
+ * Animated pulse effect for attention
+ * High contrast for readability
+ */
 .nav__cart-badge {
     position: absolute;
     top: -8px;

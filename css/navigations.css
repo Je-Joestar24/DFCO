@@ -1,5 +1,6 @@
 @import 'navigation/buttons.css';
 @import 'navigation/items.css';
+@import 'navigation/dropdown.css';
 
 /* Block: Navigation
  * Fixed position header with glass effect
@@ -11,7 +12,7 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 100;
     background: rgba(10, 10, 46, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
