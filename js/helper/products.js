@@ -258,5 +258,4 @@ export default class ProductHelper extends ProductView {
         // Update display
         this.render();
     }
-
 }

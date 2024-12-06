@@ -8,7 +8,7 @@
    Main container for the shopping cart page */
 .app__cart {
     padding: 120px 2rem 4rem; /* Top padding for header space, consistent horizontal padding */
-    min-height: 100vh; /* Ensures full viewport height coverage */
+    max-height: 100vh; /* Ensures full viewport height coverage */
 }
 
 /* Cart Container 

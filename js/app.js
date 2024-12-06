@@ -1,4 +1,5 @@
 import { Router } from './util/router.js';
+import { actions } from './util/state.js';
 import AuthModal from './views/componenets/authsmodal.js';
 
 const router = new Router('#app__display');
