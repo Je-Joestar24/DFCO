@@ -1,5 +1,7 @@
-import AbstractView from './../AbstractView.js';
-import { state, actions } from '../../util/state.js';
+import AbstractView from './AbstractView.js';
+import { state, actions } from '../util/state.js';
+import PHelper from './helpers/products.js';
+//import Filter from './helpers/products/filter.js';
 
 /**
  * ProductView class handles the display and management of products.
@@ -9,6 +11,9 @@ export default class ProductView extends AbstractView {
 
     constructor() {
         super();
+        state.productPage.currentSort = '';
+        this.helper = new PHelper();
+        //this.filter = new Filter();
     }
 
     /**
@@ -18,12 +23,168 @@ export default class ProductView extends AbstractView {
         try {
             await actions.fetchProducts();
             state.productPage.filteredFruits = [...state.products];
-            state.productPage.topPicks = this.getTopSoldFruits();
+            state.productPage.topPicks = this.helper.getTopSoldFruits();
             state.productPage.feature = state.productPage.topPicks[0];
         } catch (e) {
             console.error('Failed to initialize:', e);
         }
     }
+
+    /**
+     * Binds all necessary events for filtering and sorting products.
+     * It also renders the top products initially.
+     */
+    async bindAll() {
+        await this.renderTopProducts('top-products');
+        this.bindFilterEvents();
+        this.bindSortEvents(); // Add sort binding
+    }
+
+    /**
+     * Binds filter events to the filter buttons and search input.
+     * Updates the current filter and triggers the filtering of products.
+     */
+    bindFilterEvents() {
+        const filterButtons = document.querySelectorAll('.products__category-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                state.productPage.currentFilter = event.target.getAttribute('data-type');
+                this.helper.updateActiveCategory(button);
+                this.filterProducts();
+            });
+        });
+
+        const searchInput = document.querySelector('.products__search-input');
+        searchInput.addEventListener('input', () => {
+            this.filterProducts(searchInput.value);
+        });
+
+        // Add sort handlers
+        const sortSelects = document.querySelectorAll('.products__sort-select');
+        sortSelects.forEach(select => {
+            select.addEventListener('change', () => {
+                state.productPage.currentSort = select.value;
+                this.sortProducts();
+            });
+        });
+    }
+
+    /**
+     * Binds sorting events to the sort select elements.
+     * Resets other selects when one is changed and triggers sorting.
+     */
+    bindSortEvents() {
+        const sortSelects = document.querySelectorAll('.products__sort-select');
+        sortSelects.forEach(select => {
+            select.addEventListener('change', (e) => {
+                // Reset other select if it has a value
+                sortSelects.forEach(otherSelect => {
+                    if (otherSelect !== e.target && otherSelect.value) {
+                        otherSelect.value = '';
+                    }
+                });
+
+                state.productPage.currentSort = e.target.value;
+                this.sortProducts();
+            });
+        });
+    }
+
+    sortProducts() {
+        this.helper.clearActiveTopPicks();
+        this.helper.sortProducts();
+        // Update display
+        this.render();
+    }
+
+    filterProducts(searchTerm = '') {
+        this.helper.filterProducts(searchTerm);
+        this.helper.clearActiveTopPicks();
+        // Maintain current sort after filtering
+        this.sortProducts();
+        this.setFeaturedProduct(null);
+        state.productPage.topPicks = this.helper.getTopSoldFruits();
+        this.render();
+    }
+
+    /**
+     * Renders the product display by fetching and displaying all products.
+     */
+    async render() {
+        const container = document.getElementById('products');
+        if (container) {
+            container.innerHTML = await this.getAllProducts();
+        }
+        await this.renderTopProducts('top-products');
+        this.helper.clearActiveTopPicks();
+    }
+
+
+    /**
+     * Renders the top products in the specified container.
+     * @param {string} containerId - The ID of the container to render top products in.
+     */
+    async renderTopProducts(containerId) {
+        const container = document.getElementById(containerId);
+        if (container) {
+            container.innerHTML = await this.getTopProducts(true);
+
+            // Add event listeners to each pick item
+            const click_handlers = container.querySelectorAll('.products__pick-item');
+            click_handlers.forEach(item => {
+                item.addEventListener('click', (event) => {
+                    const fruitId = parseInt(item.getAttribute('data-fruit-id'), 10);
+                    this.handlePickClick(fruitId, item, click_handlers); // Pass the item to handlePickClick
+                });
+            });
+        }
+    }
+
+    /**
+     * Handles the click event on a pick item.
+     * Updates the featured product and manages active classes.
+     * @param {number} fruitId - The ID of the clicked fruit.
+     * @param {HTMLElement} clickedItem - The item that was clicked.
+     * @param {NodeList} click_handlers - All pick items.
+     */
+    handlePickClick(fruitId, clickedItem, click_handlers) {
+        click_handlers.forEach(item => {
+            item.classList.remove('products__picked-item--active');
+        });
+        // Find the selected fruit from topPicks
+        const selectedFruit = state.productPage.topPicks.find(fruit => fruit.id === fruitId);
+        if (selectedFruit) {
+            // Check if the selected fruit is already the featured product
+            if (state.productPage.feature && state.productPage.feature.id === selectedFruit.id) {
+                // If clicked twice, clear the featured product
+                this.setFeaturedProduct(null);
+                clickedItem.classList.remove('products__picked-item--active'); // Remove active class
+            } else {
+                // Set the feature data and update the featured product display
+                this.setFeaturedProduct(selectedFruit);
+                // Add active class to the clicked item
+                clickedItem.classList.add('products__picked-item--active');
+            }
+        }
+    }
+
+    /**
+     * Sets the featured product and updates the display accordingly.
+     * @param {Object} feature - The product to set as featured.
+     */
+    async setFeaturedProduct(feature) {
+        state.productPage.feature = feature; // Set the featured product
+        const featureContainer = document.getElementById('feature');
+        if (featureContainer) {
+            if (state.productPage.feature) {
+                featureContainer.style.display = 'grid';
+                featureContainer.innerHTML = await this.getFeaturedProduct();
+            } else {
+                featureContainer.style.display = 'none';
+            }
+        }
+    }
+
 
     /**
      * Generates the HTML for the product view.
@@ -63,8 +224,8 @@ export default class ProductView extends AbstractView {
         </section>
         `;
     }
-    
-    async getSort(){
+
+    async getSort() {
         return `
         <div class="products__sorting">
             <div class="products__sort-wrapper">
@@ -194,13 +355,4 @@ export default class ProductView extends AbstractView {
         `;
     }
 
-    /**
-     * Retrieves the top sold fruits based on the sold count.
-     * @returns {Array} Array of top sold fruits.
-     */
-    getTopSoldFruits() {
-        const sortedFruits = state.productPage.filteredFruits.sort((a, b) => parseInt(b.sold.replace(',', '')) - parseInt(a.sold.replace(',', '')));
-        // Select the top 5 fruits
-        return sortedFruits.slice(0, 5);
-    }
 }
