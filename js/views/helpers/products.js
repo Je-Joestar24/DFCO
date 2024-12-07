@@ -1,9 +1,23 @@
 import { state } from "../../util/state.js";
 
+/**
+ * Helper class for product-related functionality
+ * Handles:
+ * - Product sorting by various criteria (price, name, stock, etc)
+ * - Product filtering by type and search term
+ * - Category button state management
+ * - Top picks selection and display
+ * - Retrieving top sold products
+ */
 export default class {
     
     /**
      * Sorts the filtered fruits based on the current sort state.
+     * Supports sorting by:
+     * - Sold count (high/low)
+     * - Stock level (high/low) 
+     * - Price (high/low)
+     * - Name (ascending/descending)
      */
     sortProducts() {
         if (!state.productPage.currentSort) return;
@@ -33,9 +47,9 @@ export default class {
     /**
      * Filters the fruits based on the current filter and search term.
      * Updates the filtered fruits array and re-renders the product display.
+     * Handles special case for Zoan type which includes both regular and Mythical Zoan.
      * @param {string} searchTerm - The term to filter products by name.
      */
-
     filterProducts(searchTerm = '') {
         state.productPage.filteredFruits = state.products.filter(fruit => {
             const matchesType = state.productPage.currentFilter === 'All' ||
@@ -44,12 +58,11 @@ export default class {
             const matchesSearch = fruit.name.toLowerCase().includes(searchTerm.toLowerCase());
             return matchesType && matchesSearch;
         });
-
     }
 
-    
     /**
      * Updates the active category button's appearance.
+     * Removes active class from all buttons and adds it to the selected one.
      * @param {HTMLElement} activeButton - The button that is currently active.
      */
     updateActiveCategory(activeButton) {
@@ -62,6 +75,7 @@ export default class {
 
     /**
      * Clears the active class from all top pick items.
+     * Used when resetting the featured product display.
      */
     clearActiveTopPicks() {
         const click_handlers = document.querySelectorAll('.products__pick-item');
@@ -70,10 +84,10 @@ export default class {
         });
     }
 
-    
     /**
      * Retrieves the top sold fruits based on the sold count.
-     * @returns {Array} Array of top sold fruits.
+     * Sorts fruits by sold count in descending order and returns top 5.
+     * @returns {Array} Array of top 5 sold fruits.
      */
     getTopSoldFruits() {
         const sortedFruits = state.productPage.filteredFruits.sort((a, b) => parseInt(b.sold.replace(',', '')) - parseInt(a.sold.replace(',', '')));

@@ -6,7 +6,7 @@
 @import "./cart/cart.css";
 @import "./modals.css";
 @import "./message/mesages.css";
-@import "./account/account.css";
+@import "./profile/profile.css";
 
 :root {
   --primary: #000;
