@@ -6,11 +6,6 @@ import { state, actions } from '../../util/state.js';
  * It fetches product data, filters, and sorts them for display.
  */
 export default class ProductView extends AbstractView {
-    topPicks = []; // Array to hold top picked fruits
-    filteredFruits = []; // Array to hold filtered fruits based on user input
-    feature = {}; // Object to hold the featured product
-    currentFilter = 'All'; // Current filter applied to the products
-    currentSort = 'sold'; // Current sorting method
 
     constructor() {
         super();
@@ -22,9 +17,9 @@ export default class ProductView extends AbstractView {
     async init() {
         try {
             await actions.fetchProducts();
-            this.filteredFruits = [...state.products];
-            this.topPicks = this.getTopSoldFruits();
-            this.feature = this.topPicks[0];
+            state.productPage.filteredFruits = [...state.products];
+            state.productPage.topPicks = this.getTopSoldFruits();
+            state.productPage.feature = state.productPage.topPicks[0];
         } catch (e) {
             console.error('Failed to initialize:', e);
         }
@@ -134,7 +129,7 @@ export default class ProductView extends AbstractView {
         return `
         <section id="top-products" class="products__top-picks" role="region" aria-label="Top picked products">
             <div class="products__picks-list">
-                ${this.topPicks.map(fruit => `
+                ${state.productPage.topPicks.map(fruit => `
                 <article class="products__pick-item ${(fruit.id === 1 && ind) ? 'products__picked-item--active' : ''}" data-fruit-id="${fruit.id}" aria-label="${fruit.name} top pick">
                     <div class="products__pick-circle">
                         <img src="${fruit.image1}" alt="${fruit.name} top pick image" class="products__pick-image" loading="lazy">
@@ -152,25 +147,25 @@ export default class ProductView extends AbstractView {
      * @returns {string} HTML string for the featured product.
      */
     async getFeaturedProduct() {
-        if (!this.feature) {
+        if (!state.productPage.feature) {
             return ''; // Return empty if no feature is set
         }
         return `
             <!-- Featured Product -->
-            <img src="${this.feature.image1}" alt="${this.feature.name} featured image" class="products__featured-image">
+            <img src="${state.productPage.feature.image1}" alt="${state.productPage.feature.name} featured image" class="products__featured-image">
             <div class="products__featured-content">
-                <h2 class="products__featured-title">${this.feature.name}</h2>
+                <h2 class="products__featured-title">${state.productPage.feature.name}</h2>
                 <div class="products__featured-stats">
                     <div class="products__stat">
-                        <div class="products__stat-number">${this.feature.sold}</div>
+                        <div class="products__stat-number">${state.productPage.feature.sold}</div>
                         <div class="products__stat-label">Sold</div>
                     </div>
                     <div class="products__stat">
-                        <div class="products__stat-number">${this.feature.stock}</div>
+                        <div class="products__stat-number">${state.productPage.feature.stock}</div>
                         <div class="products__stat-label">In Stock</div>
                     </div>
                 </div>
-                <button class="products__add-btn" aria-label="Add ${this.feature.name} to cart">Add to Cart</button>
+                <button class="products__add-btn" aria-label="Add ${state.productPage.feature.name} to cart">Add to Cart</button>
             </div>
         `;
     }
@@ -182,7 +177,7 @@ export default class ProductView extends AbstractView {
     async getAllProducts() {
         return `
             <!-- Product Card -->
-            ${this.filteredFruits.map(fruit => `
+            ${state.productPage.filteredFruits.map(fruit => `
             <article class="products__card" aria-label="${fruit.name} product card">
                 <div class="products__image-wrapper">
                     <img src="${fruit.image1}" class="products__image products__image-primary" alt="${fruit.name} primary image">
@@ -204,7 +199,7 @@ export default class ProductView extends AbstractView {
      * @returns {Array} Array of top sold fruits.
      */
     getTopSoldFruits() {
-        const sortedFruits = this.filteredFruits.sort((a, b) => parseInt(b.sold.replace(',', '')) - parseInt(a.sold.replace(',', '')));
+        const sortedFruits = state.productPage.filteredFruits.sort((a, b) => parseInt(b.sold.replace(',', '')) - parseInt(a.sold.replace(',', '')));
         // Select the top 5 fruits
         return sortedFruits.slice(0, 5);
     }

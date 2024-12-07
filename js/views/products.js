@@ -11,7 +11,7 @@ export default class ProductHelper extends ProductView {
      */
     constructor() {
         super();
-        this.currentSort = ''; // Track current sort state
+        state.productPage.currentSort = ''; // Track current sort state
     }
 
     /**
@@ -32,7 +32,7 @@ export default class ProductHelper extends ProductView {
         const filterButtons = document.querySelectorAll('.products__category-btn');
         filterButtons.forEach(button => {
             button.addEventListener('click', (event) => {
-                this.currentFilter = event.target.getAttribute('data-type');
+                state.productPage.currentFilter = event.target.getAttribute('data-type');
                 this.updateActiveCategory(button);
                 this.filterFruits();
             });
@@ -67,7 +67,7 @@ export default class ProductHelper extends ProductView {
                     }
                 });
                 
-                this.currentSort = e.target.value;
+                state.productPage.currentSort = e.target.value;
                 this.sortProducts();
             });
         });
@@ -79,10 +79,10 @@ export default class ProductHelper extends ProductView {
      * @param {string} searchTerm - The term to filter products by name.
      */
     filterFruits(searchTerm = '') {
-        this.filteredFruits = state.products.filter(fruit => {
-            const matchesType = this.currentFilter === 'All' ||
-                (fruit.type === this.currentFilter ||
-                    (this.currentFilter === 'Zoan' && (fruit.type === 'Zoan' || fruit.type === 'Mythical Zoan')));
+        state.productPage.filteredFruits = state.products.filter(fruit => {
+            const matchesType = state.productPage.currentFilter === 'All' ||
+                (fruit.type === state.productPage.currentFilter ||
+                    (state.productPage.currentFilter === 'Zoan' && (fruit.type === 'Zoan' || fruit.type === 'Mythical Zoan')));
             const matchesSearch = fruit.name.toLowerCase().includes(searchTerm.toLowerCase());
             return matchesType && matchesSearch;
         });
@@ -91,10 +91,10 @@ export default class ProductHelper extends ProductView {
         this.clearActiveTopPicks();
 
         // Maintain current sort after filtering
-        if (this.currentSort) {
+        if (state.productPage.currentSort) {
             this.sortProducts();
         } else {
-            this.topPicks = this.getTopSoldFruits();
+            state.productPage.topPicks = this.getTopSoldFruits();
             this.setFeaturedProduct(null);
             this.render();
         }
@@ -166,10 +166,10 @@ export default class ProductHelper extends ProductView {
             item.classList.remove('products__picked-item--active');
         });
         // Find the selected fruit from topPicks
-        const selectedFruit = this.topPicks.find(fruit => fruit.id === fruitId);
+        const selectedFruit = state.productPage.topPicks.find(fruit => fruit.id === fruitId);
         if (selectedFruit) {
             // Check if the selected fruit is already the featured product
-            if (this.feature && this.feature.id === selectedFruit.id) {
+            if (state.productPage.feature && state.productPage.feature.id === selectedFruit.id) {
                 // If clicked twice, clear the featured product
                 this.setFeaturedProduct(null);
                 clickedItem.classList.remove('products__picked-item--active'); // Remove active class
@@ -187,10 +187,10 @@ export default class ProductHelper extends ProductView {
      * @param {Object} feature - The product to set as featured.
      */
     async setFeaturedProduct(feature) {
-        this.feature = feature; // Set the featured product
+        state.productPage.feature = feature; // Set the featured product
         const featureContainer = document.getElementById('feature');
         if (featureContainer) {
-            if (this.feature) {
+            if (state.productPage.feature) {
                 featureContainer.style.display = 'grid';
                 featureContainer.innerHTML = await this.getFeaturedProduct();
             } else {
@@ -206,7 +206,7 @@ export default class ProductHelper extends ProductView {
     sortFruits(sortValue) {
         if (!sortValue) return;
 
-        this.filteredFruits.sort((a, b) => {
+        state.productPage.filteredFruits.sort((a, b) => {
             switch(sortValue) {
                 case 'sold-high':
                     return parseInt(b.sold.replace(',', '')) - parseInt(a.sold.replace(',', ''));
@@ -230,7 +230,7 @@ export default class ProductHelper extends ProductView {
      * Sorts the filtered fruits based on the current sort state.
      */
     sortProducts() {
-        if (!this.currentSort) return;
+        if (!state.productPage.currentSort) return;
         const sortBySold = (a, b) => parseInt(b.sold.replace(',', '')) - parseInt(a.sold.replace(',', ''));
         const sortByStock = (a, b) => parseInt(b.stock) - parseInt(a.stock);
         const sortByPriceHigh = (a, b) => parseFloat(b.price.replace(/[^0-9.-]+/g,"")) - parseFloat(a.price.replace(/[^0-9.-]+/g,""));
@@ -249,8 +249,8 @@ export default class ProductHelper extends ProductView {
             'name-desc': sortByNameDesc,
         };
 
-        if (this.currentSort in sortFunctions) {
-            this.filteredFruits.sort(sortFunctions[this.currentSort]);
+        if (state.productPage.currentSort in sortFunctions) {
+            state.productPage.filteredFruits.sort(sortFunctions[state.productPage.currentSort]);
         }
 
         // Clear active classes from top picks

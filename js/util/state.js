@@ -6,6 +6,13 @@ const state = {
         cart: [],
         checkouts: []
     },
+    productPage: {
+        topPicks: [], // Array to hold top picked fruits
+        filteredFruits: [], // Array to hold filtered fruits based on user input
+        feature: {}, // Object to hold the featured product
+        currentFilter: 'All', // Current filter applied to the products
+        currentSort: 'sold', //Current Sorting method
+    },
     cart: [],
     products: [], // Store fetched devil fruits or other data
 };
