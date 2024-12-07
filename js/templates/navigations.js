@@ -64,9 +64,9 @@ export default class extends AbstractTemplate{
     }
 
     /**
-     * Generates the HTML for the user profile dropdown menu
+     * Generates the HTML for the user Account dropdown menu
      * Shows different options based on authentication state
-     * @returns {Promise<string>} Profile dropdown HTML
+     * @returns {Promise<string>} Account dropdown HTML
      */
     async getProfileDropDown(){
         return `
@@ -74,7 +74,7 @@ export default class extends AbstractTemplate{
                 ${state.user.isLoggedIn ? `
                 <!-- Logged in state -->
                 <div class="nav__dropdown-content nav__dropdown-logged-in">
-                    <a href="#/profile" class="nav__dropdown-item" data-link>Profile</a>
+                    <a href="#/account" class="nav__dropdown-item" data-link>Account</a>
                     <a href="#/logout" class="nav__dropdown-item">Logout</a>
                 </div>
                 `:

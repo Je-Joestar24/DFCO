@@ -58,9 +58,9 @@ export default class extends AbstractModal {
                     <input
                     type="text"
                     class="auth-modal__input"
-                    placeholder="Username or Mobile Number"
+                    placeholder="Email Account"
                     required
-                    aria-label="Username or Mobile Number"
+                    aria-label="email"
                     aria-required="true"
                     />
                 </div>
@@ -127,9 +127,9 @@ export default class extends AbstractModal {
                 <input
                 type="text"
                 class="auth-modal__input"
-                placeholder="Username or Mobile Number"
+                placeholder="Email Account"
                 required
-                aria-label="Username or Mobile Number"
+                aria-label="Email Account"
                 aria-required="true"
                 />
             </div>

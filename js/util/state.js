@@ -1,8 +1,10 @@
 const state = {
     user: {
-        isLoggedIn: false,
+        isLoggedIn: true,
         name: "",
         email: "",
+        cart: [],
+        checkouts: []
     },
     cart: [],
     products: [], // Store fetched devil fruits or other data
