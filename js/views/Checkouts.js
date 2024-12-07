@@ -20,7 +20,6 @@ export default class extends AbstractView {
             <div id="app-checkout-list" class="checkouts__list">
               <!-- ALL checkout item -->
               ${await this.getCheckoutList()}
-              <!-- More checkout items... -->
             </div>
             <div id="app-checkout-summary" class="checkouts__summary">
               ${await this.getCheckoutSummary()}

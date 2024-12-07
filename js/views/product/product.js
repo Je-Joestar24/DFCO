@@ -31,7 +31,7 @@ export default class extends AbstractView {
         }
     }
 
-    
+
     /**
      * Gets top 5 products by sales for featured display
      */
@@ -65,9 +65,9 @@ export default class extends AbstractView {
                 ${await this.getTopProducts()}
 
                 <!-- Featured product showcase -->
-                <div id="feature" class="products__featured" aria-label="Featured Product">
+                <article id="feature" class="products__featured" aria-label="Featured Product">
                     ${await this.getFeaturedProduct()}
-                </div>
+                </article>
                     
                 <!-- Sort controls -->
                 ${await this.getSort()}
@@ -182,27 +182,25 @@ export default class extends AbstractView {
             return '';
         }
         return `
-            <article class="products__featured-content" aria-label="Featured product details">
-                <img src="${state.productPage.feature.image1}" 
-                     alt="${state.productPage.feature.name} featured image" 
-                     class="products__featured-image">
-                <div class="products__featured-content">
-                    <h2 class="products__featured-title">${state.productPage.feature.name}</h2>
-                    <div class="products__featured-stats" role="group" aria-label="Product statistics">
-                        <div class="products__stat">
-                            <div class="products__stat-number">${state.productPage.feature.sold}</div>
-                            <div class="products__stat-label">Sold</div>
-                        </div>
-                        <div class="products__stat">
-                            <div class="products__stat-number">${state.productPage.feature.stock}</div>
-                            <div class="products__stat-label">In Stock</div>
-                        </div>
-                    </div>
-                    <button class="products__add-btn" aria-label="Add ${state.productPage.feature.name} to cart">
-                        Add to Cart
-                    </button>
+        <img src="${state.productPage.feature.image1}" 
+                alt="${state.productPage.feature.name} featured image" 
+                class="products__featured-image">
+        <div class="products__featured-content">
+            <h2 class="products__featured-title">${state.productPage.feature.name}</h2>
+            <div class="products__featured-stats" role="group" aria-label="Product statistics">
+                <div class="products__stat">
+                    <div class="products__stat-number">${state.productPage.feature.sold}</div>
+                    <div class="products__stat-label">Sold</div>
                 </div>
-            </article>
+                <div class="products__stat">
+                    <div class="products__stat-number">${state.productPage.feature.stock}</div>
+                    <div class="products__stat-label">In Stock</div>
+                </div>
+            </div>
+            <button class="products__add-btn" aria-label="Add ${state.productPage.feature.name} to cart">
+                Add to Cart
+            </button>
+        </div>
         `;
     }
 

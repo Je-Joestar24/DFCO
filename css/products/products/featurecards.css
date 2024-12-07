@@ -1,19 +1,18 @@
-
 /* Block: Featured devil fruit Section
  * Prominent display area for highlighted devil fruit
  * Uses glass morphism effect with grid layout
  * Maintains responsive column ratio
  */
-#app .products__featured {
-    margin-bottom: 4rem;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 3rem;
-    align-items: center;
+.products__featured {
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 3rem;
+  align-items: center;
 }
 
 /* Element: Featured devil fruit images
@@ -21,10 +20,10 @@
  * Maintains image proportions while filling space
  */
 .products__featured-image {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: contain;
-    border-radius: 15px;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 15px;
 }
 
 /* Element: Featured Product Content
@@ -32,5 +31,5 @@
  * Uses theme color for text content
  */
 .products__featured-content {
-    color: var(--light-theme);
+  color: var(--light-theme);
 }

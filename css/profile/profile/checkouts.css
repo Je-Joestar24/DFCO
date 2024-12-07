@@ -227,29 +227,3 @@
   font-weight: 600;
   color: var(--mythical);
 }
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .checkouts__item {
-    grid-template-columns: auto 1fr auto;
-    gap: 1rem;
-  }
-
-  .checkouts__price {
-    grid-column: 2 / -1;
-    text-align: right;
-    padding-left: calc(60px + 2rem);
-  }
-}
-
-/* Animations */
-@keyframes checkoutsFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
