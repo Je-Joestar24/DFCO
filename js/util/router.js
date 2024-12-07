@@ -7,6 +7,7 @@ import Home from '../views/home.js';
 import Product from '../views/product.js';
 import About from '../views/about.js';
 import Cart from '../views/cart.js';
+import Profile from '../views/profile.js';
 import AccountSettings from '../views/AccountSettings.js';
 import { actions } from './state.js';
 
@@ -21,7 +22,9 @@ export class Router {
             { path: '#/products', view: Product, id: 'products-nav', message: 'PRODUCTS PAGE'  },
             { path: '#/about', view: About, id: 'about-nav', message: 'ABOUT PAGE'  },
             { path: '#/cart', view: Cart, id: 'wa', message: 'MY CART' },
+            { path: '#/profile', view: Profile, id: 'wa', message: 'MY PROFILE' },
             { path: '#/profile/account-settings', view: AccountSettings, id: 'wa', message: 'ACCOUNT SETTINGS' },
+
         ];
         this.displayArea = document.querySelector(displayID);
     }
