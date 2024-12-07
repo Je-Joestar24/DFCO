@@ -1,11 +1,14 @@
 /* Checkouts Base */
-.checkouts {
+.app__checkouts {
   --checkbox-size: 1.25rem;
   --row-padding: 1.5rem;
-  
+  width: 100%;
+}
+
+.checkouts__content {
+  margin: 10em auto;
   width: 100%;
   max-width: var(--container-lg);
-  margin: 2rem auto;
   animation: checkoutsFadeIn 0.5s ease-out forwards;
 }
 
@@ -15,7 +18,11 @@
   align-items: center;
   gap: 1rem;
   padding: var(--row-padding);
-  background: linear-gradient(145deg, var(--background-light), var(--background-dark));
+  background: linear-gradient(
+    145deg,
+    var(--background-light),
+    var(--background-dark)
+  );
   border-radius: 1rem 1rem 0 0;
   border-bottom: 1px solid var(--shadow-shine);
 }
@@ -156,7 +163,11 @@
   height: 60px;
   border-radius: 0.5rem;
   overflow: hidden;
-  background: linear-gradient(145deg, var(--background-light), var(--background-dark));
+  background: linear-gradient(
+    145deg,
+    var(--background-light),
+    var(--background-dark)
+  );
 }
 
 .checkouts__product-image img {
@@ -174,11 +185,6 @@
 .checkouts__product-name {
   font-weight: 500;
   color: var(--light-theme);
-}
-
-.checkouts__product-date {
-  font-size: 0.875rem;
-  color: var(--secondary);
 }
 
 .checkouts__quantity {
@@ -199,7 +205,11 @@
 .checkouts__summary {
   margin-top: 2rem;
   padding: var(--row-padding);
-  background: linear-gradient(145deg, var(--background-light), var(--background-dark));
+  background: linear-gradient(
+    145deg,
+    var(--background-light),
+    var(--background-dark)
+  );
   border-radius: 1rem;
   display: flex;
   flex-direction: column;

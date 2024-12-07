@@ -4,7 +4,7 @@
  * Uses glass morphism effect with grid layout
  * Maintains responsive column ratio
  */
- .products__featured {
+#app .products__featured {
     margin-bottom: 4rem;
     padding: 2rem;
     background: rgba(255, 255, 255, 0.03);

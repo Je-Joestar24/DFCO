@@ -9,6 +9,7 @@ import About from '../views/about.js';
 import Cart from '../views/cart.js';
 import Profile from '../views/profile.js';
 import AccountSettings from '../views/AccountSettings.js';
+import Checkouts from '../views/Checkouts.js';
 import { actions } from './state.js';
 
 export class Router {
@@ -24,7 +25,7 @@ export class Router {
             { path: '#/cart', view: Cart, id: 'wa', message: 'MY CART' },
             { path: '#/profile', view: Profile, id: 'wa', message: 'MY PROFILE' },
             { path: '#/profile/account-settings', view: AccountSettings, id: 'wa', message: 'ACCOUNT SETTINGS' },
-
+            { path: '#/profile/checkouts', view: Checkouts, id: 'wa', message: 'MY CHECKOUTS' },
         ];
         this.displayArea = document.querySelector(displayID);
     }
