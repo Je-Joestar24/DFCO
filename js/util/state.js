@@ -12,7 +12,27 @@ const state = {
         feature: {}, // Object to hold the featured product
         currentFilter: 'All', // Current filter applied to the products
         currentSort: 'sold', //Current Sorting method
-        display: {},
+        display: {
+            "id": -1,
+            "name": "NO DATA",
+            "alias": "NO DATA",
+            "currentUser": "NO DATA",
+            "description": "NO DATA",
+            "abilities": [
+              "NO DATA",
+            ],
+            "weaknesses": [
+              "NO DATA",
+            ],
+            "type": "NO DATA",
+            "specifications": {
+              "power": "NO DATA",
+              "range": "NO DATA",
+              "durability": "NO DATA"
+            },
+            "img": "NO DATA",
+            "price": "NO DATA"
+          },
     },
     cart: [],
     products: [], // Store fetched devil fruits or other data

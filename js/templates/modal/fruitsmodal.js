@@ -10,16 +10,30 @@ export default class extends AbstractModal {
     async init() {
         this.modal.innerHTML = await this.getContent()
         this.bindButtons();
-        
+        this.bindButtons2();
     }
 
+    bindButtons2(){
+        document.body.addEventListener('click', (e) => {
+            if (e.target.matches(`[${this.toggleAttr}]`)) {
+                e.preventDefault();
+                const attributeValue = e.target.getAttribute(this.toggleAttr);
+    
+                if (attributeValue) {
+                    this.setData(attributeValue); 
+                }
+            }
+        });
+    }
 
     async setData(json) {
-        this.data = await actions.fetchDevilFruitDetails(json);
-        console.log(this.data);
+        await actions.fetchDevilFruitDetails(json);
+        this.modal.innerHTML = await this.getContent();
     }
 
     async getContent() {
+        this.data = await getters.getDisplay();
+        
         return `
         <div class="fruit-modal__loading"></div>
         <div id="fruit-modal__content" class="fruit-modal__content">
