@@ -14,12 +14,12 @@
     "Standard Devil Fruit weaknesses (cannot swim)",
     "Requires reflective surfaces for optimal movement"
   ],
-  "awakening": "Unknown",
-  "history": "This fruit is currently used by Marine Admiral Borsalino, also known as Kizaru.",
   "type": "Logia",
   "specifications": {
     "power": "S",
     "range": "Long",
     "durability": "A"
-  }
+  },
+  "image": "./images/devil-fruits/pika-pika.png",
+  "price": "₿ 5,100,000"
 } 

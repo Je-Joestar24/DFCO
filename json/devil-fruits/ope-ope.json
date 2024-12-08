@@ -14,12 +14,12 @@
     "Standard Devil Fruit weaknesses (cannot swim)",
     "Requires stamina to maintain 'room'"
   ],
-  "awakening": "Unknown",
-  "history": "This fruit is currently used by Trafalgar D. Water Law, a member of the Worst Generation.",
   "type": "Paramecia",
   "specifications": {
     "power": "S",
     "range": "Variable",
     "durability": "A"
-  }
+  },
+  "img": "./images/devil-fruits/ope-ope.png",
+  "price": "₿ 4,800,000"
 } 

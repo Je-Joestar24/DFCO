@@ -14,12 +14,12 @@
     "Standard Devil Fruit weaknesses (cannot swim)",
     "Vulnerable to heat and fire"
   ],
-  "awakening": "Unknown",
-  "history": "This fruit is currently used by former Marine Admiral Kuzan, also known as Aokiji.",
   "type": "Logia",
   "specifications": {
     "power": "A",
     "range": "Long",
     "durability": "A+"
-  }
+  },
+  "img": "./images/devil-fruits/hie-hie.png",
+  "price": "₿ 4,500,000"
 } 

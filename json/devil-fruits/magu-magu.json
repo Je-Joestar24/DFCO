@@ -14,12 +14,12 @@
     "Standard Devil Fruit weaknesses (cannot swim)",
     "Vulnerable to water and sea-prism stone"
   ],
-  "awakening": "Unknown",
-  "history": "This fruit is currently used by Fleet Admiral Sakazuki, also known as Akainu.",
   "type": "Logia",
   "specifications": {
     "power": "S+",
     "range": "Long",
     "durability": "S"
-  }
+  },
+  "img": "./images/devil-fruits/magu-magu.png",
+  "price": "₿ 4,700,000"
 } 

@@ -1,4 +1,5 @@
 import AbstractModal from "./AbstractModal.js";
+import { actions, getters } from "../../util/state.js";
 
 export default class extends AbstractModal {
     constructor() {
@@ -6,18 +7,25 @@ export default class extends AbstractModal {
         this.init();
     }
 
-    async init(){
+    async init() {
         this.modal.innerHTML = await this.getContent()
         this.bindButtons();
+        
     }
 
-    async getContent(){
+
+    async setData(json) {
+        this.data = await actions.fetchDevilFruitDetails(json);
+        console.log(this.data);
+    }
+
+    async getContent() {
         return `
-        <div class="fruit-modal__content">
+        <div class="fruit-modal__loading"></div>
+        <div id="fruit-modal__content" class="fruit-modal__content">
             <div class="fruit-modal__header">
             <div>
-                <h2 class="fruit-modal__title">Hito Hito no Mi</h2>
-                <p class="fruit-modal__alias">Human-Human Fruit, Model: Nika</p>
+                ${await this.getModalHeader()}
             </div>
             <button class="fruit-modal__close" aria-label="Close modal" data-fruit-toggle>
                 ×
@@ -25,56 +33,7 @@ export default class extends AbstractModal {
             </div>
 
             <div class="fruit-modal__body">
-            <div class="fruit-modal__main-info">
-                <div class="fruit-modal__image">
-                <img src="path/to/fruit-image.jpg" alt="Hito Hito no Mi">
-                <div class="fruit-modal__price">$999,999</div>
-                </div>
-                
-                <p class="fruit-modal__description">
-                The Hito Hito no Mi, Model: Nika is a Mythical Zoan-type Devil Fruit that allows the user to transform into the legendary 'Sun God' Nika, granting them immense power and freedom.
-                </p>
-
-                <div class="fruit-modal__popular-user">
-                <span class="fruit-modal__user-label">Popular User:</span>
-                <span class="fruit-modal__user-name">Monkey D. Luffy</span>
-                </div>
-
-                <div class="fruit-modal__specifications">
-                <div class="fruit-modal__spec">
-                    <div class="fruit-modal__spec-label">Power</div>
-                    <div class="fruit-modal__spec-value">S+</div>
-                </div>
-                <div class="fruit-modal__spec">
-                    <div class="fruit-modal__spec-label">Range</div>
-                    <div class="fruit-modal__spec-value">∞</div>
-                </div>
-                <div class="fruit-modal__spec">
-                    <div class="fruit-modal__spec-label">Durability</div>
-                    <div class="fruit-modal__spec-value">S</div>
-                </div>
-                </div>
-            </div>
-
-            <div class="fruit-modal__lists">
-                <div class="fruit-modal__list-section">
-                <h3 class="fruit-modal__list-title">Abilities</h3>
-                <ol class="fruit-modal__list">
-                    <li class="fruit-modal__list-item">Nika Transformation</li>
-                    <li class="fruit-modal__list-item">Enhanced Strength</li>
-                    <li class="fruit-modal__list-item">Rubber Body</li>
-                    <li class="fruit-modal__list-item">Freedom of Movement</li>
-                </ol>
-                </div>
-
-                <div class="fruit-modal__list-section">
-                <h3 class="fruit-modal__list-title">Weaknesses</h3>
-                <ol class="fruit-modal__list">
-                    <li class="fruit-modal__list-item">Standard Devil Fruit weaknesses (cannot swim)</li>
-                    <li class="fruit-modal__list-item">Requires stamina to maintain transformation</li>
-                </ol>
-                </div>
-            </div>
+                ${await this.getModalContents()}
             </div>
 
             <div class="fruit-modal__actions">
@@ -94,4 +53,72 @@ export default class extends AbstractModal {
         </div>
         `;
     }
+
+    async getModalHeader() {
+        return `
+        <h2 class="fruit-modal__title">
+            ${this.data.name}
+            <span class="fruit-modal__type fruit-modal__type--${this.data.type.toLowerCase()}" role="text">
+                <svg class="fruit-modal__type-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    ${getTypeIcon(this.data.type)}
+                </svg>
+                ${this.data.type}
+            </span>
+        </h2>
+        <p class="fruit-modal__alias">${this.data.alias}</p>
+        `;
+    }
+
+    async getModalContents() {
+        return `
+        <div class="fruit-modal__main-info">
+            <div class="fruit-modal__image">
+            <img src="${this.data.img}" alt="${this.data.name}">
+            <div class="fruit-modal__price">${this.data.price}</div>
+        </div>
+            
+            <p class="fruit-modal__description">
+            ${this.data.description}
+            </p>
+
+        <div class="fruit-modal__popular-user">
+            <span class="fruit-modal__user-label">Popular User:</span>
+            <span class="fruit-modal__user-name">${this.data.currentUser}</span>
+        </div>
+
+        <div class="fruit-modal__specifications">
+            ${Object.entries(this.data.specifications).map(([key, value]) => `<div class="fruit-modal__spec">
+                <div class="fruit-modal__spec-label">${key}</div>
+                <div class="fruit-modal__spec-value">${value}</div>
+            </div>`).join('')}
+            </div>
+        </div>
+
+        <div class="fruit-modal__lists">
+            <div class="fruit-modal__list-section">
+            <h3 class="fruit-modal__list-title">Abilities</h3>
+            <ol class="fruit-modal__list">
+                ${this.data.abilities.map((val) => `<li class="fruit-modal__list-item">${val}</li>`).join("")}
+            </ol>
+            </div>
+
+            <div class="fruit-modal__list-section">
+            <h3 class="fruit-modal__list-title">Weaknesses</h3>
+            <ol class="fruit-modal__list">
+                ${this.data.weaknesses.map((val) => `<li class="fruit-modal__list-item">${val}</li>`).join("")}
+            </ol>
+            </div>
+        </div>
+        `;
+    }
+}
+
+function getTypeIcon(type) {
+    const icons = {
+        Paramecia: '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>',
+        Zoan: '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z"/>',
+        Logia: '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>',
+        Mythical: '<path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/>'
+    };
+    return icons[type] || icons.Paramecia;
 }

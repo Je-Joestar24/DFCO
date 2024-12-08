@@ -14,12 +14,12 @@
     "Standard Devil Fruit weaknesses (cannot swim)",
     "Requires stamina to maintain transformation"
   ],
-  "awakening": "Unknown",
-  "history": "This fruit is currently used by Monkey D. Luffy, the captain of the Straw Hat Pirates.",
   "type": "Mythical Zoan",
   "specifications": {
     "power": "S+",
     "range": "Variable",
     "durability": "S"
-  }
+  },
+  "img": "./images/devil-fruits/hito-hito.png",
+  "price": "₿ 5,700,000"
 } 

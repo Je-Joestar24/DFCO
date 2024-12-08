@@ -12,6 +12,7 @@ const state = {
         feature: {}, // Object to hold the featured product
         currentFilter: 'All', // Current filter applied to the products
         currentSort: 'sold', //Current Sorting method
+        display: {},
     },
     cart: [],
     products: [], // Store fetched devil fruits or other data
@@ -23,7 +24,8 @@ const getters = {
     getCart: () => state.cart,
     getTotalPrice: () =>
         state.cart.reduce((total, item) => total + item.price * item.quantity, 0),
-    getActiveNav: () => state.navigations.active
+    getActiveNav: () => state.navigations.active,
+    getDisplay: async () => state.productPage.display
 };
 
 // Mutations: Synchronous functions to modify the state
@@ -48,7 +50,9 @@ const mutations = {
     removeFromCart: (productId) => {
         state.cart = state.cart.filter((item) => item.id !== productId);
         localStorage.setItem("cart", JSON.stringify(state.cart));
-    },
+    },setDisplay(display){
+        state.productPage.display = display;
+    }
 };
 
 // Actions: Asynchronous or complex operations
@@ -71,17 +75,14 @@ const actions = {
         if (savedUser) state.user = JSON.parse(savedUser);
         if (savedCart) state.cart = JSON.parse(savedCart);
     },
-    fetchDevilFruitDetails: async (fruitId) => {
+    fetchDevilFruitDetails: async (fruit) => {
         try {
-            const fruit = state.products.find(item => item.id === fruitId);
-            if (!fruit) {
-                throw new Error('Fruit not found');
-            }
-            const response = await fetch(`../../json/devil-fruits/${fruit.json}`);
+            const response = await fetch(`../../json/devil-fruits/${fruit}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch devil fruit details');
             }
             const fruitDetails = await response.json();
+            mutations.setDisplay(fruitDetails);
             return fruitDetails;
         } catch (error) {
             console.error('Error fetching devil fruit details:', error);

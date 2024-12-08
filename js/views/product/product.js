@@ -197,6 +197,10 @@ export default class extends AbstractView {
                     <div class="products__stat-number">${state.productPage.feature.stock}</div>
                     <div class="products__stat-label">In Stock</div>
                 </div>
+                <div class="products__stat">
+                    <div class="products__stat-number">${state.productPage.feature.price}</div>
+                    <div class="products__stat-label">PRICE</div>
+                </div>
             </div>
             <button class="products__btn products__add-btn" aria-label="Add ${state.productPage.feature.name} to cart">
                 <svg class="products__btn-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -230,7 +234,7 @@ export default class extends AbstractView {
                     <h3 class="products__name">${fruit.name}</h3>
                     <p class="products__price" aria-label="Price: ${fruit.price}">${fruit.price}</p>
                     <div class="products__actions">
-                        <button class="products__btn products__view-btn" data-fruit-toggle aria-label="View details">
+                        <button class="products__btn products__view-btn" data-fruit-toggle="${fruit.json}" aria-label="View details">
                             <svg class="products__btn-icon" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
                             </svg>

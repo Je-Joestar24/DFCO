@@ -14,12 +14,12 @@
     "Standard Devil Fruit weaknesses (cannot swim)",
     "Regeneration consumes stamina"
   ],
-  "awakening": "Unknown",
-  "history": "This fruit is currently used by Marco, the former first division commander of the Whitebeard Pirates.",
   "type": "Mythical Zoan",
   "specifications": {
     "power": "S",
     "range": "Short",
     "durability": "S+"
-  }
+  },
+  "img": "./images/devil-fruits/tori-tori.png",
+  "price": "₿ 4,900,000"
 } 

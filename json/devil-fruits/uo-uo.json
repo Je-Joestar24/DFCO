@@ -14,12 +14,12 @@
     "Standard Devil Fruit weaknesses (cannot swim)",
     "Large size can be a disadvantage in confined spaces"
   ],
-  "awakening": "Unknown",
-  "history": "This fruit is currently used by Kaido, one of the Four Emperors.",
   "type": "Mythical Zoan",
   "specifications": {
     "power": "S+",
     "range": "Long",
     "durability": "S+"
-  }
+  },
+  "img": "./images/devil-fruits/uo-uo.png",
+  "price": "₿ 6,000,000"
 } 
