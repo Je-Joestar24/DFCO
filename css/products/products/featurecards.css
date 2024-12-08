@@ -33,3 +33,7 @@
 .products__featured-content {
   color: var(--light-theme);
 }
+
+.products__featured-content .products__btn{
+  width: 50%;
+}

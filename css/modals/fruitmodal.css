@@ -204,6 +204,8 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+  color: var(--secondary);
+  font-size: 1.4em;
 }
 
 .fruit-modal__close:hover {
@@ -211,11 +213,6 @@
   transform: rotate(90deg);
 }
 
-.fruit-modal__close-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  fill: var(--light-theme);
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {

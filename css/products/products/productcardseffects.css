@@ -1,4 +1,3 @@
-
 /* Modifier: Card hover state
  * Lifts card slightly on hover for depth effect
  */
@@ -23,4 +22,49 @@
 .products__add-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px var(--shadow-shine);
+}
+
+/* Button Hover Effects */
+.products__view-btn:hover {
+  background: var(--mythical);
+  transform: translateY(-2px);
+}
+
+.products__view-btn:hover::before {
+  left: 100%;
+}
+
+.products__view-btn:hover .products__btn-icon {
+  transform: rotate(180deg);
+}
+
+.products__add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px var(--shadow-shine);
+  background: linear-gradient(45deg, var(--mythical), var(--paramecia));
+}
+
+.products__add-btn:hover .products__btn-icon {
+  transform: translateX(3px);
+}
+
+/* Active State Effects */
+.products__btn:active {
+  transform: translateY(1px);
+}
+
+/* Card Hover Animation */
+.products__card:hover .products__actions {
+  animation: slideUpFade 0.3s ease forwards;
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0.8;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
