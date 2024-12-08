@@ -1,0 +1,397 @@
+/* Fruit Modal Base */
+.fruit-modal {
+  --modal-padding: 2rem;
+  --modal-border-radius: 1.5rem;
+  --modal-width: min(90vw, 1000px);
+  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.fruit-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal Content Container */
+.fruit-modal__content {
+  width: var(--modal-width);
+  max-height: 85vh;
+  background: linear-gradient(145deg, var(--background-light), var(--background-dark));
+  border-radius: var(--modal-border-radius);
+  overflow: hidden;
+  position: relative;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.4s ease-out;
+}
+
+.fruit-modal.open .fruit-modal__content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Modal Header */
+.fruit-modal__header {
+  padding: var(--modal-padding);
+  background: linear-gradient(to right, var(--mythical), var(--background-dark));
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.fruit-modal__title {
+  color: var(--light-theme);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.fruit-modal__alias {
+  color: var(--secondary);
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+/* Modal Body */
+.fruit-modal__body {
+  padding: var(--modal-padding);
+  overflow-y: auto;
+  max-height: calc(85vh - 300px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+/* Left Column */
+.fruit-modal__main-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.fruit-modal__description {
+  color: var(--light-theme);
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.fruit-modal__popular-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+}
+
+.fruit-modal__user-label {
+  color: var(--secondary);
+  font-size: 0.9rem;
+}
+
+.fruit-modal__user-name {
+  color: var(--mythical);
+  font-weight: 600;
+}
+
+/* Right Column - Lists */
+.fruit-modal__lists {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.fruit-modal__list-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.fruit-modal__list-title {
+  color: var(--mythical);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.fruit-modal__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.fruit-modal__list-item {
+  color: var(--light-theme);
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 2rem;
+}
+
+.fruit-modal__list-item::before {
+  content: "•";
+  position: absolute;
+  left: 0.75rem;
+  color: var(--mythical);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.fruit-modal__list-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+/* Specifications Grid */
+.fruit-modal__specifications {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.fruit-modal__spec {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  text-align: center;
+}
+
+.fruit-modal__spec-label {
+  color: var(--secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.fruit-modal__spec-value {
+  color: var(--mythical);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Close Button */
+.fruit-modal__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.fruit-modal__close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.fruit-modal__close-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: var(--light-theme);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .fruit-modal__body {
+    grid-template-columns: 1fr;
+  }
+
+  .fruit-modal__specifications {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fruit-modal__title {
+    font-size: 2rem;
+  }
+}
+
+/* Loading State */
+.fruit-modal--loading .fruit-modal__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+/* Animations */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes listItemFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Product Image */
+.fruit-modal__image {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(145deg, var(--background-dark), var(--mythical));
+  border-radius: var(--modal-border-radius);
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.fruit-modal__image:hover {
+  transform: scale(1.02);
+}
+
+.fruit-modal__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.fruit-modal__image:hover img {
+  opacity: 1;
+}
+
+/* Action Buttons Container */
+.fruit-modal__actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+  padding: var(--modal-padding);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent);
+}
+
+/* Base Button Styles */
+.fruit-modal__button {
+  flex: 1;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add to Cart Button */
+.fruit-modal__button--cart {
+  background: var(--background-dark);
+  color: var(--light-theme);
+  border: 2px solid var(--mythical);
+}
+
+.fruit-modal__button--cart:hover {
+  background: var(--mythical);
+  transform: translateY(-2px);
+}
+
+.fruit-modal__button--cart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.fruit-modal__button--cart:hover::before {
+  left: 100%;
+}
+
+/* Buy Now Button */
+.fruit-modal__button--buy {
+  background: var(--mythical);
+  color: var(--light-theme);
+}
+
+.fruit-modal__button--buy:hover {
+  background: linear-gradient(145deg, var(--mythical), var(--background-dark));
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Button Icons */
+.fruit-modal__button-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+}
+
+/* Price Display */
+.fruit-modal__price {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--mythical);
+  color: var(--light-theme);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  animation: priceFloat 3s ease-in-out infinite;
+}
+
+@keyframes priceFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
