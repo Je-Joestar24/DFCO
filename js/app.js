@@ -1,5 +1,4 @@
 import { Router } from './util/router.js';
-import AuthModal from './views/componenets/authsmodal.js';
 import Main from './templates/main.js';
 
 const router = new Router('#app__display');
@@ -17,8 +16,6 @@ document.addEventListener('DOMContentLoaded',async () => {
             router.navigateTo(e.target.href);
         }
     });
-
-    new AuthModal();
     // Initial route
     router.route();
 });

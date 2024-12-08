@@ -1,6 +1,6 @@
 const state = {
     user: {
-        isLoggedIn: true,
+        isLoggedIn: false,
         name: "",
         email: "",
         cart: [],

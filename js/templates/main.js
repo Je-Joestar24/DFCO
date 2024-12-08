@@ -1,5 +1,6 @@
 import Navigations from "./navigations.js";
 import AbstractTemplate from "./AbstractTemplate.js";
+import AuthsModal from "./modal/authsmodal.js";
 
 export default class extends AbstractTemplate{
     nav = null;
@@ -11,6 +12,7 @@ export default class extends AbstractTemplate{
 
     async init(){
         document.getElementById('app__nav').innerHTML = await this.getHtml();
+        new AuthsModal();
     }
 
     async getHtml(){
