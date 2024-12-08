@@ -1,0 +1,73 @@
+
+  /* Element: Form Input
+   * Styled input field with icon space
+   */
+   .form__group input {
+    width: 100%;
+    padding: var(--account-input-padding);
+    padding-left: 2.5rem; /* Space for icon */
+    border: 1px solid var(--shadow-shine);
+    background: rgba(255, 255, 255, var(--account-bg-opacity));
+    border-radius: var(--account-section-radius);
+    color: var(--light-theme);
+    transition: all 0.3s ease;
+  }
+  
+  /* Element: Input Icons Base
+   * Common styles for input field icons
+   */
+  .input-container::before {
+    content: "";
+    position: absolute;
+    left: 0.8rem;
+    width: var(--account-small-icon);
+    height: var(--account-small-icon);
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Modifier: Input Type Icons
+   * Specific icons for different input types
+   */
+  .input-container.fullname::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff8dc' viewBox='0 0 24 24'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E");
+  }
+  
+  .input-container.mobile::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff8dc' viewBox='0 0 24 24'%3E%3Cpath d='M16 1H8C6.34 1 5 2.34 5 4v16c0 1.66 1.34 3 3 3h8c1.66 0 3-1.34 3-3V4c0-1.66-1.34-3-3-3zm-2 20h-4v-1h4v1zm3.25-3H6.75V4h10.5v14z'/%3E%3C/svg%3E");
+  }
+  
+  .input-container.email::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff8dc' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/%3E%3C/svg%3E");
+  }
+  
+  .input-container.password::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff8dc' viewBox='0 0 24 24'%3E%3Cpath d='M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z'/%3E%3C/svg%3E");
+  }
+  
+  /* State: Input Focus
+   * Enhanced focus state with glow effect
+   */
+  .form__group input:focus {
+    outline: none;
+    border-color: var(--mythical);
+    box-shadow: 0 0 0 2px rgba(156, 39, 176, 0.2);
+  }
+  
+  .form__group input:focus + .input-container::before {
+    opacity: 1;
+  }
+  
+  /* State: Form Group Hover
+   * Enhanced hover states for label and icon
+   */
+  .form__group:hover label {
+    color: var(--mythical);
+  }
+  
+  .form__group:hover .input-container::before {
+    opacity: 1;
+  }
+  

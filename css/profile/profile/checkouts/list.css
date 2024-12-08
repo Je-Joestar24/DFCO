@@ -1,0 +1,41 @@
+@import "./list/checkbox.css";
+@import "./list/productinfo.css";
+
+/* Block: Checkouts List
+ * Container for checkout items
+ * Uses dark background with rounded corners
+ */
+.checkouts__list {
+  background: var(--background-dark);
+  border-radius: 0 0 1rem 1rem;
+  overflow: hidden;
+}
+
+/* Block: Checkout Item
+ * Grid layout for individual checkout entries
+ * Contains checkbox, product info, quantity and price
+ */
+.checkouts__item {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 2rem;
+  padding: var(--row-padding);
+  border-bottom: 1px solid var(--shadow-shine);
+  transition: background-color 0.3s ease;
+}
+
+/* State: Item Hover
+ * Subtle background highlight on hover
+ */
+.checkouts__item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* State: Last Item
+ * Removes bottom border from last item
+ */
+.checkouts__item:last-child {
+  border-bottom: none;
+}
+

@@ -1,0 +1,63 @@
+
+/* Block: Product Container
+ * Flex container for product image and info
+ */
+ .checkouts__product {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  /* Element: Product Image Container
+   * Fixed size container with gradient background
+   * Contains responsive product image
+   */
+  .checkouts__product-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: linear-gradient(
+      145deg,
+      var(--background-light),
+      var(--background-dark)
+    );
+  }
+  
+  /* Element: Product Image
+   * Responsive image with contain fit
+   */
+  .checkouts__product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  /* Element: Product Name
+   * Light themed text with medium weight
+   */
+  .checkouts__product-name {
+    font-weight: 500;
+    color: var(--light-theme);
+  }
+  
+  /* Element: Product Quantity
+   * Centered text with fixed minimum width
+   */
+  .checkouts__quantity {
+    font-weight: 500;
+    color: var(--light-theme);
+    text-align: center;
+    min-width: 3rem;
+  }
+  
+  /* Element: Product Price
+   * Right-aligned text using mythical theme color
+   */
+  .checkouts__price {
+    font-weight: 600;
+    color: var(--mythical);
+    text-align: right;
+    min-width: 6rem;
+  }
+  

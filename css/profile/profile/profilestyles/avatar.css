@@ -1,0 +1,74 @@
+
+/* Block: Profile Header
+ * Flex container for avatar and user info
+ * Uses gradient background with shadow and hover animation
+ */
+ .profile__header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: var(--profile-padding);
+    background: linear-gradient(
+      145deg,
+      var(--background-light),
+      var(--background-dark)
+    );
+    border-radius: var(--profile-border-radius);
+    box-shadow: 0 8px 32px var(--shadow-dark);
+    transition: transform var(--profile-transition);
+  }
+  
+  /* State: Header Hover
+   * Subtle upward movement on hover
+   */
+  .profile__header:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Block: Profile Avatar
+   * Circular container for user avatar or icon
+   * Features border and hover animation
+   */
+  .profile__avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid var(--mythical);
+    overflow: hidden;
+    position: relative;
+    transition: transform var(--profile-transition);
+    background: linear-gradient(
+      145deg,
+      var(--background-light),
+      var(--background-dark)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* State: Avatar Hover
+   * Scale up effect on hover
+   */
+  .profile__avatar:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Element: Avatar Icon
+   * Default user icon with hover opacity effect
+   */
+  .profile__avatar-icon {
+    width: 60%;
+    height: 60%;
+    fill: var(--light-theme);
+    opacity: 0.9;
+    transition: opacity var(--profile-transition);
+  }
+  
+  /* State: Avatar Icon Hover
+   * Full opacity on parent hover
+   */
+  .profile__avatar:hover .profile__avatar-icon {
+    opacity: 1;
+  }
+  

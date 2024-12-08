@@ -1,0 +1,81 @@
+@import "form/buttons.css";
+@import "form/inputs.css";
+/* Block: Account Section
+ * Individual form sections with hover animation
+ * Contains heading with icon and form groups
+ */
+ .account__section {
+    background: rgba(255, 255, 255, var(--account-section-bg-opacity));
+    border-radius: var(--account-section-radius);
+    padding: var(--account-padding-lg);
+    margin-bottom: var(--account-margin-bottom);
+    transition: transform 0.3s ease;
+  }
+  
+  /* Modifier: Section Hover Effect
+   * Slight upward translation on hover
+   */
+  .account__section:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Element: Section Heading
+   * Flex container for heading and icon
+   */
+  .account__section h3 {
+    color: var(--light-theme);
+    margin-bottom: var(--account-margin-bottom);
+    display: flex;
+    align-items: center;
+    gap: var(--account-gap);
+  }
+  
+  /* Element: Section Icons
+   * SVG icons for section headers
+   */
+  .account__section h3::before {
+    content: "";
+    width: var(--account-icon-size);
+    height: var(--account-icon-size);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  
+  /* Modifier: Personal Information Icon */
+  .account__section[aria-label="Personal Information"] h3::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff8dc' viewBox='0 0 24 24'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E");
+  }
+  
+  /* Modifier: Account Information Icon */
+  .account__section[aria-label="Account Information"] h3::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff8dc' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/%3E%3C/svg%3E");
+  }
+  
+  /* Block: Form Group
+   * Container for label and input field
+   */
+  .form__group {
+    margin-bottom: var(--account-margin-bottom);
+    position: relative;
+  }
+  
+  /* Element: Form Label
+   * Animated label with hover effect
+   */
+  .form__group label {
+    display: block;
+    color: var(--light-theme);
+    margin-bottom: var(--account-gap);
+    font-size: var(--account-label-size);
+    transition: all 0.3s ease;
+  }
+  
+  /* Block: Input Container
+   * Wrapper for input field and icon
+   */
+  .input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
