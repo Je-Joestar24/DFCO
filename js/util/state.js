@@ -33,6 +33,8 @@ const state = {
             "img": "./images/devil-fruits/nodata.png",
             "price": "NO DATA"
         },
+    },cart: {
+        isBound: false
     },
     users: JSON.parse(localStorage.getItem("users")) || [],
     products: JSON.parse(localStorage.getItem("products")) || [], // Store fetched devil fruits or other data
@@ -65,8 +67,41 @@ const getters = {
     getTotalPrice: () =>
         state.cart.reduce((total, item) => total + item.price * item.quantity, 0),
     getActiveNav: () => state.navigations.active,
-    getDisplay: async () => state.productPage.display
+    getDisplay: async () => state.productPage.display,
+    getCartSummary: () => {
+        const cartItems = getters.getCart();
+        if (!cartItems || cartItems.length === 0) {
+            return {
+                itemCount: 0,
+                total: formatPrice(0)
+            };
+        }
+
+        // Only include checked items in calculations
+        const checkedItems = cartItems.filter(item => item.checked === true);
+        
+        const total = checkedItems.reduce((total, item) => {
+            let price = 0;
+            if (item.price) {
+                price = parseFloat(item.price.replace('₿', '').replace(/,/g, '')) || 0;
+            }
+            return total + (price * (item.quantity || 1));
+        }, 0);
+
+        return {
+            itemCount: checkedItems.reduce((count, item) => count + (item.quantity || 1), 0),
+            total: formatPrice(total)
+        };
+    }
 };
+
+// Helper function to format prices
+function formatPrice(number) {
+    return '₿ ' + number.toLocaleString('en-US', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    });
+}
 
 // Mutations: Synchronous functions to modify the state
 const mutations = {
@@ -129,7 +164,7 @@ const mutations = {
         if (item) {
             item.quantity++;
         } else {
-            state.user.cart.push({ id, quantity: 1 });
+            state.user.cart.push({ id, quantity: 1, checked: false }); // Added checked field defaulting to false
         }
     
         sessionStorage.setItem("user", JSON.stringify(state.user));
@@ -146,11 +181,56 @@ const mutations = {
         state.users = updatedUsers; // Update state.users with the new user data
     }
     ,
-    removeFromCart: (productId) => {
-        state.cart = state.cart.filter((item) => item.id !== productId);
-        localStorage.setItem("cart", JSON.stringify(state.cart));
-    }, setDisplay(display) {
+    removeFromCart: (id) => {
+        state.user.cart = state.user.cart.filter(item => item.id !== id);
+        sessionStorage.setItem("user", JSON.stringify(state.user));
+        
+        // Update localStorage
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const updatedUsers = users.map(user => {
+            if (user.email === state.user.email) {
+                return { ...user, cart: state.user.cart };
+            }
+            return user;
+        });
+        
+        localStorage.setItem("users", JSON.stringify(updatedUsers));
+        return true;
+    },
+    setDisplay(display) {
         state.productPage.display = display;
+    },
+    updateCartItemQuantity: (id, quantity, checked) => {
+        const item = state.user.cart.find(item => item.id === id);
+        if (!item) return false;
+        
+        if (quantity < 1) {
+            return { showDialog: true, itemId: id };
+        }
+        
+        // Check stock limit
+        const product = state.products.find(p => p.id === id);
+        if (quantity > product.stock) {
+            return { error: true, message: "Exceeds available stock" };
+        }
+        
+        item.quantity = quantity;
+        if (checked !== undefined) {
+            item.checked = checked;
+        }
+        sessionStorage.setItem("user", JSON.stringify(state.user));
+        
+        // Update localStorage
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const updatedUsers = users.map(user => {
+            if (user.email === state.user.email) {
+                return { ...user, cart: state.user.cart };
+            }
+            return user;
+        });
+        
+        localStorage.setItem("users", JSON.stringify(updatedUsers));
+        return { success: true };
     }
 };
 

@@ -1,0 +1,217 @@
+/* Cart Modal Base */
+.cart-modal {
+    --modal-width: min(90vw, 1200px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.cart-modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Cart Content */
+.cart-modal__content {
+    width: var(--modal-width);
+    max-height: 85vh;
+    background: linear-gradient(145deg, var(--background-light), var(--background-dark));
+    border-radius: 1.5rem;
+    overflow: hidden;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.cart-modal.open .cart-modal__content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Cart Items List */
+.cart-modal__items {
+    padding: 2rem;
+    overflow-y: auto;
+    max-height: calc(85vh - 250px);
+}
+
+.cart-modal__item {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Item Checkbox */
+.cart-modal__checkbox {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: relative;
+}
+
+/* Item Image */
+.cart-modal__image {
+    width: 100px;
+    height: 100px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.cart-modal__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Item Details */
+.cart-modal__details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cart-modal__name {
+    font-size: 1.2rem;
+    color: var(--light-theme);
+    font-weight: 600;
+}
+
+.cart-modal__price {
+    color: var(--mythical);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* Quantity Controls */
+.cart-modal__quantity {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cart-modal__qty-btn {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: none;
+    background: var(--background-dark);
+    color: var(--light-theme);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cart-modal__qty-btn:hover {
+    background: var(--mythical);
+    transform: scale(1.1);
+}
+
+.cart-modal__qty-value {
+    font-size: 1.1rem;
+    color: var(--light-theme);
+    min-width: 2rem;
+    text-align: center;
+}
+
+/* Delete Button */
+.cart-modal__delete {
+    color: var(--error);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cart-modal__delete:hover {
+    transform: scale(1.1);
+}
+
+/* Order Summary */
+.cart-modal__summary {
+    padding: 2rem;
+    background: linear-gradient(to top, var(--background-dark), transparent);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-modal__summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    color: var(--light-theme);
+}
+
+.cart-modal__summary-total {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--mythical);
+}
+
+/* Confirmation Dialog */
+.cart-modal__dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--background-dark);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1100;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.cart-modal__dialog.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cart-modal__dialog-title {
+    color: var(--light-theme);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.cart-modal__dialog-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.cart-modal__dialog-btn {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cart-modal__dialog-btn--confirm {
+    background: var(--error);
+    color: var(--light-theme);
+}
+
+.cart-modal__dialog-btn--cancel {
+    background: var(--background-light);
+    color: var(--light-theme);
+}
+
+.cart-modal__dialog-btn:hover {
+    transform: translateY(-2px);
+}
