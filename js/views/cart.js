@@ -168,7 +168,9 @@ export default class extends AbstractView {
         const currentQuantity = parseInt(quantityElement.textContent);
         const newQuantity = isIncrease ? currentQuantity + 1 : currentQuantity - 1;
 
-        if (newQuantity < 1) {
+        const result = mutations.updateCartItem(itemId, newQuantity);
+
+        if (result.showDialog) {
             if (confirm('Remove item from cart?')) {
                 await mutations.removeFromCart(itemId);
                 await this.fullRerender();
@@ -176,22 +178,15 @@ export default class extends AbstractView {
             return;
         }
 
-        // Get current cart item to preserve checked status
-        const cartItems = await getters.getCart();
-        const currentItem = cartItems.find(item => item.id === itemId);
-        
-        const result = await mutations.updateCartItem(itemId, {
-            ...currentItem,
-            quantity: newQuantity
-        });
+        if (result.error) {
+            actions.displayMessage(result.message);
+            return;
+        }
 
         if (result.success) {
-            this.cart = await getters.getCart();
             quantityElement.textContent = newQuantity;
             await this.updateSummary();
             await this.updateCartCount();
-        } else if (result.error) {
-            actions.displayMessage(result.message);
         }
     }
 

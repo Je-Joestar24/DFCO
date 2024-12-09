@@ -51,18 +51,17 @@ const getters = {
 
                 if (product) {
                     return {
-                        ...product, 
-                        quantity: item.quantity 
+                        ...product,
+                        quantity: item.quantity,
+                        checked: item.checked || false // Add checked property with default false
                     };
                 }
-                return null; 
-            }).filter(item => item !== null); 
+                return null;
+            }).filter(item => item !== null);
             return cart;
         } else {
-            console.log("No items in the cart.");
             return [];
         }
-
     },
     getTotalPrice: () =>
         state.cart.reduce((total, item) => total + item.price * item.quantity, 0),
@@ -200,7 +199,7 @@ const mutations = {
     setDisplay(display) {
         state.productPage.display = display;
     },
-    updateCartItemQuantity: (id, quantity, checked) => {
+    updateCartItem: (id, quantity) => {
         const item = state.user.cart.find(item => item.id === id);
         if (!item) return false;
         
@@ -215,9 +214,6 @@ const mutations = {
         }
         
         item.quantity = quantity;
-        if (checked !== undefined) {
-            item.checked = checked;
-        }
         sessionStorage.setItem("user", JSON.stringify(state.user));
         
         // Update localStorage
