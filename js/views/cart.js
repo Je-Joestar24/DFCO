@@ -98,6 +98,7 @@ export default class extends AbstractView {
 
         state.cart.isBound = true; // Mark as bound
     }
+
     async getCartItems() {
         return `
         <div class="cart__items">
@@ -147,21 +148,16 @@ export default class extends AbstractView {
         </div>
         `;
     }
-    
+
     async handleCheckboxChange(checkbox) {
         const itemId = parseInt(checkbox.closest('.cart__item').dataset.itemId);
         const isChecked = checkbox.checked;
-        
+
         // Get current quantity from state
         const cartItem = state.user.cart.find(item => item.id === itemId);
+        cartItem["checked"] = isChecked;
         if (!cartItem) return;
-
-        // Use updateCartItemQuantity mutation which now handles checked state
-        const result = await mutations.updateCartItemQuantity(itemId, cartItem.quantity, isChecked);
-        
-        if (result.success) {
-            await this.updateSummary();
-        }
+        await this.updateSummary();
     }
     async handleQuantityChange(itemId, isIncrease) {
         const quantityElement = document.getElementById(`quantity-${itemId}`);
