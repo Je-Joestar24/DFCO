@@ -115,13 +115,37 @@ const mutations = {
         sessionStorage.clear();
     },
     addToCart: (id) => {
+        // Find the product in state.products
+        const product = state.products.find(p => p.id === id);
+        if (!product) return; // Product not found
+        
         const item = state.user.cart.find((item) => item.id === id);
+        
+        // Check if adding would exceed the product limit
+        if (item && item.quantity >= product.stock) {
+            return; // Already at limit
+        }
+        
         if (item) {
             item.quantity++;
         } else {
             state.user.cart.push({ id, quantity: 1 });
         }
-    },
+    
+        sessionStorage.setItem("user", JSON.stringify(state.user));
+    
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const updatedUsers = users.map((existingUser) => {
+            if (existingUser.email === state.user.email) {
+                return { ...existingUser, cart: state.user.cart };
+            }
+            return existingUser;
+        });
+    
+        localStorage.setItem("users", JSON.stringify(updatedUsers));
+        state.users = updatedUsers; // Update state.users with the new user data
+    }
+    ,
     removeFromCart: (productId) => {
         state.cart = state.cart.filter((item) => item.id !== productId);
         localStorage.setItem("cart", JSON.stringify(state.cart));

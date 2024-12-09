@@ -495,7 +495,6 @@
 /* Mythical Type */
 .fruit-modal__type--mythical {
   background: linear-gradient(145deg, var(--mythical), transparent);
-  color: var(--mythical);
   border: 2px solid var(--mythical);
 }
 

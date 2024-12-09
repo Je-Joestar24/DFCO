@@ -1,6 +1,5 @@
 import AbstractView from '../AbstractView.js';
 import { state, actions } from '../../util/state.js';
-import fruitsmodal from '../../templates/modal/fruitsmodal.js';
 
 /**
  * ProductView class handles displaying products in an accessible and semantic way.
@@ -185,7 +184,7 @@ export default class extends AbstractView {
         return `
         <img src="${state.productPage.feature.image1}" 
                 alt="${state.productPage.feature.name} featured image" 
-                class="products__featured-image">
+                class="products__featured-image" loading="lazy">
         <div class="products__featured-content">
             <h2 class="products__featured-title">${state.productPage.feature.name}</h2>
             <div class="products__featured-stats" role="group" aria-label="Product statistics">

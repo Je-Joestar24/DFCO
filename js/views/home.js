@@ -2,122 +2,107 @@
  * Home View Class
  * Extends AbstractView to handle the home page rendering
  */
+import { actions, state } from '../util/state.js';
 import AbstractView from './AbstractView.js';
 
 export default class extends AbstractView {
-    /**
-     * Features section data
-     * Contains icon paths, titles and descriptions for feature cards
-     */
-    features = [
-        {
-            iconpath: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z',
-            title: 'Wide Selection',
-            description: 'Explore a diverse range of devil fruits for every taste.',
-        },
-        {
-            iconpath: 'M7 17h10v-2H7v2zm0-4h10v-2H7v2zm0-4h10V7H7v2zm12-4h-4.18C14.4 3.84 13.3 3 12 3c-1.3 0-2.4.84-2.82 2H5c-.14 0-.27.01-.4.04-.39.08-.74.28-1.01.55-.18.18-.33.4-.43.64-.1.23-.16.49-.16.77v14c0 .27.06.54.16.78s.25.45.43.64c.27.27.62.47 1.01.55.13.02.26.03.4.03h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.41 0 .75.34.75.75s-.34.75-.75.75-.75-.34-.75-.75.34-.75.75-.75z',
-            title: 'Quality Guarantee',
-            description: 'Each fruit is certified for authenticity.',
-        },
-        {
-            iconpath: 'M7 17h10v-2H7v2zm0-4h10v-2H7v2zm0-4h10V7H7v2zm12-4h-4.18C14.4 3.84 13.3 3 12 3c-1.3 0-2.4.84-2.82 2H5c-.14 0-.27.01-.4.04-.39.08-.74.28-1.01.55-.18.18-.33.4-.43.64-.1.23-.16.49-.16.77v14c0 .27.06.54.16.78s.25.45.43.64c.27.27.62.47 1.01.55.13.02.26.03.4.03h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.41 0 .75.34.75.75s-.34.75-.75.75-.75-.34-.75-.75.34-.75.75-.75z',
-            title: 'Easy Shopping',
-            description: 'Intuitive cart and checkout experience.',
-        },
-    ];
+  /**
+   * Features section data
+   * Contains icon paths, titles and descriptions for feature cards
+   */
+  features = [
+    {
+      iconpath: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z',
+      title: 'Wide Selection',
+      description: 'Explore a diverse range of devil fruits for every taste.',
+    },
+    {
+      iconpath: 'M7 17h10v-2H7v2zm0-4h10v-2H7v2zm0-4h10V7H7v2zm12-4h-4.18C14.4 3.84 13.3 3 12 3c-1.3 0-2.4.84-2.82 2H5c-.14 0-.27.01-.4.04-.39.08-.74.28-1.01.55-.18.18-.33.4-.43.64-.1.23-.16.49-.16.77v14c0 .27.06.54.16.78s.25.45.43.64c.27.27.62.47 1.01.55.13.02.26.03.4.03h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.41 0 .75.34.75.75s-.34.75-.75.75-.75-.34-.75-.75.34-.75.75-.75z',
+      title: 'Quality Guarantee',
+      description: 'Each fruit is certified for authenticity.',
+    },
+    {
+      iconpath: 'M7 17h10v-2H7v2zm0-4h10v-2H7v2zm0-4h10V7H7v2zm12-4h-4.18C14.4 3.84 13.3 3 12 3c-1.3 0-2.4.84-2.82 2H5c-.14 0-.27.01-.4.04-.39.08-.74.28-1.01.55-.18.18-.33.4-.43.64-.1.23-.16.49-.16.77v14c0 .27.06.54.16.78s.25.45.43.64c.27.27.62.47 1.01.55.13.02.26.03.4.03h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.41 0 .75.34.75.75s-.34.75-.75.75-.75-.34-.75-.75.34-.75.75-.75z',
+      title: 'Easy Shopping',
+      description: 'Intuitive cart and checkout experience.',
+    },
+  ];
 
-    /**
-     * Best Sellers section data
-     * Contains product images, names and prices for best selling items
-     */
-    bestSellers = [
-        {
-            image: 'images/devil-fruits/gura-gura.png',
-            name: 'Gura Gura no Mi',
-            price: '₿ 5,000,000',
-        },
-        {
-            image: 'images/devil-fruits/mera-mera.png',
-            name: 'Mera Mera no Mi',
-            price: '₿ 5,500,000',
-        },
-        {
-            image: 'images/devil-fruits/pika-pika.png',
-            name: 'Pika Pika no Mi',
-            price: '₿ 4,800,000',
-        }
-    ];
-
-    /**
-     * Shopping Steps section data
-     * Contains icon paths, titles and descriptions for shopping process steps
-     */
-    steps = [
-        {
-            iconpath: `M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z`,
-            title: 'Browse Fruits',
-            description: 'Explore our extensive collection of authentic devil fruits.',
-        },
-        {
-            iconpath: `M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z`,
-            title: 'Add Favorites',
-            description: 'Select your desired fruits and add them to your cart.',
-        },
-        {
-            iconpath: `M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z`,
-            title: 'Checkout & Enjoy',
-            description: 'Complete your purchase securely and await your power.',
-        }
-    ];
-
-    /**
-     * Testimonials section data
-     * Contains user testimonials with profile images and quotes
-     */
-    testimonials = [
-        {
-            image: 'images/profile/ace.jpg',
-            name: 'Portgas D. Ace',
-            title: 'Mera Mera no Mi User',
-            quote: 'The Mera Mera no Mi was exactly as described. The power of flames has completely transformed my abilities. DFCO\'s service was exceptional!',
-            large: true,
-        },
-        {
-            image: 'images/profile/marco.jpg',
-            name: 'Marco',
-            title: 'Phoenix Devil Fruit User',
-            quote: 'Regenerative abilities beyond imagination. Best investment ever!',
-            large: false,
-        },
-        {
-            image: 'images/profile/luffy.jpg',
-            name: 'Monkey D. Luffy',
-            title: 'Gomu Gomu no Mi User',
-            quote: 'Shishishi! This rubber power is amazing! Now I can be the Pirate King!',
-            large: false,
-        }
-    ];
-
-    /**
-     * Constructor
-     * Initializes the home view and sets the page title
-     */
-    constructor() {
-        super();
-        this.setTitle('DFCO | Home');
+  /**
+   * Shopping Steps section data
+   * Contains icon paths, titles and descriptions for shopping process steps
+   */
+  steps = [
+    {
+      iconpath: `M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z`,
+      title: 'Browse Fruits',
+      description: 'Explore our extensive collection of authentic devil fruits.',
+    },
+    {
+      iconpath: `M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z`,
+      title: 'Add Favorites',
+      description: 'Select your desired fruits and add them to your cart.',
+    },
+    {
+      iconpath: `M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z`,
+      title: 'Checkout & Enjoy',
+      description: 'Complete your purchase securely and await your power.',
     }
+  ];
 
-    async getData(){
+  /**
+   * Testimonials section data
+   * Contains user testimonials with profile images and quotes
+   */
+  testimonials = [
+    {
+      image: 'images/profile/ace.jpg',
+      name: 'Portgas D. Ace',
+      title: 'Mera Mera no Mi User',
+      quote: 'The Mera Mera no Mi was exactly as described. The power of flames has completely transformed my abilities. DFCO\'s service was exceptional!',
+      large: true,
+    },
+    {
+      image: 'images/profile/marco.jpg',
+      name: 'Marco',
+      title: 'Phoenix Devil Fruit User',
+      quote: 'Regenerative abilities beyond imagination. Best investment ever!',
+      large: false,
+    },
+    {
+      image: 'images/profile/luffy.jpg',
+      name: 'Monkey D. Luffy',
+      title: 'Gomu Gomu no Mi User',
+      quote: 'Shishishi! This rubber power is amazing! Now I can be the Pirate King!',
+      large: false,
     }
+  ];
 
-    /**
-     * Main HTML renderer
-     * Assembles all section components into final page HTML
-     * @returns {Promise<string>} Complete HTML for home page
-     */
-    async getHtml() {
-        return `
+  /**
+   * Constructor
+   * Initializes the home view and sets the page title
+   */
+  constructor() {
+    super();
+    this.setTitle('DFCO | Home');
+  }
+
+  getTopSoldFruits() {
+    const sortedFruits = state.products.sort((a, b) => parseInt(b.sold.replace(',', '')) - parseInt(a.sold.replace(',', '')));
+    // Select the top 5 fruits
+    return sortedFruits.slice(0, 3);
+  }
+  /**
+   * Main HTML renderer
+   * Assembles all section components into final page HTML
+   * @returns {Promise<string>} Complete HTML for home page
+   */
+  async getHtml() {
+    await actions.fetchProducts()
+    const sortedFruits = state.products.sort((a, b) => parseInt(b.sold.replace(',', '')) - parseInt(a.sold.replace(',', '')));
+    this.bestSellers = sortedFruits.slice(0, 3);
+
+    return `
         <!-- Section Hero Section -->
         ${await this.getHero()}
 
@@ -136,15 +121,15 @@ export default class extends AbstractView {
         <!-- Section 6, cta -->
         ${await this.getCta()}
         `;
-    }
+  }
 
-    /**
-     * Hero Section renderer
-     * Renders the main hero section with animated fruit visuals
-     * @returns {Promise<string>} Hero section HTML
-     */
-    async getHero() {
-        return `
+  /**
+   * Hero Section renderer
+   * Renders the main hero section with animated fruit visuals
+   * @returns {Promise<string>} Hero section HTML
+   */
+  async getHero() {
+    return `
         <section
           id="section-1"
           class="hero"
@@ -207,15 +192,15 @@ export default class extends AbstractView {
           </div>
         </section>
         `;
-    }
+  }
 
-    /**
-     * Features Section renderer
-     * Renders feature cards highlighting DFCO benefits
-     * @returns {Promise<string>} Features section HTML
-     */
-    async getFeatures() {
-        return `<section
+  /**
+   * Features Section renderer
+   * Renders feature cards highlighting DFCO benefits
+   * @returns {Promise<string>} Features section HTML
+   */
+  async getFeatures() {
+    return `<section
           id="section-2"
           class="features"
           role="region"
@@ -249,15 +234,15 @@ export default class extends AbstractView {
           </div>
         </section>
         `;
-    }
+  }
 
-    /**
-     * Best Sellers Section renderer
-     * Renders product cards for top selling devil fruits
-     * @returns {Promise<string>} Best sellers section HTML
-     */
-    async getBestSellers() {
-        return `
+  /**
+   * Best Sellers Section renderer
+   * Renders product cards for top selling devil fruits
+   * @returns {Promise<string>} Best sellers section HTML
+   */
+  async getBestSellers() {
+    return `
         <section
           id="section-3"
           class="bestsellers"
@@ -275,9 +260,10 @@ export default class extends AbstractView {
               >
                 <div class="bestsellers__image-wrapper">
                   <img
-                    src="${bestSeller.image}"
-                    alt="${bestSeller.name}"
+                    src="${bestSeller.image1}"
+                    alt="${bestSeller.name1}"
                     class="bestsellers__image"
+                    loading="lazy"
                   />
                   <div class="bestsellers__glow"></div>
                 </div>
@@ -287,6 +273,7 @@ export default class extends AbstractView {
                   <button
                     class="bestsellers__button"
                     aria-label="Add ${bestSeller.name} to cart"
+                      ${state.user.isLoggedIn ? ` data-cart-add="${bestSeller.id}" ` : ` data-auth-toggle data-change-auth-active="login"`}
                   >
                     Add to Cart
                     <span class="bestsellers__cart-icon" aria-hidden="true"
@@ -300,15 +287,15 @@ export default class extends AbstractView {
           </div>
         </section>
         `;
-    }
+  }
 
-    /**
-     * Shopping Process Section renderer
-     * Renders step-by-step guide for shopping process
-     * @returns {Promise<string>} Shopping process section HTML
-     */
-    async getHowToShop() {
-        return `
+  /**
+   * Shopping Process Section renderer
+   * Renders step-by-step guide for shopping process
+   * @returns {Promise<string>} Shopping process section HTML
+   */
+  async getHowToShop() {
+    return `
         <section
           id="section-4"
           class="process"
@@ -338,15 +325,15 @@ export default class extends AbstractView {
           </div>
         </section>
         `;
-    }
+  }
 
-    /**
-     * Testimonials Section renderer
-     * Renders customer testimonial cards
-     * @returns {Promise<string>} Testimonials section HTML
-     */
-    async getTestimonials() {
-        return `
+  /**
+   * Testimonials Section renderer
+   * Renders customer testimonial cards
+   * @returns {Promise<string>} Testimonials section HTML
+   */
+  async getTestimonials() {
+    return `
         <section
           id="section-5"
           class="testimonials"
@@ -389,15 +376,15 @@ export default class extends AbstractView {
           </div>
         </section>
         `;
-    }
+  }
 
-    /**
-     * Call-to-Action Section renderer
-     * Renders final CTA section with animated elements
-     * @returns {Promise<string>} CTA section HTML
-     */
-    async getCta() {
-        return `
+  /**
+   * Call-to-Action Section renderer
+   * Renders final CTA section with animated elements
+   * @returns {Promise<string>} CTA section HTML
+   */
+  async getCta() {
+    return `
         <section
           id="section-6"
           class="cta"
@@ -445,5 +432,5 @@ export default class extends AbstractView {
           </div>
         </section>
         `;
-    }
+  }
 }

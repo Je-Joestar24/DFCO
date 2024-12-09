@@ -1,7 +1,7 @@
 import Navigations from "./navigations.js";
 import AbstractTemplate from "./AbstractTemplate.js";
 import AuthsModal from "./modal/authsmodal.js";
-import FruitModal from "./modal/fruitsmodal.js";
+import ProductsModal from "./modal/productsmodal.js";
 import { mutations } from "../util/state.js";
 
 export default class extends AbstractTemplate {
@@ -15,7 +15,7 @@ export default class extends AbstractTemplate {
     async init() {
         document.getElementById('app__nav').innerHTML = await this.getHtml();
         new AuthsModal();
-        new FruitModal();
+        new ProductsModal();
         await this.nav.bindLogout();
         await this.bindAddToCart();
     }

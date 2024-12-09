@@ -80,5 +80,11 @@ export class Router {
         actions.displayMessage(match.route.message);
         this.displayArea.innerHTML = await view.getHtml();
         if(view.bindAll) await view.bindAll();
+
+        // Reset scroll position to top after route change
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     };
 }

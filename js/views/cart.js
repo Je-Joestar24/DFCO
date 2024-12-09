@@ -67,7 +67,7 @@ export default class extends AbstractView {
                         </label>
                     </div>
                     <div class="cart__item-image">
-                        <img src="${item.image1}" alt="${item.name}" role="img">
+                        <img src="${item.image1}" alt="${item.name}" role="img" loading="lazy">
                     </div>
                     <div class="cart__item-details">
                         <h3 class="cart__item-name">${item.name}</h3>

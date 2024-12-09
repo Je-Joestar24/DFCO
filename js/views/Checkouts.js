@@ -39,7 +39,7 @@ export default class extends AbstractView {
         
             <div class="checkouts__product">
                 <div class="checkouts__product-image">
-                <img src="images/devil-fruits/gura-gura.png" alt="Product name">
+                <img src="images/devil-fruits/gura-gura.png" alt="Product name" loading="lazy">
                 </div>
                 <div class="checkouts__product-info">
                 <span class="checkouts__product-name">Product Name</span>
