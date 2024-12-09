@@ -19,21 +19,22 @@ const state = {
             "currentUser": "NO DATA",
             "description": "NO DATA",
             "abilities": [
-              "NO DATA",
+                "NO DATA",
             ],
             "weaknesses": [
-              "NO DATA",
+                "NO DATA",
             ],
             "type": "NO DATA",
             "specifications": {
-              "power": "NO DATA",
-              "range": "NO DATA",
-              "durability": "NO DATA"
+                "power": "NO DATA",
+                "range": "NO DATA",
+                "durability": "NO DATA"
             },
             "img": "./images/devil-fruits/nodata.png",
             "price": "NO DATA"
-          },
+        },
     },
+    users: JSON.parse(localStorage.getItem("users")) || [],
     cart: [],
     products: [], // Store fetched devil fruits or other data
 };
@@ -50,9 +51,22 @@ const getters = {
 
 // Mutations: Synchronous functions to modify the state
 const mutations = {
-    setUser: (user) => {
-        state.user = { ...user, isLoggedIn: true };
-        localStorage.setItem("user", JSON.stringify(state.user));
+    addUser: async (user) => {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const userExists = users.some(existingUser => existingUser.email === user.email);
+
+        if (userExists) {
+            return false;
+        }
+
+        // Add the new user to the list
+        users.push(user);
+
+        // Save the updated list back to local storage
+        localStorage.setItem("users", JSON.stringify(users));
+        state.users = users;
+
+        return true; // Return true to indicate successful addition
     },
     logout: () => {
         state.user = { isLoggedIn: false, name: "", email: "" };
@@ -70,7 +84,7 @@ const mutations = {
     removeFromCart: (productId) => {
         state.cart = state.cart.filter((item) => item.id !== productId);
         localStorage.setItem("cart", JSON.stringify(state.cart));
-    },setDisplay(display){
+    }, setDisplay(display) {
         state.productPage.display = display;
     }
 };
@@ -82,6 +96,15 @@ const actions = {
         const user = { name: "John Doe", email: email }; // Mocked data
         mutations.setUser(user);
         return user;
+    },
+    signup: async (user) => {
+        const form = await mutations.addUser(user);
+        if (form) {
+            console.log("User added successfully!");
+            return;
+        }
+        console.log("User already exists!");
+        return;
     },
     fetchProducts: async () => {
         const products = await fetch("../../json/devilfruits.json").then((res) =>
@@ -108,14 +131,14 @@ const actions = {
             console.error('Error fetching devil fruit details:', error);
             return null;
         }
-    }, setActiveNavigation(active_id, active_class){
+    }, setActiveNavigation(active_id, active_class) {
         const nav = document.getElementById(`app__nav`);
         nav.querySelectorAll(`.${active_class}`).forEach(e => {
             e.classList.remove(active_class);
         });
         const found = nav.querySelector(`#${active_id}`);
-        if(found)found.classList.add(active_class);
-    }, displayMessage(message){
+        if (found) found.classList.add(active_class);
+    }, displayMessage(message) {
         const message_display = document.querySelector('.app__message');
         message_display.classList.remove('fade-out');
         message_display.innerHTML = message;

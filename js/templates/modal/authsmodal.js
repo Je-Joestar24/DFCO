@@ -1,4 +1,5 @@
 import AbstractModal from "./AbstractModal.js";
+import { actions } from "../../util/state.js";
 
 export default class extends AbstractModal {
     constructor() {
@@ -10,7 +11,42 @@ export default class extends AbstractModal {
         this.modal.innerHTML = await this.getContent()
         await this.bindButtons();
         await this.bindChangeActive();
+        await this.bindAuths();
     }
+
+    async bindAuths(){
+        document.body.addEventListener('submit', async (e) => {
+            if (e.target.matches(`[data-signup-form]`)) {
+                e.preventDefault();
+                this.signupNow();
+            }
+        });
+    }
+
+    async signupNow() {
+        const email = this.modal.querySelector("#auth-signup__email").value.trim();
+        const password = this.modal.querySelector("#auth-signup__pass").value;
+        const cpass = this.modal.querySelector("#auth-signup__pass-confirm").value;
+        const message = this.modal.querySelector("#auth-modal__signup-message");
+    
+        // Reset the message display before validation
+        message.style.display = "block";
+    
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            message.innerHTML = "INVALID EMAIL ADDRESS";
+            return; 
+        }
+    
+        if (password !== cpass) {
+            message.innerHTML = "PASSWORD DOESN'T MATCH";
+            return; 
+        }
+    
+        message.innerHTML = "SIGNUP SUCCESS";
+        await actions.signup({ email, password });
+    }
+    
 
     async getContent(){
         return `
@@ -31,6 +67,7 @@ export default class extends AbstractModal {
     }
 
     async getSignupForm(){
+        this.signup = {email: "", password: ""};
         return `
         <div
         id="signup-contents"
@@ -47,27 +84,32 @@ export default class extends AbstractModal {
                 <h2 id="modal-title" class="auth-modal__signup-title">Sign Up</h2>
                 <p class="auth-modal__signup-subtitle">Join the DFCO community</p>
             </header>
-
+            <h3 id="auth-modal__signup-message" class="auth-modal__signup-message">MESSAGE</h3>
             <form
             id="signup-form"
             name="signup-form"
             class="auth-modal__signup-form"
             aria-label="Sign up form"
+            data-signup-form
             >
                 <div class="auth-modal__field">
                     <input
-                    type="text"
-                    class="auth-modal__input"
-                    placeholder="Email Account"
-                    required
-                    aria-label="email"
-                    aria-required="true"
+                        id="auth-signup__email"
+                        value=""
+                        type="text"
+                        class="auth-modal__input"
+                        placeholder="Email Account"
+                        required
+                        aria-label="email"
+                        aria-required="true"
                     />
                 </div>
 
                 <div class="auth-modal__field">
                     <div class="auth-modal__password">
                     <input
+                        id="auth-signup__pass"
+                        value=""
                         type="password"
                         class="auth-modal__input"
                         placeholder="Password"
@@ -84,7 +126,27 @@ export default class extends AbstractModal {
                     </button>
                     </div>
                 </div>
-
+                <div class="auth-modal__field">
+                    <div class="auth-modal__password">
+                    <input
+                        type="password"
+                        id="auth-signup__pass-confirm"
+                        value=""
+                        class="auth-modal__input"
+                        placeholder="Confirm Password"
+                        required
+                        aria-label="Confirm Password"
+                        aria-required="true"
+                    />
+                    <button
+                        type="button"
+                        class="auth-modal__show-password"
+                        aria-label="Show password"
+                    >
+                        Show
+                    </button>
+                    </div>
+                </div>
                 <button type="submit" class="auth-modal__signup-submit">
                     Sign Up
                 </button>
