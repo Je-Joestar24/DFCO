@@ -1,58 +1,60 @@
 /* Import cart component styles */
 @import "./cartcomponents/item.css";
-@import "./cartcomponents/itemcontrol.css"; 
+@import "./cartcomponents/itemcontrol.css";
 @import "./cartcomponents/cartsummary.css";
 @import "./cartcomponents/emptycart.css";
 
 /* Cart Section
    Main container for the shopping cart page */
 .app__cart {
-    padding: 120px 2rem 4rem; /* Top padding for header space, consistent horizontal padding */
-    max-height: 100vh; /* Ensures full viewport height coverage */
+  padding: 120px 2rem 4rem; /* Top padding for header space, consistent horizontal padding */
+  max-height: 100vh; /* Ensures full viewport height coverage */
 }
 
 /* Cart Container 
    Constrains width and centers content */
 .app__cart-container {
-    max-width: var(--container-lg); /* Uses predefined container width */
-    margin: 0 auto; /* Centers container horizontally */
+  max-width: var(--container-lg); /* Uses predefined container width */
+  margin: 0 auto; /* Centers container horizontally */
 }
 
 /* Cart Header
    Contains title and item count */
 .cart__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 2rem; /* Spacing between header and content */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem; /* Spacing between header and content */
 }
 
 /* Cart Title */
 .cart__title {
-    font-size: 2rem;
-    color: var(--light-theme); /* Uses theme color variable */
-    font-weight: 700; /* Bold text */
+  font-size: 2rem;
+  color: var(--light-theme); /* Uses theme color variable */
+  font-weight: 700; /* Bold text */
 }
 
 /* Item Count Display */
 .cart__count {
-    color: var(--gold); /* Accent color for count */
-    font-size: 1.2rem;
+  color: var(--gold); /* Accent color for count */
+  font-size: 1.2rem;
 }
 
 /* Cart Content Layout
    Two-column grid for items and summary */
 .cart__content {
-    display: grid;
-    grid-template-columns: 1fr 320px; /* Main content area and fixed-width sidebar */
-    gap: 2rem; /* Spacing between columns */
+  display: grid;
+  grid-template-columns: 1fr 320px; /* Main content area and fixed-width sidebar */
+  gap: 2rem; /* Spacing between columns */
 }
 
 /* Cart Items Container
    Glassmorphism effect for items list */
 .cart__items {
-    background: rgba(255, 255, 255, 0.03); /* Semi-transparent background */
-    backdrop-filter: blur(10px); /* Blur effect for glass appearance */
-    border-radius: 20px; /* Rounded corners */
-    padding: 2rem; /* Internal spacing */
+  background: rgba(255, 255, 255, 0.03); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Blur effect for glass appearance */
+  border-radius: 20px; /* Rounded corners */
+  padding: 2rem; /* Internal spacing */
+  overflow: auto;
+  max-height: 70vh;
 }

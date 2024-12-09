@@ -1,5 +1,5 @@
 import AbstractView from "./AbstractView.js";
-import { state } from "../util/state.js";
+import { getters, state, actions } from "../util/state.js";
 
 /**
  * CartView Class
@@ -21,6 +21,8 @@ export default class extends AbstractView {
      * @returns {Promise<string>} The HTML string for the cart view.
      */
     async getHtml() {
+        await actions.fetchProducts();
+        this.cart = await getters.getCart();
         return `
         <section class="app__cart" aria-label="Shopping Cart">
             <div class="app__cart-container">
@@ -51,30 +53,37 @@ export default class extends AbstractView {
     async getCartItems() {
         return `
         <div class="cart__items">
-            <div class="cart__item">
-                <div class="cart__item-select">
-                    <label class="cart__checkbox" aria-label="Select item">
-                        <input type="checkbox" class="cart__checkbox-input" aria-label="Select Gura Gura no Mi">
-                        <span class="cart__checkbox-mark"></span>
-                    </label>
+            ${!this.cart || this.cart.length === 0 ? `
+                <div class="cart__empty" role="alert">
+                    <div class="cart__empty-icon" aria-hidden="true">🛒</div>
+                    <h2 class="cart__empty-text">No items in cart</h2>
                 </div>
-                <div class="cart__item-image">
-                    <img src="./images/devil-fruits/gura-gura.png" alt="Gura Gura no Mi" role="img">
-                </div>
-                <div class="cart__item-details">
-                    <h3 class="cart__item-name">Gura Gura no Mi</h3>
-                    <p class="cart__item-type">Paramecia Type</p>
-                    <p class="cart__item-price">₿ 5,000,000</p>
-                </div>
-                <div class="cart__item-controls">
-                    <div class="cart__quantity">
-                        <button class="cart__quantity-btn" aria-label="Decrease quantity">-</button>
-                        <span class="cart__quantity-number">1</span>
-                        <button class="cart__quantity-btn" aria-label="Increase quantity">+</button>
+            ` : this.cart.map(item => `
+                <div class="cart__item">
+                    <div class="cart__item-select">
+                        <label class="cart__checkbox" aria-label="Select item">
+                            <input type="checkbox" class="cart__checkbox-input" aria-label="Select ${item.name}">
+                            <span class="cart__checkbox-mark"></span>
+                        </label>
                     </div>
-                    <button class="cart__item-remove" aria-label="Remove item">×</button>
+                    <div class="cart__item-image">
+                        <img src="${item.image1}" alt="${item.name}" role="img">
+                    </div>
+                    <div class="cart__item-details">
+                        <h3 class="cart__item-name">${item.name}</h3>
+                        <p class="cart__item-type">${item.type} Type</p>
+                        <p class="cart__item-price">₿ ${item.price.toLocaleString()}</p>
+                    </div>
+                    <div class="cart__item-controls">
+                        <div class="cart__quantity">
+                            <button class="cart__quantity-btn" aria-label="Decrease quantity">-</button>
+                            <span id="quantity-${item.id}" class="cart__quantity-number">${item.quantity}</span>
+                            <button class="cart__quantity-btn" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="cart__item-remove" aria-label="Remove item">×</button>
+                    </div>
                 </div>
-            </div>
+            `).join('')}
         </div>
         `;
     }

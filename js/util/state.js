@@ -35,14 +35,33 @@ const state = {
         },
     },
     users: JSON.parse(localStorage.getItem("users")) || [],
-    cart: [],
-    products: [], // Store fetched devil fruits or other data
+    products: JSON.parse(localStorage.getItem("products")) || [], // Store fetched devil fruits or other data
 };
 
 // Getters: Retrieve state data
 const getters = {
     getUser: () => state.user,
-    getCart: () => state.cart,
+    getCart: () => {
+        const cartItems = state.user.cart; 
+        if (cartItems.length > 0) {
+            const cart = cartItems.map(item => {
+                const product = state.products.find(product => product.id === item.id);
+
+                if (product) {
+                    return {
+                        ...product, 
+                        quantity: item.quantity 
+                    };
+                }
+                return null; 
+            }).filter(item => item !== null); 
+            return cart;
+        } else {
+            console.log("No items in the cart.");
+            return [];
+        }
+
+    },
     getTotalPrice: () =>
         state.cart.reduce((total, item) => total + item.price * item.quantity, 0),
     getActiveNav: () => state.navigations.active,
@@ -95,14 +114,13 @@ const mutations = {
         state.user = { isLoggedIn: false, name: "", email: "" };
         sessionStorage.clear();
     },
-    addToCart: (product) => {
-        const item = state.cart.find((item) => item.id === product.id);
+    addToCart: (id) => {
+        const item = state.user.cart.find((item) => item.id === id);
         if (item) {
-            item.quantity += product.quantity;
+            item.quantity++;
         } else {
-            state.cart.push(product);
+            state.user.cart.push({ id, quantity: 1 });
         }
-        localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     removeFromCart: (productId) => {
         state.cart = state.cart.filter((item) => item.id !== productId);
@@ -142,16 +160,17 @@ const actions = {
         return;
     },
     fetchProducts: async () => {
-        const products = await fetch("../../json/devilfruits.json").then((res) =>
-            res.json()
-        );
-        state.products = products;
+        if (state.products.length == 0) {
+            const products = await fetch("../../json/devilfruits.json").then((res) =>
+                res.json()
+            );
+            state.products = products;
+            localStorage.setItem("products", JSON.stringify(state.products));
+        }
     },
     restoreState: () => {
         const savedUser = localStorage.getItem("user");
-        const savedCart = localStorage.getItem("cart");
         if (savedUser) state.user = JSON.parse(savedUser);
-        if (savedCart) state.cart = JSON.parse(savedCart);
     },
     fetchDevilFruitDetails: async (fruit) => {
         try {
