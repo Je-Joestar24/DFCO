@@ -1,5 +1,5 @@
 import AbstractModal from "./AbstractModal.js";
-import { actions } from "../../util/state.js";
+import { state, actions } from "../../util/state.js";
 
 export default class extends AbstractModal {
     constructor() {
@@ -7,18 +7,25 @@ export default class extends AbstractModal {
         this.init();
     }
 
-    async init(){
+    async init() {
         this.modal.innerHTML = await this.getContent()
         await this.bindButtons();
         await this.bindChangeActive();
         await this.bindAuths();
     }
 
-    async bindAuths(){
+    async bindAuths() {
         document.body.addEventListener('submit', async (e) => {
             if (e.target.matches(`[data-signup-form]`)) {
                 e.preventDefault();
                 this.signupNow();
+            }
+        });
+
+        document.body.addEventListener('submit', async (e) => {
+            if (e.target.matches(`[data-login-form]`)) {
+                e.preventDefault();
+                this.loginNow();
             }
         });
     }
@@ -28,27 +35,39 @@ export default class extends AbstractModal {
         const password = this.modal.querySelector("#auth-signup__pass").value;
         const cpass = this.modal.querySelector("#auth-signup__pass-confirm").value;
         const message = this.modal.querySelector("#auth-modal__signup-message");
-    
+
         // Reset the message display before validation
         message.style.display = "block";
-    
+
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             message.innerHTML = "INVALID EMAIL ADDRESS";
-            return; 
+            return;
         }
-    
+
         if (password !== cpass) {
             message.innerHTML = "PASSWORD DOESN'T MATCH";
-            return; 
+            return;
         }
-    
+
         message.innerHTML = "SIGNUP SUCCESS";
         await actions.signup({ email, password });
     }
-    
 
-    async getContent(){
+    async loginNow() {
+        const email = await this.modal.querySelector("#auth-login__email").value;
+        const password = await this.modal.querySelector("#auth-login__pass").value;
+        
+        const res = await actions.login({email, password});
+        if (res.success) {
+            // Change the location safely and remove the hash
+            window.location.href = window.location.origin + '#/products';
+            location.reload();
+        }
+        
+    }
+
+    async getContent() {
         return `
         <div class="auth-modal__loader" role="status" aria-label="Loading">
         <div class="auth-modal__ball auth-modal__ball--1"></div>
@@ -66,8 +85,8 @@ export default class extends AbstractModal {
         `;
     }
 
-    async getSignupForm(){
-        this.signup = {email: "", password: ""};
+    async getSignupForm() {
+        this.signup = { email: "", password: "" };
         return `
         <div
         id="signup-contents"
@@ -160,7 +179,7 @@ export default class extends AbstractModal {
         `;
     }
 
-    async getLoginForm(){
+    async getLoginForm() {
         return `
         <div
         id="login-contents"
@@ -184,10 +203,13 @@ export default class extends AbstractModal {
             name="login-form"
             class="auth-modal__login-form"
             aria-label="Login form"
+            data-login-form
             >
             <div class="auth-modal__field">
                 <input
                 type="text"
+                id="auth-login__email"
+                value=""
                 class="auth-modal__input"
                 placeholder="Email Account"
                 required
@@ -200,6 +222,8 @@ export default class extends AbstractModal {
                 <div class="auth-modal__password">
                 <input
                     type="password"
+                    id="auth-login__pass"
+                    value=""
                     class="auth-modal__input"
                     placeholder="Password"
                     required
@@ -230,7 +254,7 @@ export default class extends AbstractModal {
     }
 
 
-    bindChangeActive(){
+    bindChangeActive() {
         document.body.addEventListener('click', (e) => {
             if (e.target.matches(`[data-change-auth-active]`)) {
                 e.preventDefault();
@@ -249,10 +273,10 @@ export default class extends AbstractModal {
         // Remove the active class from both login and signup contents
         document.getElementById('login-contents').classList.remove('auth-modal__content--active');
         document.getElementById('signup-contents').classList.remove('auth-modal__content--active');
-    
+
         // Add the active class to the selected content
         document.getElementById(`${active}-contents`).classList.add('auth-modal__content--active');
-    }    
+    }
 
     /**
      * open and close overrideing the parent

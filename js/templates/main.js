@@ -15,6 +15,7 @@ export default class extends AbstractTemplate{
         document.getElementById('app__nav').innerHTML = await this.getHtml();
         new AuthsModal();
         new FruitModal();
+        this.nav.bindLogout();
     }
 
     async getHtml(){
