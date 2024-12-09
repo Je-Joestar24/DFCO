@@ -30,7 +30,7 @@ const state = {
               "range": "NO DATA",
               "durability": "NO DATA"
             },
-            "img": "NO DATA",
+            "img": "./images/devil-fruits/nodata.png",
             "price": "NO DATA"
           },
     },

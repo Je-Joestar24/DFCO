@@ -20,6 +20,6 @@
     "range": "Long",
     "durability": "A"
   },
-  "image": "./images/devil-fruits/pika-pika.png",
+  "img": "./images/devil-fruits/pika-pika.png",
   "price": "₿ 5,100,000"
 } 

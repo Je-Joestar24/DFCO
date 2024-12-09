@@ -10,7 +10,7 @@
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 40px;
+    padding: 10px 25px;
     text-align: center;
     transition: transform 0.4s ease;
     cursor: pointer;
