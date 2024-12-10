@@ -31,7 +31,7 @@ export default class extends AbstractModal {
                     Are you ready to complete your purchase? You can review your items one last time before proceeding.
                 </p>
                 <div class="item-modal__actions">
-                    <button class="item-modal__button item-modal__button--cancel" data-checkout-cancel>
+                    <button data-checkout-item class="item-modal__button item-modal__button--cancel" data-checkout-cancel>
                         Continue Shopping
                     </button>
                     <button class="item-modal__button item-modal__button--confirm" data-checkout-confirm>

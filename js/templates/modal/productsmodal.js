@@ -74,18 +74,7 @@ export default class extends AbstractModal {
             </div>
 
             <div class="fruit-modal__actions">
-            <button class="fruit-modal__button fruit-modal__button--cart" aria-label="Add to cart" ${getters.getUser().isLoggedIn ? ` data-cart-add="${this.data.id}" `: ` data-auth-toggle data-change-auth-active="login"`}>
-                <svg class="fruit-modal__button-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M17 18c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm0-3l1.1-2h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1v2h2l3.6 7.59L3.62 17H19v-2H7z"/>
-                </svg>
-                Add to Cart
-            </button>
-            <button class="fruit-modal__button fruit-modal__button--buy" aria-label="Buy now" ${getters.getUser().isLoggedIn ? ` data-checkout-add="${this.data.id}" `: ` data-auth-toggle data-change-auth-active="login"`}>
-                <svg class="fruit-modal__button-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M19 14V6c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zm-2 0H3V6h14v8zm-7-7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm13 0v11c0 1.1-.9 2-2 2H4v-2h17V7h2z"/>
-                </svg>
-                Buy Now
-            </button>
+                ${await this.getActions()}
             </div>
         </div>
         `;
@@ -154,6 +143,23 @@ export default class extends AbstractModal {
             </ol>
             </div>
         </div>
+        `;
+    }
+
+    async getActions(){
+        return `
+            <button class="fruit-modal__button fruit-modal__button--cart" aria-label="Add to cart" ${getters.getUser().isLoggedIn ? ` data-cart-add="${this.data.id}" `: ` data-auth-toggle data-change-auth-active="login"`}>
+                <svg class="fruit-modal__button-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17 18c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm0-3l1.1-2h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1v2h2l3.6 7.59L3.62 17H19v-2H7z"/>
+                </svg>
+                Add to Cart
+            </button>
+            <button class="fruit-modal__button fruit-modal__button--buy" aria-label="Buy now" ${getters.getUser().isLoggedIn ? ` data-checkout-item="${this.data.id}" `: ` data-auth-toggle data-change-auth-active="login"`}>
+                <svg class="fruit-modal__button-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 14V6c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zm-2 0H3V6h14v8zm-7-7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm13 0v11c0 1.1-.9 2-2 2H4v-2h17V7h2z"/>
+                </svg>
+                Buy Now
+            </button>
         `;
     }
 }

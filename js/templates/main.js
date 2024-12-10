@@ -1,5 +1,7 @@
 import Navigations from "./navigations.js";
+import Footer from "./footer.js";
 import AbstractTemplate from "./AbstractTemplate.js";
+
 import AuthsModal from "./modal/authsmodal.js";
 import ProductsModal from "./modal/productsmodal.js";
 import CartsModal from "./modal/CartRemoveItemModal.js";
@@ -11,11 +13,13 @@ export default class extends AbstractTemplate {
     constructor() {
         super();
         this.nav = new Navigations();
+        this.footer = new Footer();
         this.init();
     }
 
     async init() {
-        document.getElementById('app__nav').innerHTML = await this.getHtml();
+        document.getElementById('app__nav').innerHTML = await this.nav.getHtml();
+        document.getElementById('footer').innerHTML = await this.footer.getHtml();
         new AuthsModal();
         new ProductsModal();
         new CartsModal();
@@ -24,11 +28,6 @@ export default class extends AbstractTemplate {
         await this.bindAddToCart();
     }
 
-    async getHtml() {
-        return `
-        ${await this.nav.getHtml()}
-        `;
-    }
 
     async bindAddToCart() {
         document.body.addEventListener('click', (e) => {
