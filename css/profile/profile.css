@@ -1,7 +1,6 @@
 /* Import related profile styles */
 @import "./profile/profilestyles/avatar.css";
 @import "./profile/profilestyles/info.css";
-@import "./profile/profilestyles/settings.css";
 @import "./profile/profilestyles/action.css";
 
 /* Different section that is under the profile */
