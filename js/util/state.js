@@ -92,7 +92,16 @@ const getters = {
             itemCount: checkedItems.reduce((count, item) => count + (item.quantity || 1), 0),
             total: formatPrice(total)
         };
-    }
+    },getCartChecked: () => {
+        const cartItems = getters.getCart();
+        if (!cartItems || cartItems.length === 0) {
+            return [];
+        }
+    
+        // Filter and return IDs of checked items
+        const checkedItems = cartItems.filter(item => item.checked === true);
+        return checkedItems.map(item => {return {id: item.id, quantity: item.quantity}});
+    },    
 };
 
 // Helper function to format prices
@@ -129,8 +138,7 @@ const mutations = {
         state.users = users;
 
         return true; // Return true to indicate successful addition
-    },
-    setLogged(user) {
+    },setLogged(user) {
         // Update the state
         this.user = {
             isLoggedIn: true,
@@ -144,12 +152,10 @@ const mutations = {
 
         const logged = JSON.parse(sessionStorage.getItem("user"));
 
-    },
-    logout: () => {
+    },logout: () => {
         state.user = { isLoggedIn: false, name: "", email: "" };
         sessionStorage.clear();
-    },
-    addToCart: (id) => {
+    },addToCart: (id) => {
         // Find the product in state.products
         const product = state.products.find(p => p.id === id);
         if (!product) return; // Product not found
@@ -179,8 +185,7 @@ const mutations = {
     
         localStorage.setItem("users", JSON.stringify(updatedUsers));
         state.users = updatedUsers; // Update state.users with the new user data
-    },
-    removeFromCart: (id) => {
+    },removeFromCart: (id) => {
         state.user.cart = state.user.cart.filter(item => Number(item.id) !== Number(id));
         sessionStorage.setItem("user", JSON.stringify(state.user));
         
@@ -195,8 +200,7 @@ const mutations = {
         
         localStorage.setItem("users", JSON.stringify(updatedUsers));
         return true;
-    },
-    setDisplay(display) {
+    },setDisplay(display) {
         state.productPage.display = display;
     },updateCartItem: (id, quantity) => {
         const item = state.user.cart.find(item => item.id === id);

@@ -118,6 +118,7 @@ export default class extends AbstractView {
 
     async getCartSummary() {
         const summary = getters.getCartSummary();
+        const toBeCheckout = getters.getCartChecked();
         return `
             <div class="cart__summary" role="complementary" aria-label="Order Summary">
                 <h2 class="cart__summary-title">Order Summary</h2>
@@ -133,7 +134,7 @@ export default class extends AbstractView {
                     <span>Total</span>
                     <span>${summary.total}</span>
                 </div>
-                <button class="cart__checkout-btn" 
+                <button ${toBeCheckout.length > 0 ? `data-checkout-item="multi"` : "hidden"} class="cart__checkout-btn" 
                         aria-label="Proceed to checkout with ${summary.itemCount} items"
                         ${summary.itemCount === 0 ? 'disabled' : ''}>
                     Proceed to Checkout (${summary.itemCount} items)

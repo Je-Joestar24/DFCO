@@ -19,7 +19,6 @@ export default class extends AbstractModal {
 
     async getContent() {
         this.data = await getters.getDisplay();
-
         return `
         <div class="fruit-modal__loading"></div>
         <div class="item-modal__content">
