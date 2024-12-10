@@ -1,3 +1,4 @@
+import Builder from "./builder.js";
 import Navigations from "./navigations.js";
 import Footer from "./footer.js";
 import AbstractTemplate from "./AbstractTemplate.js";
@@ -12,6 +13,7 @@ export default class extends AbstractTemplate {
     nav = null;
     constructor() {
         super();
+        new Builder();
         this.nav = new Navigations();
         this.footer = new Footer();
         this.init();
