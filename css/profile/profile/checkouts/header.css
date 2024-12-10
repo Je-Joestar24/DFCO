@@ -26,45 +26,6 @@
   height: var(--checkbox-size);
 }
 
-/* Element: Hidden Checkbox Input
- * Visually hidden but accessible input
- */
-.checkouts__select-all input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-/* Element: Custom Checkbox Mark
- * Styled replacement for native checkbox
- * Includes transition animation
- */
-.checkouts__select-all-mark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: var(--checkbox-size);
-  height: var(--checkbox-size);
-  background: var(--background-dark);
-  border: 2px solid var(--mythical);
-  border-radius: 0.25rem;
-  transition: all 0.3s ease;
-}
-
-/* State: Checked Checkbox
- * Applies check icon and background color
- * Uses SVG for checkmark
- */
-.checkouts__select-all input:checked ~ .checkouts__select-all-mark {
-  background: var(--mythical);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff8dc' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
-  background-size: 80%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 /* Element: Checkout Title
  * Main heading text styling
  */
