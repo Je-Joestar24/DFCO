@@ -1,3 +1,4 @@
-@import "./modals/authmodal.css";
-@import "./modals/fruitmodal.css";
-@import "./modals/cartmodal.css";
+@import "./modals/auths.css";
+@import "./modals/fruitview.css";
+@import "./modals/removefromcart.css";
+@import "./modals/checkoutitem.css";

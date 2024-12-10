@@ -115,31 +115,56 @@
           aria-hidden="true"
         ></div>
       </footer>
-    </div>
-    <div
-      id="auth-modal"
-      class="auth-modal auth-modal--loading"
-      aria-label="Auth Modal Display area"
-    ></div>
-    <div
-      class="app__message"
-      role="alert"
-      aria-label="Application Message Display Area"
-    ></div>
-    <div
-      id="fruit-modal"
-      class="fruit-modal"
-      aria-label="Fruit Modal Display area"
-      data-fruit-toggle
-    >
-    </div>
-    <div
-      id="cart-modal__delete-item"
-      class="cart-modal cart-modal--delete"
-      aria-label="Cart Modal Delete Dialog"
-      data-remove-item
-    >
-    </div>
+      </div>
+      <div
+        id="auth-modal"
+        class="auth-modal auth-modal--loading"
+        aria-label="Auth Modal Display area"
+      ></div>
+      <div
+        class="app__message"
+        role="alert"
+        aria-label="Application Message Display Area"
+      ></div>
+      <div
+        id="fruit-modal"
+        class="fruit-modal"
+        aria-label="Fruit Modal Display area"
+        data-fruit-toggle
+      >
+      </div>
+      <div
+        id="cart-modal__delete-item"
+        class="cart-modal cart-modal--delete"
+        aria-label="Cart Modal Delete Dialog"
+        data-remove-item
+      >
+      </div>
+      <div
+        id="item__checkout-modal"
+        class="item-modal item__checkout-modal"
+        aria-label="Item Modal Checkout Dialog"
+        data-checkout-item
+      >
+        <div class="item-modal__content">
+            <div class="item-modal__header">
+                <h2 class="item-modal__title">Proceed to Checkout?</h2>
+            </div>
+            <div class="item-modal__body">
+                <p class="item-modal__message">
+                    Are you ready to complete your purchase? You can review your items one last time before proceeding.
+                </p>
+                <div class="item-modal__actions">
+                    <button class="item-modal__button item-modal__button--cancel" data-checkout-item>
+                        Continue Shopping
+                    </button>
+                    <button class="item-modal__button item-modal__button--confirm" data-checkout-confirm>
+                        Checkout Now
+                    </button>
+                </div>
+            </div>
+        </div>
+      </div>
 
     </div>
     <script type="module" src="js/app.js"></script>

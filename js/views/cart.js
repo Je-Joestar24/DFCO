@@ -96,9 +96,9 @@ export default class extends AbstractView {
                         <p class="cart__item-price">${item.price}</p>
                     </div>
                     <div class="cart__item-controls">
-                        <div class="cart__quantity">
+                        <div id="cart__quantity-${item.id}" class="cart__quantity">
                             <button class="cart__quantity-btn" 
-                                    ${item.quantity == 1 ?  ` data-remove-item="${item.id}" ` : ""}
+                                    ${item.quantity == 1 ? ` data-remove-item="${item.id}" ` : ""}
                                     aria-label="Decrease quantity">-</button>
                             <span id="quantity-${item.id}" 
                                   class="cart__quantity-number"
@@ -165,10 +165,26 @@ export default class extends AbstractView {
         }
 
         if (result.success) {
-            quantityElement.textContent = newQuantity;
+            await this.updateQuantity(itemId, newQuantity);
             await this.updateSummary();
             await this.updateCartCount();
         }
+    }
+
+    async updateQuantity(itemId, newQuantity) {
+        const cartQuantity = document.getElementById(`cart__quantity-${itemId}`);
+
+        cartQuantity.innerHTML = `
+            <button class="cart__quantity-btn" 
+                    ${newQuantity == 1 ? ` data-remove-item="${itemId}" ` : ""}
+                    aria-label="Decrease quantity">-</button>
+            <span id="quantity-${itemId}" 
+                    class="cart__quantity-number"
+                    role="text"
+                    aria-label="Quantity">${newQuantity}</span>
+            <button class="cart__quantity-btn" 
+                    aria-label="Increase quantity">+</button>
+        `;
     }
 
     async updateSummary() {
@@ -185,7 +201,7 @@ export default class extends AbstractView {
             cartCount.textContent = `${this.cart.length} items`;
         }
     }
-    
+
     async fullRerender() {
         const cartContainer = document.querySelector('.app__cart-container');
         if (cartContainer) {

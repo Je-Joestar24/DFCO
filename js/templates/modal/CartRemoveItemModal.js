@@ -42,7 +42,6 @@ export default class extends AbstractModal {
     }
 
     async deleteNow(){
-        alert(this.id)
         const deleted = await mutations.removeFromCart(this.id);
         if(deleted){
             this.helper.fullRerender();
