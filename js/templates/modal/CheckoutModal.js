@@ -1,25 +1,47 @@
+/**
+ * Checkout Modal Class
+ * Handles checkout process for single items and cart items
+ * Provides confirmation UI and processes checkout requests
+ * @extends AbstractModal
+ */
 import AbstractModal from "./AbstractModal.js";
 import { actions, getters, mutations } from "../../util/state.js";
 
 export default class extends AbstractModal {
+    /**
+     * Initialize checkout modal with required configuration
+     * @param {Object} config - Modal configuration object
+     */
     constructor() {
         super({ modal: 'item__checkout-modal', toggledata: 'data-checkout-item', activeclass: 'open' });
         this.init();
         this.id;
     }
 
+    /**
+     * Initialize modal content and bind event handlers
+     * Sets up initial HTML and attaches event listeners
+     */
     async init() {
         this.modal.innerHTML = await this.getContent()
         this.bindButtons();
-        this.bindButtons2();
+        this.bindCheckoutButtons();
     }
 
+    /**
+     * Update modal data with devil fruit details
+     * @param {Object} json - Devil fruit data to display
+     */
     async setData(json) {
         await actions.fetchDevilFruitDetails(json);
         this.modal.innerHTML = await this.getContent();
     }
 
-    bindButtons2() {
+    /**
+     * Bind checkout-specific button handlers
+     * Handles item selection and checkout confirmation
+     */
+    bindCheckoutButtons() {
         document.body.addEventListener('click', (e) => {
             if (e.target.matches(`[${this.toggleAttr}]`)) {
                 e.preventDefault();
@@ -39,6 +61,10 @@ export default class extends AbstractModal {
         });
     }
 
+    /**
+     * Process checkout for single item or multiple cart items
+     * Handles success/failure cases and displays appropriate messages
+     */
     checkoutNow() {
         try {
             if (this.id === "multi") {
@@ -48,18 +74,25 @@ export default class extends AbstractModal {
                     this.toggle();
                 }
                 actions.displayMessage(response.message, 500);
+                setTimeout(()=> location.reload(), 500);
             } else if (typeof this.id == 'string') {
                 const response = mutations.singleCheckout(parseInt(this.id));
                 if (response.success) {
                     this.toggle();
                 }
                 actions.displayMessage(response.message, 500);
+                setTimeout(()=> location.reload(), 500);
             }
         } catch (error) {
             console.error("An error occurred:", error);
         }
     }
 
+    /**
+     * Generate checkout modal content HTML
+     * Includes loading animation, title, message and action buttons
+     * @returns {Promise<string>} Modal content HTML
+     */
     async getContent() {
         this.data = await getters.getDisplay();
         return `

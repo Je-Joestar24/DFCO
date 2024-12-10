@@ -1,6 +1,8 @@
 /**
  * Authentication Modal Class
- * Handles user authentication UI and functionality including signup and login forms
+ * Handles user authentication UI and functionality including signup and login forms.
+ * Provides form validation, error handling, and success/failure messaging.
+ * Manages switching between login and signup views with smooth transitions.
  * @extends AbstractModal
  */
 import AbstractModal from "./AbstractModal.js";
@@ -9,6 +11,10 @@ import { state, actions } from "../../util/state.js";
 export default class extends AbstractModal {
     /**
      * Initialize the auth modal with required configuration
+     * @param {Object} config - Modal configuration object
+     * @param {string} config.modal - Modal element ID
+     * @param {string} config.toggledata - Data attribute for toggling modal
+     * @param {string} config.activeclass - Class name for active modal state
      */
     constructor() {
         super({ modal: 'auth-modal', toggledata: 'data-auth-toggle', activeclass: 'auth-modal--active' });
@@ -17,6 +23,7 @@ export default class extends AbstractModal {
 
     /**
      * Initialize the modal content and bind event handlers
+     * Sets up initial HTML content and attaches all necessary event listeners
      */
     async init() {
         this.modal.innerHTML = await this.getContent()
@@ -27,6 +34,8 @@ export default class extends AbstractModal {
 
     /**
      * Bind authentication form submission handlers
+     * Handles form submissions for both signup and login forms
+     * Prevents default form behavior and routes to appropriate handler
      */
     async bindAuths() {
         document.body.addEventListener('submit', async (e) => {
@@ -51,6 +60,10 @@ export default class extends AbstractModal {
         });
     }
 
+    /**
+     * Hide any displayed messages and reset message styling
+     * Removes success/error classes from message element
+     */
     async hide(){
         const message = this.modal.querySelector("#auth-modal__signup-message");
 
@@ -60,6 +73,9 @@ export default class extends AbstractModal {
 
     /**
      * Handle signup form submission and validation
+     * Validates email format and password match
+     * Displays appropriate success/error messages
+     * Attempts signup and auto-login on success
      */
     async signupNow() {
         const email = this.modal.querySelector("#auth-signup__email").value.trim();
@@ -92,6 +108,7 @@ export default class extends AbstractModal {
 
     /**
      * Handle login form submission and redirect on success
+     * Extracts form data and attempts login
      */
     async loginNow() {
         const email = await this.modal.querySelector("#auth-login__email").value;
@@ -99,6 +116,12 @@ export default class extends AbstractModal {
         await this.login(email, password);
     }
 
+    /**
+     * Process login attempt with provided credentials
+     * Handles success/failure cases and redirects on success
+     * @param {string} email - User's email address
+     * @param {string} password - User's password
+     */
     async login(email, password){
         const res = await actions.login({ email, password });
         if (res.success) {
@@ -113,6 +136,7 @@ export default class extends AbstractModal {
 
     /**
      * Generate the main modal content HTML
+     * Includes loader animation, backdrop, and both form containers
      * @returns {Promise<string>} Modal content HTML
      */
     async getContent() {
@@ -135,6 +159,8 @@ export default class extends AbstractModal {
 
     /**
      * Generate the signup form HTML
+     * Creates a complete signup form with email and password fields
+     * Includes validation and accessibility attributes
      * @returns {Promise<string>} Signup form HTML
      */
     async getSignupForm() {
@@ -233,6 +259,8 @@ export default class extends AbstractModal {
 
     /**
      * Generate the login form HTML
+     * Creates a complete login form with email and password fields
+     * Includes validation and accessibility attributes
      * @returns {Promise<string>} Login form HTML
      */
     async getLoginForm() {
@@ -311,6 +339,7 @@ export default class extends AbstractModal {
 
     /**
      * Bind event handlers for switching between login/signup forms
+     * Attaches click handlers to form switch triggers
      */
     bindChangeActive() {
         document.body.addEventListener('click', (e) => {
@@ -324,6 +353,7 @@ export default class extends AbstractModal {
 
     /**
      * Change active form between signup and login
+     * Handles class toggling for smooth transitions
      * @param {string} active - Which form to activate ('signup' or 'login')
      */
     changeActive(active) {
@@ -337,6 +367,7 @@ export default class extends AbstractModal {
 
     /**
      * Override parent open method with custom animation
+     * Adds loading state and handles body scroll
      * @override
      */
     open() {
@@ -349,6 +380,7 @@ export default class extends AbstractModal {
 
     /**
      * Override parent close method with custom animation
+     * Removes active state and restores body scroll
      * @override
      */
     close() {

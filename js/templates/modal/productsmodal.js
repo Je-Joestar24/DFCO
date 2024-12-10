@@ -1,7 +1,8 @@
 /**
  * Product Modal Class
- * Handles displaying detailed product information in a modal dialog
- * Includes product details, pricing, specifications, abilities and weaknesses
+ * Handles displaying detailed product information in a modal dialog.
+ * Provides rich UI for viewing product details, images, specifications and actions.
+ * Supports add to cart and buy now functionality with authentication checks.
  * @extends AbstractModal
  */
 import AbstractModal from "./AbstractModal.js";
@@ -10,6 +11,7 @@ import { actions, getters } from "../../util/state.js";
 export default class extends AbstractModal {
     /**
      * Initialize the product modal with required configuration
+     * Sets up modal element, toggle attribute and active class
      */
     constructor() {
         super({ modal: 'fruit-modal', toggledata: 'data-fruit-toggle', activeclass: 'open' });
@@ -18,6 +20,7 @@ export default class extends AbstractModal {
 
     /**
      * Initialize modal content and bind event handlers
+     * Sets up initial HTML content and attaches event listeners
      */
     async init() {
         this.modal.innerHTML = await this.getContent()
@@ -26,7 +29,8 @@ export default class extends AbstractModal {
     }
 
     /**
-     * Bind click handlers for toggling modal visibility and loading product data
+     * Bind product-specific click handlers
+     * Handles modal toggling and product data loading on click
      */
     bindButtons2(){
         document.body.addEventListener('click', (e) => {
@@ -42,8 +46,9 @@ export default class extends AbstractModal {
     }
 
     /**
-     * Fetch and set product details data
-     * @param {string} json - Product ID or data to fetch details for
+     * Update modal data with product details
+     * Fetches fresh data and re-renders modal content
+     * @param {string} json - Product identifier to fetch details for
      */
     async setData(json) {
         await actions.fetchDevilFruitDetails(json);
@@ -52,7 +57,8 @@ export default class extends AbstractModal {
 
     /**
      * Generate the main modal content HTML
-     * @returns {Promise<string>} Modal content HTML including header, body and action buttons
+     * Includes loading state, header, body content and action buttons
+     * @returns {Promise<string>} Complete modal content HTML
      */
     async getContent() {
         this.data = await getters.getDisplay();
@@ -81,8 +87,9 @@ export default class extends AbstractModal {
     }
 
     /**
-     * Generate the modal header HTML with product name, type and alias
-     * @returns {Promise<string>} Modal header HTML
+     * Generate the modal header HTML
+     * Displays product name, type badge and alias
+     * @returns {Promise<string>} Modal header HTML with title and metadata
      */
     async getModalHeader() {
         return `
@@ -100,8 +107,9 @@ export default class extends AbstractModal {
     }
 
     /**
-     * Generate the modal body content HTML including product details, specifications, abilities and weaknesses
-     * @returns {Promise<string>} Modal body content HTML
+     * Generate the modal body content HTML
+     * Displays product image, description, specifications, abilities and weaknesses
+     * @returns {Promise<string>} Modal body HTML with all product details
      */
     async getModalContents() {
         return `
@@ -146,6 +154,11 @@ export default class extends AbstractModal {
         `;
     }
 
+    /**
+     * Generate the modal action buttons HTML
+     * Includes add to cart and buy now buttons with authentication checks
+     * @returns {Promise<string>} Modal actions HTML with conditional button states
+     */
     async getActions(){
         return `
             <button class="fruit-modal__button fruit-modal__button--cart" aria-label="Add to cart" ${getters.getUser().isLoggedIn ? ` data-cart-add="${this.data.id}" `: ` data-auth-toggle data-change-auth-active="login"`}>

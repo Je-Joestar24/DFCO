@@ -1,8 +1,18 @@
+/**
+ * Cart Remove Item Modal Class
+ * Handles confirmation and removal of items from shopping cart
+ * Provides modal UI with cancel/confirm options and keyboard interaction
+ * @extends AbstractModal 
+ */
 import AbstractModal from "./AbstractModal.js";
 import { actions, getters, mutations } from "../../util/state.js";
 import Cart from "../../views/cart.js";
 
 export default class extends AbstractModal {
+    /**
+     * Initialize modal with required configuration
+     * Sets up modal element, toggle attribute and active class
+     */
     constructor() {
         super({ modal: 'cart-modal__delete-item', toggledata: 'data-remove-item', activeclass: 'open' });
         this.init();
@@ -10,12 +20,20 @@ export default class extends AbstractModal {
         this.helper = new Cart();
     }
 
+    /**
+     * Initialize the modal content and bind event handlers
+     * Sets up initial HTML content and attaches event listeners
+     */
     async init() {
         this.modal.innerHTML = await this.getContent()
         this.bindButtons();
     }
 
-    /* override */
+    /**
+     * @override parent bindButtons to add cart-specific handlers
+     * Binds click handlers for item removal and cancel
+     * Adds keyboard escape handler to close modal
+     */
     async bindButtons(){
         document.body.addEventListener('click', (e) => {
             if (e.target.matches(`[${this.toggleAttr}]`)) {
@@ -33,7 +51,6 @@ export default class extends AbstractModal {
             }
         });
 
-
         window.addEventListener('keydown', (event) => {
             if (event.key === 'Escape' || event.key === 'Esc') { 
                 this.close();
@@ -41,6 +58,10 @@ export default class extends AbstractModal {
         });
     }
 
+    /**
+     * Handle item deletion from cart
+     * Removes item and updates cart UI if successful
+     */
     async deleteNow(){
         const deleted = await mutations.removeFromCart(this.id);
         if(deleted){
@@ -49,11 +70,20 @@ export default class extends AbstractModal {
         }
     }
 
+    /**
+     * Update modal data with devil fruit details
+     * @param {Object} json - Devil fruit data to display
+     */
     async setData(json) {
         await actions.fetchDevilFruitDetails(json);
         this.modal.innerHTML = await this.getContent();
     }
 
+    /**
+     * Generate the modal content HTML
+     * Includes loading state, confirmation message and action buttons
+     * @returns {Promise<string>} Modal content HTML
+     */
     async getContent() {
         this.data = await getters.getDisplay();
 

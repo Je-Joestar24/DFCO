@@ -266,11 +266,15 @@ const mutations = {
                 }
     
                 product.stock -= (item.quantity || 1);
+                product.sold = parseInt(product.sold.replace(/,/g, ""), 10) || 0;
+                product.sold += parseInt(item.quantity || 1, 10);
+                product.sold = product.sold.toLocaleString();
     
                 state.user.checkouts.push({ id: item.id, quantity: item.quantity || 1 });
     
                 this.removeFromCart(item.id);
             }
+
     
             const userCopy = {
                 ...state.user,
@@ -288,7 +292,7 @@ const mutations = {
             });
     
             localStorage.setItem("users", JSON.stringify(updatedUsers));
-
+            localStorage.setItem("products", JSON.stringify(state.products));
             return { success: true, message: "CHECKOUT SUCCESS" };
         } catch (error) {
             return { success: false, message: "Error during checkout" };
@@ -303,6 +307,10 @@ const mutations = {
             }
     
             product.stock -= 1;
+            product.sold = parseInt(product.sold.replace(/,/g, ""), 10) || 0;
+            product.sold += 1;
+            product.sold = product.sold.toLocaleString();
+            localStorage.setItem("products", JSON.stringify(state.products));
     
             state.user.checkouts.push({ id, quantity: 1 });
     
