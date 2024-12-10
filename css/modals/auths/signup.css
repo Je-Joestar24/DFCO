@@ -1,4 +1,3 @@
-
 /* Element: Signup Container */
 .auth-modal__signup {
     background: rgba(255, 255, 255, 0.05);
@@ -77,4 +76,157 @@
 
 .auth-modal__login-link a:hover {
     color: var(--paramecia);
+}
+
+/* Element: Signup Message
+ * Displays feedback messages to users
+ * Uses different styles for success/error states
+ */
+.auth-modal__signup-message {
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Message States */
+.auth-modal__signup-message.success {
+    background: linear-gradient(145deg, var(--mythical), transparent);
+    color: var(--light-theme);
+    border: 1px solid var(--mythical);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.auth-modal__signup-message.error {
+    background: linear-gradient(145deg, var(--paramecia), transparent);
+    color: var(--light-theme);
+    border: 1px solid var(--paramecia);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Message Animation */
+.auth-modal__signup-message::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.auth-modal__signup-message.success::before,
+.auth-modal__signup-message.error::before {
+    animation: messageSweep 2s ease-in-out infinite;
+}
+
+/* Utility Classes for Visibility */
+.hidden {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.shown {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Message Sweep Animation */
+@keyframes messageSweep {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: -100%;
+    }
+}
+
+/* Message Icon */
+.auth-modal__signup-message::after {
+    content: '';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.2rem;
+    height: 1.2rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.8;
+}
+
+.auth-modal__signup-message.success::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
+}
+
+.auth-modal__signup-message.error::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z'/%3E%3C/svg%3E");
+}
+
+/* Message Loading State */
+.auth-modal__signup-message.loading {
+    background: linear-gradient(145deg, var(--background-light), var(--background-dark));
+    color: var(--light-theme);
+    border: 1px solid var(--shadow-shine);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.auth-modal__signup-message.loading::after {
+    content: '';
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 2px solid var(--light-theme);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+    .auth-modal__signup-message {
+        font-size: 0.8rem;
+        padding: 0.75rem;
+    }
 }

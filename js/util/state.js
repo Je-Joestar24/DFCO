@@ -64,8 +64,7 @@ const getters = {
             return [];
         }
     },
-    getTotalPrice: () =>
-        state.cart.reduce((total, item) => total + item.price * item.quantity, 0),
+    getTotalPrice: () =>  state.cart.reduce((total, item) => total + item.price * item.quantity, 0),
     getActiveNav: () => state.navigations.active,
     getDisplay: async () => state.productPage.display,
     getCartSummary: () => {
@@ -138,7 +137,7 @@ const mutations = {
         state.users = users;
 
         return true; // Return true to indicate successful addition
-    },setLogged(user) {
+    }, setLogged(user) {
         // Update the state
         this.user = {
             isLoggedIn: true,
@@ -152,10 +151,10 @@ const mutations = {
 
         const logged = JSON.parse(sessionStorage.getItem("user"));
 
-    },logout: () => {
+    }, logout: () => {
         state.user = { isLoggedIn: false, name: "", email: "" };
         sessionStorage.clear();
-    },addToCart: (id) => {
+    }, addToCart: (id) => {
         // Find the product in state.products
         const product = state.products.find(p => p.id === id);
         if (!product) return; // Product not found
@@ -185,7 +184,7 @@ const mutations = {
     
         localStorage.setItem("users", JSON.stringify(updatedUsers));
         state.users = updatedUsers; // Update state.users with the new user data
-    },removeFromCart: (id) => {
+    }, removeFromCart: (id) => {
         state.user.cart = state.user.cart.filter(item => Number(item.id) !== Number(id));
         sessionStorage.setItem("user", JSON.stringify(state.user));
         
@@ -200,9 +199,9 @@ const mutations = {
         
         localStorage.setItem("users", JSON.stringify(updatedUsers));
         return true;
-    },setDisplay(display) {
+    }, setDisplay(display) {
         state.productPage.display = display;
-    },updateCartItem: (id, quantity) => {
+    }, updateCartItem: (id, quantity) => {
         const item = state.user.cart.find(item => item.id === id);
         if (!item) return { success: false, message: "Item not found in cart" };
     
@@ -239,11 +238,97 @@ const mutations = {
         localStorage.setItem("users", JSON.stringify(updatedUsers));
     
         return { success: true };
-    },setChecked(id, checked){
+    }, setChecked(id, checked){
         const cartItem = state.user.cart.find(item => item.id == id);
         cartItem["checked"] = checked;
         return cartItem;
-    }
+    }, multiCheckout() {
+        try {
+            const checkouts = getters.getCartChecked();
+    
+            if (!checkouts || checkouts.length === 0) {
+                return { success: false, message: "No items to checkout." };
+            }
+    
+            for (const item of checkouts) {
+                const product = state.products.find(p => p.id === item.id);
+    
+                // Check if the product exists
+                if (!product) {
+                    return { success: false, message: `Product with ID ${item.id} not found.` };
+                }
+    
+                if (product.stock < (item.quantity || 1)) {
+                    return {
+                        success: false,
+                        message: `Insufficient stock for product: ${product.name}. Available stock: ${product.stock}.`
+                    };
+                }
+    
+                product.stock -= (item.quantity || 1);
+    
+                state.user.checkouts.push({ id: item.id, quantity: item.quantity || 1 });
+    
+                this.removeFromCart(item.id);
+            }
+    
+            const userCopy = {
+                ...state.user,
+                checkouts: state.user.checkouts
+            };
+    
+            sessionStorage.setItem("user", JSON.stringify(userCopy));
+    
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            const updatedUsers = users.map(user => {
+                if (user.email === state.user.email) {
+                    return { ...user, checkouts: userCopy.checkouts };
+                }
+                return user;
+            });
+    
+            localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+            return { success: true, message: "CHECKOUT SUCCESS" };
+        } catch (error) {
+            return { success: false, message: "Error during checkout" };
+        }
+    }, singleCheckout(id) {
+        try {
+            const product = state.products.find(p => p.id === id);
+            if (!product) return { success: false, message: "Product not found" };
+    
+            if (product.stock < 1) {
+                return { success: false, message: "Product is out of stock" };
+            }
+    
+            product.stock -= 1;
+    
+            state.user.checkouts.push({ id, quantity: 1 });
+    
+            const userCopy = {
+                ...state.user,
+                checkouts: state.user.checkouts
+            };
+    
+            sessionStorage.setItem("user", JSON.stringify(userCopy));
+    
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            const updatedUsers = users.map(user => {
+                if (user.email === state.user.email) {
+                    return { ...user, checkouts: userCopy.checkouts };
+                }
+                return user;
+            });
+    
+            localStorage.setItem("users", JSON.stringify(updatedUsers));
+    
+            return { success: true, message: "CHECKOUT SUCCESS" };
+        } catch (error) {
+            console.error("Error during single checkout:", error);
+            return { success: false, message: "An error occurred during single checkout." };
+        }
+    }    
 };
 
 // Actions: Asynchronous or complex operations
@@ -269,10 +354,8 @@ const actions = {
     signup: async (user) => {
         const form = await mutations.addUser(user);
         if (form) {
-            console.log("User added successfully!");
             return;
         }
-        console.log("User already exists!");
         return;
     },
     fetchProducts: async () => {
@@ -308,13 +391,13 @@ const actions = {
         });
         const found = nav.querySelector(`#${active_id}`);
         if (found) found.classList.add(active_class);
-    }, displayMessage(message) {
+    }, displayMessage(message, custom = 10) {
         const message_display = document.querySelector('.app__message');
         message_display.classList.remove('fade-out');
         message_display.innerHTML = message;
         setTimeout(() => {
             message_display.classList.add('fade-out');
-        }, 10);
+        }, custom);
     }
 };
 

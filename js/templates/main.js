@@ -6,7 +6,7 @@ import AuthsModal from "./modal/authsmodal.js";
 import ProductsModal from "./modal/productsmodal.js";
 import CartsModal from "./modal/CartRemoveItemModal.js";
 import CheckoutModal from "./modal/CheckoutModal.js";
-import { mutations } from "../util/state.js";
+import { actions, mutations } from "../util/state.js";
 
 export default class extends AbstractTemplate {
     nav = null;
@@ -37,6 +37,7 @@ export default class extends AbstractTemplate {
 
                 if (attributeValue) {
                     mutations.addToCart(parseInt(attributeValue));
+                    actions.displayMessage("ADDED TO CART", 700);
                 }
             }
         });

@@ -13,7 +13,7 @@
   padding: 1em 1.5em;
   border-radius: 3em;
   text-align: center;
-  z-index: 1000;
+  z-index: 3000;
   opacity: 1;
   font-weight: 500;
   transition: opacity 0.5s ease-in-out;

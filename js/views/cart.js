@@ -160,7 +160,7 @@ export default class extends AbstractView {
 
         const result = mutations.updateCartItem(itemId, newQuantity);
 
-        if (result.error) {
+        if (!result.success) {
             actions.displayMessage(result.message);
             return;
         }

@@ -93,7 +93,8 @@ export default class extends AbstractTemplate {
     document.body.addEventListener('click', async (e) => {
       if (e.target.matches(`[data-logout]`)) {
           e.preventDefault();
-          actions.logout();
+          actions.displayMessage("LOGGING OUT...", 500);
+          setTimeout(() => actions.logout(), 500);
       }
   });
   }

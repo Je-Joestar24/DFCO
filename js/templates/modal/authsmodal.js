@@ -42,6 +42,20 @@ export default class extends AbstractModal {
                 this.loginNow();
             }
         });
+
+        document.body.addEventListener('click', async (e) => {
+            if (e.target.matches(`[data-message-hide]`)) {
+                e.preventDefault();
+                this.hide();
+            }
+        });
+    }
+
+    async hide(){
+        const message = this.modal.querySelector("#auth-modal__signup-message");
+
+        message.classList.remove("error");
+        message.classList.remove("success");
     }
 
     /**
@@ -53,22 +67,27 @@ export default class extends AbstractModal {
         const cpass = this.modal.querySelector("#auth-signup__pass-confirm").value;
         const message = this.modal.querySelector("#auth-modal__signup-message");
 
+        await this.hide();
         // Reset the message display before validation
         message.style.display = "block";
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
+            message.classList.add("error");
             message.innerHTML = "INVALID EMAIL ADDRESS";
             return;
         }
 
         if (password !== cpass) {
+            message.classList.add("error");
             message.innerHTML = "PASSWORD DOESN'T MATCH";
             return;
         }
 
+        message.classList.add("success");
         message.innerHTML = "SIGNUP SUCCESS";
         await actions.signup({ email, password });
+        await this.login(email, password)
     }
 
     /**
@@ -77,14 +96,19 @@ export default class extends AbstractModal {
     async loginNow() {
         const email = await this.modal.querySelector("#auth-login__email").value;
         const password = await this.modal.querySelector("#auth-login__pass").value;
-        
-        const res = await actions.login({email, password});
+        await this.login(email, password);
+    }
+
+    async login(email, password){
+        const res = await actions.login({ email, password });
         if (res.success) {
             // Change the location safely and remove the hash
             window.location.href = window.location.origin + '#/products';
-            location.reload();
+            await actions.displayMessage("LOGING IN...", 500);
+            setTimeout(() => location.reload(), 500);
+        }else{
+            await actions.displayMessage("LOGIN FAILED, NO MATCH FOUND!", 500);
         }
-        
     }
 
     /**
@@ -131,7 +155,7 @@ export default class extends AbstractModal {
                 <h2 id="modal-title" class="auth-modal__signup-title">Sign Up</h2>
                 <p class="auth-modal__signup-subtitle">Join the DFCO community</p>
             </header>
-            <h3 id="auth-modal__signup-message" class="auth-modal__signup-message">MESSAGE</h3>
+            <h3 id="auth-modal__signup-message" class="auth-modal__signup-message" data-message-hide>MESSAGE</h3>
             <form
             id="signup-form"
             name="signup-form"
