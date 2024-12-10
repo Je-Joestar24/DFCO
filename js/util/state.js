@@ -63,8 +63,24 @@ const getters = {
         } else {
             return [];
         }
-    },
-    getTotalPrice: () =>  state.cart.reduce((total, item) => total + item.price * item.quantity, 0),
+    }, getCheckouts: () => {
+        const checkouts = state.user.checkouts;
+        if (checkouts.length > 0) {
+            return checkouts.map(checkout => {
+                const product = state.products.find(product => product.id === checkout.id);
+                if (product) {
+                    const price = parseFloat(product.price.replace('₿', '').replace(/,/g, '')) || 0;
+                    return {
+                        ...product,
+                        quantity: checkout.quantity,
+                        total: formatPrice(price * checkout.quantity)
+                    };
+                }
+                return null;
+            }).filter(item => item !== null);
+        }
+        return [];
+    },getTotalPrice: () =>  state.cart.reduce((total, item) => total + item.price * item.quantity, 0),
     getActiveNav: () => state.navigations.active,
     getDisplay: async () => state.productPage.display,
     getCartSummary: () => {

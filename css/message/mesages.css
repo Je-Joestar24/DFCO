@@ -6,7 +6,7 @@
 .app__message {
   position: fixed;
   right: 50%;
-  top: 40%;
+  top: 30%;
   transform: translateX(50%);
   background-color: var(--background-dark);
   color: var(--secondary);
