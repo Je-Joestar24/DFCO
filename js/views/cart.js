@@ -12,7 +12,24 @@ export default class extends AbstractView {
         this.setTitle("DFCO | Cart");
     }
 
+    bindAll() {
+        if (state.cart.isBound) return; // Prevent multiple bindings
+        document.body.addEventListener('click', (e) => {
+            if (e.target.matches('.cart__quantity-btn')) {
+                const itemId = parseInt(e.target.closest('.cart__item').dataset.itemId);
+                const isIncrease = e.target.textContent === '+';
+                this.handleQuantityChange(itemId, isIncrease);
+            }
+        });
 
+        document.body.addEventListener('change', (e) => {
+            if (e.target.matches('.cart__checkbox-input')) {
+                this.handleCheckboxChange(e.target);
+            }
+        });
+
+        state.cart.isBound = true; // Mark as bound
+    }
 
     async getHtml() {
         await actions.fetchProducts();
@@ -48,57 +65,6 @@ export default class extends AbstractView {
         `;
     }
 
-    async getCartSummary() {
-        const summary = getters.getCartSummary();
-        return `
-            <div class="cart__summary" role="complementary" aria-label="Order Summary">
-                <h2 class="cart__summary-title">Order Summary</h2>
-                <div class="cart__summary-row cart__summary-subtotal">
-                    <span>Subtotal</span>
-                    <span>${summary.total}</span>
-                </div>
-                <div class="cart__summary-row cart__summary-shipping">
-                    <span>Shipping</span>
-                    <span>Free</span>
-                </div>
-                <div class="cart__summary-row cart__summary-total">
-                    <span>Total</span>
-                    <span>${summary.total}</span>
-                </div>
-                <button class="cart__checkout-btn" 
-                        aria-label="Proceed to checkout with ${summary.itemCount} items"
-                        ${summary.itemCount === 0 ? 'disabled' : ''}>
-                    Proceed to Checkout (${summary.itemCount} items)
-                </button>
-            </div>
-        `;
-    }
-
-
-    bindAll() {
-        if (state.cart.isBound) return; // Prevent multiple bindings
-        document.body.addEventListener('click', (e) => {
-            if (e.target.matches('.cart__quantity-btn')) {
-                const itemId = parseInt(e.target.closest('.cart__item').dataset.itemId);
-                const isIncrease = e.target.textContent === '+';
-                this.handleQuantityChange(itemId, isIncrease);
-            }
-
-            if (e.target.matches('.cart__item-remove')) {
-                const itemId = parseInt(e.target.closest('.cart__item').dataset.itemId);
-                this.handleRemoveItem(itemId);
-            }
-        });
-
-        document.body.addEventListener('change', (e) => {
-            if (e.target.matches('.cart__checkbox-input')) {
-                this.handleCheckboxChange(e.target);
-            }
-        });
-
-        state.cart.isBound = true; // Mark as bound
-    }
-
     async getCartItems() {
         return `
         <div class="cart__items">
@@ -132,6 +98,7 @@ export default class extends AbstractView {
                     <div class="cart__item-controls">
                         <div class="cart__quantity">
                             <button class="cart__quantity-btn" 
+                                    ${item.quantity == 1 ?  ` data-remove-item="${item.id}" ` : ""}
                                     aria-label="Decrease quantity">-</button>
                             <span id="quantity-${item.id}" 
                                   class="cart__quantity-number"
@@ -141,11 +108,37 @@ export default class extends AbstractView {
                                     aria-label="Increase quantity">+</button>
                         </div>
                         <button class="cart__item-remove" 
-                                aria-label="Remove ${item.name} from cart">×</button>
+                                aria-label="Remove ${item.name} from cart" data-remove-item="${item.id}">×</button>
                     </div>
                 </div>
             `).join('')}
         </div>
+        `;
+    }
+
+    async getCartSummary() {
+        const summary = getters.getCartSummary();
+        return `
+            <div class="cart__summary" role="complementary" aria-label="Order Summary">
+                <h2 class="cart__summary-title">Order Summary</h2>
+                <div class="cart__summary-row cart__summary-subtotal">
+                    <span>Subtotal</span>
+                    <span>${summary.total}</span>
+                </div>
+                <div class="cart__summary-row cart__summary-shipping">
+                    <span>Shipping</span>
+                    <span>Free</span>
+                </div>
+                <div class="cart__summary-row cart__summary-total">
+                    <span>Total</span>
+                    <span>${summary.total}</span>
+                </div>
+                <button class="cart__checkout-btn" 
+                        aria-label="Proceed to checkout with ${summary.itemCount} items"
+                        ${summary.itemCount === 0 ? 'disabled' : ''}>
+                    Proceed to Checkout (${summary.itemCount} items)
+                </button>
+            </div>
         `;
     }
 
@@ -154,25 +147,17 @@ export default class extends AbstractView {
         const isChecked = checkbox.checked;
 
         // Get current quantity from state
-        const cartItem = state.user.cart.find(item => item.id === itemId);
-        cartItem["checked"] = isChecked;
+        const cartItem = mutations.setChecked(itemId, isChecked);
         if (!cartItem) return;
         await this.updateSummary();
     }
+
     async handleQuantityChange(itemId, isIncrease) {
         const quantityElement = document.getElementById(`quantity-${itemId}`);
         const currentQuantity = parseInt(quantityElement.textContent);
         const newQuantity = isIncrease ? currentQuantity + 1 : currentQuantity - 1;
 
         const result = mutations.updateCartItem(itemId, newQuantity);
-
-        if (result.showDialog) {
-            if (confirm('Remove item from cart?')) {
-                await mutations.removeFromCart(itemId);
-                await this.fullRerender();
-            }
-            return;
-        }
 
         if (result.error) {
             actions.displayMessage(result.message);
@@ -185,15 +170,6 @@ export default class extends AbstractView {
             await this.updateCartCount();
         }
     }
-
-    async handleRemoveItem(itemId) {
-        if (confirm('Are you sure you want to remove this item?')) {
-            await mutations.removeFromCart(itemId);
-            await this.fullRerender();
-            await this.updateCartCount();
-        }
-    }
-
 
     async updateSummary() {
         const summaryContainer = document.querySelector('.cart__summary');
@@ -209,7 +185,7 @@ export default class extends AbstractView {
             cartCount.textContent = `${this.cart.length} items`;
         }
     }
-
+    
     async fullRerender() {
         const cartContainer = document.querySelector('.app__cart-container');
         if (cartContainer) {

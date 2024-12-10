@@ -1,12 +1,23 @@
+/**
+ * Authentication Modal Class
+ * Handles user authentication UI and functionality including signup and login forms
+ * @extends AbstractModal
+ */
 import AbstractModal from "./AbstractModal.js";
 import { state, actions } from "../../util/state.js";
 
 export default class extends AbstractModal {
+    /**
+     * Initialize the auth modal with required configuration
+     */
     constructor() {
         super({ modal: 'auth-modal', toggledata: 'data-auth-toggle', activeclass: 'auth-modal--active' });
         this.init();
     }
 
+    /**
+     * Initialize the modal content and bind event handlers
+     */
     async init() {
         this.modal.innerHTML = await this.getContent()
         await this.bindButtons();
@@ -14,6 +25,9 @@ export default class extends AbstractModal {
         await this.bindAuths();
     }
 
+    /**
+     * Bind authentication form submission handlers
+     */
     async bindAuths() {
         document.body.addEventListener('submit', async (e) => {
             if (e.target.matches(`[data-signup-form]`)) {
@@ -30,6 +44,9 @@ export default class extends AbstractModal {
         });
     }
 
+    /**
+     * Handle signup form submission and validation
+     */
     async signupNow() {
         const email = this.modal.querySelector("#auth-signup__email").value.trim();
         const password = this.modal.querySelector("#auth-signup__pass").value;
@@ -54,6 +71,9 @@ export default class extends AbstractModal {
         await actions.signup({ email, password });
     }
 
+    /**
+     * Handle login form submission and redirect on success
+     */
     async loginNow() {
         const email = await this.modal.querySelector("#auth-login__email").value;
         const password = await this.modal.querySelector("#auth-login__pass").value;
@@ -67,6 +87,10 @@ export default class extends AbstractModal {
         
     }
 
+    /**
+     * Generate the main modal content HTML
+     * @returns {Promise<string>} Modal content HTML
+     */
     async getContent() {
         return `
         <div class="auth-modal__loader" role="status" aria-label="Loading">
@@ -85,6 +109,10 @@ export default class extends AbstractModal {
         `;
     }
 
+    /**
+     * Generate the signup form HTML
+     * @returns {Promise<string>} Signup form HTML
+     */
     async getSignupForm() {
         this.signup = { email: "", password: "" };
         return `
@@ -179,6 +207,10 @@ export default class extends AbstractModal {
         `;
     }
 
+    /**
+     * Generate the login form HTML
+     * @returns {Promise<string>} Login form HTML
+     */
     async getLoginForm() {
         return `
         <div
@@ -253,7 +285,9 @@ export default class extends AbstractModal {
         `;
     }
 
-
+    /**
+     * Bind event handlers for switching between login/signup forms
+     */
     bindChangeActive() {
         document.body.addEventListener('click', (e) => {
             if (e.target.matches(`[data-change-auth-active]`)) {
@@ -265,9 +299,8 @@ export default class extends AbstractModal {
     }
 
     /**
-     * change active - use to change the active contents(signup/login)
-     * @param {string} active 
-     * 
+     * Change active form between signup and login
+     * @param {string} active - Which form to activate ('signup' or 'login')
      */
     changeActive(active) {
         // Remove the active class from both login and signup contents
@@ -279,9 +312,8 @@ export default class extends AbstractModal {
     }
 
     /**
-     * open and close overrideing the parent
+     * Override parent open method with custom animation
      * @override
-     * 
      */
     open() {
         this.modal.classList.add(this.activeclass);
@@ -291,6 +323,10 @@ export default class extends AbstractModal {
         }, 100);
     }
 
+    /**
+     * Override parent close method with custom animation
+     * @override
+     */
     close() {
         this.modal.classList.remove(this.activeclass);
         document.body.classList.remove("no-scroll");

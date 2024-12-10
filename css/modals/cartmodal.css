@@ -6,7 +6,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(8px);
     z-index: 1000;
     display: flex;
@@ -214,4 +214,91 @@
 
 .cart-modal__dialog-btn:hover {
     transform: translateY(-2px);
+}
+
+/* Delete Modal Specific Styles */
+.cart-modal--delete .cart-modal__content {
+    width: min(90vw, 400px);
+    max-height: none;
+}
+
+.cart-modal--delete .cart-modal__header {
+    background: var(--background-dark);
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--shadow-shine);
+}
+
+.cart-modal--delete .cart-modal__title {
+    color: var(--light-theme);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.cart-modal--delete .cart-modal__body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cart-modal--delete .cart-modal__message {
+    color: var(--secondary);
+    font-size: 1rem;
+    margin: 0;
+    text-align: center;
+}
+
+.cart-modal--delete .cart-modal__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.cart-modal--delete .cart-modal__button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cart-modal--delete .cart-modal__button--cancel {
+    background: var(--background-light);
+    color: var(--light-theme);
+    border: 1px solid var(--shadow-shine);
+}
+
+.cart-modal--delete .cart-modal__button--cancel:hover {
+    background: var(--background-dark);
+    transform: translateY(-2px);
+}
+
+.cart-modal--delete .cart-modal__button--confirm {
+    background-color: var(--paramecia);
+    background: linear-gradient(145deg, var(--mythical), var(--paramecia));
+    color: var(--light-theme);
+}
+
+.cart-modal--delete .cart-modal__button--confirm:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--shadow-shine);
+}
+
+/* Animation for delete modal */
+.cart-modal--delete.open .cart-modal__content {
+    animation: deleteModalIn 0.3s ease forwards;
+}
+
+@keyframes deleteModalIn {
+    from {
+        transform: scale(0.9) translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
 }

@@ -34,7 +34,8 @@ const state = {
             "price": "NO DATA"
         },
     },cart: {
-        isBound: false
+        isBound: false,
+        remove: -1
     },
     users: JSON.parse(localStorage.getItem("users")) || [],
     products: JSON.parse(localStorage.getItem("products")) || [], // Store fetched devil fruits or other data
@@ -178,10 +179,9 @@ const mutations = {
     
         localStorage.setItem("users", JSON.stringify(updatedUsers));
         state.users = updatedUsers; // Update state.users with the new user data
-    }
-    ,
+    },
     removeFromCart: (id) => {
-        state.user.cart = state.user.cart.filter(item => item.id !== id);
+        state.user.cart = state.user.cart.filter(item => Number(item.id) !== Number(id));
         sessionStorage.setItem("user", JSON.stringify(state.user));
         
         // Update localStorage
@@ -227,6 +227,10 @@ const mutations = {
         
         localStorage.setItem("users", JSON.stringify(updatedUsers));
         return { success: true };
+    },setChecked(id, checked){
+        const cartItem = state.user.cart.find(item => item.id == id);
+        cartItem["checked"] = checked;
+        return cartItem;
     }
 };
 
