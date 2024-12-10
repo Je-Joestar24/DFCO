@@ -198,34 +198,42 @@ const mutations = {
     },
     setDisplay(display) {
         state.productPage.display = display;
-    },
-    updateCartItem: (id, quantity) => {
+    },updateCartItem: (id, quantity) => {
         const item = state.user.cart.find(item => item.id === id);
-        if (!item) return false;
-        
+        if (!item) return { success: false, message: "Item not found in cart" };
+    
         if (quantity < 1) {
-            return { showDialog: true, itemId: id };
+            return;
         }
-        
-        // Check stock limit
+    
         const product = state.products.find(p => p.id === id);
+        if (!product) return { success: false, message: "Product not found" };
         if (quantity > product.stock) {
-            return { error: true, message: "Exceeds available stock" };
+            return {success: false, message: "Exceeds available stock" };
         }
-        
+    
         item.quantity = quantity;
-        sessionStorage.setItem("user", JSON.stringify(state.user));
-        
-        // Update localStorage
+    
+        const userCopy = {
+            ...state.user,
+            cart: state.user.cart.map(cartItem => ({
+                ...cartItem,
+                checked: false 
+            }))
+        };
+    
+        sessionStorage.setItem("user", JSON.stringify(userCopy));
+    
         const users = JSON.parse(localStorage.getItem("users")) || [];
         const updatedUsers = users.map(user => {
             if (user.email === state.user.email) {
-                return { ...user, cart: state.user.cart };
+                return { ...user, cart: userCopy.cart };
             }
             return user;
         });
-        
+    
         localStorage.setItem("users", JSON.stringify(updatedUsers));
+    
         return { success: true };
     },setChecked(id, checked){
         const cartItem = state.user.cart.find(item => item.id == id);
