@@ -1,0 +1,25 @@
+/* Logia Type */
+.fruit-modal__type--logia {
+  background: linear-gradient(145deg, var(--logia), transparent);
+  border: 2px solid var(--logia);
+}
+
+.fruit-modal__type--logia::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(33, 150, 243, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.fruit-modal__type--logia:hover::before {
+  left: 100%;
+}

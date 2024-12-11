@@ -1,0 +1,14 @@
+/* Delete modal header */
+.cart-modal--delete .cart-modal__header {
+  background: var(--background-dark);
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--shadow-shine);
+}
+
+/* Delete modal title */
+.cart-modal--delete .cart-modal__title {
+  color: var(--light-theme);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}

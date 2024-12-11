@@ -1,0 +1,18 @@
+/* Element: Modal Body */
+/* Content area with flexible column layout */
+.item__checkout-modal .item-modal__body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* Element: Modal Message */
+.item__checkout-modal .item-modal__message {
+  color: var(--secondary);
+  font-size: 1.1rem;
+  margin: 0;
+  text-align: center;
+  line-height: 1.6;
+}

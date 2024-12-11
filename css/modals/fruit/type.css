@@ -1,0 +1,49 @@
+@import "types/logia.css";
+@import "types/mythical.css";
+@import "types/zoan.css";
+@import "types/paramecia.css";
+
+/* Devil Fruit Type Tags */
+.fruit-modal__type {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-left: 1rem;
+  position: relative;
+  overflow: hidden;
+  color: var(--secondary);
+}
+
+/* Type Icon */
+.fruit-modal__type-icon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  fill: currentColor;
+}
+
+/* Animation for type tags */
+@keyframes typeFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.05);
+  }
+}
+
+.fruit-modal__type {
+  animation: typeFloat 3s ease-in-out infinite;
+}
+
+/* Type container for multiple types */
+.fruit-modal__types {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}

@@ -1,0 +1,23 @@
+/* Modal Header */
+.fruit-modal__header {
+  padding: var(--modal-padding);
+  background: linear-gradient(to left, var(--mythical), var(--background-dark));
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.fruit-modal__title {
+  color: var(--light-theme);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.fruit-modal__alias {
+  color: var(--secondary);
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}

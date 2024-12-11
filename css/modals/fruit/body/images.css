@@ -1,0 +1,26 @@
+/* Product Image */
+.fruit-modal__image {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(145deg, var(--background-dark), var(--mythical));
+  border-radius: var(--modal-border-radius);
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.fruit-modal__image:hover {
+  transform: scale(1.02);
+}
+
+.fruit-modal__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}

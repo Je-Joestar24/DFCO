@@ -7,17 +7,11 @@ export default class {
      */
     async getContent() {
         return `
-        <div class="auth-modal__loader" role="status" aria-label="Loading">
+        <div class="auth-modal__loader" role="status" aria-label="Loading" data-auth-toggle>
         <div class="auth-modal__ball auth-modal__ball--1"></div>
         <div class="auth-modal__ball auth-modal__ball--2"></div>
         <div class="auth-modal__ball auth-modal__ball--3"></div>
         </div>
-        <div
-            class="auth-modal__backdrop"
-            role="back drop"
-            aria-hidden="true"
-            data-auth-toggle
-        ></div>
         ${await this.getSignupForm()}
         ${await this.getLoginForm()}
         `;

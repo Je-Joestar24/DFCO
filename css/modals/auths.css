@@ -1,138 +1,75 @@
 @import "./auths/login.css";
 @import "./auths/signup.css";
 @import "./auths/loading.css";
+@import "./auths/closebutton.css";
+@import "./auths/formfield.css";
 
 /* Block: Auth Modal */
 .auth-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(10, 10, 46, 0.8);
-    backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 46, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .auth-modal--active {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
-/* Element: Close Button */
-.auth-modal__close {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: var(--light-theme);
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 3;
-}
-
-.auth-modal__close:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: rotate(90deg);
-}
-
-/* Element: Form Field */
-.auth-modal__field {
-    position: relative;
-}
-
-.auth-modal__input {
-    width: 100%;
-    padding: 1rem 1.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    color: var(--light-theme);
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.auth-modal__input:focus {
-    outline: none;
-    border-color: var(--paramecia);
-    box-shadow: 0 0 20px rgba(147, 51, 234, 0.2);
-}
-
-/* Element: Password Field */
-.auth-modal__password {
-    position: relative;
-}
-
-.auth-modal__password .auth-modal__input {
-    padding-right: 4.5rem;
-}
-
-.auth-modal__show-password {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: var(--light-theme);
-    opacity: 0.5;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 0.5rem;
-    font-size: 0.9rem;
-}
-
-.auth-modal__show-password:hover {
-    opacity: 1;
-    color: var(--gold);
-}
-
-.auth-modal__backdrop{
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-}
-
-
-.auth-modal .auth-modal__content--active {
-    opacity: 1;
-    display: block;
-    animation: pulse 1s ease-in-out;
-}
-
-.auth-modal.auth-modal--active .auth-modal__content--active{
-    transform: translateY(0);
-}
 
 .no-scroll {
-    overflow: hidden;
-  }
+  overflow: hidden;
+}
 
 /* Animations */
 @keyframes ballRotate {
-    0%, 100% {
-        transform: scale(1) translateY(0);
-        opacity: 1;
-    }
-    33% {
-        transform: scale(1.2) translateY(-20px);
-        opacity: 0.8;
-    }
-    66% {
-        transform: scale(0.8) translateY(20px);
-        opacity: 0.6;
-    }
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  33% {
+    transform: scale(1.2) translateY(-20px);
+    opacity: 0.8;
+  }
+  66% {
+    transform: scale(0.8) translateY(20px);
+    opacity: 0.6;
+  }
 }
+
+
+/* Laptop (1024px - 1399px) */
+@media screen and (max-width: 1399px) {
+}
+
+/* Tablet (768px - 1023px) */
+@media screen and (max-width: 1023px) {
+
+}
+/* Mobile (below 768px) */
+@media screen and (max-width: 767px) {
+  /* Element: Signup Container */
+  .auth-modal__signup {
+    font-size: .9em;
+    padding: 2rem;
+    width: 90%;
+  }
+  
+}
+
+/* Max-width container adjustment */
+@media screen and (min-width: 1400px) {
+
+}
+

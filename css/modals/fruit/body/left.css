@@ -1,0 +1,31 @@
+/* Left Column */
+.fruit-modal__main-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.fruit-modal__description {
+  color: var(--light-theme);
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.fruit-modal__popular-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+}
+
+.fruit-modal__user-label {
+  color: var(--secondary);
+  font-size: 0.9rem;
+}
+
+.fruit-modal__user-name {
+  color: var(--mythical);
+  font-weight: 600;
+}

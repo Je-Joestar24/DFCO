@@ -97,6 +97,7 @@ export default class {
             id="auth-modal"
             class="auth-modal auth-modal--loading"
             aria-label="Auth Modal Display area"
+            data-auth-toggle
         ></div>
         `;
     }

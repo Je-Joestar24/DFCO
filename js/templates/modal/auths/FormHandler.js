@@ -78,11 +78,7 @@ export default class {
             await actions.displayMessage("LOGGING IN...", 500);
             setTimeout(() => location.reload(), 500);
         } else {
-            this.displayMessage(
-                modal.querySelector("#auth-modal__signup-message"), 
-                "error", 
-                "LOGIN FAILED, NO MATCH FOUND!"
-            );
+            actions.displayMessage("LOGIN FAILED, NO MATCH FOUND!");
         }
     }
 

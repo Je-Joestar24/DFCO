@@ -1,3 +1,5 @@
+import { state } from "../../util/state.js";
+
 export default class {
     constructor() {
 
@@ -38,16 +40,18 @@ export default class {
                     <span class="cta__particle"></span>
                   </div>
                 </a>
-                <button
-                  class="cta__button cta__button--secondary"
-                  role="button"
-                  aria-label="Join DFCO Community"
-                  data-auth-toggle
-                  data-change-auth-active="signup"
-                >
-                  Join Us
-                  <div class="cta__glow" aria-hidden="true"></div>
-                </button>
+                ${!state.user.isLoggedIn ? `
+                  <button
+                    class="cta__button cta__button--secondary"
+                    role="button"
+                    aria-label="Join DFCO Community"
+                    data-auth-toggle 
+                    data-change-auth-active="signup" 
+                  >
+                    Join Us
+                    <div class="cta__glow" aria-hidden="true"></div>
+                  </button>
+                ` : ""}
               </div>
             </div>
             <div class="cta__background" aria-hidden="true">

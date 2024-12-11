@@ -1,0 +1,26 @@
+/* Specifications Grid */
+.fruit-modal__specifications {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.fruit-modal__spec {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  text-align: center;
+}
+
+.fruit-modal__spec-label {
+  color: var(--secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.fruit-modal__spec-value {
+  color: var(--mythical);
+  font-size: 1.5rem;
+  font-weight: 700;
+}

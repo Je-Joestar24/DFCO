@@ -1,0 +1,71 @@
+/* Element: Action Buttons Container */
+.item__checkout-modal .item-modal__actions {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Element: Button Base Styles */
+/* Common button styles with hover effects */
+.item__checkout-modal .item-modal__button {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Element: Cancel Button */
+/* Light background with border */
+.item__checkout-modal .item-modal__button--cancel {
+  background: var(--background-light);
+  color: var(--light-theme);
+  border: 1px solid var(--shadow-shine);
+}
+
+/* Modifier: Cancel Button Hover */
+.item__checkout-modal .item-modal__button--cancel:hover {
+  background: var(--background-dark);
+  transform: translateY(-2px);
+}
+
+/* Element: Confirm Button */
+/* Gradient background with shadow effect */
+.item__checkout-modal .item-modal__button--confirm {
+  background: linear-gradient(145deg, var(--mythical), var(--paramecia));
+  color: var(--light-theme);
+}
+
+/* Modifier: Confirm Button Hover */
+.item__checkout-modal .item-modal__button--confirm:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px var(--shadow-shine);
+}
+
+/* Element: Button Shine Effect */
+/* Animated gradient overlay for buttons */
+.item__checkout-modal .item-modal__button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+/* Modifier: Button Shine Animation */
+.item__checkout-modal .item-modal__button:hover::before {
+  left: 100%;
+}

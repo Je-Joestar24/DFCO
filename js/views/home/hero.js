@@ -1,4 +1,6 @@
-export default class {
+import { state } from "../../util/state.js";
+
+export default class {1
     constructor() { }
 
     /**
@@ -43,7 +45,7 @@ export default class {
                     Explore Fruits
                     <span class="hero__button-shine" aria-hidden="true"></span>
                   </a>
-                  <button
+                  ${!state.user.isLoggedIn ? `<button
                     class="hero__button hero__button--secondary"
                     role="button"
                     aria-label="Join Us button to signup or login"
@@ -51,7 +53,7 @@ export default class {
                     data-change-auth-active="signup"
                   >
                     Join us
-                  </button>
+                  </button>`: ""}
                 </div>
               </div>
             </div>

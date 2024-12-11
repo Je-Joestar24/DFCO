@@ -1,0 +1,16 @@
+/* Element: Login Header */
+.auth-modal__login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.auth-modal__login-title {
+  font-size: 2rem;
+  color: var(--light-theme);
+  margin-bottom: 1rem;
+}
+
+.auth-modal__login-subtitle {
+  color: var(--light-theme);
+  opacity: 0.8;
+}

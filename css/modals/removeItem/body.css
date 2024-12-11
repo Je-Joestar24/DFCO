@@ -1,0 +1,37 @@
+/* Cart Content Container
+   Main modal content with gradient background and animations */
+.cart-modal__content {
+  width: var(--modal-width);
+  max-height: 85vh;
+  background: linear-gradient(
+    145deg,
+    var(--background-light),
+    var(--background-dark)
+  );
+  border-radius: 1.5rem;
+  overflow: hidden;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+/* Content animation when modal opens */
+.cart-modal.open .cart-modal__content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Delete Modal Specific Styles
+   Customizations for delete confirmation modal */
+.cart-modal--delete .cart-modal__content {
+  width: min(90vw, 400px);
+  max-height: none;
+}
+
+/* Delete modal body layout */
+.cart-modal--delete .cart-modal__body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
