@@ -1,0 +1,61 @@
+/* Laptop (1024px - 1399px) */
+@media screen and (max-width: 1399px) {
+  /* Hero section */
+  .hero__title {
+    font-size: 2.5em;
+  }
+
+  .hero__title-highlight {
+    font-size: 2.5em;
+  }
+
+  .hero__title-subtitle {
+    font-size: 2.5em;
+  }
+
+  .hero__subtitle {
+    font-size: 1.5em;
+  }
+
+  .hero__button {
+    font-size: 1em;
+    padding: 1.3em 1.8em;
+  }
+
+  /* best seller */
+  .bestsellers__container {
+    padding: 1em;
+  }
+
+  /* Proccess */
+  .process__container {
+    padding: 1em 2.5em;
+    display: grid;
+  }
+
+  .process__steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .process__number {
+    top: -15%;
+    left: 50%;
+  }
+
+  .process__title {
+    grid-area: 1 / 1 / 2 / 2;
+    margin: 0px;
+    margin-bottom: 1em;
+  }
+
+  .process__card {
+    padding-bottom: 2em;
+  }
+
+  .process__title::before,
+  .process__title::after,
+  .process::before {
+    display: none;
+  }
+}

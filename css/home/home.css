@@ -1,16 +1,22 @@
-@import './sections/section1.css';
-@import './sections/section2.css';
-@import './sections/section3.css';
-@import './sections/section4.css';
-@import './sections/section5.css';
-@import './sections/section6.css';
+@import "./sections/section1.css";
+@import "./sections/section2.css";
+@import "./sections/section3.css";
+@import "./sections/section4.css";
+@import "./sections/section5.css";
+@import "./sections/section6.css";
 /* General animations */
-@import './sections/animations.css';
+@import "./sections/animations.css";
 /* Home background gradient with pulsing effect */
-
+@import "./responsive.css";
 
 /* Section styles - Full width container with centered content */
-.section, .hero, .features, .bestsellers, .process, .testimonials, .cta {
+.section,
+.hero,
+.features,
+.bestsellers,
+.process,
+.testimonials,
+.cta {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -19,45 +25,53 @@
 }
 
 /* Container styles - Fixed width using XL container variable */
-.container, .hero__container, .features__container, .bestsellers__container, .process__container, .testimonials__container, .cta__container {
-  width: var(--container-xl);
-  
+.container,
+.hero__container,
+.features__container,
+.bestsellers__container,
+.process__container,
+.testimonials__container,
+.cta__container {
+  max-width: var(--container-xl);
   margin: 0 auto;
 }
 
-
 /* Section title styling */
 .section-title {
-    color: var(--light-theme);
-    font-size: 3.5rem;
-    text-align: center;
-    margin-bottom: 5rem;
-    position: relative;
+  color: var(--light-theme);
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 5rem;
+  position: relative;
 }
 
 /* Section title underline */
 .section-title::before {
-    content: '';
-    position: absolute;
-    bottom: -.4rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 10rem;
-    height: 0.5rem;
-    background: linear-gradient(to right, var(--paramecia), var(--mythical), var(--logia));
-    border-radius: 2rem;
-
+  content: "";
+  position: absolute;
+  bottom: -0.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10rem;
+  height: 0.5rem;
+  background: linear-gradient(
+    to right,
+    var(--paramecia),
+    var(--mythical),
+    var(--logia)
+  );
+  border-radius: 2rem;
 }
 
 /* Section title underline */
 .section-title::after {
-    content: "";
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--paramecia), var(--mythical));
-    border-radius: 2px;
-  }
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--paramecia), var(--mythical));
+  border-radius: 2px;
+}

@@ -1,0 +1,46 @@
+/* Tablet (768px - 1023px) */
+@media screen and (max-width: 1023px) {
+  /* Hero */
+  .hero__container {
+    padding: 1.5em;
+    font-size: 0.8em;
+  }
+
+  /* features */
+
+  .features__container {
+    grid-template-columns: 1fr;
+  }
+
+  .features__grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .features__card {
+    padding: 1em;
+  }
+
+  /* Best sellers card */
+  .bestsellers__grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: auto;
+  }
+
+  .bestsellers__card {
+    padding: 1.2em;
+  }
+
+  .bestsellers__name {
+    font-size: 1.2em;
+  }
+  .bestsellers__button {
+    font-size: 1em;
+    padding: 1em;
+  }
+  /* process */
+
+  .process__number {
+    top: -5%;
+    left: 0;
+  }
+}

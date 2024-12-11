@@ -9,7 +9,8 @@
  */
 .hero {
     position: relative;
-    height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 80px;
     background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
     overflow: hidden;
 }
