@@ -3,6 +3,7 @@
 @import "./cartcomponents/itemcontrol.css";
 @import "./cartcomponents/cartsummary.css";
 @import "./cartcomponents/emptycart.css";
+@import "./responsive.css";
 
 /* Cart Section
    Main container for the shopping cart page */
@@ -57,75 +58,4 @@
   padding: 2rem; /* Internal spacing */
   overflow: auto;
   max-height: 70vh;
-}
-
-/* Laptop (1024px - 1399px) */
-@media screen and (max-width: 1399px) {
-}
-
-/* Tablet (768px - 1023px) */
-@media screen and (max-width: 1023px) {
-  .cart__title {
-    font-size: 1em;
-  }
-
-  .cart__item {
-    display: grid;
-    grid-template-columns: 12px 1fr 1.2fr;
-    gap: 1em;
-  }
-
-  .cart__item-controls {
-    grid-column: span 3;
-    margin: auto;
-  }
-
-  .cart__item-name {
-    font-size: 1em;
-  }
-
-  /* summary */
-  .cart__content {
-    display: grid;
-    grid-template-columns: 1fr 0.8fr;
-  }
-  .cart__summary {
-    font-size: 1em;
-    padding: 1em;
-  }
-}
-/* Mobile (below 768px) */
-@media screen and (max-width: 767px) {
-  .cart__title {
-    font-size: 1em;
-  }
-
-  .cart__item {
-    display: grid;
-    grid-template-columns: 12px 1fr 1.2fr;
-    gap: 1em;
-  }
-
-  .cart__content {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .app__cart {
-    min-height: 120vh; /* Ensures full viewport height coverage */
-    padding: 0.5em;
-    padding-top: 5em;
-  }
-
-  .cart__items {
-    max-height: 50vh;
-  }
-  .cart__item-name,
-  .cart__item-price {
-    font-size: 0.9em;
-  }
-  /* Element: Signup Container */
-  .cart__summary-title {
-    margin-bottom: 10px;
-  }
 }
