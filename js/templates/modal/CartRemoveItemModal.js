@@ -67,6 +67,7 @@ export default class extends AbstractModal {
         if(deleted){
             this.helper.fullRerender();
             this.toggle();
+            await actions.setNotificationMark();
         }
     }
 

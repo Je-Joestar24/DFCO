@@ -22,6 +22,7 @@ export default class extends AbstractTemplate {
     async init() {
         document.getElementById('app__nav').innerHTML = await this.nav.getHtml();
         document.getElementById('footer').innerHTML = await this.footer.getHtml();
+        await actions.setNotificationMark();
         new AuthsModal();
         new ProductsModal();
         new CartsModal();
@@ -40,6 +41,7 @@ export default class extends AbstractTemplate {
                 if (attributeValue) {
                     mutations.addToCart(parseInt(attributeValue));
                     actions.displayMessage("ADDED TO CART", 700);
+                    actions.setNotificationMark();
                 }
             }
         });

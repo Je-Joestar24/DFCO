@@ -29,15 +29,6 @@ export default class extends AbstractModal {
     }
 
     /**
-     * Update modal data with devil fruit details
-     * @param {Object} json - Devil fruit data to display
-     */
-    async setData(json) {
-        await actions.fetchDevilFruitDetails(json);
-        this.modal.innerHTML = await this.getContent();
-    }
-
-    /**
      * Bind checkout-specific button handlers
      * Handles item selection and checkout confirmation
      */
@@ -74,14 +65,22 @@ export default class extends AbstractModal {
                     this.toggle();
                 }
                 actions.displayMessage(response.message, 500);
-                setTimeout(()=> location.reload(), 500);
+                actions.setNotificationMark();
+                setTimeout(() => {
+                    window.location.href = window.location.origin + '#/profile/checkouts';
+                    location.reload();
+                }, 500);
             } else if (typeof this.id == 'string') {
                 const response = mutations.singleCheckout(parseInt(this.id));
                 if (response.success) {
                     this.toggle();
                 }
                 actions.displayMessage(response.message, 500);
-                setTimeout(()=> location.reload(), 500);
+                actions.setNotificationMark();
+                setTimeout(() => {
+                    window.location.href = window.location.origin + '#/profile/checkouts';
+                    location.reload();
+                }, 500);
             }
         } catch (error) {
             console.error("An error occurred:", error);

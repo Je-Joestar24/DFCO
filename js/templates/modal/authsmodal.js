@@ -214,13 +214,6 @@ export default class extends AbstractModal {
                         aria-label="Password"
                         aria-required="true"
                     />
-                    <button
-                        type="button"
-                        class="auth-modal__show-password"
-                        aria-label="Show password"
-                    >
-                        Show
-                    </button>
                     </div>
                 </div>
                 <div class="auth-modal__field">
@@ -235,13 +228,6 @@ export default class extends AbstractModal {
                         aria-label="Confirm Password"
                         aria-required="true"
                     />
-                    <button
-                        type="button"
-                        class="auth-modal__show-password"
-                        aria-label="Show password"
-                    >
-                        Show
-                    </button>
                     </div>
                 </div>
                 <button type="submit" class="auth-modal__signup-submit">
@@ -314,13 +300,6 @@ export default class extends AbstractModal {
                     aria-label="Password"
                     aria-required="true"
                 />
-                <button
-                    type="button"
-                    class="auth-modal__show-password"
-                    aria-label="Show password"
-                >
-                    Show
-                </button>
                 </div>
             </div>
 

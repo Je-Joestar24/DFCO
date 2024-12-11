@@ -53,7 +53,7 @@ export default class extends AbstractTemplate {
             aria-label="Social Media Links"
         >
             <a
-            href="#"
+            href="https://www.facebook.com/jejomar.parrilla/"
             class="footer__social-link"
             aria-label="Follow us on Facebook"
             >
@@ -68,7 +68,7 @@ export default class extends AbstractTemplate {
             </svg>
             </a>
             <a
-            href="#"
+            href="https://github.com/Je-Joestar24"
             class="footer__social-link"
             aria-label="Follow us on GitHub"
             >

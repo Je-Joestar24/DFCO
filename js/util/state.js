@@ -63,10 +63,10 @@ const getters = {
         } else {
             return [];
         }
-    }, getCheckouts: () => {
-        const checkouts = state.user.checkouts;
+    },getCheckouts: () => {
+        const checkouts = JSON.parse(JSON.stringify(state.user.checkouts));
         if (checkouts.length > 0) {
-            return checkouts.map(checkout => {
+            const res = checkouts.map(checkout => {
                 const product = state.products.find(product => product.id === checkout.id);
                 if (product) {
                     const price = parseFloat(product.price.replace('₿', '').replace(/,/g, '')) || 0;
@@ -78,9 +78,20 @@ const getters = {
                 }
                 return null;
             }).filter(item => item !== null);
+            res.reverse();
+            return res;
         }
         return [];
-    },getTotalPrice: () =>  state.cart.reduce((total, item) => total + item.price * item.quantity, 0),
+    },
+    getCartCount: () => {
+        if (!state.user.isLoggedIn || !state.user.cart || state.user.cart.length === 0) {
+            return "0";
+        }
+        
+        const totalCount = state.user.cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+        return totalCount > 99 ? "99+" : totalCount.toString();
+    },
+    getTotalPrice: () =>  state.cart.reduce((total, item) => total + item.price * item.quantity, 0),
     getActiveNav: () => state.navigations.active,
     getDisplay: async () => state.productPage.display,
     getCartSummary: () => {
@@ -422,6 +433,14 @@ const actions = {
         setTimeout(() => {
             message_display.classList.add('fade-out');
         }, custom);
+    }, async setNotificationMark(){
+        const count = await getters.getCartCount();
+        const notif =   document.getElementById("nav__cart-badge");
+        if(count != 0) {
+            notif.innerText = count;
+            notif.style.opacity = 1;
+        }
+        else notif.style.opacity = 0;
     }
 };
 

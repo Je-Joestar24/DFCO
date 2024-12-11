@@ -169,6 +169,7 @@ export default class extends AbstractView {
             await this.updateQuantity(itemId, newQuantity);
             await this.updateSummary();
             await this.updateCartCount();
+            await actions.setNotificationMark();
         }
     }
 

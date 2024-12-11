@@ -24,7 +24,7 @@ export default class extends AbstractView {
   }
 
   async getCheckoutList() {
-    const checkouts =[];
+    const checkouts = getters.getCheckouts();
     if (!checkouts || checkouts.length === 0) {
       return `
         <div class="cart__empty" role="alert">
