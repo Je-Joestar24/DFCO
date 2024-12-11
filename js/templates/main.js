@@ -4,7 +4,7 @@ import Footer from "./footer.js";
 import AbstractTemplate from "./AbstractTemplate.js";
 
 import AuthsModal from "./modal/AuthsModal.js";
-import ProductsModal from "./modal/productsmodal.js";
+import ProductsModal from "./modal/ProductsModal.js";
 import CartsModal from "./modal/CartRemoveItemModal.js";
 import CheckoutModal from "./modal/CheckoutModal.js";
 import { actions, mutations } from "../util/state.js";
