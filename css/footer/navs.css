@@ -1,3 +1,5 @@
+@import "navs/comonlinks.css";
+
 /* Block: Footer Social Media
  * Contains social media icon links in a horizontal layout
  * Each link has a circular background with hover animations
@@ -17,7 +19,7 @@
 .footer__social-link {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 40px;
     background: rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
@@ -45,52 +47,4 @@
 
 .footer__social-link:hover .footer__social-icon {
     transform: scale(1.2);
-}
-
-/* Block: Footer Navigation
- * Vertical list of site navigation links
- * Uses flexbox column layout with consistent spacing
- */
-.footer__nav {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-/* Element: Navigation Link
- * Semi-transparent text that brightens on hover
- * Slides right and shows decorative line on hover
- * Uses relative positioning for line placement
- */
-.footer__link {
-    color: rgba(255, 255, 255, 0.7);
-    transition: all 0.3s ease;
-    position: relative;
-    width: fit-content;
-}
-
-.footer__link:hover {
-    color: var(--light-theme);
-    transform: translateX(5px);
-}
-
-/* Element: Navigation Link Decoration
- * Animated line that appears on hover
- * Uses absolute positioning and transforms
- * Grows from left using width transition
- */
-.footer__link::before {
-    content: '';
-    position: absolute;
-    left: -15px;
-    top: 50%;
-    width: 0;
-    height: 2px;
-    background: var(--paramecia);
-    transition: width 0.3s ease;
-    transform: translateY(-50%);
-}
-
-.footer__link:hover::before {
-    width: 10px;
 }

@@ -1,0 +1,34 @@
+/* Element: Logo section
+ * Contains brand logo and description
+ */
+.footer__brand {
+  grid-column: span 2;
+}
+
+/* Element: Logo link
+   * Large bold text with gradient underline
+   * Animated hover effect reveals underline
+   */
+.footer__logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--light-theme);
+  margin-bottom: 1rem;
+  display: inline-block;
+  position: relative;
+}
+
+.footer__logo::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--paramecia), var(--mythical));
+  transition: width 0.3s ease;
+}
+
+.footer__logo:hover::after {
+  width: 100%;
+}

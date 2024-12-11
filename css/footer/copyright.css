@@ -1,0 +1,12 @@
+/* Element: Copyright notice
+ * Centered text with top border
+ * Full-width section below main content
+ */
+.footer__copyright {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 2rem;
+}
