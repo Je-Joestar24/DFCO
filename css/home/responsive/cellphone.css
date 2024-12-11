@@ -31,18 +31,36 @@
   }
 
   /* features */
-  .features__title {
+  .features__title, .bestsellers__title {
     margin: 0px;
+    font-size: 2em;
   }
 
   .features__grid {
     grid-template-columns: 1fr;
+    width: 70%;
+    margin: auto;
   }
 
   /* best sellers */
 
+  .bestsellers__title{
+    margin-bottom: 1em;
+  }
+
+  .bestsellers{
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+
   .bestsellers__grid {
     grid-template-columns: 1fr;
+    width: 70%;
+    margin: auto;
+  }
+
+  .bestsellers__card{
+    padding: 1em;
   }
 
   /* steps */

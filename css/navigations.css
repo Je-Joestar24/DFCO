@@ -1,6 +1,7 @@
 @import 'navigation/buttons.css';
 @import 'navigation/items.css';
 @import 'navigation/dropdown.css';
+@import 'navigation/responsive.css';
 
 /* Block: Navigation
  * Fixed position header with glass effect
@@ -72,8 +73,4 @@
         transform: translateY(0);
         opacity: 1;
     }
-}
-
-.nav--visible {
-    animation: navSlideDown 0.5s ease-in-out forwards;
 }

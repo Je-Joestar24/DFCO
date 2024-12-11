@@ -1,6 +1,7 @@
 @import "./sections/section1.css";
 @import "./sections/section2.css";
 @import "./sections/section3.css";
+@import "responsive.css";
 
 /* Import shared animations */
 @import "./sections/animations.css";
@@ -31,57 +32,4 @@
   max-width: var(--container-lg);
   margin: 0 auto;
   padding: 120px 2rem;
-}
-
-/* Laptop (1024px - 1399px) */
-@media screen and (max-width: 1399px) {
-}
-
-/* Tablet (768px - 1023px) */
-@media screen and (max-width: 1023px) {
-}
-/* Mobile (below 768px) */
-@media screen and (max-width: 767px) {
-  .about-intro__container {
-    grid-template-columns: 1fr;
-    padding: 1em;
-    padding-top: 5em;
-    text-align: center;
-  }
-
-  .about-intro__fruits,
-  .about-intro__visual {
-    display: none;
-  }
-
-  .about-mission__container {
-    padding: 1em;
-    padding-top: 5em;
-    font-size: 10px;
-  }
-
-  .about-mission__statement,
-  .about-mission__description {
-    font-size: 2em;
-  }
-
-  .about-mission__values {
-    gap: 1em;
-    flex-direction: column;
-  }
-
-  .about-mission__value {
-    margin: auto;
-    padding: 2em 1em;
-  }
-
-  .about-choosing__title{
-    font-size: 3em;
-  }
-  
-  .about-choosing__grid{
-    font-size: 1em;
-    gap: 2em;
-    grid-template-columns: 1fr;
-  }
 }
