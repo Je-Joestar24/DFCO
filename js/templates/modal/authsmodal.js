@@ -3,7 +3,7 @@ import AuthFormHandler from "./auths/FormHandler.js";
 import MessageHandler from "./auths/MessageHandler.js";
 import HTMLContentGenerator from "./auths/HTMLContentGenerator.js";
 
-export default class extends AbstractModal {
+export default class AuthsModal extends AbstractModal {
     constructor() {
         super({ modal: 'auth-modal', toggledata: 'data-auth-toggle', activeclass: 'auth-modal--active' });
         this.authFormHandler = new AuthFormHandler();
@@ -18,6 +18,10 @@ export default class extends AbstractModal {
         this.bindChangeActive();
         this.authFormHandler.bindAuths(this.modal);
     }
+    /**
+     * Binds event listeners for form switching and hiding messages.
+     * Listens for clicks on elements to switch active forms or hide messages.
+     */
 
     bindChangeActive() {
         document.body.addEventListener('click', (e) => {
@@ -35,9 +39,17 @@ export default class extends AbstractModal {
         });
     }
 
+    /**
+     * Switches the active form between login and signup.
+     * 
+     * @param {string} active - The form to activate ('login' or 'signup').
+     */
     changeActive(active) {
+        // Remove active state from both forms
         document.getElementById('login-contents').classList.remove('auth-modal__content--active');
         document.getElementById('signup-contents').classList.remove('auth-modal__content--active');
+
+        // Add active state to the specified form
         document.getElementById(`${active}-contents`).classList.add('auth-modal__content--active');
     }
 
