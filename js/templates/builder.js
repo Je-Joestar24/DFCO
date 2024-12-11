@@ -1,12 +1,24 @@
+/**
+ * Builder class responsible for constructing the main application layout
+ * Creates the initial HTML structure including navigation, main content area,
+ * footer, message display, and various modal components
+ */
 export default class {
     constructor() {
         this.build();
     }
 
+    /**
+     * Initializes the application layout by inserting HTML into root element
+     */
     build() {
         document.getElementById("app").innerHTML = this.getHtml();
     }
 
+    /**
+     * Generates the complete HTML structure for the application
+     * @returns {string} Combined HTML for all major layout sections
+     */
     getHtml() {
         return `
         ${this.getNav()}
@@ -20,6 +32,10 @@ export default class {
         `;
     }
 
+    /**
+     * Creates the main navigation container
+     * @returns {string} Navigation HTML structure
+     */
     getNav() {
         return `
         <nav
@@ -31,6 +47,10 @@ export default class {
         `;
     }
 
+    /**
+     * Creates the main content display area
+     * @returns {string} Main content area HTML structure
+     */
     getDisplayArea() {
         return `
         <main
@@ -42,6 +62,10 @@ export default class {
         `;
     }
 
+    /**
+     * Creates the footer container
+     * @returns {string} Footer HTML structure
+     */
     getFooter() {
         return `
         <footer id="footer" class="footer" role="contentinfo" aria-label="Footer">
@@ -49,6 +73,10 @@ export default class {
         `;
     }
 
+    /**
+     * Creates the message display area for notifications
+     * @returns {string} Message display HTML structure
+     */
     getMessages(){
         return `
         <div
@@ -59,6 +87,10 @@ export default class {
         `;
     }
 
+    /**
+     * Creates the authentication modal container
+     * @returns {string} Auth modal HTML structure
+     */
     getAuthModal(){
         return `
         <div
@@ -69,6 +101,10 @@ export default class {
         `;
     }
 
+    /**
+     * Creates the fruits display modal container
+     * @returns {string} Fruits modal HTML structure
+     */
     getFruitsModal(){
         return `
         <div
@@ -81,6 +117,10 @@ export default class {
         `;
     }
 
+    /**
+     * Creates the cart item deletion modal container
+     * @returns {string} Delete item modal HTML structure
+     */
     getDeleteItemModal(){
         return `
         <div
@@ -93,6 +133,10 @@ export default class {
         `;
     }
 
+    /**
+     * Creates the checkout modal container
+     * @returns {string} Checkout modal HTML structure
+     */
     getCheckoutModal(){
         return `
         <div

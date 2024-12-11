@@ -1,5 +1,5 @@
 /**
- * Navigation component that handles the main navigation bar and user profile dropdown
+ * Footer component that handles the site footer including brand info, navigation links and decorative elements
  * Extends AbstractTemplate for common functionality
  */
 import AbstractTemplate from "./AbstractTemplate.js";
@@ -11,8 +11,8 @@ export default class extends AbstractTemplate {
   }
 
   /**
-   * Common navigation links shown to all users
-   * @type {Array<{id: string, href: string, name: string}>}
+   * Common footer navigation links shown to all users
+   * @type {Array<{href: string, name: string}>}
    */
   navs = [
     { href: "#/", name: "Home" },
@@ -21,8 +21,8 @@ export default class extends AbstractTemplate {
   ];
 
   /**
-   * Generates the HTML for the main navigation bar
-   * @returns {Promise<string>} Navigation HTML including logo, links and user menu
+   * Generates the complete HTML structure for the footer
+   * @returns {Promise<string>} Footer HTML including brand section, navigation and decorations
    */
   async getHtml() {
     return `
@@ -39,6 +39,10 @@ export default class extends AbstractTemplate {
       `;
   }
 
+  /**
+   * Generates the brand section HTML including logo, description and social links
+   * @returns {Promise<string>} Brand section HTML
+   */
   async getBrand(){
     return `
     <div class="footer__brand">
@@ -102,6 +106,10 @@ export default class extends AbstractTemplate {
     `;
   }
 
+  /**
+   * Generates the navigation links section for the footer
+   * @returns {Promise<string>} Navigation HTML with mapped links
+   */
   async getNavs(){
     return `
     <nav
@@ -114,6 +122,10 @@ export default class extends AbstractTemplate {
     `;
   }
 
+  /**
+   * Generates decorative elements for the footer
+   * @returns {Promise<string>} Decorative elements HTML
+   */
   async getDecorations(){
     return `
         <div

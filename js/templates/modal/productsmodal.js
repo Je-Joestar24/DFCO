@@ -6,10 +6,10 @@
  * @extends AbstractModal
  */
 import AbstractModal from "./AbstractModal.js";
-import HTMLContentGenerator from "./products/HTMLContentGenerator.js";
-import { actions, getters } from "../../util/state.js";
+import HTMLContentGenerator from "./products/HTMLContentGenerator.js";// This is responsible for generating the html structure of the Modal
+import { actions } from "../../util/state.js";
 
-export default class extends AbstractModal {
+export default class ProductsModal extends AbstractModal {
     /**
      * Initialize the product modal with required configuration
      * Sets up modal element, toggle attribute and active class

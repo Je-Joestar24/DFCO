@@ -89,6 +89,9 @@ export default class extends AbstractTemplate {
         `;
   }
 
+  /**
+   * Bind the logout event with message
+   *  */ 
   bindLogout(){
     document.body.addEventListener('click', async (e) => {
       if (e.target.matches(`[data-logout]`)) {

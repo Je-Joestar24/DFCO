@@ -23,6 +23,7 @@ export default class {
                     location.reload();
                 }, 500);
             } else if (typeof modal.id == 'string') {
+                // This handles the single checkout
                 const response = mutations.singleCheckout(parseInt(modal.id));
                 if (response.success) {
                     modal.toggle();
