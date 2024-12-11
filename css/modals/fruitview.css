@@ -5,6 +5,7 @@
 @import "fruit/price.css";
 @import "fruit/type.css";
 @import "fruit/close.css";
+@import "fruit/responsive.css";
 
 /* Fruit Modal Base */
 .fruit-modal {

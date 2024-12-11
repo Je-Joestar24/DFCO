@@ -1,0 +1,67 @@
+/* Laptop (1024px - 1399px) */
+@media screen and (max-width: 1399px) {
+}
+
+/* Tablet (768px - 1023px) */
+@media screen and (max-width: 1023px) {
+  .fruit-modal__header {
+    padding: 1em;
+  }
+  .fruit-modal__alias {
+    font-size: 1em;
+  }
+
+  .fruit-modal__title {
+    font-size: 1.5em;
+  }
+
+  .fruit-modal__body {
+    max-height: calc(100vh - 320px);
+    padding: 1em;
+  }
+
+  .fruit-modal__list-title,
+  .fruit-modal__price,
+  .fruit-modal__spec-value {
+    font-size: 1em;
+  }
+
+  .fruit-modal__list-item,
+  .fruit-modal__description {
+    font-size: 0.8em;
+  }
+
+  div.fruit-modal__actions {
+    padding: 1em;
+  }
+}
+/* Mobile (below 768px) */
+@media screen and (max-width: 767px) {
+  .fruit-modal__header {
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+  }
+
+  .fruit-modal__type {
+    font-size: 0.8em;
+    padding: 0.5em;
+  }
+  .fruit-modal__title {
+    font-size: 1em;
+  }
+
+  .fruit-modal__body {
+    max-height: calc(100vh - 320px);
+    grid-template-columns: 1fr;
+    padding: 1em;
+  }
+
+  div.fruit-modal__actions {
+    padding: 0.5em;
+  }
+
+  .fruit-modal__button {
+    font-size: 0.8em;
+    padding: 0.8em;
+  }
+}

@@ -7,6 +7,14 @@
   .products__filter-bar {
     gap: 1em;
   }
+
+  .products__featured-title{
+    font-size: 1.5em;
+  }
+
+  .products__stat-number{
+    font-size: 1em;
+  }  
 }
 
 /* Mobile (below 768px) */
