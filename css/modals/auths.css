@@ -26,7 +26,6 @@
   visibility: visible;
 }
 
-
 .no-scroll {
   overflow: hidden;
 }
@@ -48,28 +47,17 @@
   }
 }
 
-
-/* Laptop (1024px - 1399px) */
-@media screen and (max-width: 1399px) {
-}
-
-/* Tablet (768px - 1023px) */
-@media screen and (max-width: 1023px) {
-
-}
 /* Mobile (below 768px) */
 @media screen and (max-width: 767px) {
-  /* Element: Signup Container */
-  .auth-modal__signup {
-    font-size: .9em;
-    padding: 2rem;
+  /* Element: login Container */
+  .auth-modal__login,
+  #signup-contents {
+    font-size: 0.9em;
+    padding: 2em 1.2em;
     width: 90%;
   }
-  
+
+  .auth-modal__login-subtitle {
+    font-size: 1.2em;
+  }
 }
-
-/* Max-width container adjustment */
-@media screen and (min-width: 1400px) {
-
-}
-
