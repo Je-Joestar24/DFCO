@@ -4,6 +4,15 @@ const state = states.data;
 
 const carts = {
     functions: {
+        /**
+         * Handles adding a product to the cart.
+         * This function checks for the product's existence, 
+         * ensures the quantity does not exceed available stock, 
+         * and updates the user's cart accordingly.
+         * 
+         * @param {number} id - The ID of the product to add to the cart.
+         * @returns {void}
+         */
         addToCart: (id) => {
             // Find the product in state.products
             const product = state.products.find(p => p.id === id);
@@ -34,7 +43,17 @@ const carts = {
 
             localStorage.setItem("users", JSON.stringify(updatedUsers));
             state.users = updatedUsers; // Update state.users with the new user data
-        }, removeFromCart: (id) => {
+        },
+
+        /**
+         * Handles removing a product from the cart.
+         * This function filters out the specified product from the user's cart
+         * and updates the session and local storage accordingly.
+         * 
+         * @param {number} id - The ID of the product to remove from the cart.
+         * @returns {boolean} - Returns true if the product was successfully removed.
+         */
+        removeFromCart: (id) => {
             state.user.cart = state.user.cart.filter(item => Number(item.id) !== Number(id));
             sessionStorage.setItem("user", JSON.stringify(state.user));
 

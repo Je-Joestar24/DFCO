@@ -2,14 +2,26 @@ import states from "../state.js"
 
 const state = states.data;
 
+/**
+ * The user mutation module handles user-related actions such as signing up, 
+ * setting the current logged-in user, and logging out.
+ */
 const user = {
     functions: {
+        /**
+         * Adds a new user to the local storage.
+         * This function checks if the user already exists based on their email.
+         * If the user does not exist, it creates a new user object and saves it.
+         * 
+         * @param {Object} user - The user object containing user details.
+         * @returns {boolean} - Returns true if the user was successfully added, false if the user already exists.
+         */
         addUser: async (user) => {
             const users = JSON.parse(localStorage.getItem("users")) || [];
             const userExists = users.some(existingUser => existingUser.email === user.email);
 
             if (userExists) {
-                return false;
+                return false; // User already exists
             }
 
             const setUp = {
@@ -28,8 +40,15 @@ const user = {
             state.users = users;
 
             return true; // Return true to indicate successful addition
-        }, setLogged(user) {
-            // Update the state
+        },
+
+        /**
+         * Sets the current user as logged in and updates the session storage.
+         * 
+         * @param {Object} user - The user object containing user details.
+         */
+        setLogged(user) {
+            // Update the state with the logged-in user's information
             this.user = {
                 isLoggedIn: true,
                 name: "",
@@ -39,10 +58,12 @@ const user = {
             };
             // Save the updated user state in sessionStorage
             sessionStorage.setItem("user", JSON.stringify(this.user));
+        },
 
-            const logged = JSON.parse(sessionStorage.getItem("user"));
-
-        }, logout: () => {
+        /**
+         * Logs out the current user by clearing the user state and session storage.
+         */
+        logout: () => {
             state.user = { isLoggedIn: false, name: "", email: "" };
             sessionStorage.clear();
         }
