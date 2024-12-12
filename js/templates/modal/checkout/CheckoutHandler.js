@@ -13,9 +13,7 @@ export default class {
             if (modal.id === "multi") {
                 // Handle the case when id is "multi"
                 const response = mutations.multiCheckout();
-                if (response.success) {
-                    modal.toggle();
-                }
+                modal.close();
                 actions.displayMessage(response.message, 500);
                 actions.setNotificationMark();
                 setTimeout(() => {
@@ -25,11 +23,10 @@ export default class {
             } else if (typeof modal.id == 'string') {
                 // This handles the single checkout
                 const response = mutations.singleCheckout(parseInt(modal.id));
-                if (response.success) {
-                    modal.toggle();
-                }
+                modal.close();
                 actions.displayMessage(response.message, 500);
                 actions.setNotificationMark();
+
                 setTimeout(() => {
                     window.location.href = window.location.origin + '#/profile/checkouts';
                     location.reload();
