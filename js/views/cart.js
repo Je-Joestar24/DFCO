@@ -1,6 +1,10 @@
 import AbstractView from "./AbstractView.js";
 import { getters, state, mutations, actions } from "../util/state.js";
 
+import UnAuthed from "./cart/unauthed.js";
+import Summary from "./cart/summary.js";
+import Items from "./cart/items.js";
+
 /**
  * CartView Class
  * Represents the shopping cart view in the application.
@@ -10,8 +14,15 @@ export default class extends AbstractView {
     constructor() {
         super();
         this.setTitle("DFCO | Cart");
+        this.unauthed = new UnAuthed();
+        this.summary = new Summary();
+        this.items = new Items();
     }
 
+    /**
+     * Binds event listeners for quantity change and checkbox selection.
+     * Prevents multiple bindings by checking the state.
+     */
     bindAll() {
         if (state.cart.isBound) return; // Prevent multiple bindings
         document.body.addEventListener('click', (e) => {
@@ -31,6 +42,11 @@ export default class extends AbstractView {
         state.cart.isBound = true; // Mark as bound
     }
 
+    /**
+     * Generates the HTML for the cart view.
+     * Fetches products and displays the cart items and summary.
+     * @returns {Promise<string>} The HTML string for the cart view.
+     */
     async getHtml() {
         await actions.fetchProducts();
         this.cart = await getters.getCart();
@@ -43,106 +59,20 @@ export default class extends AbstractView {
                         <span class="cart__count">${this.cart.length} items</span>
                     </div>
                     <div class="cart__content">
-                        ${await this.getCartItems()}
-                        ${await this.getCartSummary()}
+                        ${await this.items.getHtml(this)}
+                        ${await this.summary.getHtml()}
                     </div>
-                ` : await this.getUnAuth()}
+                ` : await this.unauthed.getHtml()}
             </div>
         </section>
         `;
     }
 
-    async getUnAuth() {
-        return `
-        <div class="cart__empty" role="alert">
-            <div class="cart__empty-icon" aria-hidden="true">🛒</div>
-            <h2 class="cart__empty-text">Your cart is empty</h2>
-            <div class="cart__auth-buttons">
-                <button class="cart__auth-btn cart__auth-btn--login" aria-label="Login" data-auth-toggle data-change-auth-active="login" >Login</button>
-                <button class="cart__auth-btn cart__auth-btn--signup" aria-label="Sign Up" data-auth-toggle data-change-auth-active="signup">Sign Up</button>
-            </div>
-        </div>
-        `;
-    }
-
-    async getCartItems() {
-        return `
-        <div class="cart__items">
-            ${!this.cart || this.cart.length === 0 ? `
-                <div class="cart__empty" role="alert">
-                    <div class="cart__empty-icon" aria-hidden="true">🛒</div>
-                    <h2 class="cart__empty-text">No items in cart</h2>
-                </div>
-            ` : this.cart.map(item => `
-                <div class="cart__item" data-item-id="${item.id}">
-                    <div class="cart__item-select">
-                        <label class="cart__checkbox" aria-label="Select ${item.name}">
-                            <input type="checkbox" 
-                                   class="cart__checkbox-input" 
-                                   ${item.checked ? 'checked' : ''}
-                                   aria-label="Select ${item.name}">
-                            <span class="cart__checkbox-mark"></span>
-                        </label>
-                    </div>
-                    <div class="cart__item-image">
-                        <img src="${item.image1}" 
-                             alt="${item.name}" 
-                             role="img" 
-                             loading="lazy">
-                    </div>
-                    <div class="cart__item-details">
-                        <h3 class="cart__item-name">${item.name}</h3>
-                        <p class="cart__item-type">${item.type} Type</p>
-                        <p class="cart__item-price">${item.price}</p>
-                    </div>
-                    <div class="cart__item-controls">
-                        <div id="cart__quantity-${item.id}" class="cart__quantity">
-                            <button class="cart__quantity-btn" 
-                                    ${item.quantity == 1 ? ` data-remove-item="${item.id}" ` : ""}
-                                    aria-label="Decrease quantity">-</button>
-                            <span id="quantity-${item.id}" 
-                                  class="cart__quantity-number"
-                                  role="text"
-                                  aria-label="Quantity">${item.quantity}</span>
-                            <button class="cart__quantity-btn" 
-                                    aria-label="Increase quantity">+</button>
-                        </div>
-                        <button class="cart__item-remove" 
-                                aria-label="Remove ${item.name} from cart" data-remove-item="${item.id}">×</button>
-                    </div>
-                </div>
-            `).join('')}
-        </div>
-        `;
-    }
-
-    async getCartSummary() {
-        const summary = getters.getCartSummary();
-        const toBeCheckout = getters.getCartChecked();
-        return `
-            <div class="cart__summary" role="complementary" aria-label="Order Summary">
-                <h2 class="cart__summary-title">Order Summary</h2>
-                <div class="cart__summary-row cart__summary-subtotal">
-                    <span>Subtotal</span>
-                    <span>${summary.total}</span>
-                </div>
-                <div class="cart__summary-row cart__summary-shipping">
-                    <span>Shipping</span>
-                    <span>Free</span>
-                </div>
-                <div class="cart__summary-row cart__summary-total">
-                    <span>Total</span>
-                    <span>${summary.total}</span>
-                </div>
-                <button ${toBeCheckout.length > 0 ? `data-checkout-item="multi"` : "hidden"} class="cart__checkout-btn" 
-                        aria-label="Proceed to checkout with ${summary.itemCount} items"
-                        ${summary.itemCount === 0 ? 'disabled' : ''}>
-                    Proceed to Checkout (${summary.itemCount} items)
-                </button>
-            </div>
-        `;
-    }
-
+    /**
+     * Handles the change event for the checkbox input.
+     * Updates the checked state of the cart item and refreshes the summary.
+     * @param {HTMLInputElement} checkbox - The checkbox input element.
+     */
     async handleCheckboxChange(checkbox) {
         const itemId = parseInt(checkbox.closest('.cart__item').dataset.itemId);
         const isChecked = checkbox.checked;
@@ -153,6 +83,12 @@ export default class extends AbstractView {
         await this.updateSummary();
     }
 
+    /**
+     * Handles the change event for the quantity buttons.
+     * Updates the quantity of the cart item and refreshes the UI.
+     * @param {number} itemId - The ID of the cart item.
+     * @param {boolean} isIncrease - Indicates if the quantity is increasing.
+     */
     async handleQuantityChange(itemId, isIncrease) {
         const quantityElement = document.getElementById(`quantity-${itemId}`);
         const currentQuantity = parseInt(quantityElement.textContent);
@@ -173,6 +109,11 @@ export default class extends AbstractView {
         }
     }
 
+    /**
+     * Updates the displayed quantity for a specific cart item.
+     * @param {number} itemId - The ID of the cart item.
+     * @param {number} newQuantity - The new quantity to display.
+     */
     async updateQuantity(itemId, newQuantity) {
         const cartQuantity = document.getElementById(`cart__quantity-${itemId}`);
 
@@ -189,13 +130,19 @@ export default class extends AbstractView {
         `;
     }
 
+    /**
+     * Updates the cart summary displayed in the UI.
+     */
     async updateSummary() {
         const summaryContainer = document.querySelector('.cart__summary');
         if (summaryContainer) {
-            summaryContainer.outerHTML = await this.getCartSummary();
+            summaryContainer.outerHTML = await this.summary.getHtml();
         }
     }
 
+    /**
+     * Updates the cart item count displayed in the header.
+     */
     async updateCartCount() {
         const cartCount = document.querySelector('.cart__count');
         if (cartCount) {
@@ -204,6 +151,10 @@ export default class extends AbstractView {
         }
     }
 
+    /**
+     * Rerenders the entire cart view.
+     * Fetches products and updates the cart items and summary.
+     */
     async fullRerender() {
         const cartContainer = document.querySelector('.app__cart-container');
         if (cartContainer) {
@@ -216,10 +167,10 @@ export default class extends AbstractView {
                     <span class="cart__count">${this.cart.length} items</span>
                 </div>
                 <div class="cart__content">
-                    ${await this.getCartItems()}
-                    ${await this.getCartSummary()}
+                    ${await this.items.getHtml(this)}
+                    ${await this.summary.getHtml()}
                 </div>
-            ` : await this.getUnAuth();
+            ` : await this.unauthed.getHtml();
         }
     }
 }
