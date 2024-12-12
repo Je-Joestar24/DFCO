@@ -1,0 +1,124 @@
+/* Mobile (below 768px) */
+@media screen and (max-width: 767px) {
+  /* Main product section padding */
+  section.app__products {
+    padding: 2em 1em;
+    padding-top: 8em;
+  }
+
+  /* Filter bar layout and full-width elements */
+  .products__filter-bar {
+    flex-direction: column;
+    padding: 0.5em;
+  }
+
+  .products__search,
+  .products__search-input,
+  .products__category {
+    width: 100%;
+  }
+
+  /* Category grid layout */
+  .products__category {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    font-size: 1em;
+  }
+
+  button.products__category-btn {
+    padding: 0.5em;
+  }
+
+  /* Section headings typography */
+  .products__section-title,
+  .products__section-subtitle {
+    font-size: 1.2em;
+  }
+
+  /* Product picks styling */
+  .products__pick-item {
+    margin: auto;
+  }
+
+  .products__pick-circle {
+    width: 50px;
+    height: 50px;
+  }
+
+  div.products__picks-list {
+    gap: 1em;
+  }
+
+  h3.products__pick-name {
+    font-size: 0.8em;
+    font-weight: 600;
+  }
+
+  /* Top picks section */
+  .products__top-picks {
+    overflow: auto;
+    margin-bottom: 0;
+  }
+
+  /* Featured products layout */
+  .products__featured {
+    grid-template-columns: 1fr;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 1em;
+    padding: 1em;
+    gap: 1em;
+  }
+
+  /* Products sorting grid */
+  .products__sorting {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5em;
+    width: 100%;
+    font-size: 1em;
+  }
+
+  .products__sort-select {
+    font-size: 0.7em;
+  }
+
+  .products__sort-wrapper {
+    width: 100%;
+  }
+
+  /* Main products grid layout */
+  div.products__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  /* Product card typography and spacing */
+  span.products__tag {
+    font-size: 0.6em;
+  }
+
+  .products__name,
+  .products__price {
+    font-size: 1em;
+  }
+
+  .products__info {
+    padding: 0.5em;
+  }
+
+  .products__actions {
+    gap: 0.3em;
+  }
+
+  /* Product buttons styling */
+  button.products__btn {
+    padding: 0.5em 1em;
+    font-size: 0.7em;
+  }
+
+  .products__btn-icon {
+    display: none;
+  }
+}

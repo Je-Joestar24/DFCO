@@ -60,7 +60,7 @@
 /* Mobile (below 768px) */
 @media screen and (max-width: 767px) {
   .checkouts__content {
-    margin: 5em auto;
+    margin: 7em auto;
     margin-bottom: 2em;
   }
 }

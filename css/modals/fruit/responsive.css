@@ -37,6 +37,11 @@
 }
 /* Mobile (below 768px) */
 @media screen and (max-width: 767px) {
+  /* Modal Content Container */
+  .fruit-modal__content {
+    max-height: 120vh !important;
+  }
+
   .fruit-modal__header {
     padding-bottom: 0.5em;
     padding-top: 0.5em;
@@ -51,7 +56,7 @@
   }
 
   .fruit-modal__body {
-    max-height: calc(100vh - 320px);
+    max-height: calc(120vh - 320px);
     grid-template-columns: 1fr;
     padding: 1em;
   }

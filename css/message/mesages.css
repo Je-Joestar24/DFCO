@@ -8,24 +8,35 @@
   right: 50%;
   top: 30%;
   transform: translateX(50%);
-  background-color: var(--background-dark);
+  background-color: rgba(10, 10, 46, 0.8); /* Glassmorphism effect */
   color: var(--secondary);
   padding: 1em 1.5em;
-  border-radius: 3em;
+  border-radius: 1.5em; /* Adjusted for better responsiveness */
   text-align: center;
   z-index: 3000;
   opacity: 1;
   font-weight: 500;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out, transform 0.3s ease; /* Added transform transition */
   pointer-events: none;
   font-size: 1.5em;
   text-transform: uppercase;
+  max-width: 90%; /* Responsive width */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .app__message {
+    font-size: 1.2em; /* Smaller font size on mobile */
+    padding: 0.8em 1.2em; /* Adjusted padding */
+    top: 20%; /* Adjusted position for smaller screens */
+  }
 }
 
 /* Fade out animation class
    Applied to message to trigger fade out animation */
-.fade-out{
-    animation: fadeOut 1.5s forwards;
+.fade-out {
+  animation: fadeOut 1.5s forwards;
 }
 
 /* Fade out keyframe animation

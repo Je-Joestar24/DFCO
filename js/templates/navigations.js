@@ -64,6 +64,7 @@ export default class extends AbstractTemplate {
             />
           </svg>
           ${await this.getProfileDropDown()}
+          
         </div>
       </li>
     `;
