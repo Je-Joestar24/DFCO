@@ -13,15 +13,16 @@
     <link rel="stylesheet" href="css/app.css" />
   </head>
   <body>
-    
-    <div
-      id="app"
-      role="application"
-      aria-label="Devil Fruit Collection Organization Application"
-    >
-        <!-- This application is designed to manage and organize devil fruit products -->
-        <!-- EVERYTHING FROM THIS PAGE WILL BE LOADED HERE -->
-    </div>
+    <!-- 
+      Root app container that gets populated by the AppTemplate class
+      The app.js file acts as the main entry point that:
+      - Loads the AppTemplate class which contains all component templates
+      - Handles component initialization and routing
+      - Manages state between components
+      - Contains semantic HTML structure in connected component files
+      This modular approach makes the app more maintainable and easier to debug
+      with all semantic HTML elements defined in the individual component files
+    -->
+    <div id="app" role="main" aria-label="Devil Fruit Collection Organization Application"></div>
     <script type="module" src="js/app.js"></script>
-  </body>
 </html>
