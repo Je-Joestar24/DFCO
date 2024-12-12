@@ -1,5 +1,5 @@
 import Product from './product/product.js';
-import { state, actions } from '../util/state.js';
+import { state } from '../util/state.js';
 import PHelper from './helpers/products.js';
 
 /**

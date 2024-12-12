@@ -8,7 +8,8 @@ import Product from '../views/product.js';
 import About from '../views/about.js';
 import Cart from '../views/cart.js';
 import Profile from '../views/profile.js';
-import Checkouts from '../views/Checkouts.js';
+import Checkouts from '../views/checkouts.js';
+
 import { actions, state } from './state.js';
 
 export class Router {
@@ -24,8 +25,10 @@ export class Router {
             { path: '#/cart', view: Cart, id: 'wa', message: 'MY CART' },
         ];
         if (isLoggedIn) {
-            const profile = [{ path: '#/profile', view: Profile, id: 'wa', message: 'MY PROFILE' },
-            { path: '#/profile/checkouts', view: Checkouts, id: 'wa', message: 'MY CHECKOUTS' }];
+            const profile = [
+                { path: '#/profile', view: Profile, id: 'wa', message: 'MY PROFILE' },
+                { path: '#/profile/checkouts', view: Checkouts, id: 'wa', message: 'MY CHECKOUTS' }
+            ];
             profile.forEach(val => this.routes.push(val));
         }
         this.displayArea = document.querySelector(displayID);
