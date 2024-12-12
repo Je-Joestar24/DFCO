@@ -16,7 +16,7 @@ const product = {
          */
         fetchProducts: async () => {
             if (state.products.length === 0) {
-                const products = await fetch("../../../../json/devilfruits.json").then((res) =>
+                const products = await fetch("json/devilfruits.json").then((res) =>
                     res.json()
                 );
                 state.products = products;
@@ -33,7 +33,7 @@ const product = {
          */
         fetchDevilFruitDetails: async (fruit) => {
             try {
-                const response = await fetch(`../../../../json/devil-fruits/${fruit}`);
+                const response = await fetch(`json/devil-fruits/${fruit}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch devil fruit details');
                 }
