@@ -17,9 +17,9 @@ export default class extends Product {
      */
     constructor() {
         super();
+        this.setTitle("DFCO | Products")
         state.productPage.currentSort = '';
         this.helper = new PHelper();
-        //this.filter = new Filter();
     }
 
     /**

@@ -17,5 +17,5 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
     // Initial route
-    //router.route();
+    router.route();
 });
