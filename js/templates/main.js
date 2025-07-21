@@ -7,8 +7,8 @@ import Navigations from "./navigations.js";
 import Footer from "./footer.js";
 import AbstractTemplate from "./AbstractTemplate.js";
 
-import AuthsModal from "./modal/AuthsModal.js";
-import ProductsModal from "./modal/ProductsModal.js"; 
+import AuthsModal from "./modal/authsmodal.js";
+import ProductsModal from "./modal/productsmodal.js"; 
 import CartsModal from "./modal/CartRemoveItemModal.js";
 import CheckoutModal from "./modal/CheckoutModal.js";
 import { actions, mutations } from "../util/state.js";

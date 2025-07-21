@@ -8,7 +8,7 @@ import Product from '../views/product.js';
 import About from '../views/about.js';
 import Cart from '../views/cart.js';
 import Profile from '../views/profile.js';
-import Checkouts from '../views/checkouts.js';
+import Checkouts from '../views/Checkouts.js';
 
 import { actions, state } from './state.js';
 
