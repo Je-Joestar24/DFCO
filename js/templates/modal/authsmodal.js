@@ -8,7 +8,7 @@ import HTMLContentGenerator from "./auths/HTMLContentGenerator.js";
  * Handles authentication modal functionality including login and signup forms.
  * Extends AbstractModal for base modal functionality.
  */
-export default class AuthsModal extends AbstractModal {
+export default class extends AbstractModal {
     /**
      * Initialize authentication modal with required handlers
      * @constructor
